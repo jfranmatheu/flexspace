@@ -4,8 +4,8 @@
     py -3.10 docs/_design/make_store_extras.py thumbs     # only the 21 widget thumbnails
     py -3.10 docs/_design/make_store_extras.py gifs       # only the GIFs
 
-Reuses the drawing code of make_graphics.py (same widget art as the gallery sheet), so nothing here comes
-from the marketing screenshots or recordings: the GIFs are rendered frame by frame from the vector widgets.
+Reuses the drawing code of make_graphics.py (same widget art as the gallery sheet): the GIFs are rendered frame by
+frame from the vector widgets. The one real capture is the Bone Pickers tile (a crop of the redesigned picker).
 
 Outputs (registered in assets/img/graphics.json, merged with what make_graphics.py wrote):
   assets/img/store/w-<slug>.png                     one tile per widget, 720 x 324 (run make_graphics.py widgets first:
@@ -37,6 +37,8 @@ def make_thumbs():
     for name, cat, desc in jobs:
         if name == "Ring Menu":
             img = mg.ring_tile(720, 324)
+        elif name == "Bone Pickers":   # a real crop of the redesigned picker, as on the site's tile
+            img = mg.cover(mg.picker_page("female").crop(mg.PICKER_BONES_BOX), 720, 324, what="store w-bone-pickers")
         else:
             tile = Pic(360, th + 4, 2.0, bg=DARK["canvas"])
             tile.dots(DARK["dot"], 30, 1.0)
@@ -138,6 +140,7 @@ def main(argv):
         gif_live_mode()
         gif_ring_menu()
     mg.write_registry()
+    mg.check_aspect()
 
 
 if __name__ == "__main__":

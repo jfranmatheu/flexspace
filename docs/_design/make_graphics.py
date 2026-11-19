@@ -8,17 +8,23 @@ Groups: hero, cards, gallery, widgets, frames, focus, icons, brand (scenes are d
 frame-<name>: a whole scene in a window (docs pages, lightbox). focus-<name>: a tight crop of the part that tells
 the story, sized so its UI text reads at the width the site shows it (feature rows, bento, store rows).
 
-Every image is drawn from scratch with Pillow + numpy: the product UI is redrawn as illustrations from the
-curated screenshots (B3D-MySpace/marketing/flexspace), which are the reference only and are never pasted.
-The only brand asset used as-is is the wordmark (docs/_design/brand/FlexSpace.svg, parsed here).
+The product UI is redrawn with Pillow + numpy as illustrations from the curated screenshots
+(B3D-MySpace/marketing/flexspace), which are the reference for those. The exception is the Armature Picker: its
+character-art pages are real captures of the redesigned picker (picker_layer_*.png, picker_hero.png), cropped and
+composed into the scenes (real()). The only brand asset used as-is is the wordmark
+(docs/_design/brand/FlexSpace.svg, parsed here).
+
+Every image placed inside another is cover-cropped to its box and scaled uniformly (cover()); Image.resize is
+guarded for the whole run, and the run fails if any resize or placement changes an image's aspect (check_aspect()).
 
 Outputs (see graphics.json for the full list with alt text):
   assets/img/<name>.webp          for GitHub Pages
   assets/img/store/<name>.jpg|png for Superhive (no WebP there)
   assets/img/icons/...            favicon set and the F mark
 
-Picker art is temporary (a redesigned picker with anime-style backdrops replaces it): it is drawn by
-scene_picker() only, and every output that shows it has "swap": "picker-redesign" in graphics.json.
+Picker art: real captures of the redesigned picker, alternating the Adult Male and Adult Female charts
+(picker_page(), picker_figure()). Set FLEXSPACE_MEDIA_SRC to the marketing/flexspace folder if it is not next to
+this repo.
 """
 from __future__ import annotations
 
@@ -41,6 +47,91 @@ STORE = OUT / "store"
 ICONS = OUT / "icons"
 BRAND_SVG = HERE / "brand" / "FlexSpace.svg"
 SITE = "https://jfranmatheu.github.io/flexspace/"
+REAL_SRC = Path(os.environ.get("FLEXSPACE_MEDIA_SRC") or DOCS.parent.parent / "B3D-MySpace" / "marketing" / "flexspace")
+
+# ---- aspect guard: nothing in a composed graphic may be squashed or stretched
+_resize = Image.Image.resize
+ASPECT = {"resizes": 0, "bad": [], "placed": []}
+
+
+def _guarded_resize(self, size, *a, **kw):
+    (w0, h0), (w1, h1) = self.size, tuple(size)
+    if w0 and h0 and w1 and h1:
+        ASPECT["resizes"] += 1
+        sx, sy = w1 / w0, h1 / h0
+        tol = 1 / min(w1, h1) + 1 / min(w0, h0) + .002     # rounding to whole pixels, nothing more
+        if abs(sx - sy) / max(sx, sy) > tol:
+            import traceback
+            fr = [f for f in traceback.extract_stack()[:-1] if f.filename.endswith("make_graphics.py")]
+            where = f"line {fr[-1].lineno} ({fr[-1].name})" if fr else "?"
+            ASPECT["bad"].append(f"resize {w0}x{h0} -> {w1}x{h1} at {where}")
+    return _resize(self, size, *a, **kw)
+
+
+Image.Image.resize = _guarded_resize
+
+
+def cover(im, w, h, focus=(.5, .5), what=""):
+    """im scaled uniformly to cover a w x h box, the overflow cropped around focus (0..1 of the spare room).
+    The only way an image is fitted into a box here: it never squashes."""
+    W, Hh = im.size
+    if W / Hh > w / h:
+        cw, ch = Hh * w / h, Hh
+    else:
+        cw, ch = W, W * h / w
+    x0 = (W - cw) * min(max(focus[0], 0), 1)
+    y0 = (Hh - ch) * min(max(focus[1], 0), 1)
+    box = (round(x0), round(y0), round(x0 + cw), round(y0 + ch))
+    out = im.crop(box).resize((w, h), RS.LANCZOS)
+    ASPECT["placed"].append((what or "image", (W, Hh), box, (w, h)))
+    return out
+
+
+def check_aspect():
+    """Fail the run if any resize or placement changed an image's aspect (the presets thumbnails once did)."""
+    bad = list(ASPECT["bad"])
+    for what, src, (x0, y0, x1, y1), (w, h) in ASPECT["placed"]:
+        a_crop, a_box = (x1 - x0) / (y1 - y0), w / h
+        if abs(a_crop / a_box - 1) > 1 / min(w, h) + 1 / min(x1 - x0, y1 - y0) + .002:
+            bad.append(f"{what}: crop {x1 - x0}x{y1 - y0} of {src[0]}x{src[1]} placed in {w}x{h}")
+    print(f"aspect check: {ASPECT['resizes']} resizes, {len(ASPECT['placed'])} placed images, {len(bad)} distorted")
+    for what, src, box, size in ASPECT["placed"]:
+        print(f"  placed {what}: {box[2] - box[0]}x{box[3] - box[1]} of {src[0]}x{src[1]} -> {size[0]}x{size[1]}")
+    for b in bad:
+        print("  DISTORTED", b)
+    if bad:
+        raise SystemExit("aspect check failed")
+
+
+_REAL: dict = {}
+
+
+def real(rel):
+    """A real capture from the marketing folder (RGB)."""
+    if rel not in _REAL:
+        p = REAL_SRC / rel
+        if not p.is_file():
+            raise SystemExit(f"missing real capture {p} (set FLEXSPACE_MEDIA_SRC to marketing/flexspace)")
+        with Image.open(p) as im:
+            _REAL[rel] = im.convert("RGB")
+    return _REAL[rel]
+
+
+def picker_page(gender="female", page="body"):
+    """A whole page of the Humanoid Body chart in Live Mode (Adult Male / Adult Female), a 1x capture."""
+    return real(f"shots/picker_layer_{gender}_{page}.png")
+
+
+# the body figure on each Body page (source px): head to the root bar, both IK hands, their pucks and the bone name
+PICKER_FIGURE = {"female": (365, 40, 945, 985), "male": (278, 60, 998, 985)}
+# bone pickers at a glance (female Body page): the selected hips, arm and thigh bars, both IK diamonds and pucks
+PICKER_BONES_BOX = (425, 360, 945, 649)
+# the Rigify Character Picker demo's picker editor in picker_hero.png (male art, panels, tabs)
+PICKER_HERO_EDITOR = (818, 56, 1920, 1056)
+
+
+def picker_figure(gender):
+    return picker_page(gender).crop(PICKER_FIGURE[gender])
 REGISTRY: list[dict] = []
 
 
@@ -772,85 +863,6 @@ def scene_ring_menu(scale=2.0, active_seg=0, active_slot=2, core="Clay Strips", 
     return p
 
 
-def scene_picker(scale=2.0, with_panels=True):
-    """Armature Picker, body chart (TEMPORARY art: replaced by the redesigned picker). Logical 1000 x 920."""
-    t = DARK
-    p = Pic(1000, 920, scale, bg=t["canvas"])
-    p.dots(t["dot"], 40, 1.1)
-    # tabs
-    p.rrect(6, 6, 143, 26, 7, fill=(36, 36, 39), line=(60, 60, 64))
-    p.rrect(10, 10, 38, 18, 5, fill=(62, 62, 68))
-    for xx, lab, on in ((29, "Body", True), (79, "Hands", False), (127, "Feet", False)):
-        p.text(xx, 19, lab, 10.5, 500 if on else 400, t["text"] if on else t["dim"], "mm")
-    Y, R, B, PU = SIDE_C, SIDE_R, SIDE_L, SIDE_ROOT
-    yel, red, blu = mix(Y, (255, 255, 255), .2), mix(R, (255, 255, 255), .28), mix(B, (255, 255, 255), .3)
-    red2, blu2 = mix(R, (40, 40, 40), .25), mix(B, (40, 40, 40), .25)
-    M = lambda pts: [(986 - x, y) for x, y in pts]
-    # torso (yellow)
-    p.ellipse(493, 247, 27, 40, fill=yel)
-    p.rrect(480, 294, 26, 20, 5, fill=yel)
-    p.soft_poly([(440, 322), (546, 322), (552, 372), (538, 422), (448, 422), (434, 372)], yel, 7)
-    p.soft_poly([(455, 429), (531, 429), (528, 490), (458, 490)], yel, 6)
-    p.soft_poly([(432, 500), (554, 500), (572, 536), (560, 560), (426, 560), (414, 536)], yel, 8)
-    limbs = [
-        [(410, 318), (466, 305), (460, 343), (420, 346)],                    # shoulder
-        [(404, 352), (428, 352), (421, 444), (400, 444)],                    # upper arm
-        [(399, 452), (419, 452), (411, 545), (392, 545)],                    # forearm
-        [(386, 553), (408, 553), (411, 597), (398, 605), (384, 594)],        # hand
-        [(422, 556), (492, 556), (481, 664), (445, 664)],                    # thigh
-        [(444, 670), (478, 670), (470, 816), (452, 816)],                    # shin
-        [(448, 822), (472, 822), (478, 856), (436, 856), (438, 838)],        # foot
-    ]
-    for i, L in enumerate(limbs):
-        p.soft_poly(L, red if i not in (3,) else mix(red, (255, 255, 255), .15), 6)
-        p.soft_poly(M(L), blu if i not in (3,) else mix(blu, (255, 255, 255), .15), 6)
-    p.rrect(421, 864, 144, 18, 9, fill=mix(PU, (255, 255, 255), .25))
-    p.rrect(369, 835, 60, 28, 14, fill=red2)
-    p.rrect(557, 835, 60, 28, 14, fill=blu2)
-    for (x, y), c in (((378, 340), red2), ((600, 340), blu2), ((416, 690), red2), ((562, 690), blu2)):
-        p.rrect(x, y, 8, 70, 4, fill=c)
-    for (x, y), c in (((373, 438), red2), ((613, 438), blu2), ((414, 665), red2), ((571, 665), blu2)):
-        p.circle(x, y, 9, fill=c)
-    for (x, y), c in (((356, 578), red2), ((629, 578), blu2)):
-        p.poly([(x, y - 18), (x + 18, y), (x, y + 18), (x - 18, y)], fill=c)
-    for x, y in ((355, 621), (631, 621), (346, 849), (639, 849)):
-        p.circle(x, y, 12, fill=SIDE_L if x > 493 else SIDE_L)
-        p.circle(x, y, 5, fill=(255, 255, 255))
-    for y in (340, 399, 458, 516):
-        p.poly([(493, y - 8), (501, y), (493, y + 8), (485, y)], fill=(176, 150, 70))
-    dots = [(493, 284), (493, 305), (509, 373), (509, 426), (509, 476), (509, 530), (419, 355), (414, 399),
-            (410, 453), (405, 503), (400, 555), (466, 573), (457, 607), (458, 665), (459, 738), (462, 822)]
-    for x, y in dots:
-        p.circle(x, y, 5, fill=(246, 246, 246), line=(0, 0, 0, 60), lw=.8)
-        if x < 480:
-            p.circle(986 - x, y, 5, fill=(246, 246, 246), line=(0, 0, 0, 60), lw=.8)
-    p.circle(463, 347, 7, fill=(244, 170, 180), line=(0, 0, 0, 50))
-    p.circle(523, 347, 7, fill=(170, 205, 250), line=(0, 0, 0, 50))
-    if with_panels:
-        w_frame(p, t, 28, 231, 158, 486, "Rig Settings")
-        w_knob(p, t, 66, 290, 21, 0.0, "Head Follow", 10.5)
-        w_knob(p, t, 148, 290, 21, 0.5, "Neck Follow", 10.5)
-        sl = [("Arm.L IK / FK", 0), ("Arm.R IK / FK", 0), ("Leg.L IK / FK", 0), ("Leg.R IK / FK", 0),
-              ("Arm.L IK Stretch", 1), ("Arm.R IK Stretch", 1), ("Leg.L IK Stretch", 1), ("Leg.R IK Stretch", 1)]
-        for i, (lab, v) in enumerate(sl):
-            w_slider(p, t, 39, 381 + i * 45.5, 136, v, lab, knob=9.5, size=9, th=6)
-        w_frame(p, t, 788, 206, 180, 496, "Visibility")
-        p.text(868, 243, "Bone Collections", 10.5, 400, t["text"], "mm")
-        p.text(946, 243, "Solo", 9.5, 400, t["text"], "mm")
-        cols = ["Torso", "Torso (Tweak)", "Arm.L (IK)", "Arm.L (FK)", "Arm.L (Tweak)", "Arm.R (IK)", "Arm.R (FK)",
-                "Arm.R (Tweak)", "Leg.L (IK)", "Leg.L (FK)", "Leg.L (Tweak)", "Leg.R (IK)", "Leg.R (FK)", "Leg.R (Tweak)",
-                "Fingers", "Toes"]
-        for i, c in enumerate(cols):
-            yy = 273 + i * 27.2
-            w_switch(p, t, 798, yy - 8.5, True, c, 9.5)
-            p.circle(946, yy, 6.5, line=(150, 150, 156), lw=1.1)
-    p.rrect(9, 887, 95, 24, 6, fill=(30, 30, 33), line=(60, 60, 64))
-    p.rrect(13, 891, 26, 16, 4, fill=(56, 56, 62))
-    p.text(26, 899, "Tab", 9.5, 500, t["text"], "mm")
-    p.text(47, 899, "Edit layout", 9.5, 400, t["dim"])
-    return p
-
-
 def scene_add_widget(scale=2.0, query=None):
     """The Add Widget browser. Logical 907 x 628."""
     t = DARK
@@ -1141,8 +1153,8 @@ def scene_presets(scale=2.0, thumbs=None, compact=False):
         p.rrect(x, y, 214, 160, 8, fill=(40, 44, 54) if hover else (38, 38, 42), line=(70, 120, 245) if hover else (56, 56, 62),
                 lw=1.4 if hover else 1)
         if thumbs and i < len(thumbs):
-            th = thumbs[i]
-            tm = th.resize((round(202 * p.k), round(110 * p.k)), RS.LANCZOS)
+            th, focus = thumbs[i] if isinstance(thumbs[i], tuple) else (thumbs[i], (.5, .5))
+            tm = cover(th, round(202 * p.k), round(110 * p.k), focus, f"presets thumb {name}")
             mask = Image.new("L", tm.size, 0)
             ImageDraw.Draw(mask).rounded_rectangle([0, 0, tm.width - 1, tm.height - 1], radius=5 * p.k, fill=255)
             p.im.paste(tm, (round((x + 6) * p.k), round((y + 6) * p.k)), mask)
@@ -1202,7 +1214,7 @@ def scene_demo_browser(scale=2.0, thumbs=None):
     icon(p, "close", 885, 40, 13, (200, 200, 205), 1.4)
     p.line([(11, 70), (912, 70)], (52, 52, 58), 1, caps=False)
     p.line([(200, 71), (200, 530)], (52, 52, 58), 1, caps=False)
-    cats = [("All", 9), ("Control Panels", 3), ("Modes & Layers", 1), ("Brushes", 1), ("Armature Pickers", 4)]
+    cats = [("All", 10), ("Control Panels", 3), ("Modes & Layers", 1), ("Brushes", 1), ("Armature Pickers", 5)]
     for i, (c, n) in enumerate(cats):
         yy = 98 + i * 34
         if i == 0:
@@ -1210,7 +1222,7 @@ def scene_demo_browser(scale=2.0, thumbs=None):
         p.text(34, yy, c, 12, 500 if i == 0 else 400, t["text"])
         p.text(180, yy, str(n), 11, 400, t["dim"], "rm")
     demos = [("Studio Control Panel", "Control Panels"), ("FlexSpace Studio", "Modes & Layers"),
-             ("Sculpt Wheel", "Brushes"), ("Rigify Female Body Picker", "Armature Pickers"),
+             ("Sculpt Wheel", "Brushes"), ("Rigify Character Picker", "Armature Pickers"),
              ("Animation Controls", "Control Panels"), ("Viewport Shading Panel", "Control Panels")]
     for i, (name, cat) in enumerate(demos):
         col, row = i % 3, i // 3
@@ -1218,12 +1230,8 @@ def scene_demo_browser(scale=2.0, thumbs=None):
         sel = i == 1
         p.rrect(x, y, 218, 208, 10, fill=(32, 32, 35), line=(70, 120, 245) if sel else (60, 60, 66), lw=1.6 if sel else 1)
         if thumbs and thumbs.get(name) is not None:
-            th = thumbs[name]
-            tw_, th_ = 206, 132
-            r = max(tw_ / th.width, th_ / th.height)
-            im = th.resize((round(th.width * r * p.k / 1), round(th.height * r * p.k / 1)), RS.LANCZOS)
-            cxp, cyp = (im.width - round(tw_ * p.k)) // 2, (im.height - round(th_ * p.k)) // 2
-            im = im.crop((cxp, cyp, cxp + round(tw_ * p.k), cyp + round(th_ * p.k)))
+            th, focus = thumbs[name] if isinstance(thumbs[name], tuple) else (thumbs[name], (.5, .5))
+            im = cover(th, round(206 * p.k), round(132 * p.k), focus, f"demo thumb {name}")
             mask = Image.new("L", im.size, 0)
             ImageDraw.Draw(mask).rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=6 * p.k, fill=255)
             p.im.paste(im.convert("RGB"), (round((x + 6) * p.k), round((y + 6) * p.k)), mask)
@@ -1235,18 +1243,6 @@ def scene_demo_browser(scale=2.0, thumbs=None):
     w_button(p, t, 723, 544, 170, 34, "Open in New Window", True, 11.5, 7)
     return p
 
-
-
-def fit_on(img, aspect, bg):
-    """Pad img with bg to the given aspect (w / h), centred, so a cover crop shows all of it."""
-    w, h = img.size
-    if w / h < aspect:
-        W, H_ = int(h * aspect), h
-    else:
-        W, H_ = w, int(w / aspect)
-    out = Image.new("RGB", (W, H_), bg[:3])
-    out.paste(img.convert("RGB"), ((W - w) // 2, (H_ - h) // 2))
-    return out
 
 
 def scene_animation_controls(scale=2.0):
@@ -1524,18 +1520,6 @@ def gaze_eyes(p, t, cx, cy, w, h, gaze=(.45, .15), label="Gaze"):
     p.im.paste(img, (int(round((cx - ix) * k)), int(round((cy - iy) * k))))
 
 
-def bone_button_puck(p, t, x, y, w, h, label, side_col, puck_on=True):
-    """A limb's bone button (side colour, rounded) with the IK/FK puck at its right edge: an accent disc with a
-    white dot, centred on the edge, as in the Armature Picker."""
-    p.rrect(x, y, w, h, 6, fill=side_col)
-    p.text(x + w / 2, y + h / 2, label, 12, 500, (52, 22, 24), "mm")
-    r = min(h * .32, 11)
-    px_, py_ = x + w + r * .35, y + h / 2
-    p.circle(px_, py_, r + 2.2, fill=t["canvas"])
-    p.circle(px_, py_, r, fill=t["accent"])
-    p.circle(px_, py_, r * .42, fill=(255, 255, 255) if puck_on else t["accent"], line=(255, 255, 255), lw=1.2)
-
-
 # ------------------------------------------------------------------------------------------------ widget gallery
 WIDGETS = [
     ("Operator", "Buttons", "Runs a Blender operator"),
@@ -1683,11 +1667,13 @@ def draw_widget(p, t, name, cx, cy):
         p.line([(cx - 46, cy), (cx + 46, cy)], A(t["accent"], 140), 1, caps=False)
         p.circle(cx + 18, cy, 7, fill=t["accent"], line=(255, 255, 255), lw=2)
     elif name == "Bone Pickers":
-        p.rrect(cx - 142, cy - 18, 86, 36, 7, fill=SIDE_C)
-        p.text(cx - 99, cy, "Torso", 13, 500, (40, 34, 20), "mm")
-        p.circle(cx - 14, cy, 25, fill=SIDE_L)
-        icon(p, "bone", cx - 14, cy, 25, (255, 255, 255), 2.2)
-        bone_button_puck(p, t, cx + 30, cy - 22, 70, 44, "IK", SIDE_R)
+        # the real thing: a crop of the Body page of the redesigned picker (Adult Female)
+        w, h = 234, 130
+        im = cover(picker_page("female").crop(PICKER_BONES_BOX), round(w * p.k), round(h * p.k), what="Bone Pickers cell")
+        mask = Image.new("L", im.size, 0)
+        ImageDraw.Draw(mask).rounded_rectangle([0, 0, im.width - 1, im.height - 1], radius=8 * p.k, fill=255)
+        p.im.paste(im, (round((cx - w / 2) * p.k), round((cy - h / 2) * p.k)), mask)
+        p.rrect(cx - w / 2, cy - h / 2, w, h, 8, line=(64, 64, 70), lw=1)
 
 
 def ring_tile(W, H, core="Draw", core_at=.62):
@@ -2105,21 +2091,27 @@ def scene(name):
         f = {"control_panel": lambda: scene_control_panel(DARK, 2.4).out(),
              "control_panel_light": lambda: scene_control_panel(LIGHT, 2.4).out(),
              "ring_menu": lambda: scene_ring_menu(2.0).out(),
-             "picker": lambda: scene_picker(2.0).out(),
+             "picker": lambda: picker_page("male"),
              "add_widget": lambda: scene_add_widget(2.2).out(),
              "edit_mode": lambda: scene_edit_mode(2.4).out(),
              "layers": lambda: scene_layers(2.4).out(),
              "binding": lambda: scene_binding(2.2).out(),
-             "presets": lambda: scene_presets(2.4, [scene("control_panel"), ring_thumb(), scene("picker"), scene("layers")]).out(),
+             "presets": lambda: scene_presets(2.4, presets_thumbs()).out(),
              "demo_browser": lambda: scene_demo_browser(2.2, {"Studio Control Panel": scene("control_panel"),
                                                               "FlexSpace Studio": scene("layers"),
                                                               "Sculpt Wheel": ring_thumb(),
-                                                              "Rigify Female Body Picker": fit_on(scene_picker(1.0, False).out().crop((300, 190, 700, 900)), 206 / 132, DARK["canvas"]),
+                                                              "Rigify Character Picker": (real("shots/picker_hero.png").crop(PICKER_HERO_EDITOR), (.5, .3)),
                                                               "Animation Controls": scene_animation_controls(2.0).out(),
                                                               "Viewport Shading Panel": scene_viewport_shading(2.0).out()}).out(),
              "conditions": lambda: scene_conditions(2.4).out()}[name]
         _SCENES[name] = f()
     return _SCENES[name]
+
+
+def presets_thumbs():
+    """The four preset thumbnails, each cover-cropped to its card (focus = what has to stay in view)."""
+    return [(scene("control_panel"), (0, 0)), (ring_thumb(), (.5, .5)), (picker_page("female"), (.5, .22)),
+            (scene("layers"), (0, 0))]
 
 
 def ring_thumb():
@@ -2161,19 +2153,19 @@ def key_visual(W, Hh, layout="wide"):
     bg = backdrop(W, Hh, [(.16, .2, 1150 * s, 760 * s, GOLD, .26), (.86, .75, 1250 * s, 900 * s, BLUE, .22),
                           (.62, .05, 700 * s, 380 * s, H("#8B5CF6"), .06)])
     img = bg.convert("RGBA")
-    cards = [(window(scene("picker").crop((560, 340, 1440, 1800)), 26, "Armature Picker"), 0.0),
+    cards = [(window(picker_figure("male"), 26, "Armature Picker"), 0.0),
              (window(scene("ring_menu").crop((0, 40, 1480, 1600)), 26, "Sculpt Wheel"), 0.0),
              (window(scene("control_panel"), 26, "Studio Control Panel"), 0.0)]
     if layout == "wide":
         # right side stack: back to front
         place_tilted(img, cards[1][0], W * .60, Hh * .30, 640 * s, -24, 7, -2)
-        place_tilted(img, cards[0][0], W * .885, Hh * .45, 470 * s, -24, 7, -2)
+        place_tilted(img, cards[0][0], W * .875, Hh * .43, 540 * s, -24, 7, -2)
         place_tilted(img, cards[2][0], W * .655, Hh * .70, 1120 * s, -24, 7, -2)
         tx, ty = 150 * s, 330 * s
         maxw = 860 * s
     else:
         place_tilted(img, cards[1][0], W * .62, Hh * .30, 600 * s, -24, 7, -2)
-        place_tilted(img, cards[0][0], W * .89, Hh * .46, 440 * s, -24, 7, -2)
+        place_tilted(img, cards[0][0], W * .88, Hh * .44, 500 * s, -24, 7, -2)
         place_tilted(img, cards[2][0], W * .68, Hh * .71, 1040 * s, -24, 7, -2)
         tx, ty = 130 * s, 300 * s
         maxw = 800 * s
@@ -2214,17 +2206,16 @@ def make_hero():
     print("hero")
     save(key_visual(2400, 1200), "hero-banner",
          "FlexSpace wordmark and tagline beside a tilted stack of three canvases: a studio control panel, "
-         "a sculpt Ring Menu and an armature body picker.", "hero", swap="picker-redesign")
+         "a sculpt Ring Menu and the Armature Picker's Body page over the Adult Male character art.", "hero")
     og = key_visual(2400, 1260)
     save(og.resize((1200, 630), RS.LANCZOS), "og-card",
          "FlexSpace: control panels and rig pickers, built your way. A control panel, a Ring Menu and a body picker.",
-         "social", swap="picker-redesign")
+         "social")
     cover = key_visual(1920, 1080)
     save(cover, "superhive-cover",
-         "FlexSpace for Blender 5.3+: build your own control panels, ring menus and rig pickers.", "store-cover",
-         swap="picker-redesign")
+         "FlexSpace for Blender 5.3+: build your own control panels, ring menus and rig pickers.", "store-cover")
     save(key_visual(2560, 1440).resize((1280, 720), RS.LANCZOS), "superhive-thumb",
-         "FlexSpace: control panels and rig pickers for Blender.", "store-thumbnail", swap="picker-redesign")
+         "FlexSpace: control panels and rig pickers for Blender.", "store-thumbnail")
 
 
 # ---- 2: feature cards
@@ -2242,15 +2233,15 @@ CARDS = [
     ("themes", "THEMES", "Dark, Light or your own", "One theme sets the colours, shapes and type of every widget, on "
      "every canvas.", "themes", None, None),
     ("presets", "GLOBAL PRESETS", "Build it once, use it everywhere", "Save a canvas as a global preset, export a "
-     ".flexspace file or share a team folder.", "presets", "Studio Control Panel", "picker-redesign"),
+     ".flexspace file or share a team folder.", "presets", "Studio Control Panel", None),
     ("add-widget", "ADD WIDGET", "Any widget in seconds", "Shift A, type to search, Enter, and a click places it.",
      "add_widget", None, None),
     ("widgets", "WIDGETS", "Every control, bound to anything", "Buttons, toggles, sliders, fields, colours, brushes, "
      "lists, images and layout widgets.", "gallery", None, None),
     ("demo-files", "DEMO FILES", "Open a demo, take it apart", "Control panels, modes and layers, a sculpt wheel and "
-     "armature pickers, each in its own window.", "demo_browser", None, "picker-redesign"),
+     "armature pickers, each in its own window.", "demo_browser", None, None),
     ("picker", "ARMATURE PICKER", "Pose without hunting for bones", "Bone buttons, IK/FK switches, knobs and bone "
-     "collection toggles. Rigify body picker in one step.", "picker", "Armature Picker", "picker-redesign"),
+     "collection toggles. A Rigify body, hands, feet and face picker in one step.", "picker", "Armature Picker", None),
     ("conditions", "TOOLTIPS & CONDITIONS", "Panels that explain and adapt", "Tooltips say what a widget does. Visible "
      "When and Disabled When follow a property.", "conditions", "Render Panel", None),
 ]
@@ -2266,7 +2257,7 @@ def card_art(key):
         x0, y0, x1, y1 = b.getchannel("A").point(lambda v: 255 if v > 40 else 0).getbbox()
         return b.crop((max(0, x0 - 20), max(0, y0 - 20), min(b.width, x1 + 20), min(b.height, y1 + 40)))
     if key == "picker":
-        return window(scene("picker").crop((0, 300, 2000, 1760)), 22, "Armature Picker  \u00b7  Body")
+        return window(picker_page("female"), 22, "Armature Picker  \u00b7  Body")
     if key == "ring_menu":
         rm = scene("ring_menu")
         return window(rm, 22, "Sculpt Wheel")
@@ -2360,7 +2351,7 @@ WIDGET_ALTS = {
     "Bone Collection Toggle": "A Bone Collection toggle for Torso, on, with its Solo button.",
     "Radial Slider": "A Radial slider knob labelled Head Follow.",
     "Lineal 2D Slider": "A Lineal 2D pad labelled Gaze, its handle right of centre.",
-    "Bone Pickers": "Bone pickers: a Button labelled Torso, a round Button Image with a bone icon, and a red IK button with its IK/FK puck at the edge.",
+    "Bone Pickers": "Bone pickers on the Body page of the Armature Picker: the hips shape picked, the arm and thigh bars, and each IK hand's diamond with its IK/FK puck, the active one named hand_ik.L.",
 }
 
 
@@ -2375,6 +2366,8 @@ def make_widget_tiles():
     for name, cat, desc in WIDGETS:
         if name == "Ring Menu":
             img = ring_tile(720, 400)
+        elif name == "Bone Pickers":
+            img = cover(picker_page("female").crop(PICKER_BONES_BOX), 720, 400, what="w-bone-pickers")
         else:
             z = zoom.get(name, 1.3)
             tile = Pic(720 / (2.0 * z), 400 / (2.0 * z), 2.0 * z, bg=DARK["canvas"])
@@ -2403,10 +2396,10 @@ FRAMES = [
     ("layers", "layers", "FlexSpace Studio", "The Sculpt layer of a canvas with a layer per mode: brushes in titled blocks, stroke, remesh and viewport controls.", None),
     ("binding", "binding", "Binding", "Binding a slider: right-click Exposure in Blender's Light properties with the eyedropper; the widget shows its data path.", None),
     ("add-widget", "add_widget", None, "The Add Widget browser: search, categories, widget cards and From Property.", None),
-    ("presets", "presets", None, "The global presets menu with thumbnails, a .flexspace export and a shared presets folder.", "picker-redesign"),
-    ("demo-browser", "demo_browser", None, "The demo browser: categories, demo cards and Open in New Window.", "picker-redesign"),
+    ("presets", "presets", None, "The global presets menu with thumbnails, a .flexspace export and a shared presets folder.", None),
+    ("demo-browser", "demo_browser", None, "The demo browser: categories, demo cards and Open in New Window.", None),
     ("conditions", "conditions", None, "A tooltip with the property's name, description and data path; Visible When and Disabled When in the sidebar; a broken binding flagged.", None),
-    ("picker", "picker", "Armature Picker", "A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.", "picker-redesign"),
+    ("picker", "picker", "Armature Picker  \u00b7  Body", "The Body page of the Humanoid Body (Rigify) picker over the Adult Male art, in Pose Mode: the body split into regions, left blue, right red and centre yellow, the IK hands and feet with their IK/FK pucks, the Rig Settings knobs and sliders and the bone collection toggles.", None),
     ("widgets-board", "gallery", None, "Twelve FlexSpace widgets on a board: buttons, toggles, enums, sliders, colours, brushes, lists, knobs, pads and bone pickers.", None),
 ]
 
@@ -2415,7 +2408,7 @@ def make_frames():
     print("frames")
     for slug, key, title, alt, swap in FRAMES:
         im = gallery_scene() if key == "gallery" else scene(key)
-        target = 1600
+        target = 1600 if key != "picker" else im.width     # a 1x capture: shown as it is, never blown up
         win = window(im, 22, title, header=title is not None) if title is not None else round_corners(im.convert("RGBA"), 22)
         if title is None:
             win = add_border(win, 22, (255, 255, 255, 30))
@@ -2444,15 +2437,15 @@ FOCUS = [
     ("layers", lambda: scene_layers(2.0, compact=True), None, "FlexSpace Studio",
      "A canvas with a layer per mode: the layer tabs, Sculpt active, and the Sculpt layer's brushes and stroke "
      "settings.", None),
-    ("presets", lambda: scene_presets(2.0, [scene("control_panel"), ring_thumb(), scene("picker"), scene("layers")], compact=True),
+    ("presets", lambda: scene_presets(2.0, presets_thumbs(), compact=True),
      (4, 0, 528, 546), None, "The Global Presets menu: four presets as thumbnails, one from the shared folder, with "
-     "Save as Global Preset and Manage.", "picker-redesign"),
+     "Save as Global Preset and Manage.", None),
     ("edit-mode", lambda: scene_edit_mode(2.0), (4, 12, 592, 606), "Studio Control Panel  \u00b7  Edit Mode",
      "Edit Mode: the Preview frame dragged under Lighting snaps to its left edge; a magenta guide and the 22 px gap "
      "show what it lined up with.", None),
-    ("picker", lambda: scene_picker(2.0), (336, 196, 978, 904), "Armature Picker",
-     "A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle "
-     "and a Solo button for each bone collection.", "picker-redesign"),
+    ("picker", lambda: picker_figure("male"), None, "Armature Picker  \u00b7  Body",
+     "The Body page of the Armature Picker over the Adult Male art: the chest and the right foot picked, the IK hand "
+     "hand_ik.L active and named, left blue, right red, centre yellow, root purple.", None),
 ]
 
 
@@ -2460,7 +2453,8 @@ def make_focus():
     print("focus crops")
     S = 2.0
     for slug, maker, box, title, alt, swap in FOCUS:
-        im = maker().out()
+        im = maker()
+        im = im.out() if isinstance(im, Pic) else im
         if box:
             im = im.crop(tuple(int(round(v * S)) for v in box))
         if title:
@@ -2471,6 +2465,10 @@ def make_focus():
         canvas = Image.new("RGBA", (win.width + 2 * pad, win.height + 2 * pad), (0, 0, 0, 0))
         place_with_shadow(canvas, win, pad, pad - 14, [(22, 14, .55), (6, 3, .4)])
         save(canvas, f"focus-{slug}", alt, "focus-crop", store="png", swap=swap)
+    # the Superhive hero's floating picker (beside the control panel and the Ring Menu): the Adult Female figure
+    save(picker_figure("female"), "float-picker",
+         "The Armature Picker's Body page over the Adult Female art: the hips and the left foot picked, the IK hand "
+         "hand_ik.L active and named, left blue, right red, centre yellow.", "focus-crop", store="png")
 
 
 # ---- 5: icons
@@ -2596,12 +2594,12 @@ def write_registry():
         for k in list(e["files"]):
             pass
     data = {
-        "about": "Generated by docs/_design/make_graphics.py (py -3.10). Every image is drawn new: the product UI is "
-                 "redrawn from the curated screenshots, which are reference only. <name>.webp is for GitHub Pages, "
+        "about": "Generated by docs/_design/make_graphics.py (py -3.10). The product UI is redrawn from the curated "
+                 "screenshots, which are reference only, except the Armature Picker (see below). <name>.webp is for GitHub Pages, "
                  "store/<name>.jpg|png for Superhive (no WebP or MP4 there). Paths are relative to docs/; store_url "
-                 "is the absolute URL to paste in Superhive. Entries with \"swap\": \"picker-redesign\" show the "
-                 "current picker art (drawn only by scene_picker() in make_graphics.py); when the redesigned picker lands, "
-                 "replace that function and rerun the script: the same file names are rewritten.",
+                 "is the absolute URL to paste in Superhive. Armature Picker art is real captures of the redesigned "
+                 "picker (B3D-MySpace/marketing/flexspace shots), cropped and composed, never squashed: the run "
+                 "fails if any embedded image changes its aspect.",
         "base_url": SITE,
         "images": merged,
     }
@@ -2615,6 +2613,7 @@ def main(argv):
         {"hero": make_hero, "cards": make_cards, "gallery": make_gallery, "widgets": make_widget_tiles,
          "frames": make_frames, "focus": make_focus, "icons": make_icons, "brand": make_brand}[g]()
     write_registry()
+    check_aspect()
 
 
 if __name__ == "__main__":
