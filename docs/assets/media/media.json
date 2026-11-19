@@ -46,7 +46,7 @@
   "studio-modes": {
    "kind": "loop",
    "file": "gifs/studio_modes.gif",
-   "title": "One canvas, a layer per mode",
+   "title": "One canvas, a page per mode",
    "caption": "Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.",
    "w": 1280,
    "h": 776,
@@ -264,8 +264,8 @@
   "studio-sculpt": {
    "kind": "shot",
    "file": "shots/flexspace_studio_sculpt.png",
-   "title": "FlexSpace Studio: Sculpt layer",
-   "caption": "Enter Sculpt Mode and the canvas jumps to its Sculpt layer: brushes, stroke, remesh, masks and face sets.",
+   "title": "FlexSpace Studio: Sculpt page",
+   "caption": "Enter Sculpt Mode and the canvas jumps to its Sculpt page: brushes, stroke, remesh, masks and face sets.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-sculpt.webp",
@@ -276,7 +276,7 @@
   "studio-texture-paint": {
    "kind": "shot",
    "file": "shots/flexspace_studio_texture_paint.png",
-   "title": "FlexSpace Studio: Texture Paint layer",
+   "title": "FlexSpace Studio: Texture Paint page",
    "caption": "In Texture Paint the canvas shows a colour picker, swatches, paint brushes, masks and projection settings.",
    "w": 1574,
    "h": 954,
@@ -288,8 +288,8 @@
   "studio-object": {
    "kind": "shot",
    "file": "shots/flexspace_studio_object.png",
-   "title": "FlexSpace Studio: Object layer",
-   "caption": "Select the Geometry Nodes tower and the canvas shows its layer: shape, details, materials and colour controls.",
+   "title": "FlexSpace Studio: Object page",
+   "caption": "Select the Geometry Nodes tower and the canvas shows its page: shape, details, materials and colour controls.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-object.webp"
@@ -297,8 +297,8 @@
   "studio-look-dev": {
    "kind": "shot",
    "file": "shots/flexspace_studio_look_dev.png",
-   "title": "FlexSpace Studio: Look Dev layer",
-   "caption": "Click the shader ball and its Look Dev layer goes live: colour pickers for the material, the world and the key light.",
+   "title": "FlexSpace Studio: Look Dev page",
+   "caption": "Click the shader ball and its Look Dev page goes live: colour pickers for the material, the world and the key light.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-look-dev.webp"
@@ -306,7 +306,7 @@
   "studio-weight-paint": {
    "kind": "shot",
    "file": "shots/flexspace_studio_weight_paint.png",
-   "title": "FlexSpace Studio: Weight Paint layer",
+   "title": "FlexSpace Studio: Weight Paint page",
    "caption": "In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups.",
    "w": 1574,
    "h": 954,
@@ -318,7 +318,7 @@
   "studio-draw": {
    "kind": "shot",
    "file": "shots/flexspace_studio_draw.png",
-   "title": "FlexSpace Studio: Draw layer",
+   "title": "FlexSpace Studio: Draw page",
    "caption": "In Grease Pencil Draw Mode the canvas shows pencils and inks, colour, layers, stroke, animation and canvas tools.",
    "w": 1574,
    "h": 954,
@@ -327,8 +327,8 @@
   "layer-tabs": {
    "kind": "shot",
    "file": "shots/features/layer_tabs_full.png",
-   "title": "Layers and modes",
-   "caption": "One canvas, a layer per mode: the tabs show each layer's mode, the active one is outlined.",
+   "title": "Pages and modes",
+   "caption": "One canvas, a page per mode: the tabs show each page's mode, the active one is outlined.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/layer-tabs.webp",
@@ -339,8 +339,8 @@
   "layers-panel": {
    "kind": "shot",
    "file": "shots/features/layers_panel_full.png",
-   "title": "Layers panel",
-   "caption": "The Layers panel: a layer per mode, Show When and Switch Layers Automatically.",
+   "title": "Pages panel",
+   "caption": "The Pages panel: a page per mode, Show When and Switch Pages Automatically.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/layers-panel.webp"
@@ -616,7 +616,7 @@
    "kind": "shot",
    "file": "shots/features/library_full.png",
    "title": "Library",
-   "caption": "The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.",
+   "caption": "The Canvas tab of the sidebar: the pages and the Library of global presets and local canvases.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/library.webp",

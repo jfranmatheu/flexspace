@@ -144,7 +144,7 @@ REAL = {
 # Extra real media at the end of a section: (page slug) -> [(heading text, media name)], manifest captions.
 REAL_EXTRA = {
     "getting-started": [("Step 2: Add a widget", "add-panel")],
-    "canvas": [("Layers and modes", "studio-modes"), ("The canvas top bar", "top-bar-status"),
+    "canvas": [("Pages and modes", "studio-modes"), ("The canvas top bar", "top-bar-status"),
                ("Global presets", "presets-menu"), ("The Library", "library")],
     "widgets": [("The Add menu", "add-browser-search"), ("Add from Property", "from-property"),
                 ("Sliders", "lineal-slider"), ("Frame", "frames"), ("Flex Box", "flex-box"), ("Group", "group")],
@@ -676,7 +676,7 @@ def build(src: Path) -> dict:
         <p class="fs-chip">Documentation &middot; v{esc(facts['version'])} &middot; Blender {esc(facts['blender'].rsplit('.0', 1)[0])}+</p>
         <h1>Learn <span class="fs-grad">{esc(facts['name'])}</span></h1>
         <p class="fs-lead">Build your own control panels and rig pickers in Blender. Start with three steps, then
-          go as deep as you like: widgets, binding, layers, the Armature Picker and every key.</p>
+          go as deep as you like: widgets, binding, pages, the Armature Picker and every key.</p>
         <div class="fs-home__actions">
           <a class="fs-btn fs-btn--primary" href="{first}.html">Get started{ICON['arrow']}</a>
           <button class="fs-btn fs-btn--secondary" type="button" data-search-open>{ICON['search']}Search the docs<kbd>/</kbd></button>
@@ -690,7 +690,7 @@ def build(src: Path) -> dict:
       Armature Picker editor. <strong>Help &gt; Demo Files</strong> opens finished canvases to take apart.</p></aside>"""
     out = page_html(facts, slug="index", title="Docs",
                     description=f"{facts['name']} documentation: {facts['tagline'].lower()}. Guides for the canvas, "
-                                "widgets, binding, layers, the Armature Picker, Rigify, shortcuts and troubleshooting.",
+                                "widgets, binding, pages, the Armature Picker, Rigify, shortcuts and troubleshooting.",
                     main=home_main, side=side_nav("", titles), page_class="fs-docs--home")
     (OUT / "index.html").write_text(out, encoding="utf-8")
     search += [{"p": p["title"], "h": "", "u": f'{p["slug"]}.html', "t": p["summary"]} for p in pages if p["summary"]]

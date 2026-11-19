@@ -381,7 +381,7 @@ in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the do
 1. Hero: *Build the Blender panel you always wanted.* (see store copy §5 for the shared hero text).
 2. Trust row.
 3. "Two modes. One canvas." Edit Mode / Live Mode split card with the `Tab` keycap in the middle.
-4. Feature rows (4): Control panels · Bind anything · Layers per mode · Ring Menu.
+4. Feature rows (4): Control panels · Bind anything · Pages per mode · Ring Menu.
 5. Picker teaser: full-bleed dark band, `picker-hero`, "Pose without hunting for bones", link to picker.html.
 6. Bento: the small things (8 tiles).
 7. Widget strip: 8 widget cards scrolling horizontally (scroll-snap), "See all widgets" → widgets.html.
@@ -391,7 +391,7 @@ in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the do
 
 ### features.html
 
-Sticky sub-nav (anchors): Canvas · Widgets · Binding · Layers · Editing · Color & Brush · Presets · Picker · Details.
+Sticky sub-nav (anchors): Canvas · Widgets · Binding · Pages · Editing · Color & Brush · Presets · Picker · Details.
 Each anchor is a feature row group, deeper than the landing (2–4 rows each), every claim lifted from the matching
 help page. Ends with the Flex Space vs Armature Picker table and the CTA band.
 
@@ -445,7 +445,7 @@ Fragment: one `<div class="fsx">`, one scoped `<style>`, no scripts. Sections in
 - Lead: FlexSpace turns any area into a canvas for your own controls. Lay out buttons, sliders, toggles, colour
   pickers and a sculpt-ready Ring Menu, bind them to any property, operator or script, and use them while you work.
   And when it's time to animate, the Armature Picker puts every bone of your rig one click away.
-- Chips: `Control panels` · `Ring Menu` · `Layers per mode` · `Armature Picker` · `Rigify body picker`
+- Chips: `Control panels` · `Ring Menu` · `Pages per mode` · `Armature Picker` · `Rigify body picker`
 - Links: "Read the docs →" (Pages docs) · "Report a bug →" (issues)
 - Art (see the hero art in §3.2): `frame-control-panel` (PNG) in the selection frame, top left, and `hero-picker`
   (Body + Face with the gaze pad, Adult Female) as its equal, right; accents `hero-color`, `hero-brushes` and the Ring
@@ -475,10 +475,10 @@ b. `BINDING` — **Bind anything with a right-click.**
    Ticks: Data paths, eyedropper or From Property · Follow the active object or pin one · Visible When and Disabled
    When conditions. Art: `from-property`.
 
-c. `LAYERS` — **One canvas for every mode.**
-   Give each layer its moment: always, in one Blender mode, for one object, or for one object in one mode. Switch to
-   Sculpt Mode and your sculpt layer is there; select the tower and its Geometry Nodes controls show up.
-   Ticks: Show When: Always, Mode, Object, Object in Mode · Switch Layers Automatically · A clear notice, and one click
+c. `PAGES` — **One canvas for every mode.**
+   Give each page its moment: always, in one Blender mode, for one object, or for one object in one mode. Switch to
+   Sculpt Mode and your sculpt page is there; select the tower and its Geometry Nodes controls show up.
+   Ticks: Show When: Always, Mode, Object, Object in Mode · Switch Pages Automatically · A clear notice, and one click
    to enter the right mode. Art: `layers-modes`.
 
 d. `RING MENU` — **A sculpt wheel that stays put.**
@@ -592,8 +592,8 @@ jfranmatheu.github.io/flexspace/docs."
    Layout (and Bone Picker in a picker). **From Property**: right-click any property and get the right widget, bound.
 5. **Bind properties** — Data paths, the eyedropper, following the active object or pinning one, Visible When /
    Disabled When, animation colours and `I` / `Alt I` / `Backspace`.
-6. **Layers and modes** — Show When (Always, Mode, Object, Object in Mode), Switch Layers Automatically, the notice
-   and its Enter / Select buttons, `M` to move widgets between layers.
+6. **Pages and modes** — Show When (Always, Mode, Object, Object in Mode), Switch Pages Automatically, the notice
+   and its Enter / Select buttons, `M` to move widgets between pages.
 7. **Editing tools** — Select, `G` `R` `S`, handles, smart snapping, Selection Bar, groups (`Ctrl G`), frames
    (`Ctrl J`), Flex Boxes, copy and paste, minimap, themes.
 8. **Color & brush widgets** — Color Picker (Wheel or Ring + Square), Color Palette, Brush Picker, Ring Menu (rings,

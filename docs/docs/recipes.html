@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Recipes · FlexSpace Docs</title>
-<meta name="description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, layer by layer, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
+<meta name="description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, page by page, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
 <link rel="canonical" href="https://jfranmatheu.github.io/flexspace/docs/recipes.html">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0c">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlexSpace">
 <meta property="og:title" content="Recipes · FlexSpace Docs">
-<meta property="og:description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, layer by layer, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
+<meta property="og:description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, page by page, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
 <meta property="og:url" content="https://jfranmatheu.github.io/flexspace/docs/recipes.html">
 <meta property="og:image" content="https://jfranmatheu.github.io/flexspace/assets/img/store/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -57,11 +57,11 @@
       <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Going further</p>
       <h1>Recipes</h1>
     </header>
-    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-layer">Look Dev layer</a></li><li class="lv2"><a href="#sculpt-layer">Sculpt layer</a></li><li class="lv2"><a href="#texture-paint-layer">Texture Paint layer</a></li><li class="lv2"><a href="#weight-paint-layer">Weight Paint layer</a></li><li class="lv2"><a href="#draw-layer-grease-pencil">Draw layer: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></details>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-page-geometry-nodes-controls">Object page: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-page">Look Dev page</a></li><li class="lv2"><a href="#sculpt-page">Sculpt page</a></li><li class="lv2"><a href="#texture-paint-page">Texture Paint page</a></li><li class="lv2"><a href="#weight-paint-page">Weight Paint page</a></li><li class="lv2"><a href="#draw-page-grease-pencil">Draw page: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></details>
     <article class="fs-prose">
 <p>Every recipe uses the same few moves:</p>
 <ul>
-<li>Make a canvas and set its layer's mode (the icon next to the layer in the sidebar's <strong>Layers</strong> panel, see <a class="fs-xref" href="canvas.html#layers-and-modes"><strong>The Canvas &gt; Layers and modes</strong></a>). One canvas can hold a layer per mode: it shows the right one when you change mode.
+<li>Make a canvas and set its page's mode (the icon next to the page in the sidebar's <strong>Pages</strong> panel, see <a class="fs-xref" href="canvas.html#pages-and-modes"><strong>The Canvas &gt; Pages and modes</strong></a>). One canvas can hold a page per mode: it shows the right one when you change mode.
 </li>
 <li>In Edit Mode, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> adds a widget. <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>From Property</strong> adds one already bound to a property you right-click.
 </li>
@@ -72,32 +72,32 @@
 </ul>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Want to see the finished version first? Open the matching demo (<strong>Help &gt; Demo Files</strong>) and take it apart.</p></aside>
 <h2 id="flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode<a class="fs-anchor" href="#flexspace-studio-one-canvas-for-every-mode" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-object.webp" data-zoom><img src="../assets/media/studio-object.webp" alt="The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object layer, with the note and its Try it buttons on top." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object layer, with the note and its Try it buttons on top.</figcaption></figure>
-<p>The <strong>FlexSpace Studio</strong> demo is one canvas with a Home layer and a layer for each mode, and one scene with an object for each layer: a Geometry Nodes tower, a shader ball, a head to sculpt, a box to paint, a rigged arm and a Grease Pencil drawing. Change the mode and the canvas changes with it. The recipes below build its layers one by one.</p>
-<p><strong>You will need:</strong> a Flex Space canvas with one layer per mode, and an object that can enter each mode.</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-object.webp" data-zoom><img src="../assets/media/studio-object.webp" alt="The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object page, with the note and its Try it buttons on top." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object page, with the note and its Try it buttons on top.</figcaption></figure>
+<p>The <strong>FlexSpace Studio</strong> demo is one canvas with a Home page and a page for each mode, and one scene with an object for each page: a Geometry Nodes tower, a shader ball, a head to sculpt, a box to paint, a rigged arm and a Grease Pencil drawing. Change the mode and the canvas changes with it. The recipes below build its pages one by one.</p>
+<p><strong>You will need:</strong> a Flex Space canvas with one page per mode, and an object that can enter each mode.</p>
 <ol>
-<li>Make the canvas. Add a layer per mode with the <strong>+</strong> next to the layer selector, and set each layer's mode in the <strong>Layers</strong> panel of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>): for example Object Mode, Sculpt Mode, Texture Paint, Weight Paint and Draw Mode.
+<li>Make the canvas. Add a page per mode with the <strong>+</strong> next to the page selector, and set each page's mode in the <strong>Pages</strong> panel of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>): for example Object Mode, Sculpt Mode, Texture Paint, Weight Paint and Draw Mode.
 </li>
-<li>Keep <strong>Switch Layers Automatically</strong> on (the Layers panel). Now <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Tab</kbd></span>, or the mode menu in the 3D Viewport header, also changes the canvas to that mode's layer. Two layers can share a mode: the first one shows, and you pick the other from its tab. A layer made for an object (<strong>Show When</strong> &gt; <strong>Object</strong>) shows when you select that object.
+<li>Keep <strong>Switch Pages Automatically</strong> on (the Pages panel). Now <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Tab</kbd></span>, or the mode menu in the 3D Viewport header, also changes the canvas to that mode's page. Two pages can share a mode: the first one shows, and you pick the other from its tab. A page made for an object (<strong>Show When</strong> &gt; <strong>Object</strong>) shows when you select that object.
 </li>
-<li>Build each layer in Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>). Edit Mode works in any Blender mode, so you don't have to enter the mode first.
+<li>Build each page in Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>). Edit Mode works in any Blender mode, so you don't have to enter the mode first.
 </li>
-<li>Add a note on each layer: a <strong>Frame</strong> whose <strong>Title</strong> says which mode it is for, coloured like the mode, with a <strong>Label</strong> or two in it.
+<li>Add a note on each page: a <strong>Frame</strong> whose <strong>Title</strong> says which mode it is for, coloured like the mode, with a <strong>Label</strong> or two in it.
 </li>
-<li>Add <strong>Try it</strong> buttons to the note: Operator buttons that run <strong>Enter Mode</strong> (<code>flexspace.<wbr>enter_mode</code>). Set its <strong>Mode</strong>, its <strong>Object</strong> and <strong>View Object</strong>. A click makes that object active and selected, frames it in the 3D Viewport and enters the mode, and the canvas shows the mode's layer.
+<li>Add <strong>Try it</strong> buttons to the note: Operator buttons that run <strong>Enter Mode</strong> (<code>flexspace.<wbr>enter_mode</code>). Set its <strong>Mode</strong>, its <strong>Object</strong> and <strong>View Object</strong>. A click makes that object active and selected, frames it in the 3D Viewport and enters the mode, and the canvas shows the mode's page.
 </li>
 </ol>
 <ol start="6">
-<li>Add a default layer as the first tab: a <strong>Home</strong> layer with <strong>Show When</strong> &gt; <strong>Always</strong>. Switch Layers Automatically shows the most specific layer that fits, and Always is the least specific, so Home only shows when no other layer does. Without it, leaving Sculpt Mode with the head still active would leave the canvas on the Sculpt layer, dimmed because it no longer fits. Give Home a welcome note and a button for each of the other layers.
+<li>Add a default page as the first tab: a <strong>Home</strong> page with <strong>Show When</strong> &gt; <strong>Always</strong>. Switch Pages Automatically shows the most specific page that fits, and Always is the least specific, so Home only shows when no other page does. Without it, leaving Sculpt Mode with the head still active would leave the canvas on the Sculpt page, dimmed because it no longer fits. Give Home a welcome note and a button for each of the other pages.
 </li>
 </ol>
 
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Enter Mode takes no text, only choices, so its buttons run at once, even in a file that can't run scripts.</p></aside>
-<p><strong>Demo file:</strong> <strong>FlexSpace Studio</strong>. It opens in Object Mode on the Object layer. Home has a button for each layer, and every other layer has the note and a Try it button for each of the other modes.</p>
-<h2 id="object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls<a class="fs-anchor" href="#object-layer-geometry-nodes-controls" aria-label="Link to this section">#</a></h2>
-<p><strong>You will need:</strong> an object with a Geometry Nodes modifier, an <strong>Object Mode</strong> layer, Enums, Number Fields, Sliders, Toggles, a Color Picker, a Color Palette, a Script button, a List and Frames.</p>
+<p><strong>Demo file:</strong> <strong>FlexSpace Studio</strong>. It opens in Object Mode on the Object page. Home has a button for each page, and every other page has the note and a Try it button for each of the other modes.</p>
+<h2 id="object-page-geometry-nodes-controls">Object page: Geometry Nodes controls<a class="fs-anchor" href="#object-page-geometry-nodes-controls" aria-label="Link to this section">#</a></h2>
+<p><strong>You will need:</strong> an object with a Geometry Nodes modifier, an <strong>Object Mode</strong> page, Enums, Number Fields, Sliders, Toggles, a Color Picker, a Color Palette, a Script button, a List and Frames.</p>
 <ol>
-<li>Select the object, and set the layer's <strong>Show When</strong> to <strong>Object in Mode</strong>: <strong>Object Mode</strong>, with the tower as its <strong>Object</strong> (<strong>Use Active</strong>). The layer now shows while the tower is active in Object Mode.
+<li>Select the object, and set the page's <strong>Show When</strong> to <strong>Object in Mode</strong>: <strong>Object Mode</strong>, with the tower as its <strong>Object</strong> (<strong>Use Active</strong>). The page now shows while the tower is active in Object Mode.
 </li>
 <li>Bind widgets to the modifier's inputs by their path, for example <code>active_object.<wbr>modifiers[&quot;GeometryNodes&quot;].<wbr>properties.<wbr>inputs.<wbr>Socket_2.<wbr>value</code>. To get an input's path, right-click it in the modifier panel and choose <strong>Copy Data Path</strong>, then put <code>active_object.</code> in front. <strong>Pin</strong> each widget to the object, so the canvas keeps driving it when another object is active.
 </li>
@@ -114,11 +114,11 @@
 </ol>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A Script button runs code saved in the file. In a file you don't trust, Flex Space asks once before it runs it.</p></aside>
 <p>In the demo: the tower on its plaza with trees, made by one Geometry Nodes modifier.</p>
-<h2 id="look-dev-layer">Look Dev layer<a class="fs-anchor" href="#look-dev-layer" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-look-dev.webp" data-zoom><img src="../assets/media/studio-look-dev.webp" alt="The Look Dev layer: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport&#x27;s Scene World and Scene Lights." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Look Dev layer: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport's Scene World and Scene Lights.</figcaption></figure>
-<p><strong>You will need:</strong> a layer made for the shader ball, Color Pickers, Sliders, Number Fields, Toggles and Frames.</p>
+<h2 id="look-dev-page">Look Dev page<a class="fs-anchor" href="#look-dev-page" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-look-dev.webp" data-zoom><img src="../assets/media/studio-look-dev.webp" alt="The Look Dev page: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport&#x27;s Scene World and Scene Lights." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Look Dev page: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport's Scene World and Scene Lights.</figcaption></figure>
+<p><strong>You will need:</strong> a page made for the shader ball, Color Pickers, Sliders, Number Fields, Toggles and Frames.</p>
 <ol>
-<li>Add a layer, select the shader ball, and set the layer's <strong>Show When</strong> to <strong>Object</strong>, with <strong>Use Active</strong>. Now selecting the ball shows this layer.
+<li>Add a page, select the shader ball, and set the page's <strong>Show When</strong> to <strong>Object</strong>, with <strong>Use Active</strong>. Now selecting the ball shows this page.
 </li>
 <li>Add a <strong>Color Picker</strong> for the material's <strong>Base Color</strong>, and sliders for <strong>Roughness</strong> and <strong>Metallic</strong>. Pin them to the object.
 </li>
@@ -130,11 +130,11 @@
 </li>
 </ol>
 <p>In the demo: the shader ball, the studio's key and rim lights, and the world.</p>
-<h2 id="sculpt-layer">Sculpt layer<a class="fs-anchor" href="#sculpt-layer" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-sculpt.webp" data-zoom><img src="../assets/media/studio-sculpt.webp" alt="Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt layer with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt layer with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles.</figcaption></figure>
-<p><strong>You will need:</strong> a <strong>Sculpt Mode</strong> layer, Brush Pickers, Sliders, an Enum, Toggles, Operator buttons and Frames.</p>
+<h2 id="sculpt-page">Sculpt page<a class="fs-anchor" href="#sculpt-page" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-sculpt.webp" data-zoom><img src="../assets/media/studio-sculpt.webp" alt="Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt page with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt page with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Sculpt Mode</strong> page, Brush Pickers, Sliders, an Enum, Toggles, Operator buttons and Frames.</p>
 <ol>
-<li>Add a layer and set its mode to <strong>Sculpt Mode</strong>.
+<li>Add a page and set its mode to <strong>Sculpt Mode</strong>.
 </li>
 <li>Add the brushes: <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Buttons &gt; Brush Picker</strong>. In the sidebar, <strong>Choose Brush</strong> picks one, for example Draw, Clay Strips, Inflate, Smooth, Flatten or Grab. Add one per brush.
 </li>
@@ -149,11 +149,11 @@
 </ol>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Turn on the unified radius and strength in Blender's tool settings. Then one slider works for every brush.</p></aside>
 <p>In the demo: a base head ready to sculpt.</p>
-<h2 id="texture-paint-layer">Texture Paint layer<a class="fs-anchor" href="#texture-paint-layer" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-texture-paint.webp" data-zoom><img src="../assets/media/studio-texture-paint.webp" alt="Texture Paint: the paint box in the 3D Viewport, and the layer with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Texture Paint: the paint box in the 3D Viewport, and the layer with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images.</figcaption></figure>
-<p><strong>You will need:</strong> a <strong>Texture Paint</strong> layer, a Color Picker, a Color Palette, Brush Pickers, Sliders, Toggles, Operator buttons and Frames.</p>
+<h2 id="texture-paint-page">Texture Paint page<a class="fs-anchor" href="#texture-paint-page" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-texture-paint.webp" data-zoom><img src="../assets/media/studio-texture-paint.webp" alt="Texture Paint: the paint box in the 3D Viewport, and the page with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Texture Paint: the paint box in the 3D Viewport, and the page with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Texture Paint</strong> page, a Color Picker, a Color Palette, Brush Pickers, Sliders, Toggles, Operator buttons and Frames.</p>
 <ol>
-<li>Add a layer and set its mode to <strong>Texture Paint</strong>. Its object needs UVs and an image in its material.
+<li>Add a page and set its mode to <strong>Texture Paint</strong>. Its object needs UVs and an image in its material.
 </li>
 <li>Add a <strong>Color Picker</strong> bound to the paint colour. Set its <strong>Shape</strong> to <strong>Ring + Square</strong> and turn on RGB and HSV under <strong>Show</strong>. Add a <strong>Swap</strong> button next to it for the secondary colour.
 </li>
@@ -168,11 +168,11 @@
 </ol>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Turn on the unified colour in Blender's tool settings. Then every brush paints with the colour of the picker.</p></aside>
 <p>In the demo: a rounded box with a few dabs of paint on its image.</p>
-<h2 id="weight-paint-layer">Weight Paint layer<a class="fs-anchor" href="#weight-paint-layer" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-weight-paint.webp" data-zoom><img src="../assets/media/studio-weight-paint.webp" alt="Weight Paint: the rigged arm with its bones, and the layer with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Weight Paint: the rigged arm with its bones, and the layer with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays.</figcaption></figure>
-<p><strong>You will need:</strong> a <strong>Weight Paint</strong> layer, Brush Pickers, Sliders, Enums, Toggles, Operator buttons and Frames.</p>
+<h2 id="weight-paint-page">Weight Paint page<a class="fs-anchor" href="#weight-paint-page" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-weight-paint.webp" data-zoom><img src="../assets/media/studio-weight-paint.webp" alt="Weight Paint: the rigged arm with its bones, and the page with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Weight Paint: the rigged arm with its bones, and the page with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Weight Paint</strong> page, Brush Pickers, Sliders, Enums, Toggles, Operator buttons and Frames.</p>
 <ol>
-<li>Add a layer and set its mode to <strong>Weight Paint</strong>. Its object is a rigged mesh.
+<li>Add a page and set its mode to <strong>Weight Paint</strong>. Its object is a rigged mesh.
 </li>
 <li>Add Brush Pickers for the weight brushes in two framed blocks: Paint (Set Weight, Add Weight) and Blend (Blur, Average, Smear).
 </li>
@@ -187,11 +187,11 @@
 </ol>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A Set Value toggle only takes enums and integers. For the quick weight buttons, use Operator buttons that set the value instead.</p></aside>
 <p>In the demo: a rigged arm. Enter Mode selects its armature too, so <span class="fs-keys"><kbd>Ctrl</kbd></span> click a bone to paint its group.</p>
-<h2 id="draw-layer-grease-pencil">Draw layer: Grease Pencil<a class="fs-anchor" href="#draw-layer-grease-pencil" aria-label="Link to this section">#</a></h2>
-<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-draw.webp" data-zoom><img src="../assets/media/studio-draw.webp" alt="Draw Mode: the drawing on its paper board, and the layer with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Draw Mode: the drawing on its paper board, and the layer with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles.</figcaption></figure>
-<p><strong>You will need:</strong> a <strong>Draw Mode</strong> layer, Brush Pickers, a Color Picker, a Color Palette, a List, Sliders, Toggles, Operator buttons and Frames.</p>
+<h2 id="draw-page-grease-pencil">Draw page: Grease Pencil<a class="fs-anchor" href="#draw-page-grease-pencil" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-draw.webp" data-zoom><img src="../assets/media/studio-draw.webp" alt="Draw Mode: the drawing on its paper board, and the page with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Draw Mode: the drawing on its paper board, and the page with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Draw Mode</strong> page, Brush Pickers, a Color Picker, a Color Palette, a List, Sliders, Toggles, Operator buttons and Frames.</p>
 <ol>
-<li>Add a layer and set its mode to <strong>Draw Mode</strong>. Its object is a Grease Pencil object.
+<li>Add a page and set its mode to <strong>Draw Mode</strong>. Its object is a Grease Pencil object.
 </li>
 <li>Add a <strong>Color Picker</strong> and a <strong>Color Palette</strong> for the brush colour. Set the Color Mode to Vertex Color, so that colour is the one drawn.
 </li>
@@ -227,7 +227,7 @@
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
       <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
-  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-layer">Look Dev layer</a></li><li class="lv2"><a href="#sculpt-layer">Sculpt layer</a></li><li class="lv2"><a href="#texture-paint-layer">Texture Paint layer</a></li><li class="lv2"><a href="#weight-paint-layer">Weight Paint layer</a></li><li class="lv2"><a href="#draw-layer-grease-pencil">Draw layer: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-page-geometry-nodes-controls">Object page: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-page">Look Dev page</a></li><li class="lv2"><a href="#sculpt-page">Sculpt page</a></li><li class="lv2"><a href="#texture-paint-page">Texture Paint page</a></li><li class="lv2"><a href="#weight-paint-page">Weight Paint page</a></li><li class="lv2"><a href="#draw-page-grease-pencil">Draw page: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
 <footer class="fs-foot">
   <div class="fs-foot__in">

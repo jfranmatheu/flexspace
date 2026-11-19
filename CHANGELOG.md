@@ -4,6 +4,12 @@ What changed in each version of FlexSpace, newest first: new features, changes a
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## Unreleased
+
+### Changed
+
+- Canvas layers are now called pages; nothing changes in your files. The **Layers** panel is the **Pages** panel, **Switch Layers Automatically** is **Switch Pages Automatically**, `M` moves widgets to another page, and a new canvas starts with a page named **Page**.
+
 ## 1.4.0
 
 Requires Blender 5.3 or newer.

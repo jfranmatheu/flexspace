@@ -132,7 +132,7 @@
 <li><strong>No items</strong>: an Enum bound to an integer has no item list yet (and no small range to show).
 </li>
 </ul>
-<p>The canvas top bar counts them on every layer that works in the current mode and with the active object (<strong>⚠ 2 broken</strong>, <strong>1 unbound</strong>). Click the count to jump to the next broken widget, see <strong>The canvas top bar</strong>.</p>
+<p>The canvas top bar counts them on every page that works in the current mode and with the active object (<strong>⚠ 2 broken</strong>, <strong>1 unbound</strong>). Click the count to jump to the next broken widget, see <strong>The canvas top bar</strong>.</p>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/broken-bindings.webp" data-zoom><img src="../assets/media/broken-bindings.webp" alt="A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.</figcaption></figure>
 <h2 id="show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property<a class="fs-anchor" href="#show-hide-or-disable-a-widget-with-a-property" aria-label="Link to this section">#</a></h2>
 <p>Any widget can follow a boolean property: show it only while <strong>Simplify</strong> is on, grey a slider out while the rig is in FK. Select the widget in Edit Mode and open the <strong>Conditions</strong> panel of the sidebar (<strong>Widget</strong> tab):</p>
@@ -150,7 +150,7 @@
 <h3 id="conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups<a class="fs-anchor" href="#conditions-on-frames-flex-boxes-and-groups" aria-label="Link to this section">#</a></h3>
 <p>A condition on a <strong>Frame</strong>, a <strong>Flex Box</strong> or a <strong>group</strong> applies to every widget inside it too: hide a frame and its members hide with it, disable a Flex Box and all its children are disabled. A widget inside keeps its own conditions as well; it is hidden if it or anything around it is hidden, and disabled the same way. The panel of a widget inside lists what it also follows.</p>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A hidden child of a Flex Box keeps its place in the box, so the row shows an empty slot. To close the gap, put the widgets that come and go at the end of the box, or in a box of their own.</p></aside>
-<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A condition never changes the widget itself. Layers still decide which widgets are shown at all; a condition only hides or disables a widget that its layer shows.</p></aside>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A condition never changes the widget itself. Pages still decide which widgets are shown at all; a condition only hides or disables a widget that its page shows.</p></aside>
 <h2 id="units">Units<a class="fs-anchor" href="#units" aria-label="Link to this section">#</a></h2>
 <p>Values are shown the way Blender shows them:</p>
 <ul>

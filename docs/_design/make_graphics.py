@@ -985,7 +985,7 @@ def scene_layers(scale=2.0, compact=False):
         p.text(x + 27, 28, lab, 11.5, 500 if on else 400, t["text"] if on else t["dim"])
         x += w + 8
     p.text(26, 82, "Sculpt", 26, 400, t["text"])
-    p.text(28, 108, "This layer shows in Sculpt Mode", 11, 400, t["dim"])
+    p.text(28, 108, "This page shows in Sculpt Mode", 11, 400, t["dim"])
     # brushes in titled blocks
     w_frame(p, t, 22, 130, 300, 152, "Basic")
     names = [("Draw", 0), ("Clay Strips", 3), ("Inflate", 1), ("Grab", 7)]
@@ -1214,14 +1214,14 @@ def scene_demo_browser(scale=2.0, thumbs=None):
     icon(p, "close", 885, 40, 13, (200, 200, 205), 1.4)
     p.line([(11, 70), (912, 70)], (52, 52, 58), 1, caps=False)
     p.line([(200, 71), (200, 530)], (52, 52, 58), 1, caps=False)
-    cats = [("All", 10), ("Control Panels", 3), ("Modes & Layers", 1), ("Brushes", 1), ("Armature Pickers", 5)]
+    cats = [("All", 10), ("Control Panels", 3), ("Modes & Pages", 1), ("Brushes", 1), ("Armature Pickers", 5)]
     for i, (c, n) in enumerate(cats):
         yy = 98 + i * 34
         if i == 0:
             p.rrect(20, yy - 15, 170, 30, 6, fill=(38, 48, 70))
         p.text(34, yy, c, 12, 500 if i == 0 else 400, t["text"])
         p.text(180, yy, str(n), 11, 400, t["dim"], "rm")
-    demos = [("Studio Control Panel", "Control Panels"), ("FlexSpace Studio", "Modes & Layers"),
+    demos = [("Studio Control Panel", "Control Panels"), ("FlexSpace Studio", "Modes & Pages"),
              ("Sculpt Wheel", "Brushes"), ("Rigify Character Picker", "Armature Pickers"),
              ("Animation Controls", "Control Panels"), ("Viewport Shading Panel", "Control Panels")]
     for i, (name, cat) in enumerate(demos):
@@ -1238,7 +1238,7 @@ def scene_demo_browser(scale=2.0, thumbs=None):
         p.text(x + 12, y + 160, name, 12, 500, t["text"])
         p.text(x + 12, y + 180, cat, 10, 400, t["dim"])
     p.line([(11, 530), (912, 530)], (52, 52, 58), 1, caps=False)
-    p.text(30, 552, "FlexSpace Studio  \u00b7  Modes & Layers", 12.5, 500, t["text"])
+    p.text(30, 552, "FlexSpace Studio  \u00b7  Modes & Pages", 12.5, 500, t["text"])
     p.text(30, 571, "One canvas that follows Blender's mode and the active object", 10, 400, t["dim"])
     w_button(p, t, 723, 544, 170, 34, "Open in New Window", True, 11.5, 7)
     return p
@@ -2226,8 +2226,8 @@ CARDS = [
      "centres, equal gaps and the grid.", "edit_mode", "Studio Control Panel  \u00b7  Edit Mode", None),
     ("ring-menu", "RING MENU", "A sculpt wheel that stays put", "Brushes in the outer ring, toggles and operators in the "
      "inner ring, the name in the core.", "ring_menu", "Sculpt Wheel", None),
-    ("layers", "LAYERS & MODES", "One canvas for every mode", "A layer per mode or per object. Enter Sculpt Mode and your "
-     "sculpt layer is there.", "layers", "FlexSpace Studio", None),
+    ("layers", "PAGES & MODES", "One canvas for every mode", "A page per mode or per object. Enter Sculpt Mode and your "
+     "sculpt page is there.", "layers", "FlexSpace Studio", None),
     ("binding", "BINDING", "Bind anything with a right-click", "From Property or the eyedropper: right-click a property "
      "anywhere in Blender and the widget is bound.", "binding", "Studio Control Panel", None),
     ("themes", "THEMES", "Dark, Light or your own", "One theme sets the colours, shapes and type of every widget, on "
@@ -2238,7 +2238,7 @@ CARDS = [
      "add_widget", None, None),
     ("widgets", "WIDGETS", "Every control, bound to anything", "Buttons, toggles, sliders, fields, colours, brushes, "
      "lists, images and layout widgets.", "gallery", None, None),
-    ("demo-files", "DEMO FILES", "Open a demo, take it apart", "Control panels, modes and layers, a sculpt wheel and "
+    ("demo-files", "DEMO FILES", "Open a demo, take it apart", "Control panels, modes and pages, a sculpt wheel and "
      "armature pickers, each in its own window.", "demo_browser", None, None),
     ("picker", "ARMATURE PICKER", "Pose without hunting for bones", "Bone buttons, IK/FK switches, knobs and bone "
      "collection toggles. A Rigify body, hands, feet and face picker in one step.", "picker", "Armature Picker", None),
@@ -2393,7 +2393,7 @@ FRAMES = [
     ("control-panel-light", "control_panel_light", "Studio Control Panel", "The same control panel with the Light appearance.", None),
     ("edit-mode", "edit_mode", "Studio Control Panel  \u00b7  Edit Mode", "Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide.", None),
     ("ring-menu", "ring_menu", "Sculpt Wheel", "A Ring Menu: sculpt brushes in the outer ring, toggles in the inner ring, Clay Strips named in the core, page 1 of 5.", None),
-    ("layers", "layers", "FlexSpace Studio", "The Sculpt layer of a canvas with a layer per mode: brushes in titled blocks, stroke, remesh and viewport controls.", None),
+    ("layers", "layers", "FlexSpace Studio", "The Sculpt page of a canvas with a page per mode: brushes in titled blocks, stroke, remesh and viewport controls.", None),
     ("binding", "binding", "Binding", "Binding a slider: right-click Exposure in Blender's Light properties with the eyedropper; the widget shows its data path.", None),
     ("add-widget", "add_widget", None, "The Add Widget browser: search, categories, widget cards and From Property.", None),
     ("presets", "presets", None, "The global presets menu with thumbnails, a .flexspace export and a shared presets folder.", None),
@@ -2435,7 +2435,7 @@ FOCUS = [
      "A tooltip with the property's name, description and data path over a Simplify slider; the top bar counts 2 "
      "broken bindings and a widget whose path is gone is flagged Path not found.", None),
     ("layers", lambda: scene_layers(2.0, compact=True), None, "FlexSpace Studio",
-     "A canvas with a layer per mode: the layer tabs, Sculpt active, and the Sculpt layer's brushes and stroke "
+     "A canvas with a page per mode: the page tabs, Sculpt active, and the Sculpt page's brushes and stroke "
      "settings.", None),
     ("presets", lambda: scene_presets(2.0, presets_thumbs(), compact=True),
      (4, 0, 528, 546), None, "The Global Presets menu: four presets as thumbnails, one from the shared folder, with "

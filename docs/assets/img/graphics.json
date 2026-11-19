@@ -107,7 +107,7 @@
         1600,
         1000
       ],
-      "alt": "Open a demo, take it apart. Control panels, modes and layers, a sculpt wheel and armature pickers, each in its own window.",
+      "alt": "Open a demo, take it apart. Control panels, modes and pages, a sculpt wheel and armature pickers, each in its own window.",
       "files": {
         "webp": "assets/img/card-demo-files.webp",
         "store": "assets/img/store/card-demo-files.jpg"
@@ -135,7 +135,7 @@
         1600,
         1000
       ],
-      "alt": "One canvas for every mode. A layer per mode or per object. Enter Sculpt Mode and your sculpt layer is there.",
+      "alt": "One canvas for every mode. A page per mode or per object. Enter Sculpt Mode and your sculpt page is there.",
       "files": {
         "webp": "assets/img/card-layers.webp",
         "store": "assets/img/store/card-layers.jpg"
@@ -807,7 +807,7 @@
         1780,
         1220
       ],
-      "alt": "The Sculpt layer of a canvas with a layer per mode: brushes in titled blocks, stroke, remesh and viewport controls.",
+      "alt": "The Sculpt page of a canvas with a page per mode: brushes in titled blocks, stroke, remesh and viewport controls.",
       "files": {
         "webp": "assets/img/frame-layers.webp",
         "store": "assets/img/store/frame-layers.png"
@@ -947,7 +947,7 @@
         1312,
         912
       ],
-      "alt": "A canvas with a layer per mode: the layer tabs, Sculpt active, and the Sculpt layer's brushes and stroke settings.",
+      "alt": "A canvas with a page per mode: the page tabs, Sculpt active, and the Sculpt page's brushes and stroke settings.",
       "files": {
         "webp": "assets/img/focus-layers.webp",
         "store": "assets/img/store/focus-layers.png"

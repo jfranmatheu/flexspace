@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Canvas · FlexSpace Docs</title>
-<meta name="description" content="The Canvas: the two kinds of canvas, how to create one, Edit Mode and Live Mode, moving around, layers and modes, the canvas top bar, global presets, the Library, and the add-on preferences.">
+<meta name="description" content="The Canvas: the two kinds of canvas, how to create one, Edit Mode and Live Mode, moving around, pages and modes, the canvas top bar, global presets, the Library, and the add-on preferences.">
 <link rel="canonical" href="https://jfranmatheu.github.io/flexspace/docs/canvas.html">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0c">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlexSpace">
 <meta property="og:title" content="The Canvas · FlexSpace Docs">
-<meta property="og:description" content="The Canvas: the two kinds of canvas, how to create one, Edit Mode and Live Mode, moving around, layers and modes, the canvas top bar, global presets, the Library, and the add-on preferences.">
+<meta property="og:description" content="The Canvas: the two kinds of canvas, how to create one, Edit Mode and Live Mode, moving around, pages and modes, the canvas top bar, global presets, the Library, and the add-on preferences.">
 <meta property="og:url" content="https://jfranmatheu.github.io/flexspace/docs/canvas.html">
 <meta property="og:image" content="https://jfranmatheu.github.io/flexspace/assets/img/store/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +57,7 @@
       <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
       <h1>The Canvas</h1>
     </header>
-    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#layers-and-modes">Layers and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></details>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></details>
     <article class="fs-prose">
 <p>FlexSpace has two kinds of canvas, each with its own editor:</p>
 <ul>
@@ -97,60 +97,60 @@
 <li>The <strong>minimap</strong> (header, picture icon) shows the whole canvas: click to centre, drag to pan.
 </li>
 </ul>
-<h2 id="layers-and-modes">Layers and modes<a class="fs-anchor" href="#layers-and-modes" aria-label="Link to this section">#</a></h2>
-<p>A canvas can have several layers, each with its own widgets. Each layer can also be made for one Blender mode, for example Sculpt Mode or Weight Paint, or for one object of the scene. So one canvas can hold a sculpting layer full of brushes, a weight paint layer, the controls of one object and an everyday layer, and show the right one for what you are doing.</p>
+<h2 id="pages-and-modes">Pages and modes<a class="fs-anchor" href="#pages-and-modes" aria-label="Link to this section">#</a></h2>
+<p>A canvas can have several pages, each with its own widgets. Each page can also be made for one Blender mode, for example Sculpt Mode or Weight Paint, or for one object of the scene. So one canvas can hold a sculpting page full of brushes, a weight paint page, the controls of one object and an everyday page, and show the right one for what you are doing.</p>
 <ul>
-<li>Pick the active layer in the header, or click its tab at the top-left of the canvas in Live Mode (the tabs show when two or more layers are pinned).
+<li>Pick the active page in the header, or click its tab at the top-left of the canvas in Live Mode (the tabs show when two or more pages are pinned).
 </li>
-<li>Add a layer with the <strong>+</strong> button next to it.
+<li>Add a page with the <strong>+</strong> button next to it.
 </li>
-<li>In Edit Mode, <span class="fs-keys"><kbd>M</kbd></span> moves the selected widgets to another layer.
+<li>In Edit Mode, <span class="fs-keys"><kbd>M</kbd></span> moves the selected widgets to another page.
 </li>
-<li>The <strong>Layers</strong> panel in the <strong>Canvas</strong> tab of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>) lists the layers. The icon at the right of each one sets its mode. <strong>Show When</strong> below the list sets when the active layer fits.
+<li>The <strong>Pages</strong> panel in the <strong>Canvas</strong> tab of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>) lists the pages. The icon at the right of each one sets its mode. <strong>Show When</strong> below the list sets when the active page fits.
 </li>
 </ul>
 <p><strong>Show When</strong> has four choices:</p>
 <ul>
-<li><strong>Always</strong>, the default: the layer works everywhere.
+<li><strong>Always</strong>, the default: the page works everywhere.
 </li>
-<li><strong>Mode</strong>: the layer is for one Blender mode, set in <strong>Mode</strong> below it.
+<li><strong>Mode</strong>: the page is for one Blender mode, set in <strong>Mode</strong> below it.
 </li>
-<li><strong>Object</strong>: the layer is for one object, set in <strong>Object</strong> below it. It fits while that object is the active one, in any mode. Pick the object in the field, with its eyedropper, or click <strong>Use Active</strong> for the active object.
+<li><strong>Object</strong>: the page is for one object, set in <strong>Object</strong> below it. It fits while that object is the active one, in any mode. Pick the object in the field, with its eyedropper, or click <strong>Use Active</strong> for the active object.
 </li>
 <li><strong>Object in Mode</strong>: both. For example, a tower's Geometry Nodes controls that only show while the tower is active in Object Mode.
 </li>
 </ul>
-<p>A layer made for a mode shows that mode's icon on its tab and in the header. A layer made for an object shows the object's icon and name on its tab, after the layer name.</p>
+<p>A page made for a mode shows that mode's icon on its tab and in the header. A page made for an object shows the object's icon and name on its tab, after the page name.</p>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/layers-panel.webp" data-zoom><img src="../assets/media/layers-panel.webp" alt="The Layers panel: a layer per mode, Show When and Switch Layers Automatically." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Layers panel: a layer per mode, Show When and Switch Layers Automatically.</figcaption></figure>
 <figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-layers.webp" data-zoom><img src="../assets/img/frame-layers.webp" alt="The Sculpt layer of a canvas with a layer per mode: brushes in titled blocks, stroke, remesh and viewport controls." width="1780" height="1220" decoding="async" loading="lazy"></a><figcaption>The Sculpt layer of a canvas with a layer per mode: brushes in titled blocks, stroke, remesh and viewport controls.</figcaption></figure>
 <p>What you see:</p>
 <ul>
-<li>A thin border in the mode's colour shows the active layer's mode at a glance.
+<li>A thin border in the mode's colour shows the active page's mode at a glance.
 </li>
-<li>A tab whose layer doesn't fit right now (another mode, or another active object) is dimmed. You can still click it.
+<li>A tab whose page doesn't fit right now (another mode, or another active object) is dimmed. You can still click it.
 </li>
-<li>When the active layer needs another mode, the canvas is dimmed and its widgets don't react. A notice says which mode it needs. Click <strong>Enter</strong> on the notice to switch to that mode, when the active object can, or click another tab.
+<li>When the active page needs another mode, the canvas is dimmed and its widgets don't react. A notice says which mode it needs. Click <strong>Enter</strong> on the notice to switch to that mode, when the active object can, or click another tab.
 </li>
-<li>When the active layer is for an object that isn't the active one, the notice says <strong>This layer is for</strong> that object. Click <strong>Select</strong> on it: the object becomes active and selected (shown again if you hid it with <span class="fs-keys"><kbd>H</kbd></span>), in the layer's mode for <strong>Object in Mode</strong>.
+<li>When the active page is for an object that isn't the active one, the notice says <strong>This page is for</strong> that object. Click <strong>Select</strong> on it: the object becomes active and selected (shown again if you hid it with <span class="fs-keys"><kbd>H</kbd></span>), in the page's mode for <strong>Object in Mode</strong>.
 </li>
-<li>If the layer's object was deleted, or isn't in this file, the notice says it is missing. Click <strong>Use</strong> on it to use the active object instead.
+<li>If the page's object was deleted, or isn't in this file, the notice says it is missing. Click <strong>Use</strong> on it to use the active object instead.
 </li>
 </ul>
 
-<p><strong>Switch Layers Automatically</strong> (in the Layers panel, on by default) shows the right layer for you. When Blender's mode or the active object changes, the canvas shows the layer that fits best. <strong>Object in Mode</strong> comes first, then <strong>Object</strong>, then <strong>Mode</strong>, then <strong>Always</strong>. When two layers fit just as well, the first tab wins, and a tab you clicked yourself stays while it still fits as well. With no layer that fits, nothing changes. It waits while you edit the layout or drag a widget.</p>
-<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The canvas's Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>) still works in any Blender mode, so you can build a layer's layout first.</p></aside>
+<p><strong>Switch Pages Automatically</strong> (in the Pages panel, on by default) shows the right page for you. When Blender's mode or the active object changes, the canvas shows the page that fits best. <strong>Object in Mode</strong> comes first, then <strong>Object</strong>, then <strong>Mode</strong>, then <strong>Always</strong>. When two pages fit just as well, the first tab wins, and a tab you clicked yourself stays while it still fits as well. With no page that fits, nothing changes. It waits while you edit the layout or drag a widget.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The canvas's Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>) still works in any Blender mode, so you can build a page's layout first.</p></aside>
 <p>A button can change the mode too: an Operator button that runs <strong>Enter Mode</strong> makes an object active and selected (and shows it if you hid it with <span class="fs-keys"><kbd>H</kbd></span>), frames it in the 3D Viewport if you like, and enters a mode with it. The <strong>FlexSpace Studio</strong> demo has one for each mode (see <a class="fs-xref" href="recipes.html"><strong>Recipes</strong></a>).</p>
 <p>Some widgets need a mode of their own:</p>
 <ul>
-<li>The Add menu greys out the widgets that don't fit the active layer's mode. Hover one to see why.
+<li>The Add menu greys out the widgets that don't fit the active page's mode. Hover one to see why.
 </li>
-<li>On an <strong>Any Mode</strong> layer, these widgets draw a small warning mark when Blender is in another mode.
+<li>On an <strong>Any Mode</strong> page, these widgets draw a small warning mark when Blender is in another mode.
 </li>
 </ul>
-<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Changing a layer's mode never deletes widgets. A warning tells you how many don't fit.</p></aside>
-<p>An Armature Picker's layers always work in <strong>Pose Mode</strong>. Their mode is not shown and can't be changed.</p>
-<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Files from earlier versions set one mode for the whole canvas. When the file opens, that mode moves to each of its layers that was set to Any Mode. Layers saved with a mode, before Show When, read as <strong>Mode</strong>.</p></aside>
-<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> A global preset remembers each layer's object by name. Added to another file, the layer finds the object of that name there. If there is none, the notice says which object is missing.</p></aside>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Changing a page's mode never deletes widgets. A warning tells you how many don't fit.</p></aside>
+<p>An Armature Picker's pages always work in <strong>Pose Mode</strong>. Their mode is not shown and can't be changed.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Files from earlier versions set one mode for the whole canvas. When the file opens, that mode moves to each of its pages that was set to Any Mode. Pages saved with a mode, before Show When, read as <strong>Mode</strong>.</p></aside>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> A global preset remembers each page's object by name. Added to another file, the page finds the object of that name there. If there is none, the notice says which object is missing.</p></aside>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-pose-hands.webp" data-zoom><img src="../assets/media/picker-pose-hands.webp" alt="Every finger segment of both hands over the hand art, with the finger masters under each hand and the IK, FK and switch controls at the wrist." width="1103" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Every finger segment of both hands over the hand art, with the finger masters under each hand and the IK, FK and switch controls at the wrist.</figcaption></figure>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/studio-modes.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/studio-modes.webp" data-src="../assets/media/studio-modes.mp4" width="1280" height="776" aria-label="Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.</figcaption></figure>
 <h2 id="show-or-hide-widget-types">Show or hide widget types<a class="fs-anchor" href="#show-or-hide-widget-types" aria-label="Link to this section">#</a></h2>
@@ -178,10 +178,10 @@
 </li>
 <li>on an armature picker, the armature and how many of the picker's bones it has, for example <strong>Rig 142/142 bones</strong>;
 </li>
-<li>at the right end, the bindings that need you, on every layer that works in the current mode and with the active object (shown widget types only): <strong>⚠ 2 broken</strong> (a path that leads nowhere or to the wrong kind of property, a missing operator) and a muted <strong>1 unbound</strong> (bound to nothing yet). With nothing broken or unbound, it doesn't show.
+<li>at the right end, the bindings that need you, on every page that works in the current mode and with the active object (shown widget types only): <strong>⚠ 2 broken</strong> (a path that leads nowhere or to the wrong kind of property, a missing operator) and a muted <strong>1 unbound</strong> (bound to nothing yet). With nothing broken or unbound, it doesn't show.
 </li>
 </ul>
-<p>Click the binding count to go to the next broken widget: it is selected, its layer is shown if it was on another one, the view frames it, and the sidebar opens on its <strong>Widget</strong> tab, where the note under its field says what is wrong. Click again for the next one. With nothing broken, a click goes through the unbound widgets instead.</p>
+<p>Click the binding count to go to the next broken widget: it is selected, its page is shown if it was on another one, the view frames it, and the sidebar opens on its <strong>Widget</strong> tab, where the note under its field says what is wrong. Click again for the next one. With nothing broken, a click goes through the unbound widgets instead.</p>
 <p>The minimap, the Selection Bar and <span class="fs-keys"><kbd>Home</kbd></span> stay below the bar, so it never covers them. Hover an item for a tooltip.</p>
 <p>In Live Mode there is no bar. A pill shows in the top-right corner only when the preset needs you: a newer version is available, or the preset is missing. Click it for the preset menu. With nothing to report, nothing shows.</p>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/top-bar-status.webp" data-zoom><img src="../assets/media/top-bar-status.webp" alt="The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you." width="911" height="62" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you.</figcaption></figure>
@@ -197,7 +197,7 @@
 <li>Name it and click <strong>Save</strong>.
 </li>
 </ol>
-<p>To use a preset in another project, open the presets menu and click its name. The menu shows each preset as a thumbnail. Presets with a layer for Blender's current mode come first. A thumbnail is made each time you save or overwrite the preset.</p>
+<p>To use a preset in another project, open the presets menu and click its name. The menu shows each preset as a thumbnail. Presets with a page for Blender's current mode come first. A thumbnail is made each time you save or overwrite the preset.</p>
 <p>A canvas added this way is <strong>linked</strong> to the preset. It remembers which version of the preset it came from. Your edits stay in this file until you choose to send them to the preset.</p>
 <p>The top bar shows the preset's name with a link icon, then its state:</p>
 <div class="fs-table"><table>
@@ -261,7 +261,7 @@
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> While the shared folder can't be reached, <strong>Restore Global Preset</strong> is refused for a missing preset, because it may be in that folder. A copy saved on your computer would hide the shared one. Reconnect the folder, or unlink the canvas and save it as a new preset.</p></aside>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Picker presets find their bones by name. On another rig with the same bone names, the picker works right away. The presets menu shows how many of the preset's bones the active armature has.</p></aside>
 <h2 id="the-library">The Library<a class="fs-anchor" href="#the-library" aria-label="Link to this section">#</a></h2>
-<p>The <strong>Library</strong> panel, under <strong>Layers</strong> in the <strong>Canvas</strong> tab of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>), lists the canvases of this editor's type:</p>
+<p>The <strong>Library</strong> panel, under <strong>Pages</strong> in the <strong>Canvas</strong> tab of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>), lists the canvases of this editor's type:</p>
 <ul>
 <li><strong>Global:</strong> every global preset, whether this file uses it or not. Click one to add it, or to show it if the file already has it. A linked preset shows a badge when it is modified or has an update.
 </li>
@@ -271,7 +271,7 @@
 <p>The canvas shown in the editor is highlighted.</p>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/library.webp" data-zoom><img src="../assets/media/library.webp" alt="The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.</figcaption></figure>
 <h2 id="copy-a-canvas">Copy a canvas<a class="fs-anchor" href="#copy-a-canvas" aria-label="Link to this section">#</a></h2>
-<p>A canvas copied whole keeps its layers, frames, groups and Flex Boxes as they are. This covers the number button next to its name (make it single user), <strong>Duplicate</strong> in the Outliner, and <strong>File &gt; Append</strong> from another file. The copy is independent: changing it never changes the original, and the same preset or template can be added several times.</p>
+<p>A canvas copied whole keeps its pages, frames, groups and Flex Boxes as they are. This covers the number button next to its name (make it single user), <strong>Duplicate</strong> in the Outliner, and <strong>File &gt; Append</strong> from another file. The copy is independent: changing it never changes the original, and the same preset or template can be added several times.</p>
 <h2 id="undo">Undo<a class="fs-anchor" href="#undo" aria-label="Link to this section">#</a></h2>
 <p>Every edit and every use of a widget is one undo step: a move, a slider drag, a toggle click.</p>
 <p>Switching between Edit Mode and Live Mode is not a step, and undo never switches it back: undo a slider drag in Live Mode and you stay in Live Mode.</p>
@@ -292,7 +292,7 @@
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
       <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
-  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#layers-and-modes">Layers and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
 <footer class="fs-foot">
   <div class="fs-foot__in">
