@@ -542,7 +542,7 @@
             </ul>
           </div>
           <figure class="fs-media">
-            <a href="assets/img/frame-presets.webp" data-zoom><img src="assets/img/focus-presets.webp" width="1160" height="1204" loading="lazy" decoding="async" data-swap="picker-redesign" alt="The Global Presets menu: four presets as thumbnails, one from the shared folder, with Save as Global Preset and Manage."></a>
+            <a href="assets/img/frame-presets.webp" data-zoom><img src="assets/img/focus-presets.webp" width="1160" height="1204" loading="lazy" decoding="async" alt="The Global Presets menu: four presets as thumbnails, one from the shared folder, with Save as Global Preset and Manage."></a>
           </figure>
         </article>
         <div class="fs-inblender fs-reveal">
@@ -596,7 +596,7 @@
           <div class="fs-row__copy">
             <span class="fs-eyebrow">Demo files</span>
             <h3 class="fs-h3">Open a demo, take it apart.</h3>
-            <p>Nine finished scenes: Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, and four armature pickers. A demo opens in another Blender window, as a copy: your file is never touched.</p>
+            <p>Ten finished scenes: Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, and five armature pickers. A demo opens in another Blender window, as a copy: your file is never touched.</p>
             <ul class="fs-ticks">
               <li><strong>Help &gt; Demo Files</strong>, or <strong>Open a Demo</strong> on an empty editor</li>
               <li>Type to search, double-click or <kbd class="fs-kbd">Enter</kbd> to open</li>
@@ -604,7 +604,7 @@
             </ul>
           </div>
           <figure class="fs-media">
-            <a href="assets/img/frame-demo-browser.webp" data-zoom><img src="assets/img/frame-demo-browser.webp" width="1780" height="1219" loading="lazy" decoding="async" data-swap="picker-redesign" alt="The demo browser: categories, demo cards and Open in New Window."></a>
+            <a href="assets/img/frame-demo-browser.webp" data-zoom><img src="assets/img/frame-demo-browser.webp" width="1780" height="1219" loading="lazy" decoding="async" alt="The demo browser: categories, demo cards and Open in New Window."></a>
           </figure>
         </article>
         <div class="fs-inblender fs-reveal">
@@ -621,7 +621,6 @@
   </section>
 
   <!-- ============================================================ PICKER -->
-  <!-- REAL-PICKER-MEDIA: the real picker recording and screenshots go in this band once the redesigned picker ships. -->
   <section class="fs-band fs-band--picker fs-anchor" id="picker" aria-labelledby="picker-title">
     <div class="fs-grid-bg" aria-hidden="true"></div>
     <div class="fs-wrap">
@@ -630,15 +629,33 @@
           <div class="fs-group-title" style="margin-bottom:20px"><span class="fs-num">08</span><h2 class="fs-h2" id="picker-title">Armature Picker</h2></div>
           <p class="fs-lead">A canvas of buttons that select the bones of your rig, saved with the armature data. Click to select, <kbd class="fs-kbd">Shift</kbd> click to add, drag to box select, right-click for the Insert Keyframe pie. Your Pose Mode keys work as in the 3D Viewport.</p>
           <ul class="fs-ticks" style="margin-top:24px">
-            <li>Humanoid Body (Rigify) in one step: body, hands and feet</li>
+            <li>Humanoid Body (Rigify) in one step: body, hands, feet and face</li>
             <li>IK/FK pucks, knobs, 2D pads and a gaze control</li>
             <li>Mirroring across the centre line while you lay it out</li>
           </ul>
           <div class="fs-actions" style="margin-top:32px"><a class="fs-btn fs-btn--secondary" href="picker.html">All about the picker</a></div>
         </div>
         <figure class="fs-media fs-reveal">
-          <a href="assets/img/frame-picker.webp" data-zoom><img src="assets/img/focus-picker.webp" width="1396" height="1584" loading="lazy" decoding="async" data-swap="picker-redesign" alt="A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle and a Solo button for each bone collection."></a>
+          <a href="assets/img/frame-picker.webp" data-zoom><img src="assets/img/focus-picker.webp" width="832" height="1093" loading="lazy" decoding="async" alt="The Body page of the Armature Picker over the Adult Male art: the chest and the right foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow, root purple."></a>
         </figure>
+      </div>
+      <!-- REAL-PICKER-MEDIA: the redesigned picker in Blender -->
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--fit fs-real--lead">
+            <a class="fs-real__frame" href="assets/media/picker-select-transform.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-select-transform.webp" data-src="assets/media/picker-select-transform.mp4" width="1280" height="776" aria-label="Click in the picker, pose in the viewport: With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Click in the picker, pose in the viewport.</b> With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-face-gaze.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-face-gaze.webp" data-src="assets/media/picker-face-gaze.mp4" width="1280" height="776" aria-label="Aim the eyes, then shape the face: Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Aim the eyes, then shape the face.</b> Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-hands-curl.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-hands-curl.webp" data-src="assets/media/picker-hands-curl.mp4" width="1280" height="776" aria-label="Curl a hand in one move: Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Curl a hand in one move.</b> Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb.</figcaption>
+          </figure>
+        </div>
       </div>
     </div>
   </section>

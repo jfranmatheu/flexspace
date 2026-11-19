@@ -70,12 +70,12 @@
 <li>Choose <strong>Bone Picker &gt; Humanoid Body (Rigify)</strong>.
 </li>
 </ol>
-<p>The chart comes with its own character drawings: a male and a female body, both hands and both feet. Every shape is traced from them, so each control sits on the right part of the drawing.</p>
-<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-picker.webp" data-zoom><img src="../assets/img/frame-picker.webp" alt="A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles." width="1780" height="1696" decoding="async" loading="lazy"></a><figcaption>A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.</figcaption></figure>
+<p>The chart comes with its own character drawings: a male and a female body, both hands, both feet and a male and a female face. Every shape is traced from them, so each control sits on the right part of the drawing.</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-male-body.webp" data-zoom><img src="../assets/media/picker-male-body.webp" alt="The Adult Male body page over its drawing: FK and torso shapes, IK hands and feet, poles, spine and tweaks." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Adult Male body page over its drawing: FK and torso shapes, IK hands and feet, poles, spine and tweaks.</figcaption></figure>
 <ul>
 <li><strong>Body</strong>: Adult Male or Adult Female. Each has its own drawing, and the shapes follow it.
 </li>
-<li><strong>Pages</strong>: Body, Hands and Feet. Each page goes in its own layer (tab), or side by side with <strong>One Layer per Page</strong> off.
+<li><strong>Pages</strong>: Body, Hands, Feet and Face. Each page goes in its own layer (tab), or side by side with <strong>One Layer per Page</strong> off.
 </li>
 <li><strong>Body page</strong>: the body split into head, neck, chest, torso, hips, shoulders, arms, hands, legs and feet (the FK and torso controls), plus the IK hands and feet, the elbow and knee poles, the spine and the tweaks. The IK hand (diamond) and its IK/FK switch are past the fingertips, the IK feet beside the feet, the poles and the IK arm and thigh bars just outside the limbs.
 </li>
@@ -83,16 +83,20 @@
 </li>
 <li><strong>Feet page</strong>: both feet seen from above, large: heel, foot, ball (foot spin) and toe controls, every toe with its tip and master, and the FK foot and toe bars on the outer side.
 </li>
+<li><strong>Face page</strong> (on by default): every control of Rigify's face on an anime face, the female face for <strong>Adult Female</strong> and the male face for <strong>Adult Male</strong>: lids, eye rings and pupils, brows, cheeks, nose, lips, jaw, ears, the <strong>EYES</strong> and <strong>JAW</strong> bars, and the teeth and tongue in their own frame. On the left, an <strong>Expressions</strong> panel: a <strong>Gaze</strong> pad drawn as two eyes in the face's eye colour, bound to the eye target (drag it and the eyes look there), a pad per mouth corner and the <strong>Mouth Lock</strong> and <strong>Eyes Follow</strong> knobs. On the right, the face bone collection toggles, each with a <strong>Solo</strong> button. See <strong>Bone collections</strong> below for what each shape is. It works with both Rigify faces: the classic one and the newer one that <strong>Upgrade Face Rig</strong> makes (<code>eye_common</code>), where the few controls with other names (the eye masters, the mouth corners, the tongue) go to their bones there. A rig without a Rigify face gets no Face page, and a note says so.
+</li>
 <li><strong>Scale</strong> sets the size of the chart.
 </li>
 <li><strong>IK/FK Switches</strong>: when on, each arm and leg gets a Rigify IK/FK puck of its own, right next to the IK hand or foot (never on top of it), so both are easy to click.
 </li>
-<li><strong>Character Backdrop</strong> (on by default): puts each page's drawing behind it as a locked <strong>Backdrop Image</strong>, at the same scale as the shapes. The drawing is faded and half grey (75 % opacity, 50 % saturation, a light cool tint) and the body shapes are see-through over it, so you see the art and the colours at once. Clicks go through the drawing to the controls. Change its look in its <strong>Image Look</strong> section, or delete it. Turn the option off for the shapes alone, solid.
+<li><strong>Character Backdrop</strong> (on by default): puts each page's drawing behind it as a locked <strong>Backdrop Image</strong>, at the same scale as the shapes. The drawing is faded and half grey (75 % opacity, 50 % saturation, a light cool tint) and the body shapes are see-through over it, so you see the art and the colours at once. The face keeps more of its colour and its controls stay solid. Clicks go through the drawing to the controls. Change its look in its <strong>Image Look</strong> section, or delete it. Turn the option off for the shapes alone, solid.
 </li>
 <li><strong>Hands Side</strong>: <strong>Back</strong> (the default) or <strong>Palm</strong>: the drawing of the Hands page, and the shapes follow it. The thumbs point inwards on the backs of the hands, outwards on the palms.
 </li>
 </ul>
-
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-female-body.webp" data-zoom><img src="../assets/media/picker-female-body.webp" alt="The Adult Female body page: narrower waist and shoulders, wider hips." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Adult Female body page: narrower waist and shoulders, wider hips.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-humanoid-face.webp" data-zoom><img src="../assets/media/picker-humanoid-face.webp" alt="The Face page of the Adult Female: every face control on the anime face, the Expressions panel with the gaze pad on the left, the teeth and tongue and the face bone collections on the right." width="1007" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Face page of the Adult Female: every face control on the anime face, the Expressions panel with the gaze pad on the left, the teeth and tongue and the face bone collections on the right.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-layer-male-face.webp" data-zoom><img src="../assets/media/picker-layer-male-face.webp" alt="The whole Face page: every face control on the male face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections." width="1355" height="1003" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The whole Face page: every face control on the male face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections.</figcaption></figure>
 <h3 id="colours-and-views">Colours and views<a class="fs-anchor" href="#colours-and-views" aria-label="Link to this section">#</a></h3>
 <ul>
 <li>Left is blue, right is red, the centre is yellow and the root is purple.
@@ -110,8 +114,8 @@
 <li>Big toes point inwards in both views. Thumbs point inwards with the backs of the hands, outwards with the palms (<strong>Hands Side</strong>).
 </li>
 </ul>
-
-
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-hands.webp" data-zoom><img src="../assets/media/picker-hands.webp" alt="The Hands page: palm, finger segments, tips and masters over the drawing, with the FK wrist band, the IK hand and its switch at each wrist." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Hands page: palm, finger segments, tips and masters over the drawing, with the FK wrist band, the IK hand and its switch at each wrist.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-feet.webp" data-zoom><img src="../assets/media/picker-feet.webp" alt="The Feet page: heel, foot, ball and toe controls, and every toe segment, over the drawing." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Feet page: heel, foot, ball and toe controls, and every toe segment, over the drawing.</figcaption></figure>
 <h3 id="missing-bones">Missing bones<a class="fs-anchor" href="#missing-bones" aria-label="Link to this section">#</a></h3>
 <p>Each shape is bound to the bone of the same name. Bones your rig doesn't have are skipped, and a warning lists them. A page with none of its bones gets no tab.</p>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Rigify's human metarig has one toe per foot, so the per-toe shapes are skipped unless you add toe bones named <code>toe1.01.L</code> to <code>toe5.03.L</code> with the <strong>limbs.super_finger</strong> rig type (see Toes for Rigify below). The demo files do this. Missing toes get their own short note, so a real naming problem elsewhere still shows.</p></aside>
@@ -140,7 +144,7 @@
 </ol>
 <p>You can also delete the shapes you don't need, or move them to make your own layout.</p>
 <h3 id="demo-files">Demo files<a class="fs-anchor" href="#demo-files" aria-label="Link to this section">#</a></h3>
-<p>Two demos show the result: <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>. Each has a generated rig with toes, the three pages over their drawings, IK/FK and stretch sliders, head and neck follow knobs, and bone collection toggles. Open them from the demo list.</p>
+<p>Two demos show the result: <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>. Each has a generated rig with toes and a Rigify face, the four pages over their drawings (the Face page over the male or the female face), IK/FK and stretch sliders, head and neck follow knobs, and bone collection toggles. Open them from the demo list.</p>
 <h2 id="1-use-the-generated-rig">1. Use the generated rig<a class="fs-anchor" href="#1-use-the-generated-rig" aria-label="Link to this section">#</a></h2>
 <p>Make the picker for the <strong>generated rig</strong> (the <code>RIG-...</code> object you animate), not for the metarig.</p>
 <ol>
@@ -186,6 +190,7 @@
 </ul>
 <p><strong>Toggle Size</strong> sets its size.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Not Rigify? Choose <strong>Bone</strong> (a custom property of a bone, with a list of its bool, int and float properties) or <strong>Data Path</strong>, and set <strong>IK Value</strong> to the end that means IK.</p></aside>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-ikfk.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-ikfk.webp" data-src="../assets/media/picker-ikfk.mp4" width="1280" height="776" aria-label="The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them."></video><span class="fs-figure__tag">Recording</span></a><figcaption>The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them.</figcaption></figure>
 <h2 id="5-bone-collections">5. Bone collections<a class="fs-anchor" href="#5-bone-collections" aria-label="Link to this section">#</a></h2>
 <p>Rigify sorts its controls into bone collections (Torso, Arm.L (IK), Arm.L (FK), Fingers...). Add a toggle for each one you show and hide often:</p>
 <ol>
@@ -197,8 +202,8 @@
 </li>
 </ol>
 <p>With <strong>Sync Bone Collections Visibility</strong> on (sidebar, <strong>Armature</strong> tab), the buttons of hidden collections hide too, so the picker matches the viewport.</p>
-
-<p>The <strong>Face</strong> tab of the <strong>Rigify Human Picker</strong> demo is a good start for your own face picker. Every face control of Rigify's human sits on the drawn feature of a face picture, coloured by side (left blue, right red, centre yellow):</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-pose-face.webp" data-zoom><img src="../assets/media/picker-pose-face.webp" alt="Brows, lids, cheeks, nose, lips and jaw drawn on a face, with teeth and tongue, an eyes gaze control and mouth pads for expressions." width="1103" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Brows, lids, cheeks, nose, lips and jaw drawn on a face, with teeth and tongue, an eyes gaze control and mouth pads for expressions.</figcaption></figure>
+<p>The <strong>Face</strong> page of <strong>Humanoid Body (Rigify)</strong> (and the <strong>Face</strong> tab of the <strong>Rigify Human Picker</strong> demo) is a good start for your own face picker. Every face control of Rigify's human sits on the drawn feature of a face picture, coloured by side (left blue, right red, centre yellow):</p>
 <ul>
 <li><strong>Eyes</strong>: a ring around each eye moves the whole eye (<code>master_eye</code>), a dot on the pupil aims it (<code>eye</code>), almond segments on the lash lines move the lids, and the <strong>EYES</strong> bar on the forehead moves the common eye target.
 </li>

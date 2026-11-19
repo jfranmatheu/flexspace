@@ -158,7 +158,13 @@
 .fsx .fs-knob::after { content: ""; position: absolute; left: 5px; top: 12px; width: 1px; height: 22px; background: rgba(240,181,87,.85); }
 .fsx .fs-tag { position: absolute; left: 0; bottom: -34px; padding: 5px 9px; border-radius: 6px; background: #1a1a1e; border: 1px solid #2e2e35;
   font-family: "JetBrains Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 11.5px; line-height: 1; color: #dcceb8; white-space: nowrap; }
-.fsx .fs-float { display: none; }
+/* the floats (picker, Ring Menu): side by side under the panel on phones, around it from 860 px */
+.fsx .fs-floats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 60px; }
+.fsx .fs-float { margin: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid rgba(255,255,255,.14);
+  background: #1c1c1d; box-shadow: 0 0 0 1px rgba(91,140,255,.35), 0 18px 40px -12px rgba(0,0,0,.75); }
+.fsx .fs-float picture { display: block; height: 100%; }
+.fsx .fs-float img { width: 100%; height: 100%; object-fit: contain; }
+.fsx .fs-float-picker { background: #1a1a1a; }
 .fsx .fs-hints { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: 52px auto 0; max-width: 1000px; color: #b6b3ad; font-size: 14.5px; }
 .fsx .fs-hints li { display: inline-flex; align-items: center; gap: 9px; }
 
@@ -295,6 +301,20 @@
 .fsx .fs-pthumbs li { overflow: hidden; border-radius: 18px; background: #1c1c1d; border: 1px solid rgba(255,255,255,.08); }
 .fsx .fs-pthumbs span { display: block; padding: 10px 14px 12px; font-size: 13.5px; line-height: 1.4; color: #b6b3ad; background: #141417; border-top: 1px solid rgba(255,255,255,.06); }
 .fsx .fs-pthumbs strong { display: block; font-size: 14.5px; }
+/* every page of both body charts: frames share one aspect per pair (Body + Face, Hands + Feet), so a row lines up;
+   the letterbox is the picker's own canvas colour */
+.fsx .fs-layers { margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,.08); }
+.fsx .fs-layers h3 { font-family: "Bricolage Grotesque", "Segoe UI Variable Display", system-ui, sans-serif; font-size: clamp(22px, 3.2cqi, 30px);
+  font-weight: 650; line-height: 1.15; letter-spacing: -.02em; }
+.fsx .fs-layers > p { margin-top: 10px; max-width: 62ch; color: #b6b3ad; }
+.fsx .fs-lset { margin-top: 28px; }
+.fsx .fs-lset .fs-inb-label { margin-bottom: 12px; }
+.fsx .fs-lgrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px; align-items: start; }
+.fsx .fs-lgrid .fs-rf-frame { background: #1a1a1a; }
+.fsx .fs-lgrid .fs-rf-frame img { height: 100%; object-fit: contain; }
+.fsx .fs-l-wide .fs-rf-frame { aspect-ratio: 1355 / 1003; }
+.fsx .fs-l-tall .fs-rf-frame { aspect-ratio: 991 / 1003; }
+.fsx .fs-lgrid figcaption { font-size: 13px; }
 
 /* ---------- included + specs ---------- */
 .fsx .fs-inc { display: grid; gap: 14px; margin-top: 40px; }
@@ -413,6 +433,9 @@
 .fsx .fs-action-main { max-width: 1040px; margin: 36px auto 0; }
 .fsx .fs-action-main .fs-rf-frame { border-radius: 22px; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(240,181,87,.2); }
 .fsx .fs-action-main figcaption { text-align: center; font-size: 14.5px; }
+.fsx .fs-action-picker { margin-top: 64px; }
+.fsx .fs-action-picker .fs-inb-label { text-align: center; }
+.fsx .fs-action-picker .fs-rf-frame { box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(167,123,255,.35); }
 .fsx .fs-action-grid { display: grid; gap: 22px 16px; margin-top: 28px; grid-template-columns: minmax(0, 1fr); }
 .fsx .fs-inb { margin-top: 4px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.08); }
 .fsx .fs-row .fs-inb { grid-column: 1 / -1; }
@@ -447,12 +470,13 @@
   .fsx .fs-trust ul { grid-template-columns: repeat(5, 1fr); }
   .fsx .fs-trust li, .fsx .fs-trust li:nth-child(4), .fsx .fs-trust li:last-child { grid-column: auto; }
   .fsx .fs-modes { grid-template-columns: 1fr auto 1fr; gap: 26px; }
-  .fsx .fs-float { display: block; position: absolute; right: -1%; bottom: -7%; width: 31%; margin: 0; border-radius: 18px; overflow: hidden;
-    border: 1px solid rgba(255,255,255,.14); background: #1c1c1d;
+  .fsx .fs-floats { display: block; margin: 0; }
+  .fsx .fs-float { position: absolute; right: -1%; bottom: -7%; width: 31%; aspect-ratio: auto; border-radius: 18px;
     box-shadow: 0 0 0 1px rgba(91,140,255,.4), 0 24px 48px -12px rgba(0,0,0,.75), 0 18px 60px -10px rgba(47,111,255,.35);
     animation: fsx-float 8s cubic-bezier(.65,0,.35,1) infinite alternate; }
-  .fsx .fs-float img { width: 100%; }
-  .fsx .fs-stage { padding-right: 8%; }
+  .fsx .fs-float img, .fsx .fs-float picture { height: auto; }
+  .fsx .fs-float-picker { right: auto; bottom: auto; left: -1%; top: 14%; width: 19%; animation-delay: -4s; }
+  .fsx .fs-stage { padding-right: 8%; padding-left: 9%; }
   .fsx .fs-hints { margin-top: 110px; }
   .fsx .fs-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .fsx .fs-fp { grid-column: span 3; display: flex; flex-direction: column; justify-content: center; }
@@ -466,9 +490,11 @@
 
 /* two-column rows only when the image column is wide enough for its UI text (Superhive's column is narrower) */
 @container fsx (min-width: 1100px) {
+  .fsx .fs-lgrid { grid-template-columns: 1355fr 1355fr 991fr 991fr; }
   .fsx .fs-row { grid-template-columns: 5fr 7fr; gap: 56px; }
   .fsx .fs-row-flip .fs-row-text { order: 2; }
   .fsx .fs-row-flip .fs-row-media { order: 1; }
+  .fsx .fs-row-flip .fs-inb { order: 3; }
   .fsx .fs-row-flip { grid-template-columns: 7fr 5fr; }
 }
 
@@ -510,12 +536,17 @@
       <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/frame-control-panel.png" width="1780" height="1198" alt="A studio control panel in Live Mode: lights, render, playback, objects and a camera preview, built from FlexSpace widgets.">
       <span class="fs-select" aria-hidden="true"><i class="fs-h fs-h1"></i><i class="fs-h fs-h2"></i><i class="fs-h fs-h3"></i><i class="fs-h fs-h4"></i><i class="fs-knob"></i><span class="fs-tag">Studio Control Panel</span></span>
     </figure>
-    <figure class="fs-float">
-      <picture>
-        <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
-        <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
-      </picture>
-    </figure>
+    <div class="fs-floats">
+      <figure class="fs-float fs-float-picker">
+        <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/float-picker.png" width="580" height="945" alt="The Armature Picker's Body page over the Adult Female art: the hips and the left foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow.">
+      </figure>
+      <figure class="fs-float">
+        <picture>
+          <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
+          <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
+        </picture>
+      </figure>
+    </div>
   </div>
   <ul class="fs-hints">
     <li><span class="fs-kbd">Tab</span> Edit ↔ Live</li>
@@ -564,7 +595,14 @@
         <figcaption><strong>One canvas, a layer per mode.</strong> Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.</figcaption>
       </figure>
     </div>
-    <!-- REAL-PICKER-MEDIA: a real Armature Picker recording joins this grid once the redesigned picker ships. -->
+    <!-- REAL-PICKER-MEDIA: the Armature Picker, controls hidden in the viewport (assets/media/store/picker-*) -->
+    <div class="fs-action-main fs-action-picker">
+      <p class="fs-inb-label"><span class="fs-chip">Armature Picker</span></p>
+      <figure class="fs-rf">
+        <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-select-transform-still.png"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-select-transform.gif" width="960" height="582" alt="With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+        <figcaption><strong>Click in the picker, pose in the viewport.</strong> With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
@@ -778,7 +816,7 @@
         <div class="fs-row-text">
           <p class="fs-eyebrow">Armature Picker</p>
           <h3>Pose without hunting for bones.</h3>
-          <p class="fs-body">A picker is a canvas of buttons that select the bones of your rig. It's saved with the armature, so it travels when you link or append the rig, and your Pose Mode keys keep working over it. Using Rigify? Add a full Humanoid Body picker (body, hands and feet) in one step.</p>
+          <p class="fs-body">A picker is a canvas of buttons that select the bones of your rig. It's saved with the armature, so it travels when you link or append the rig, and your Pose Mode keys keep working over it. Using Rigify? Add a full Humanoid Body picker (body, hands, feet and face) in one step.</p>
           <ul class="fs-ticks">
             <li>Bone buttons, custom shapes and mirroring</li>
             <li>IK/FK switches, knobs and 2D pads</li>
@@ -786,9 +824,25 @@
           </ul>
         </div>
         <div class="fs-row-media">
-          <!-- swap: picker-redesign (frame-picker.png is replaced in place by the redesigned picker art) -->
-          <!-- REAL-PICKER-MEDIA: the real picker GIF / screenshots go here (store PNG/GIF in assets/media/store/, e.g. real-picker-pose.gif). -->
-          <div class="fs-media"><div class="fs-media-in"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-picker.png" width="1396" height="1584" alt="A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle and a Solo button for each bone collection." loading="lazy"></div></div>
+          <div class="fs-media"><div class="fs-media-in"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-picker.png" width="832" height="1093" alt="The Body page of the Armature Picker over the Adult Male art: the chest and the right foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow, root purple." loading="lazy"></div></div>
+        </div>
+        <!-- REAL-PICKER-MEDIA: real picker recordings (assets/media/store/picker-*) -->
+        <div class="fs-inb">
+          <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inb-grid fs-inb-grid-3">
+            <figure class="fs-rf fs-rf-fit">
+              <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-face-gaze-still.png"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-face-gaze.gif" width="816" height="496" alt="Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+              <figcaption><strong>Aim the eyes, then shape the face.</strong> Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.</figcaption>
+            </figure>
+            <figure class="fs-rf fs-rf-fit">
+              <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-hands-curl-still.png"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-hands-curl.gif" width="960" height="582" alt="Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+              <figcaption><strong>Curl a hand in one move.</strong> Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb.</figcaption>
+            </figure>
+            <figure class="fs-rf fs-rf-fit">
+              <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-ikfk-still.png"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-ikfk.gif" width="960" height="582" alt="The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+              <figcaption><strong>IK and FK in one click.</strong> The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them.</figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -952,11 +1006,11 @@
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-frame.png" width="720" height="324" alt="A Frame titled Key Light holding a toggle and a slider." loading="lazy"><div><h4>Frame</h4><p>A titled area, square or round, that holds and moves other widgets</p><small class="fs-cat-layout">Layout</small></div></li>
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-flex-box.png" width="720" height="324" alt="A vertical Flex Box of three Number Fields." loading="lazy"><div><h4>Flex Box</h4><p>Lines up other widgets in a row or a column</p><small class="fs-cat-layout">Layout</small></div></li>
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-group.png" width="720" height="324" alt="A Group of three buttons, selected in Edit Mode." loading="lazy"><div><h4>Group</h4><p>Moves and resizes other widgets as one</p><small class="fs-cat-layout">Layout</small></div></li>
-      <!-- Picker widgets. swap: picker-redesign -->
+      <!-- Picker widgets -->
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-collection-toggle.png" width="720" height="324" alt="A Bone Collection toggle for Torso and its Solo button." loading="lazy"><div><h4>Bone Collection toggle</h4><p>Shows, hides or solos a bone collection</p><small class="fs-cat-picker">Picker</small></div></li>
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-radial-slider.png" width="720" height="324" alt="A Radial slider knob bound to Head Follow." loading="lazy"><div><h4>Radial slider</h4><p>A knob you drag to change a number</p><small class="fs-cat-picker">Picker</small></div></li>
       <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-lineal-2d-slider.png" width="720" height="324" alt="A Lineal 2D pad labelled Gaze." loading="lazy"><div><h4>Lineal 2D slider</h4><p>A pad that drives two properties at once</p><small class="fs-cat-picker">Picker</small></div></li>
-      <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers: a Button, a Geometry Shape and a round button." loading="lazy"><div><h4>Button, Button Image, Geometry Shape</h4><p>Bone pickers: select their bone</p><small class="fs-cat-picker">Picker</small></div></li>
+      <li class="fs-w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers on the Body page of the Armature Picker: the hips shape picked, the arm and thigh bars, and each IK hand's diamond with its IK/FK puck." loading="lazy"><div><h4>Button, Button Image, Geometry Shape</h4><p>Bone pickers: select their bone</p><small class="fs-cat-picker">Picker</small></div></li>
       <li class="fs-fp">
         <h4><span class="fs-kbd">Shift A</span> › From Property</h4>
         <p>Right-click any property in Blender and get the right widget, bound and labelled:</p>
@@ -974,7 +1028,7 @@
   </div>
 </section>
 
-<!-- ============================================================ 6. PICKER SPOTLIGHT (swap: picker-redesign) -->
+<!-- ============================================================ 6. PICKER SPOTLIGHT (real picker pages: assets/media/store/picker-layer-*) -->
 <section class="fs-sec fs-sec-alt">
   <div class="fs-gridbg" aria-hidden="true"></div>
   <div class="fs-wrap">
@@ -994,14 +1048,61 @@
       <div>
         <ol class="fs-steps">
           <li><strong>Adult Male or Adult Female.</strong> The shapes are made to measure and follow each body's proportions.</li>
-          <li><strong>Body, Hands and Feet pages.</strong> Each page in its own layer tab: the FK and torso controls, every finger segment, every toe.</li>
+          <li><strong>Body, Hands, Feet and Face pages.</strong> Each page in its own layer tab: the FK and torso controls, every finger segment, every toe, and every face control with a gaze pad drawn as eyes.</li>
           <li><strong>IK/FK switches</strong> next to each IK hand and foot, keyed with Auto Keying, one undo step per click.</li>
           <li><strong>Colours that read at a glance:</strong> left blue, right red, centre yellow.</li>
         </ol>
       </div>
     </div>
+    <!-- REAL-PICKER-MEDIA: every page of both body charts, in Live Mode -->
+    <div class="fs-layers">
+      <h3>Four pages, <span class="fs-ember">two bodies.</span></h3>
+      <p>What one <strong>Humanoid Body (Rigify)</strong> adds, page by page, over the character art. Left is blue, right is red, the centre is yellow.</p>
+      <div class="fs-lset">
+        <p class="fs-inb-label"><span class="fs-chip">Adult Female</span></p>
+        <div class="fs-lgrid">
+          <figure class="fs-rf fs-l-wide">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-female-body.png" width="1329" height="1003" alt="The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the female art, with the Rig Settings knobs and sliders and the bone collection switches." loading="lazy"></div>
+            <figcaption><strong>Body.</strong> The body in regions, IK hands and feet with their IK/FK pucks, poles, spine and tweaks, Rig Settings and bone collections.</figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-wide">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-female-face.png" width="1355" height="1003" alt="The whole Face page: every face control on the female face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections." loading="lazy"></div>
+            <figcaption><strong>Face.</strong> Every face control on the face art; the Expressions panel with the gaze pad drawn as eyes, mouth pads and knobs; teeth, tongue and the face collections.</figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-tall">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-female-hands.png" width="991" height="1003" alt="Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches." loading="lazy"></div>
+            <figcaption><strong>Hands.</strong> Every finger segment, the fingertips and finger masters, the FK wrist band and the IK hand with its switch.</figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-tall">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-female-feet.png" width="925" height="1003" alt="Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection." loading="lazy"></div>
+            <figcaption><strong>Feet.</strong> Heel, foot, ball and toe controls, every toe with its master, and the FK foot and toe bars.</figcaption>
+          </figure>
+        </div>
+      </div>
+      <div class="fs-lset">
+        <p class="fs-inb-label"><span class="fs-chip">Adult Male</span></p>
+        <div class="fs-lgrid">
+          <figure class="fs-rf fs-l-wide">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-male-body.png" width="1293" height="1003" alt="The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the male art, with the Rig Settings knobs and sliders and the bone collection switches." loading="lazy"></div>
+            <figcaption><strong>Body.</strong></figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-wide">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-male-face.png" width="1355" height="1003" alt="The whole Face page: every face control on the male face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections." loading="lazy"></div>
+            <figcaption><strong>Face.</strong></figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-tall">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-male-hands.png" width="991" height="1003" alt="Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches." loading="lazy"></div>
+            <figcaption><strong>Hands.</strong></figcaption>
+          </figure>
+          <figure class="fs-rf fs-l-tall">
+            <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-male-feet.png" width="925" height="1003" alt="Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection." loading="lazy"></div>
+            <figcaption><strong>Feet.</strong></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
     <ul class="fs-pthumbs">
-      <li><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers: a button, a Geometry Shape and a round button." loading="lazy"><span><strong>Bone buttons and shapes</strong>Click to select, Shift-click to add, drag on empty space to box select.</span></li>
+      <li><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers on the Body page of the Armature Picker: the hips shape picked, the arm and thigh bars, and each IK hand's diamond with its IK/FK puck." loading="lazy"><span><strong>Bone buttons and shapes</strong>Click to select, Shift-click to add, drag on empty space to box select.</span></li>
       <li><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-radial-slider.png" width="720" height="324" alt="A Radial slider knob bound to Head Follow." loading="lazy"><span><strong>Knobs</strong>For follow switches and any custom property of the rig.</span></li>
       <li><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-lineal-2d-slider.png" width="720" height="324" alt="A Lineal 2D pad labelled Gaze." loading="lazy"><span><strong>2D pads and gaze</strong>Two properties at once, or a pair of eyes that look where you drag.</span></li>
     </ul>
@@ -1017,7 +1118,7 @@
     </div>
     <ul class="fs-inc">
       <li><b class="fs-ember">2</b><h4>Canvases in one add-on</h4><p>Flex Space for control panels and Armature Picker for rig pickers. Install once, both are there.</p></li>
-      <li><b class="fs-ember">9</b><h4>Demo files</h4><p>Control panels, a canvas that follows Blender's mode, a Sculpt Wheel and four armature pickers, each opened in its own window.</p></li>
+      <li><b class="fs-ember">10</b><h4>Demo files</h4><p>Control panels, a canvas that follows Blender's mode, a Sculpt Wheel and five armature pickers, each opened in its own window.</p></li>
       <li><b class="fs-ember">12</b><h4>Guides</h4><p>The full docs online and in the Help menu: getting started to troubleshooting, with every shortcut.</p></li>
       <li><b class="fs-ember">21</b><h4>Widgets</h4><p>Buttons, data controls, colour and brush tools, layout, and the Armature Picker's own, one <span class="fs-kbd">Shift A</span> away.</p></li>
     </ul>
@@ -1028,7 +1129,7 @@
       <div><dt>Editors</dt><dd>Flex Space (control panels) and Armature Picker (rig pickers)</dd></div>
       <div><dt>Saved in</dt><dd>Your .blend (canvases), the armature data (pickers), your user folder (global presets)</dd></div>
       <div><dt>Sharing</dt><dd><code>.flexspace</code> preset files, shared presets folder</dd></div>
-      <div><dt>Demo files</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, Rigify Human Picker, Simple Biped Picker, Rigify Male Body Picker, Rigify Female Body Picker</dd></div>
+      <div><dt>Demo files</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, Rigify Human Picker, Simple Biped Picker, Rigify Male Body Picker, Rigify Female Body Picker, Rigify Character Picker</dd></div>
       <div><dt>Docs</dt><dd>Online at <a href="https://jfranmatheu.github.io/flexspace/docs/">jfranmatheu.github.io/flexspace</a> and in the Help menu</dd></div>
       <div><dt>Support</dt><dd>Report a Bug inside Blender, <a href="https://github.com/jfranmatheu/flexspace/issues">GitHub issues</a>, Superhive</dd></div>
       <div><dt>Licence</dt><dd>GPL-3.0-or-later. Bundled icons: Phosphor Icons, Gravity UI Icons (MIT)</dd></div>

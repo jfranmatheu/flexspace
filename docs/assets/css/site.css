@@ -755,6 +755,19 @@ a.fs-real__frame:focus-visible { box-shadow: var(--fs-focus-ring); }
   .fs-inblender__grid--two > .fs-real--lead { grid-column: auto; grid-row: auto; }
 }
 
+/* picker pages: every page of a body chart. Body + Face share one frame aspect, Hands + Feet another, so a row lines
+   up; the letterbox is the picker's own canvas colour. 4 across from 1024 px (widths follow the pages' aspects). */
+.fs-pages { display: grid; gap: 20px 14px; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; }
+@media (min-width: 1024px) { .fs-pages { grid-template-columns: 1355fr 1355fr 991fr 991fr; } }
+.fs-pages .fs-real__frame { background: #1a1a1a; }
+.fs-pages .fs-real--wide .fs-real__frame { aspect-ratio: 1355 / 1003; }
+.fs-pages .fs-real--tall .fs-real__frame { aspect-ratio: 991 / 1003; }
+.fs-pages .fs-real__frame img { width: 100%; height: 100%; object-fit: contain; }
+.fs-pages + .fs-inblender__head { margin-top: 28px; }
+.fs-cols--4 { grid-template-columns: minmax(0, 1fr); }
+@media (min-width: 720px) { .fs-cols--4 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1200px) { .fs-cols--4 { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
 /* landing: See it in Blender */
 .fs-seeit .fs-head { margin-bottom: clamp(28px, 4vw, 48px); }
 .fs-seeit__main { max-width: 1120px; margin-inline: auto; }
@@ -763,6 +776,10 @@ a.fs-real__frame:focus-visible { box-shadow: var(--fs-focus-ring); }
 .fs-seeit__loops { display: grid; gap: 20px 16px; margin-top: clamp(24px, 3vw, 36px); grid-template-columns: minmax(0, 1fr); }
 @media (min-width: 560px) { .fs-seeit__loops { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (min-width: 1100px) { .fs-seeit__loops { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.fs-seeit__picker { margin-top: clamp(48px, 6vw, 80px); }
+.fs-seeit__picker .fs-real__frame { box-shadow: var(--fs-shadow-4), 0 0 0 1px rgba(167, 123, 255, 0.3); }
+@media (min-width: 1100px) { .fs-seeit__loops--three { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.fs-picker-hero .fs-real__frame { border-radius: var(--fs-radius-xl); box-shadow: var(--fs-shadow-4), 0 0 0 1px rgba(167, 123, 255, 0.3); }
 .fs-seeit__shots { margin-top: clamp(48px, 6vw, 80px); }
 .fs-seeit__shots .fs-strip-head { margin-bottom: 20px; }
 .fs-seeit__shots .fs-strip { grid-auto-columns: minmax(260px, 82%); }

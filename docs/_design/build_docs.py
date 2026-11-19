@@ -13,8 +13,8 @@ top bar, left page list, right "On this page", search over a generated JSON inde
 
 Pictures: a help picture with real media (REAL, docs/assets/media/, see make_media.py) shows that real screenshot or
 loop; otherwise its generated slot (FIGURES, docs/assets/img/<slot>.webp, see graphics.json) or nothing. REAL_EXTRA
-and EXTRA add more real and generated figures at the end of chosen sections. Picker art lives in the frame-picker
-slot (swap = file drop); real picker media comes with the picker redesign.
+and EXTRA add more real and generated figures at the end of chosen sections. Picker figures show the real
+captures of the redesigned picker (REAL); frame-picker is the generated fallback.
 
 Outputs (all rewritten on every run):
   docs/docs/index.html               the docs home: a card per guide
@@ -95,12 +95,8 @@ FIGURES = {
     "shots/color_palette.png": "w-color-palette",
     "shots/brush_picker.png": "w-brush-picker",
     "shots/list_widget.png": "w-list",
-    # DESIGN §1 slots not generated yet: they show up as soon as their file exists (picker ones: picker redesign).
+    # DESIGN §1 slots not generated yet: they show up as soon as their file exists (picker figures use REAL below).
     "shots/layer_show_when.png": "layer-tabs",
-    "shots/picker_female_body.png": "picker-body",
-    "shots/picker_hands.png": "picker-hands",
-    "shots/picker_feet.png": "picker-feet",
-    "shots/picker_pose_face.png": "picker-face",
     "shots/bug_report.png": "bug-report",
 }
 # Extra figures where a generated image helps: (page slug) -> [(heading text, slot)], placed at the end of that
@@ -114,8 +110,7 @@ EXTRA = {
 # Real media (docs/assets/media/<name>, made by make_media.py from the curated marketing shots and recordings).
 # A help picture listed here shows the real screenshot or loop instead of the generated slot. "help" keeps the help's
 # own caption (written for that very shot); "manifest" uses the manifest caption (the media differs a little from what
-# the help describes). No Armature Picker media until the redesigned picker ships: those help figures keep their
-# generated slot (FIGURES) or are left out.
+# the help describes). Picker figures show the redesigned picker's real captures (make_media.py copies only those).
 REAL = {
     "shots/control_panel_dark.png": ("control-panel-dark", "help"),
     "shots/control_panel_dark_area.png": ("control-panel-dark-area", "help"),
@@ -133,6 +128,18 @@ REAL = {
     "shots/ring_menu.png": ("ring-menu-inner", "manifest"),
     "gifs/theme.gif": ("themes", "manifest"),
     "shots/theme_menu.png": ("theme-menu", "manifest"),
+    # the redesigned Armature Picker (character art, Body / Hands / Feet / Face pages)
+    "shots/picker_pose_body.png": ("picker-pose-body", "help"),
+    "shots/picker_pose_hands.png": ("picker-pose-hands", "manifest"),
+    "shots/picker_pose_face.png": ("picker-pose-face", "manifest"),
+    "shots/picker_male_body.png": ("picker-male-body", "help"),
+    "shots/picker_female_body.png": ("picker-female-body", "help"),
+    "shots/picker_humanoid_face.png": ("picker-humanoid-face", "help"),
+    "shots/picker_hands.png": ("picker-hands", "help"),
+    "shots/picker_feet.png": ("picker-feet", "help"),
+    "shots/picker_edit_selected.png": ("picker-edit-selected", "help"),
+    "shots/picker_edit_snapping.png": ("picker-edit-snapping", "help"),
+    "gifs/picker.gif": ("picker-pose", "manifest"),
 }
 # Extra real media at the end of a section: (page slug) -> [(heading text, media name)], manifest captions.
 REAL_EXTRA = {
@@ -147,6 +154,9 @@ REAL_EXTRA = {
                 ("Themes", "theme-menu")],
     "color-brush": [("Ring Menu", "sculpt-wheel")],
     "demo-files": [("FlexSpace Studio", "studio-modes"), ("Sculpt Wheel", "ring-menu-canvas")],
+    "picker": [("Posing with the picker", "picker-select-transform"), ("Gaze control", "picker-gaze"),
+               ("Mirror", "picker-mirror")],
+    "rigify": [("Quick start: Humanoid Body", "picker-layer-male-face"), ("4. The IK/FK puck", "picker-ikfk")],
 }
 MEDIA = DOCS / "assets" / "media"
 # Table-cell thumbnails: shots/widgets/<stem>.png -> w-<widget name slug> (make_graphics.py names them by widget).

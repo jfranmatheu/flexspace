@@ -76,9 +76,9 @@
 <li>Press <span class="fs-keys"><kbd>Tab</kbd></span> to go back to posing.
 </li>
 </ol>
-<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Using Rigify? A full Humanoid Body picker (body, hands and feet) takes one step. See <a class="fs-xref" href="rigify.html"><strong>Picker with Rigify</strong></a>.</p></aside>
-
-
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Using Rigify? A full Humanoid Body picker (body, hands, feet and face) takes one step. See <a class="fs-xref" href="rigify.html"><strong>Picker with Rigify</strong></a>.</p></aside>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-hands.webp" data-zoom><img src="../assets/media/picker-hands.webp" alt="The Humanoid Body&#x27;s Hands page over its drawing: every finger segment, with the FK wrist band, the IK hand and its switch at each wrist." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Humanoid Body's Hands page over its drawing: every finger segment, with the FK wrist band, the IK hand and its switch at each wrist.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-feet.webp" data-zoom><img src="../assets/media/picker-feet.webp" alt="The Humanoid Body&#x27;s Feet page over its drawing: heel, foot, ball and toe controls, and every toe." width="1348" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Humanoid Body's Feet page over its drawing: heel, foot, ball and toe controls, and every toe.</figcaption></figure>
 <h2 id="when-the-picker-shows-a-card">When the picker shows a card<a class="fs-anchor" href="#when-the-picker-shows-a-card" aria-label="Link to this section">#</a></h2>
 <p>The picker only works on its own armature, in Pose Mode. Otherwise it shows a card that says why, with a button to fix it:</p>
 <ul>
@@ -104,7 +104,8 @@
 <li>Your <strong>Pose Mode keys work here</strong>, as if the mouse were in the 3D Viewport: <span class="fs-keys"><kbd>G</kbd></span> <span class="fs-keys"><kbd>R</kbd></span> <span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>I</kbd></span>, <span class="fs-keys"><kbd>A</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span>, <span class="fs-keys"><kbd>H</kbd></span>, copy and paste pose...
 </li>
 </ul>
-<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-picker.webp" data-zoom><img src="../assets/img/frame-picker.webp" alt="A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles." width="1780" height="1696" decoding="async" loading="lazy"></a><figcaption>A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.</figcaption></figure>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-pose.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-pose.webp" data-src="../assets/media/picker-pose.mp4" width="1280" height="776" aria-label="Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character.</figcaption></figure>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-select-transform.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-select-transform.webp" data-src="../assets/media/picker-select-transform.mp4" width="1280" height="776" aria-label="With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine."></video><span class="fs-figure__tag">Recording</span></a><figcaption>With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</figcaption></figure>
 <h2 id="transform-tools">Transform tools<a class="fs-anchor" href="#transform-tools" aria-label="Link to this section">#</a></h2>
 <p>Open the toolbar (<span class="fs-keys"><kbd>T</kbd></span>) to pick what a press on a button does:</p>
 <ul>
@@ -129,13 +130,15 @@
 <ul>
 <li>In Edit Mode, press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Data &gt; Numbers &gt; Gaze (Eyes)</strong>. It comes wide, labelled <strong>Gaze</strong>, with <strong>Look: Eyes</strong>.
 </li>
-<li>On a Rigify face rig it is bound right away: X and Y move the eye target (<code>eyes</code>, or <code>eye_common</code> on the newer face rigs) left / right and up / down, as far as twice the distance between the eyes.
+<li>On a Rigify face rig it is bound right away: X and Y move the eye target (<code>eyes</code>, or <code>eye_common</code> on the newer face rigs) left / right and up / down, far enough to turn the eyes about 30 degrees left / right and 15 up / down (further, the irises would roll behind the lids).
 </li>
 <li>Any pad can switch: in the sidebar <strong>Widget</strong> tab, set <strong>Look</strong> to <strong>Pad</strong> (the grid and handle) or <strong>Eyes</strong>. The <strong>armature</strong> button next to it (<strong>Rigify Gaze</strong>) binds the pad to the active rig's eye target.
 </li>
 </ul>
-<p>The eyes take the pad's style: the whites are the <strong>Handle Color</strong>, the irises the accent colour, and the pad behind them keeps its colour, so they follow a light or dark canvas. A keyed or animated property tints the pad as usual. In Live Mode an unbound pad shows the eyes without irises (in Edit Mode they look straight ahead, like the Pad handle at the centre). On a dark pad the lashes get a faint light rim.</p>
+<p>The eyes take the pad's style: the whites are the <strong>Handle Color</strong>, the irises the accent colour, and the pad behind them keeps its colour, so they follow a light or dark canvas. To give the irises a colour of their own (your character's eyes), turn on <strong>Override Theme</strong> in its <strong>Style</strong> panel and set <strong>Iris Color</strong> (with its alpha at 0 they use the accent again). A keyed or animated property tints the pad as usual. In Live Mode an unbound pad shows the eyes without irises (in Edit Mode they look straight ahead, like the Pad handle at the centre). On a dark pad the lashes get a faint light rim.</p>
 <p>The gaze is relative to the face: X and Y move the eyes right / up as seen from the front of the face, so the pad still works when the head or the whole rig turns.</p>
+<p>The <strong>Face</strong> page of <strong>Humanoid Body (Rigify)</strong> comes with one, already bound, in its <strong>Expressions</strong> panel, its irises in the face art's eye colour.</p>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-gaze.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-gaze.webp" data-src="../assets/media/picker-gaze.mp4" width="1280" height="776" aria-label="Drag the Eyes pad and the character&#x27;s eyeballs follow, the eyes drawn on the pad looking along; the pad&#x27;s range keeps the irises in sight."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Drag the Eyes pad and the character&#x27;s eyeballs follow, the eyes drawn on the pad looking along; the pad&#x27;s range keeps the irises in sight.</figcaption></figure>
 <h2 id="build-and-edit-the-layout">Build and edit the layout<a class="fs-anchor" href="#build-and-edit-the-layout" aria-label="Link to this section">#</a></h2>
 <p>Press <span class="fs-keys"><kbd>Tab</kbd></span> to edit the picker. The <strong>Utils</strong> menu in the header has:</p>
 <ul>
@@ -156,9 +159,9 @@
 </li>
 </ul>
 <p>A button with no label takes the bone's name.</p>
-
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-edit-selected.webp" data-zoom><img src="../assets/media/picker-edit-selected.webp" alt="Edit Mode with a knob selected: the resize and rotate handles, the size chip and the minimap." width="1103" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Edit Mode with a knob selected: the resize and rotate handles, the size chip and the minimap.</figcaption></figure>
 <p>Moving things around works like any canvas, smart snapping included (see <a class="fs-xref" href="editing.html#smart-snapping"><strong>Editing Tools &gt; Smart snapping</strong></a>).</p>
-<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-edit-mode.webp" data-zoom><img src="../assets/img/frame-edit-mode.webp" alt="Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide." width="1780" height="1304" decoding="async" loading="lazy"></a><figcaption>Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-edit-snapping.webp" data-zoom><img src="../assets/media/picker-edit-snapping.webp" alt="Dragging the Rig Settings frame: the snapping guides, the equal-spacing marks, the position chip and the ghost of where it started." width="1920" height="1080" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Dragging the Rig Settings frame: the snapping guides, the equal-spacing marks, the position chip and the ghost of where it started.</figcaption></figure>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Buttons follow renamed bones. A button whose bone is gone shows <strong>Missing bone</strong> and does nothing when clicked.</p></aside>
 <h3 id="reference-image-behind-your-picker">Reference image behind your picker<a class="fs-anchor" href="#reference-image-behind-your-picker" aria-label="Link to this section">#</a></h3>
 <p>A picture of the character behind its buttons makes the picker easier to read, and to build.</p>
@@ -173,7 +176,7 @@
 </li>
 </ol>
 <p>A backdrop draws below every widget, Frames included, and in Live Mode clicks go through it to the buttons. See <a class="fs-xref" href="widgets.html#image"><strong>Widgets &gt; Image</strong></a> for every option.</p>
-<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The <strong>Face</strong> tab of the <strong>Rigify Human Picker</strong> demo is built this way: a face picture as a locked backdrop, with every face control drawn on its feature. See <strong>Rigify &gt; Bone collections</strong> for what is on it.</p></aside>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The <strong>Face</strong> page of <strong>Humanoid Body (Rigify)</strong> is built this way: a face picture as a locked backdrop, with every face control drawn on its feature and a gaze pad drawn as eyes. See <strong>Rigify &gt; Bone collections</strong> for what is on it.</p></aside>
 <h2 id="mirror">Mirror<a class="fs-anchor" href="#mirror" aria-label="Link to this section">#</a></h2>
 <p>Buttons of bones named with a side (<code>hand.L</code>, <code>hand_R</code>, <code>Left</code>/<code>Right</code>...) know their other side. In Edit Mode, moving, resizing or rotating one of a pair mirrors the other across the red centre line.</p>
 <ul>
@@ -182,6 +185,7 @@
 <li>A side button can't cross it.
 </li>
 </ul>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-mirror.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-mirror.webp" data-src="../assets/media/picker-mirror.mp4" width="1280" height="982" aria-label="In Edit Mode, move a left control and its right twin moves with it, mirrored across the body."></video><span class="fs-figure__tag">Recording</span></a><figcaption>In Edit Mode, move a left control and its right twin moves with it, mirrored across the body.</figcaption></figure>
     </article>
     <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="binding.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Binding Properties</strong></a><a class="fs-pager__link fs-pager__link--next" href="rigify.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Picker with Rigify</strong></a></nav>
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>

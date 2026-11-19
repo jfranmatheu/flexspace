@@ -96,10 +96,12 @@
             <a class="fs-btn fs-btn--ghost" href="#rigify">Rigify in one step <span class="fs-arrow" aria-hidden="true">&rarr;</span></a>
           </div>
         </div>
-        <!-- REAL-PICKER-MEDIA: hero slot for the real picker recording (MP4 + WebP poster in assets/media/, e.g. real-picker-pose). Keep the redrawn focus-picker art until the redesigned picker ships. -->
-        <figure class="fs-media" style="position:relative">
-          <a href="assets/img/frame-picker.webp" data-zoom><img src="assets/img/focus-picker.webp" width="1396" height="1584" fetchpriority="high" decoding="async" data-swap="picker-redesign" alt="A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle and a Solo button for each bone collection."></a>
+        <!-- REAL-PICKER-MEDIA: the real picker in use (Rigify Character Picker demo, rig controls hidden) -->
+        <figure class="fs-real fs-picker-hero">
+          <a class="fs-real__frame" href="assets/media/picker-select-transform.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-select-transform.webp" data-src="assets/media/picker-select-transform.mp4" width="1280" height="776" aria-label="Click in the picker, pose in the viewport: With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+          <figcaption><b>Click in the picker, pose in the viewport.</b> With the rig&#x27;s controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</figcaption>
         </figure>
+
       </div>
     </div>
   </section>
@@ -129,7 +131,6 @@
   </section>
 
   <!-- ============================================================ POSING -->
-  <!-- REAL-PICKER-MEDIA: an "In Blender" strip (fs-inblender) for posing goes at the end of this section. -->
   <section class="fs-section" aria-labelledby="pose-title">
     <div class="fs-wrap">
       <div class="fs-head fs-reveal">
@@ -156,11 +157,28 @@
           <p>The active bone's name shows next to its button while you pose. Choose <strong>Off</strong>, <strong>Active Bone</strong> or <strong>Selected Bones</strong> in the sidebar's <strong>Armature</strong> tab.</p>
         </article>
       </div>
+      <!-- REAL-PICKER-MEDIA: posing with the picker -->
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-hands-curl.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-hands-curl.webp" data-src="assets/media/picker-hands-curl.mp4" width="1280" height="776" aria-label="Curl a hand in one move: Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Curl a hand in one move.</b> Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-face-gaze.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-face-gaze.webp" data-src="assets/media/picker-face-gaze.mp4" width="1280" height="776" aria-label="Aim the eyes, then shape the face: Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Aim the eyes, then shape the face.</b> Drag the gaze pad and the character&#x27;s eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-pose.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-pose.webp" data-src="assets/media/picker-pose.mp4" width="1280" height="776" aria-label="Pose a character from the picker: Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Pose a character from the picker.</b> Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ============================================================ RIGIFY -->
-  <!-- REAL-PICKER-MEDIA: real Rigify body / hands / feet screenshots go in this band (e.g. real-picker-body, real-picker-hands, real-picker-feet). -->
   <section class="fs-band fs-band--picker" id="rigify" aria-labelledby="rigify-title">
     <div class="fs-grid-bg" aria-hidden="true"></div>
     <div class="fs-wrap">
@@ -169,7 +187,7 @@
         <h2 class="fs-h2" id="rigify-title" style="margin-top:14px">Rigify? <span class="fs-grad-text">One step.</span></h2>
         <p class="fs-lead">Select the generated rig. In the picker's Edit Mode, press <kbd class="fs-kbd">Shift A</kbd> and choose <strong>Bone Picker &gt; Humanoid Body (Rigify)</strong>. The shapes are made to measure for an adult body: <strong>Adult Male</strong> or <strong>Adult Female</strong>.</p>
       </div>
-      <div class="fs-cols fs-cols--3">
+      <div class="fs-cols fs-cols--4">
         <article class="fs-card fs-card--pad fs-reveal">
           <span class="fs-chip" style="margin-bottom:14px">Page 1</span>
           <h3 class="fs-h4">Body</h3>
@@ -185,6 +203,52 @@
           <h3 class="fs-h4">Feet</h3>
           <p>Both feet, large: heel, foot, ball, toe controls and every toe. Add toe chains to the metarig for one control per toe.</p>
         </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <span class="fs-chip" style="margin-bottom:14px">Page 4</span>
+          <h3 class="fs-h4">Face</h3>
+          <p>Every face control on the face art, the female face or the male one. An <strong>Expressions</strong> panel with a <strong>Gaze</strong> pad drawn as eyes, mouth pads and knobs; teeth, tongue and the face collections.</p>
+        </article>
+      </div>
+      <!-- REAL-PICKER-MEDIA: every page of both body charts (Live Mode) -->
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">Adult Female</span></p>
+        <div class="fs-pages">
+          <figure class="fs-real fs-real--wide">
+            <a class="fs-real__frame" href="assets/media/picker-layer-female-body.webp" data-zoom><img src="assets/media/picker-layer-female-body.webp" width="1329" height="1003" loading="lazy" decoding="async" alt="The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the female art, with the Rig Settings knobs and sliders and the bone collection switches."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Body (Adult Female).</b> The body in regions, IK hands and feet with their IK/FK pucks, poles, spine and tweaks, Rig Settings and bone collections.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--wide">
+            <a class="fs-real__frame" href="assets/media/picker-layer-female-face.webp" data-zoom><img src="assets/media/picker-layer-female-face.webp" width="1355" height="1003" loading="lazy" decoding="async" alt="The whole Face page: every face control on the female face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Face (Adult Female).</b> Every face control on the face art; the Expressions panel with the gaze pad drawn as eyes, mouth pads and knobs; teeth, tongue and the face collections.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--tall">
+            <a class="fs-real__frame" href="assets/media/picker-layer-female-hands.webp" data-zoom><img src="assets/media/picker-layer-female-hands.webp" width="991" height="1003" loading="lazy" decoding="async" alt="Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Hands (Adult Female).</b> Every finger segment, the fingertips and finger masters, the FK wrist band and the IK hand with its switch.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--tall">
+            <a class="fs-real__frame" href="assets/media/picker-layer-female-feet.webp" data-zoom><img src="assets/media/picker-layer-female-feet.webp" width="925" height="1003" loading="lazy" decoding="async" alt="Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Feet (Adult Female).</b> Heel, foot, ball and toe controls, every toe with its master, and the FK foot and toe bars.</figcaption>
+          </figure>
+        </div>
+        <p class="fs-inblender__head"><span class="fs-chip">Adult Male</span></p>
+        <div class="fs-pages">
+          <figure class="fs-real fs-real--wide">
+            <a class="fs-real__frame" href="assets/media/picker-layer-male-body.webp" data-zoom><img src="assets/media/picker-layer-male-body.webp" width="1293" height="1003" loading="lazy" decoding="async" alt="The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the male art, with the Rig Settings knobs and sliders and the bone collection switches."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Body (Adult Male).</b></figcaption>
+          </figure>
+          <figure class="fs-real fs-real--wide">
+            <a class="fs-real__frame" href="assets/media/picker-layer-male-face.webp" data-zoom><img src="assets/media/picker-layer-male-face.webp" width="1355" height="1003" loading="lazy" decoding="async" alt="The whole Face page: every face control on the male face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Face (Adult Male).</b></figcaption>
+          </figure>
+          <figure class="fs-real fs-real--tall">
+            <a class="fs-real__frame" href="assets/media/picker-layer-male-hands.webp" data-zoom><img src="assets/media/picker-layer-male-hands.webp" width="991" height="1003" loading="lazy" decoding="async" alt="Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Hands (Adult Male).</b></figcaption>
+          </figure>
+          <figure class="fs-real fs-real--tall">
+            <a class="fs-real__frame" href="assets/media/picker-layer-male-feet.webp" data-zoom><img src="assets/media/picker-layer-male-feet.webp" width="925" height="1003" loading="lazy" decoding="async" alt="Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Feet (Adult Male).</b></figcaption>
+          </figure>
+        </div>
       </div>
       <div class="fs-cols fs-cols--2" style="margin-top:16px">
         <article class="fs-card fs-card--pad fs-reveal">
@@ -208,7 +272,7 @@
       </div>
       <div class="fs-cols fs-cols--2">
         <article class="fs-wcard fs-reveal">
-          <div class="fs-wcard__art"><img src="assets/img/w-bone-pickers.webp" width="720" height="400" loading="lazy" decoding="async" alt="Bone pickers: a Button labelled Torso, a round Button Image with a bone icon, and a red IK button with its IK/FK puck at the edge."></div>
+          <div class="fs-wcard__art"><img src="assets/img/w-bone-pickers.webp" width="720" height="400" loading="lazy" decoding="async" alt="Bone pickers on the Body page of the Armature Picker: the hips shape picked, the arm and thigh bars, and each IK hand's diamond with its IK/FK puck, the active one named hand_ik.L."></div>
           <div class="fs-wcard__body">
             <h3>Bone pickers and the IK/FK puck</h3>
             <p>A Button, a Button Image or a Geometry Shape selects its bone. Each can show a small round puck at its edge that flips the limb between IK and FK. On a Rigify limb, the <strong>Rigify IK/FK</strong> button reads the rig's drivers and sets everything for you. The puck follows the property, is keyed with Auto Keying, and every click is one undo step.</p>
@@ -236,6 +300,25 @@
           </div>
         </article>
       </div>
+      <!-- REAL-PICKER-MEDIA: switches, the gaze pad and the face -->
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-ikfk.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-ikfk.webp" data-src="assets/media/picker-ikfk.mp4" width="1280" height="776" aria-label="Switch IK and FK with one click: The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Switch IK and FK with one click.</b> The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-gaze.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-gaze.webp" data-src="assets/media/picker-gaze.mp4" width="1280" height="776" aria-label="Aim the eyes with a gaze pad: Drag the Eyes pad and the character&#x27;s eyeballs follow, the eyes drawn on the pad looking along; the pad&#x27;s range keeps the irises in sight."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Aim the eyes with a gaze pad.</b> Drag the Eyes pad and the character&#x27;s eyeballs follow, the eyes drawn on the pad looking along; the pad&#x27;s range keeps the irises in sight.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-face-closeup.webp" data-zoom><img src="assets/media/picker-face-closeup.webp" width="1916" height="1031" loading="lazy" decoding="async" alt="The posed face up close, a smile, raised brows and the eyes looking aside, with the Face page next to it; Solo on Face (Primary) shows only the main face controls."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Face close-up.</b> The posed face up close, a smile, raised brows and the eyes looking aside, with the Face page next to it; Solo on Face (Primary) shows only the main face controls.</figcaption>
+          </figure>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -273,6 +356,24 @@
           <p>Save a picker as a global preset. On another rig with the same bone names, it works right away, and the presets menu shows how many of its bones the armature has.</p>
         </article>
       </div>
+      <!-- REAL-PICKER-MEDIA: editing the picker layout -->
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-mirror.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/picker-mirror.webp" data-src="assets/media/picker-mirror.mp4" width="1280" height="982" aria-label="Mirrored layout editing: In Edit Mode, move a left control and its right twin moves with it, mirrored across the body."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Mirrored layout editing.</b> In Edit Mode, move a left control and its right twin moves with it, mirrored across the body.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-edit-snapping.webp" data-zoom><img src="assets/media/picker-edit-snapping.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Drag a frame in Edit Mode: snapping guides, equal-spacing marks, the position chip and a ghost of where it started."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Edit the picker layout.</b> Drag a frame in Edit Mode: snapping guides, equal-spacing marks, the position chip and a ghost of where it started.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/picker-edit-selected.webp" data-zoom><img src="assets/media/picker-edit-selected.webp" width="1103" height="1031" loading="lazy" decoding="async" alt="A knob selected in Edit Mode: resize handles, the size chip and the minimap of the page."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Picker in Edit Mode.</b> A knob selected in Edit Mode: resize handles, the size chip and the minimap of the page.</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -282,7 +383,7 @@
       <div class="fs-row">
         <div class="fs-row__copy fs-reveal">
           <span class="fs-eyebrow">Demo files</span>
-          <h2 class="fs-h2" id="demos-title" style="margin-top:14px">Four pickers <span class="fs-grad-text">to take apart.</span></h2>
+          <h2 class="fs-h2" id="demos-title" style="margin-top:14px">Five pickers <span class="fs-grad-text">to take apart.</span></h2>
           <p>Each opens in its own Blender window, as a copy, from <strong>Help &gt; Demo Files</strong>.</p>
           <div class="fs-actions" style="margin-top:28px"><a class="fs-btn fs-btn--secondary" href="docs/rigify.html">Picker with Rigify guide</a></div>
         </div>
@@ -294,8 +395,9 @@
               <tbody>
                 <tr><th scope="row">Rigify Human Picker</th><td>A Rigify human with a picker in three tabs: Body (IK / FK limbs, rig settings, bone collection toggles), Face (a gaze pad and mouth pads) and Hands.</td></tr>
                 <tr><th scope="row">Simple Biped Picker</th><td>A small hand-made biped (no Rigify): a Hand Space enum, knobs that blend IK and FK, switches for bone collections.</td></tr>
-                <tr><th scope="row">Rigify Male Body Picker</th><td>An adult male Rigify human with five toes per foot, and a body chart picker: Body, Hands and Feet.</td></tr>
-                <tr><th scope="row">Rigify Female Body Picker</th><td>The same for an adult female body.</td></tr>
+                <tr><th scope="row">Rigify Male Body Picker</th><td>An adult male Rigify human with five toes per foot, and a body chart picker in four tabs over the character art: Body, Hands, Feet and Face.</td></tr>
+                <tr><th scope="row">Rigify Female Body Picker</th><td>The same for an adult female body, with the female face.</td></tr>
+                <tr><th scope="row">Rigify Character Picker</th><td>A rigged male base mesh with its Rigify rig (face included) in a clay studio, and a picker in four tabs over the character art: Body (with rig settings and bone collection toggles), Hands, Feet (IK, FK and heel controls) and Face (teeth and tongue, a gaze pad with eyes and mouth pads).</td></tr>
               </tbody>
             </table>
           </div>

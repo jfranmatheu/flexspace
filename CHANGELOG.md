@@ -53,9 +53,9 @@ Requires Blender 5.3 or newer.
 
 #### Armature Picker
 
-- **Humanoid Body (Rigify)**: a full picker for a Rigify rig in one step (`Shift A` > Bone Picker): Adult Male or Adult Female, with Body, Hands and Feet pages, IK/FK switches next to each IK hand and foot, and a **Hands & Feet View** option.
-- **Character Backdrop** (on by default): each page is drawn over new character art (a male and a female body, hands and feet) as a locked backdrop, with the shapes traced from the drawings. **Hands Side** shows the backs of the hands or the palms.
-- Face pickers on face art: the Rigify demos show every control of a Rigify face drawn on its feature of a female or male face, with a Gaze pad, mouth pads and knobs. Copy them as a start for your own.
+- **Humanoid Body (Rigify)**: a full picker for a Rigify rig in one step (`Shift A` > Bone Picker): Adult Male or Adult Female, with Body, Hands, Feet and Face pages, IK/FK switches next to each IK hand and foot, and a **Hands & Feet View** option.
+- **Character Backdrop** (on by default): each page is drawn over new character art (a male and a female body, hands, feet and face) as a locked backdrop, with the shapes traced from the drawings. **Hands Side** shows the backs of the hands or the palms.
+- The **Face** page: every control of a Rigify face drawn on its feature of the female or male face, with an **Expressions** panel (a Gaze pad drawn as eyes, mouth pads and knobs) and the face bone collections. The Rigify demos have it too: copy it as a start for your own.
 
 #### Demo files
 

@@ -40,10 +40,19 @@ drawings for the picker**, not about the product screenshots. The site and the s
     each feature row (features.html), an Illustration / In Blender switch on the widget gallery, real figures in the
     docs (`REAL` / `REAL_EXTRA` in build_docs.py), a "See it in action" section and "In Blender" strips on the store
     page, and real shots in the store docs.
-  - **No Armature Picker media yet** (anything `picker_*`, `gifs/picker*`, tagged `armature-picker`, and
-    `gifs/snapping.gif`, which shows a picker): the picker is being redesigned. Pages keep the redrawn picker art and
-    carry a `<!-- REAL-PICKER-MEDIA -->` marker where the real picker media will go (index, picker.html, features,
-    store page and store docs).
+  - **Armature Picker media is the redesigned picker only** (character-art pages Body, Hands, Feet and Face):
+    `make_media.py` copies only the picker files it lists (`PICKER_OK`); `gifs/snapping.gif` and `gifs/picker.gif`
+    (older captures) stay out. Where it shows (`<!-- REAL-PICKER-MEDIA -->` comments mark each place):
+    - Recordings: `picker-select-transform` (rig controls hidden: click in the picker, G / R in the viewport; the
+      lead picker loop everywhere, big on the store page), `picker-face-gaze` (gaze pad + real eyeballs, then brows
+      and mouth corners), `picker-hands-curl` (four finger masters curled in one move), `picker-pages`,
+      `picker-ikfk`, `picker-gaze`, `picker-pose`, `picker-mirror`.
+    - Every page of both body charts: `picker-layer-{female,male}-{body,face,hands,feet}` (store: the 256-colour PNGs
+      as they are). Shown as two strips (Adult Female, Adult Male) in the order Body, Face, Hands, Feet; Body + Face
+      frames share one aspect and Hands + Feet another, so each row lines up (`.fs-pages` / `.fs-lgrid`).
+    - Alternate the bodies across visuals: key visual (hero banner, og card, Superhive cover and thumbnail) and
+      `focus-picker` / `frame-picker` = Adult Male; the store page hero's floating picker (`float-picker`),
+      `card-picker`, the presets thumbnail and the `w-bone-pickers` tile = Adult Female; picker sections show both.
 
 The rest of this section is about the redrawn art.
 
@@ -56,7 +65,12 @@ How we generate, in order of preference:
 2. **Composed scenes (raster).** Hero and feature images composed new: a canvas of widget art in a stylised editor
    frame (Blender-like header strip, sidebar hint, the node-editor grid) beside an abstracted 3D Viewport (soft lit
    shapes on a gradient, no Blender UI chrome copied). Rendered at 2x with Pillow (`py -3.10`), exported as WebP
-   (q 82–88) for Pages and PNG/JPG for Superhive.
+   (q 82–88) for Pages and PNG/JPG for Superhive. The Armature Picker in these scenes is a real capture of the
+   redesigned picker (`picker_layer_*.png`, `picker_hero.png`), cropped, never redrawn.
+   **Never distort:** every image placed in another is cover-cropped to its box and scaled uniformly (`cover()`).
+   `make_graphics.py` guards `Image.resize` for the whole run and fails if any resize or placement changes an
+   image's aspect (`check_aspect()`, also run by `make_store_extras.py`); a 1x capture is not blown up past its size
+   in a frame.
 3. **Motion.** CSS animations on the vector art (a toggle flipping, a slider filling, the Ring Menu's active slot
    moving, snapping guides appearing). Where a store page needs a moving image, a short GIF is *generated* from the
    same vector frames (Pillow, ≤ 2.5 MB, 24–30 frames, 640–960 px wide). (The real screen recordings are shown as they are, as real media: see above.)
@@ -81,11 +95,12 @@ overwriting the file at the same path; no HTML edit. `docs/assets/img/images.jso
 ```json
 { "slot": "picker-body", "alt": "...", "caption": "...", "pages": ["index", "picker", "store-page"],
   "reference": ["shots/features/picker_female_body_canvas.png"], "kind": "scene|widget|motion",
-  "size": [1600, 1000], "status": "generated|placeholder", "swap": "picker-redesign" }
+  "size": [1600, 1000], "status": "generated|placeholder" }
 ```
 
-**Picker slots** (`picker-*`) carry `"swap": "picker-redesign"`: they will be replaced by the redesigned picker with
-anime-style character backdrops. Pages reference only the slot paths, so the swap is a file drop.
+**Picker art** (`focus-picker`, `frame-picker`, `card-picker`, `float-picker`, `w-bone-pickers`, the picker panel of
+the key visual, the presets and demo-browser thumbnails) is composed from real captures of the redesigned picker
+(marketing `shots/picker_layer_*.png`, `shots/picker_hero.png`; `FLEXSPACE_MEDIA_SRC` points at that folder).
 
 Slot list (reference = manifest file(s), quality ≥ 3; hero references marked ★):
 
@@ -105,16 +120,15 @@ Slot list (reference = manifest file(s), quality ≥ 3; hero references marked �
 | `themes` | motion | 1600×1000 | gifs/themes.gif, theme_sunset.png, theme_violet.png, theme_light.png |
 | `presets` | scene | 1200×750 | presets_menu.png, top_bar_preset.png, library_panel.png |
 | `demos` | scene | 1200×750 | demo_browser_full.png, empty_state_card.png |
-| `picker-body` | scene | 1600×1000 | ★ shots/features/picker_female_body_canvas.png, picker_male_body_canvas.png |
-| `picker-hero` | scene | 2400×1500 | ★ shots/picker_hero.png |
-| `picker-pose` | motion | 1280×800 | gifs/picker_pose.gif |
-| `picker-hands`, `picker-feet`, `picker-face` | scene | 1200×750 | picker_hands_canvas.png, picker_feet_canvas.png, shots/picker_pose_face.png |
+| `focus-picker`, `frame-picker` | scene (real crop) | 832×1093, 1473×1219 | ★ shots/picker_layer_male_body.png |
+| `float-picker`, `card-picker` | scene (real crop) | 580×945, 1600×1000 | ★ shots/picker_layer_female_body.png |
+| real picker media | shots + loops | as captured | picker_layer_*, picker_hero, picker_face_closeup, gifs/picker_* (see §1) |
 | `w-<widget>` (one per widget) | widget | 640×400 | shots/widgets/<widget>.png (21 files) |
 | `og-card` | scene | 1200×630 | composed from `hero-canvas` + wordmark |
 | `bug-report` | scene | 1200×750 | shots/bug_report.png (support page) |
 
 Docs figures (`<!-- image: ... -->` in help/*.md) show the real media when `build_docs.py` maps them (`REAL`), else
-these slots where one fits; a figure with neither is left out (picker figures wait for the picker redesign).
+these slots where one fits; a figure with neither is left out. Picker figures show the redesigned picker's captures.
 
 Budget: the whole `docs/` under 60 MB (about 30 MB with the real media). WebP scenes ≤ 350 KB, widget PNGs ≤ 120 KB,
 generated store GIFs ≤ 2.5 MB; real store GIFs < 4 MB each.
@@ -375,9 +389,10 @@ Number Fields, anything else → Label).
 
 ### picker.html
 
-Hero (`picker-hero`), "Saved with the rig", posing, transform tools, the Humanoid Body (Rigify) section with
-`picker-body` / `picker-hands` / `picker-feet`, IK/FK puck, knobs and 2D pads (`picker-face`), bone collections,
-mirror, repair bindings. All picker images through `picker-*` slots.
+Hero (the `picker-select-transform` recording), "Saved with the rig", posing (+ hands curl, face gaze, pose
+recordings), transform tools, the Humanoid Body (Rigify) section with its four pages (Body, Hands, Feet, Face) and
+both bodies' page strips, IK/FK puck, knobs and 2D pads (+ IK/FK, gaze, face close-up), bone collections, mirror
+(+ mirror recording, Edit Mode shots), repair bindings, the five picker demos.
 
 ### docs/ (from help/*.md)
 
@@ -387,8 +402,8 @@ Slugs and order: `getting-started`, `canvas`, `widgets`, `color-brush`, `editing
 - `%PRODUCT%` → FlexSpace. Keep both `<!-- only: flex_canvas -->` and `<!-- only: armature_picker -->` blocks
   (FlexSpace ships both modules); drop the markers and `<!-- module: ... -->` lines.
 - `<!-- hero|image: path | caption -->` → `<figure>` using the matching registry slot and the caption; no slot → omit.
-- `<!-- demos -->` → a list of the demos named in the page (Studio Control Panel, FlexSpace Studio, Sculpt Wheel,
-  Rigify Male/Female Body Picker), no invented ones.
+- `<!-- demos -->` → the demo cards, read from each module's `demos/demos.json` (10 demos: 5 Flex Space, 5 pickers),
+  no invented ones.
 - Bold UI names stay bold; `code` stays mono; tables keep their columns; `> **Note:**` / `> **Tip:**` → callouts.
 - "On this page" line → the right-column TOC (and is removed from the body).
 
@@ -417,7 +432,8 @@ Fragment: one `<div class="fsx">`, one scoped `<style>`, no scripts. Sections in
   And when it's time to animate, the Armature Picker puts every bone of your rig one click away.
 - Chips: `Control panels` · `Ring Menu` · `Layers per mode` · `Armature Picker` · `Rigify body picker`
 - Links: "Read the docs →" (Pages docs) · "Report a bug →" (issues)
-- Art: `hero-canvas` (PNG) in the selection frame.
+- Art: `frame-control-panel` (PNG) in the selection frame, with two floats: the Armature Picker (`float-picker`,
+  Adult Female, left) and the Ring Menu GIF (right). Under 860 px the floats sit side by side under the panel.
 
 **1. Trust row** (as §3.7).
 
@@ -464,9 +480,10 @@ e. `EDIT MODE` — **Lay out like a design tool.**
 f. `ARMATURE PICKER` — **Pose without hunting for bones.**
    A picker is a canvas of buttons that select the bones of your rig. It's saved with the armature, so it travels when
    you link or append the rig, and your Pose Mode keys keep working over it. Using Rigify? Add a full Humanoid Body
-   picker (body, hands and feet) in one step.
+   picker (body, hands, feet and face) in one step.
    Ticks: Bone buttons, custom shapes and mirroring · IK/FK switches, knobs and 2D pads · Bone collection toggles.
-   Art: `picker-body` (swappable).
+   Art: `focus-picker` (Adult Male); "In Blender": `picker-face-gaze`, `picker-hands-curl`, `picker-ikfk` GIFs.
+   The "See it in action" section ends with `picker-select-transform` as big as the Live Mode recording.
 
 g. `PRESETS` — **Build it once. Use it everywhere.**
    Save a canvas as a global preset and add it to any project. Linked canvases know when the preset changed, keep
@@ -493,8 +510,9 @@ its one-line description from the docs table.
 
 **6. Picker spotlight — "Rigify? One step."**
 In the picker's Edit Mode, press `Shift A` and choose **Bone Picker > Humanoid Body (Rigify)**. You get Adult Male or
-Adult Female shapes, with Body, Hands and Feet pages, IK/FK switches next to each IK hand and foot, and colours that
-read at a glance: left blue, right red, centre yellow. Art: `picker-hands`, `picker-feet` (swappable).
+Adult Female shapes, with Body, Hands, Feet and Face pages, IK/FK switches next to each IK hand and foot, and colours
+that read at a glance: left blue, right red, centre yellow. Then "Four pages, two bodies.": the
+`picker-layer-*` strips, Adult Female (with a line per page) and Adult Male, Body · Face · Hands · Feet.
 
 **7. What's inside (specs)**
 | | |
@@ -504,7 +522,7 @@ read at a glance: left blue, right red, centre yellow. Art: `picker-hands`, `pic
 | Editors | Flex Space (control panels) and Armature Picker (rig pickers) |
 | Saved in | Your .blend (canvases), the armature data (pickers), your user folder (global presets) |
 | Sharing | `.flexspace` preset files, shared presets folder |
-| Demo files | Studio Control Panel, FlexSpace Studio, Sculpt Wheel, Rigify Male and Female Body Pickers |
+| Demo files | Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, Rigify Human Picker, Simple Biped Picker, Rigify Male Body Picker, Rigify Female Body Picker, Rigify Character Picker (10) |
 | Docs | Online at jfranmatheu.github.io/flexspace and in the Help menu |
 | Support | Report a Bug inside Blender, GitHub issues, Superhive |
 | Licence | GPL-3.0-or-later |
@@ -563,8 +581,8 @@ jfranmatheu.github.io/flexspace/docs."
 8. **Color & brush widgets** — Color Picker (Wheel or Ring + Square), Color Palette, Brush Picker, Ring Menu (rings,
    items, pages, look).
 9. **The Armature Picker** — Make one, pose with it, transform tools (`T`), bone names, bone collections, mirror.
-10. **Picker with Rigify** — Humanoid Body in one step, colours and views, toes for Rigify, the IK/FK puck, repair
-    bindings.
+10. **Picker with Rigify** — Humanoid Body in one step (Body, Hands, Feet and Face pages), colours and views, toes
+    for Rigify, the IK/FK puck, repair bindings.
 11. **Presets and sharing** — Global presets, the top bar badges, Overwrite / Sync / Unlink, Restore Previous
     Version, `.flexspace` export/import, shared presets folder, the Library.
 12. **Shortcuts** — Keycap tables: everywhere, Edit Mode, while transforming, Live Mode, picker.

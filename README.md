@@ -62,7 +62,7 @@
 
 **FlexSpace** turns a Node Editor into your own control canvas. Place buttons, toggles, sliders, number fields, colour swatches and pickers, lists, labels, images, frames and Flex Boxes; bind them to any property, operator or script; lay them out with snapping, alignment and groups; give each Blender mode its own layer; share canvases as global presets or `.flexspace` files.
 
-**Armature Picker** gives animators one-click pickers for any rig: bone buttons and custom shapes, IK/FK switches, knobs and 2D pads (with a gaze control for the eyes), bone collection toggles and left/right mirroring. With Rigify, a full Humanoid Body picker (body, hands and feet over character art) is one step.
+**Armature Picker** gives animators one-click pickers for any rig: bone buttons and custom shapes, IK/FK switches, knobs and 2D pads (with a gaze control for the eyes), bone collection toggles and left/right mirroring. With Rigify, a full Humanoid Body picker (body, hands, feet and face over character art) is one step.
 
 Both require **Blender 5.3 or newer**, and both can be installed at the same time.
 

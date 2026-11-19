@@ -109,6 +109,116 @@
    "gw": 760,
    "gh": 479
   },
+  "picker-select-transform": {
+   "kind": "loop",
+   "file": "gifs/picker_select_transform.gif",
+   "title": "Click in the picker, pose in the viewport",
+   "caption": "With the rig's controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-select-transform.mp4",
+   "poster": "assets/media/picker-select-transform.webp",
+   "gif": "assets/media/store/picker-select-transform.gif",
+   "still": "assets/media/store/picker-select-transform-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "picker-face-gaze": {
+   "kind": "loop",
+   "file": "gifs/picker_face_gaze.gif",
+   "title": "Aim the eyes, then shape the face",
+   "caption": "Drag the gaze pad and the character's eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-face-gaze.mp4",
+   "poster": "assets/media/picker-face-gaze.webp",
+   "gif": "assets/media/store/picker-face-gaze.gif",
+   "still": "assets/media/store/picker-face-gaze-still.png",
+   "gw": 816,
+   "gh": 496
+  },
+  "picker-hands-curl": {
+   "kind": "loop",
+   "file": "gifs/picker_hands_curl.gif",
+   "title": "Curl a hand in one move",
+   "caption": "Shift-click the four finger masters in the picker and curl them together in the viewport (R, X X), then the thumb.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-hands-curl.mp4",
+   "poster": "assets/media/picker-hands-curl.webp",
+   "gif": "assets/media/store/picker-hands-curl.gif",
+   "still": "assets/media/store/picker-hands-curl-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "picker-pages": {
+   "kind": "loop",
+   "file": "gifs/picker_pages.gif",
+   "title": "Body, hands, feet and face on tabs",
+   "caption": "Each part of the character has its own tab, drawn over the character art: switch tabs and pick fingers, feet or the jaw.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-pages.mp4",
+   "poster": "assets/media/picker-pages.webp",
+   "gif": "assets/media/store/picker-pages.gif",
+   "still": "assets/media/store/picker-pages-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "picker-ikfk": {
+   "kind": "loop",
+   "file": "gifs/picker_ikfk.gif",
+   "title": "Switch IK and FK with one click",
+   "caption": "The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-ikfk.mp4",
+   "poster": "assets/media/picker-ikfk.webp",
+   "gif": "assets/media/store/picker-ikfk.gif",
+   "still": "assets/media/store/picker-ikfk-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "picker-gaze": {
+   "kind": "loop",
+   "file": "gifs/picker_gaze.gif",
+   "title": "Aim the eyes with a gaze pad",
+   "caption": "Drag the Eyes pad and the character's eyeballs follow, the eyes drawn on the pad looking along; the pad's range keeps the irises in sight.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-gaze.mp4",
+   "poster": "assets/media/picker-gaze.webp"
+  },
+  "picker-pose": {
+   "kind": "loop",
+   "file": "gifs/picker_pose.gif",
+   "title": "Pose a character from the picker",
+   "caption": "Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-pose.mp4",
+   "poster": "assets/media/picker-pose.webp"
+  },
+  "picker-face": {
+   "kind": "loop",
+   "file": "gifs/picker_face.gif",
+   "title": "Pick face controls on a face chart",
+   "caption": "Pick brows and mouth corners on the drawn face, Shift for both sides, and move them in the viewport for an expression.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/picker-face.mp4",
+   "poster": "assets/media/picker-face.webp"
+  },
+  "picker-mirror": {
+   "kind": "loop",
+   "file": "gifs/picker_mirror.gif",
+   "title": "Mirrored layout editing",
+   "caption": "In Edit Mode, move a left control and its right twin moves with it, mirrored across the body.",
+   "w": 1280,
+   "h": 982,
+   "mp4": "assets/media/picker-mirror.mp4",
+   "poster": "assets/media/picker-mirror.webp"
+  },
   "control-panel-dark": {
    "kind": "shot",
    "file": "shots/control_panel_dark.png",
@@ -526,6 +636,225 @@
    "sw": 600,
    "sh": 380
   },
+  "picker-layer-female-body": {
+   "kind": "shot",
+   "file": "shots/picker_layer_female_body.png",
+   "title": "Body page (female)",
+   "caption": "The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the female art, with the Rig Settings knobs and sliders and the bone collection switches.",
+   "w": 1329,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-female-body.webp",
+   "store": "assets/media/store/picker-layer-female-body.png",
+   "sw": 1329,
+   "sh": 1003
+  },
+  "picker-layer-female-face": {
+   "kind": "shot",
+   "file": "shots/picker_layer_female_face.png",
+   "title": "Face page (female)",
+   "caption": "The whole Face page: every face control on the female face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections.",
+   "w": 1355,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-female-face.webp",
+   "store": "assets/media/store/picker-layer-female-face.png",
+   "sw": 1355,
+   "sh": 1003
+  },
+  "picker-layer-female-hands": {
+   "kind": "shot",
+   "file": "shots/picker_layer_female_hands.png",
+   "title": "Hands page (female)",
+   "caption": "Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches.",
+   "w": 991,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-female-hands.webp",
+   "store": "assets/media/store/picker-layer-female-hands.png",
+   "sw": 991,
+   "sh": 1003
+  },
+  "picker-layer-female-feet": {
+   "kind": "shot",
+   "file": "shots/picker_layer_female_feet.png",
+   "title": "Feet page (female)",
+   "caption": "Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection.",
+   "w": 925,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-female-feet.webp",
+   "store": "assets/media/store/picker-layer-female-feet.png",
+   "sw": 925,
+   "sh": 1003
+  },
+  "picker-layer-male-body": {
+   "kind": "shot",
+   "file": "shots/picker_layer_male_body.png",
+   "title": "Body page (male)",
+   "caption": "The whole Body page: torso, limbs, IK and FK controls, poles and tweaks over the male art, with the Rig Settings knobs and sliders and the bone collection switches.",
+   "w": 1293,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-male-body.webp",
+   "store": "assets/media/store/picker-layer-male-body.png",
+   "sw": 1293,
+   "sh": 1003
+  },
+  "picker-layer-male-face": {
+   "kind": "shot",
+   "file": "shots/picker_layer_male_face.png",
+   "title": "Face page (male)",
+   "caption": "The whole Face page: every face control on the male face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections.",
+   "w": 1355,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-male-face.webp",
+   "store": "assets/media/store/picker-layer-male-face.png",
+   "sw": 1355,
+   "sh": 1003
+  },
+  "picker-layer-male-hands": {
+   "kind": "shot",
+   "file": "shots/picker_layer_male_hands.png",
+   "title": "Hands page (male)",
+   "caption": "Both hands, every finger segment, the finger masters under each hand and the IK / FK controls at the wrists, with the finger collection switches.",
+   "w": 991,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-male-hands.webp",
+   "store": "assets/media/store/picker-layer-male-hands.png",
+   "sw": 991,
+   "sh": 1003
+  },
+  "picker-layer-male-feet": {
+   "kind": "shot",
+   "file": "shots/picker_layer_male_feet.png",
+   "title": "Feet page (male)",
+   "caption": "Both feet: the IK, heel and toe controls, the FK bars and every toe with its master, and a switch for the toe collection.",
+   "w": 925,
+   "h": 1003,
+   "webp": "assets/media/picker-layer-male-feet.webp",
+   "store": "assets/media/store/picker-layer-male-feet.png",
+   "sw": 925,
+   "sh": 1003
+  },
+  "picker-hero": {
+   "kind": "shot",
+   "file": "shots/picker_hero.png",
+   "title": "Pose a character from its picker",
+   "caption": "A rigged character posed from the Body page: click a body part to select its control, then move it in the 3D Viewport.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/picker-hero.webp",
+   "store": "assets/media/store/picker-hero.jpg",
+   "sw": 1600,
+   "sh": 900
+  },
+  "picker-face-closeup": {
+   "kind": "shot",
+   "file": "shots/picker_face_closeup.png",
+   "title": "Face close-up",
+   "caption": "The posed face up close, a smile, raised brows and the eyes looking aside, with the Face page next to it; Solo on Face (Primary) shows only the main face controls.",
+   "w": 1916,
+   "h": 1031,
+   "webp": "assets/media/picker-face-closeup.webp",
+   "store": "assets/media/store/picker-face-closeup.jpg",
+   "sw": 1600,
+   "sh": 861
+  },
+  "picker-pose-body": {
+   "kind": "shot",
+   "file": "shots/picker_pose_body.png",
+   "title": "Body page",
+   "caption": "The Body page over the character art: FK regions, IK hands and feet, poles, spine and tweaks, with rig settings and bone collection switches.",
+   "w": 1103,
+   "h": 1031,
+   "webp": "assets/media/picker-pose-body.webp"
+  },
+  "picker-pose-hands": {
+   "kind": "shot",
+   "file": "shots/picker_pose_hands.png",
+   "title": "Hands page",
+   "caption": "Every finger segment of both hands over the hand art, with the finger masters under each hand and the IK, FK and switch controls at the wrist.",
+   "w": 1103,
+   "h": 1031,
+   "webp": "assets/media/picker-pose-hands.webp"
+  },
+  "picker-pose-feet": {
+   "kind": "shot",
+   "file": "shots/picker_pose_feet.png",
+   "title": "Feet page",
+   "caption": "Heel, foot, spin and toe controls of both feet over the foot art, with the IK / FK switch and the leg collection switches.",
+   "w": 1103,
+   "h": 1031,
+   "webp": "assets/media/picker-pose-feet.webp"
+  },
+  "picker-pose-face": {
+   "kind": "shot",
+   "file": "shots/picker_pose_face.png",
+   "title": "Face page",
+   "caption": "Brows, lids, cheeks, nose, lips and jaw drawn on a face, with teeth and tongue, an eyes gaze control and mouth pads for expressions.",
+   "w": 1103,
+   "h": 1031,
+   "webp": "assets/media/picker-pose-face.webp"
+  },
+  "picker-male-body": {
+   "kind": "shot",
+   "file": "shots/picker_male_body.png",
+   "title": "Body chart picker (male)",
+   "caption": "The Humanoid Body chart for a male Rigify rig: one click adds the whole page, drawn over the body art.",
+   "w": 1348,
+   "h": 1031,
+   "webp": "assets/media/picker-male-body.webp"
+  },
+  "picker-female-body": {
+   "kind": "shot",
+   "file": "shots/picker_female_body.png",
+   "title": "Body chart picker (female)",
+   "caption": "The same chart for a female Rigify rig, drawn over the female body art.",
+   "w": 1348,
+   "h": 1031,
+   "webp": "assets/media/picker-female-body.webp"
+  },
+  "picker-hands": {
+   "kind": "shot",
+   "file": "shots/picker_hands.png",
+   "title": "Hands picker",
+   "caption": "The Humanoid Body's Hands page: every finger bone of both hands, mirrored left and right, with the finger collections on top.",
+   "w": 1348,
+   "h": 1031,
+   "webp": "assets/media/picker-hands.webp"
+  },
+  "picker-feet": {
+   "kind": "shot",
+   "file": "shots/picker_feet.png",
+   "title": "Feet picker",
+   "caption": "The Humanoid Body's Feet page: heel, foot and toe controls and every toe segment, with a switch for the toe collection.",
+   "w": 1348,
+   "h": 1031,
+   "webp": "assets/media/picker-feet.webp"
+  },
+  "picker-humanoid-face": {
+   "kind": "shot",
+   "file": "shots/picker_humanoid_face.png",
+   "title": "Face page picker",
+   "caption": "The Face page of the Humanoid Body chart: every face control on the anime face, a gaze pad drawn as eyes, mouth pads, knobs, the teeth and tongue and the face bone collections.",
+   "w": 1007,
+   "h": 954,
+   "webp": "assets/media/picker-humanoid-face.webp"
+  },
+  "picker-edit-snapping": {
+   "kind": "shot",
+   "file": "shots/picker_edit_snapping.png",
+   "title": "Edit the picker layout",
+   "caption": "Drag a frame in Edit Mode: snapping guides, equal-spacing marks, the position chip and a ghost of where it started.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/picker-edit-snapping.webp"
+  },
+  "picker-edit-selected": {
+   "kind": "shot",
+   "file": "shots/picker_edit_selected.png",
+   "title": "Picker in Edit Mode",
+   "caption": "A knob selected in Edit Mode: resize handles, the size chip and the minimap of the page.",
+   "w": 1103,
+   "h": 1031,
+   "webp": "assets/media/picker-edit-selected.webp"
+  },
   "w-operator": {
    "kind": "widget",
    "file": "shots/widgets/operator.png",
@@ -678,6 +1007,42 @@
    "w": 480,
    "h": 267,
    "webp": "assets/media/widgets/group.webp"
+  },
+  "w-bone-collection-toggle": {
+   "kind": "widget",
+   "file": "shots/widgets/bone_collection_toggle.png",
+   "title": "Widget: Bone Collection toggle",
+   "caption": "Show or hide a bone collection, with a Solo radio next to it.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/bone-collection-toggle.webp"
+  },
+  "w-radial-slider": {
+   "kind": "widget",
+   "file": "shots/widgets/slider_radial.png",
+   "title": "Widget: Knob",
+   "caption": "A radial slider for a rig property, here Rigify's Head Follow.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/radial-slider.webp"
+  },
+  "w-lineal-2d-slider": {
+   "kind": "widget",
+   "file": "shots/widgets/slider_lineal_2d.png",
+   "title": "Widget: 2D Pad",
+   "caption": "Two properties on one pad, X and Y: a gaze, a mouth corner, any pair of values.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/lineal-2d-slider.webp"
+  },
+  "w-bone-pickers": {
+   "kind": "widget",
+   "file": "shots/widgets/bone_pickers.png",
+   "title": "Widgets: bone pickers",
+   "caption": "A button, an image button and a shape, each selecting its bone on click.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/bone-pickers.webp"
   }
  }
 }

@@ -4,8 +4,9 @@
     py -3.10 docs/_design/make_media.py --src X:/path/to/marketing/flexspace
 
 Real media sits next to the redrawn art (docs/assets/img/, make_graphics.py); it does not replace it.
-Only the files listed in MEDIA below are copied (manifest quality >= 3). No Armature Picker media: the picker is being
-redesigned, its real shots come later (pages carry a <!-- REAL-PICKER-MEDIA --> marker where they will go).
+Only the files listed below are copied (manifest quality >= 3). Armature Picker media is the redesigned picker only
+(the character-art pages: Body, Hands, Feet and Face); anything else with "picker" in its name has to be listed in
+PICKER_OK to be used, so an old capture of the block-style picker can't slip in.
 
 Writes:
   docs/assets/media/<name>.webp           stills for the Pages site (WebP)
@@ -47,6 +48,16 @@ LOOPS = [
     ("gifs/from_property.gif", "from-property", True),
     ("gifs/lineal_slider.gif", "lineal-slider", False),
     ("gifs/themes.gif", "themes", True),
+    # the redesigned Armature Picker (Rigify Character Picker demo, rig controls hidden where it says so)
+    ("gifs/picker_select_transform.gif", "picker-select-transform", True),
+    ("gifs/picker_face_gaze.gif", "picker-face-gaze", True),
+    ("gifs/picker_hands_curl.gif", "picker-hands-curl", True),
+    ("gifs/picker_pages.gif", "picker-pages", True),
+    ("gifs/picker_ikfk.gif", "picker-ikfk", True),
+    ("gifs/picker_gaze.gif", "picker-gaze", False),
+    ("gifs/picker_pose.gif", "picker-pose", False),
+    ("gifs/picker_face.gif", "picker-face", False),
+    ("gifs/picker_mirror.gif", "picker-mirror", False),
 ]
 SHOTS = [
     ("shots/control_panel_dark.png", "control-panel-dark", True),
@@ -89,21 +100,47 @@ SHOTS = [
     ("shots/features/top_bar_preset.png", "top-bar-preset", False),
     ("shots/features/library_full.png", "library", True),
     ("shots/features/empty_state_card.png", "empty-state", True),
+    # the redesigned Armature Picker: every page of both body charts (whole pages, Live Mode), and the demos
+    ("shots/picker_layer_female_body.png", "picker-layer-female-body", True),
+    ("shots/picker_layer_female_face.png", "picker-layer-female-face", True),
+    ("shots/picker_layer_female_hands.png", "picker-layer-female-hands", True),
+    ("shots/picker_layer_female_feet.png", "picker-layer-female-feet", True),
+    ("shots/picker_layer_male_body.png", "picker-layer-male-body", True),
+    ("shots/picker_layer_male_face.png", "picker-layer-male-face", True),
+    ("shots/picker_layer_male_hands.png", "picker-layer-male-hands", True),
+    ("shots/picker_layer_male_feet.png", "picker-layer-male-feet", True),
+    ("shots/picker_hero.png", "picker-hero", True),
+    ("shots/picker_face_closeup.png", "picker-face-closeup", True),
+    ("shots/picker_pose_body.png", "picker-pose-body", False),
+    ("shots/picker_pose_hands.png", "picker-pose-hands", False),
+    ("shots/picker_pose_feet.png", "picker-pose-feet", False),
+    ("shots/picker_pose_face.png", "picker-pose-face", False),
+    ("shots/picker_male_body.png", "picker-male-body", False),
+    ("shots/picker_female_body.png", "picker-female-body", False),
+    ("shots/picker_hands.png", "picker-hands", False),
+    ("shots/picker_feet.png", "picker-feet", False),
+    ("shots/picker_humanoid_face.png", "picker-humanoid-face", False),
+    ("shots/picker_edit_snapping.png", "picker-edit-snapping", False),
+    ("shots/picker_edit_selected.png", "picker-edit-selected", False),
 ]
-# shots/widgets/<file>.png -> the gallery id on widgets.html (picker widgets left out on purpose)
+# shots/widgets/<file>.png -> the gallery id on widgets.html
 WIDGET_SHOTS = {
     "operator": "operator", "custom_script": "custom-script", "toggle": "toggle", "enum": "enum",
     "color_swatch": "color-swatch", "color_picker": "color-picker", "color_palette": "color-palette",
     "brush_picker": "brush-picker", "ring_menu": "ring-menu", "list": "list", "slider_lineal": "lineal-slider",
     "number_field": "number-field", "label": "label", "image": "image", "frame": "frame", "flex_box": "flex-box",
     "group": "group",
+    # the picker's own widgets
+    "bone_collection_toggle": "bone-collection-toggle", "slider_radial": "radial-slider",
+    "slider_lineal_2d": "lineal-2d-slider", "bone_pickers": "bone-pickers",
 }
-PICKER_WORDS = ("picker_", "armature-picker")
+# Captures of the redesigned picker (character art, Face page): the only picker media allowed.
+PICKER_OK = {f for f, _n, _s in LOOPS + SHOTS if "picker" in f} | {
+    f"shots/widgets/{w}.png" for w in ("bone_collection_toggle", "slider_radial", "slider_lineal_2d", "bone_pickers")}
 
 
 def is_picker(entry) -> bool:
-    return any(w in entry["file"] for w in PICKER_WORDS[:1]) or "armature-picker" in entry.get("tags", []) \
-        or entry.get("feature") == "armature-picker"
+    return "picker_" in entry["file"] or "armature-picker" in entry.get("tags", [])         or entry.get("feature") == "armature-picker"
 
 
 def run(*cmd):
@@ -159,8 +196,8 @@ def main():
         e = by_file.get(f)
         if e is None:
             raise SystemExit(f"not in the manifest: {f}")
-        if e["quality"] < 3 or is_picker(e):
-            raise SystemExit(f"not allowed (quality < 3 or picker): {f}")
+        if e["quality"] < 3 or (is_picker(e) and f not in PICKER_OK):
+            raise SystemExit(f"not allowed (quality < 3, or not a redesigned-picker capture): {f}")
         return e
 
     tmp = Path(tempfile.mkdtemp(prefix="fsmedia-"))
@@ -202,7 +239,16 @@ def main():
             item = {"kind": "shot", "file": f, "title": e["title"], "caption": e["caption"],
                     "w": web.width, "h": web.height, "webp": rel(OUT / f"{name}.webp")}
             if store:
-                s = store_still(fit(im, 1600), STORE / name)
+                with Image.open(src / f) as raw:
+                    palette_png = raw.format == "PNG" and raw.mode == "P" and raw.width <= 1600
+                if palette_png:
+                    # already a small 256-colour PNG (the picker pages): copy it as it is, crisp and light
+                    for old in (STORE / f"{name}.jpg",):
+                        old.unlink(missing_ok=True)
+                    s = STORE / f"{name}.png"
+                    shutil.copyfile(src / f, s)
+                else:
+                    s = store_still(fit(im, 1600), STORE / name)
                 with Image.open(s) as si:
                     item.update(store=rel(s), sw=si.width, sh=si.height)
             reg["items"][name] = item
