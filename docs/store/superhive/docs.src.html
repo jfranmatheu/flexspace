@@ -120,8 +120,16 @@ th, td { margin: 0; border: 0; }
 .pt .k { width: 30%; }
 .kt .k { width: 34%; }
 .kt .k kbd { margin: 0 2px 4px 0; }
-.tt th, .tt td { padding-left: 9px; padding-right: 9px; }
-.tt .k { width: 26%; }
+
+/* troubleshooting: a card per row, three columns from a 500 px row, stacked below (each part keeps its label) */
+.tcs { margin: 16px 0 0; overflow: hidden; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); }
+.trow { display: flex; flex-wrap: wrap; padding: 5px 2px; border-top: 1px solid rgba(255,255,255,.06); background-color: #111114; color: #c9c6c0;
+  font-size: 14.5px; line-height: 1.5; }
+.trow.ev { background-color: #131316; }
+.trow.r1 { border-top: 0; }
+.tc { flex: 0 1 calc((500px - 100%) * 999); min-width: 37%; padding: 5px 9px; }
+.tc.k { min-width: 26%; color: #f4f2ee; font-weight: 600; }
+.tl { display: block; margin: 0 0 2px; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; line-height: 1.4; color: #85827c; }
 
 /* ---------- widget reference ---------- */
 .wgrid { display: flex; flex-wrap: wrap; margin: 13px -5px 0; }
@@ -668,19 +676,14 @@ th, td { margin: 0; border: 0; }
   <span class="num">14 /</span>
   <h2>Troubleshooting</h2>
   <p class="lead">Find what you see, then its cause and its fix.</p>
-  <div class="tw">
-    <table class="tb tt">
-      <thead><tr><th>YOU SEE</th><th>WHY</th><th>FIX</th></tr></thead>
-      <tbody>
-        <tr><td class="k">Some widgets are gone</td><td>The <strong>View Object Types</strong> menu hides them, or they are on another page.</td><td>Turn the type back on at the end of the header, or check the page selector.</td></tr>
-        <tr class="ev"><td class="k">A dashed outline in Edit Mode</td><td>Its binding doesn't work: a wrong path, or the wrong kind of property.</td><td>Select it and read the note under its <strong>Data Path</strong>.</td></tr>
-        <tr><td class="k"><span class="pill">⚠ N broken</span> on the top bar</td><td>That many widgets have a broken binding.</td><td>Click it: it frames the next one and opens its settings.</td></tr>
-        <tr class="ev"><td class="k">An operator button is red</td><td>The operator can't run right now, for example a pose tool with no armature in Pose Mode.</td><td>Use it in the right mode, or pick another operator.</td></tr>
-        <tr><td class="k">"Run Untrusted Code?"</td><td>The button runs code stored in the .blend and <strong>Auto Run Python Scripts</strong> is off.</td><td>Click <strong>Trust and Run</strong> if you trust the file. It asks once per session.</td></tr>
-        <tr class="ev"><td class="k"><kbd>Shift A</kbd> does nothing</td><td>Widgets are added in Edit Mode.</td><td>Press <kbd>Tab</kbd> first. In a picker, the rig must be in Pose Mode too.</td></tr>
-        <tr><td class="k">The picker shows a card</td><td>A picker works on its own armature, in Pose Mode.</td><td>The card's button fixes it: <strong>Enter Pose Mode</strong>, <strong>Pose "rig"</strong> or <strong>Use it for ...</strong></td></tr>
-      </tbody>
-    </table>
+  <div class="tcs">
+    <div class="trow r1"><div class="tc k"><span class="tl">YOU SEE</span>Some widgets are gone</div><div class="tc"><span class="tl">WHY</span>The <strong>View Object Types</strong> menu hides them, or they are on another page.</div><div class="tc"><span class="tl">FIX</span>Turn the type back on at the end of the header, or check the page selector.</div></div>
+    <div class="trow ev"><div class="tc k"><span class="tl">YOU SEE</span>A dashed outline in Edit Mode</div><div class="tc"><span class="tl">WHY</span>Its binding doesn't work: a wrong path, or the wrong kind of property.</div><div class="tc"><span class="tl">FIX</span>Select it and read the note under its <strong>Data Path</strong>.</div></div>
+    <div class="trow"><div class="tc k"><span class="tl">YOU SEE</span><span class="pill">⚠ N broken</span> on the top bar</div><div class="tc"><span class="tl">WHY</span>That many widgets have a broken binding.</div><div class="tc"><span class="tl">FIX</span>Click it: it frames the next one and opens its settings.</div></div>
+    <div class="trow ev"><div class="tc k"><span class="tl">YOU SEE</span>An operator button is red</div><div class="tc"><span class="tl">WHY</span>The operator can't run right now, for example a pose tool with no armature in Pose Mode.</div><div class="tc"><span class="tl">FIX</span>Use it in the right mode, or pick another operator.</div></div>
+    <div class="trow"><div class="tc k"><span class="tl">YOU SEE</span>"Run Untrusted Code?"</div><div class="tc"><span class="tl">WHY</span>The button runs code stored in the .blend and <strong>Auto Run Python Scripts</strong> is off.</div><div class="tc"><span class="tl">FIX</span>Click <strong>Trust and Run</strong> if you trust the file. It asks once per session.</div></div>
+    <div class="trow ev"><div class="tc k"><span class="tl">YOU SEE</span><kbd>Shift A</kbd> does nothing</div><div class="tc"><span class="tl">WHY</span>Widgets are added in Edit Mode.</div><div class="tc"><span class="tl">FIX</span>Press <kbd>Tab</kbd> first. In a picker, the rig must be in Pose Mode too.</div></div>
+    <div class="trow"><div class="tc k"><span class="tl">YOU SEE</span>The picker shows a card</div><div class="tc"><span class="tl">WHY</span>A picker works on its own armature, in Pose Mode.</div><div class="tc"><span class="tl">FIX</span>The card's button fixes it: <strong>Enter Pose Mode</strong>, <strong>Pose "rig"</strong> or <strong>Use it for ...</strong></div></div>
   </div>
   <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/troubleshooting.html">Full guide →</a></div>
 </div>
