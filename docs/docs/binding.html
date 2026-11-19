@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Binding Properties · FlexSpace Docs</title>
+<meta name="description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/binding.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Binding Properties · FlexSpace Docs">
+<meta property="og:description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/binding.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html" aria-current="page">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Binding</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html" aria-current="page">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
+      <h1>Binding Properties</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></details>
+    <article class="fs-prose">
+<p>Sliders, toggles and property labels control a Blender property through a <strong>Data Path</strong>. Operator buttons run an operator. This page shows the quick ways to set them up.</p>
+<h2 id="data-paths">Data paths<a class="fs-anchor" href="#data-paths" aria-label="Link to this section">#</a></h2>
+<p>A data path starts from the current context, the same way Python reaches it through <code>bpy.context</code>:</p>
+<ul>
+<li><code>scene.<wbr>frame_current</code>: the current frame.
+</li>
+<li><code>active_object.<wbr>location[0]</code>: the X location of the active object.
+</li>
+<li><code>active_object.<wbr>pose.<wbr>bones[&quot;jaw&quot;][&quot;open&quot;]</code>: a custom property of the bone <code>jaw</code> of the active rig.
+</li>
+<li><code>space_data.<wbr>overlay.<wbr>show_overlays</code>: a setting of the editor the widget is drawn in.
+</li>
+</ul>
+<p>A path that starts with <code>active_object</code> follows whatever object is active, unless the widget is pinned to one object (see below).</p>
+<p>Each widget expects one kind of property: sliders and number fields take a number (integer or float), toggles a boolean, an Enum (or a toggle in <strong>Set Value</strong> mode) an enum or an integer, a Color Swatch, Color Picker or Color Palette a colour, labels anything.</p>
+<h2 id="the-eyedropper">The eyedropper<a class="fs-anchor" href="#the-eyedropper" aria-label="Link to this section">#</a></h2>
+<p>The fastest way to bind a widget:</p>
+<ol>
+<li>Select the widget in Edit Mode and find its <strong>Data Path</strong> field in the sidebar.
+</li>
+<li>Click the eyedropper button next to the field. The field now says what to pick:
+<ul>
+<li><strong>Right Click a Slider-Like Property</strong> for a slider or number field.
+</li>
+<li><strong>Right Click a Boolean Property</strong> for a toggle.
+</li>
+<li><strong>Right Click an Enum or Integer Property</strong> for an Enum (or a toggle in <strong>Set Value</strong> mode).
+</li>
+<li><strong>Right Click a Color Property</strong> for a Color Swatch, Color Picker or Color Palette.
+</li>
+</ul>
+</li>
+</ol>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/binding-eyedropper.webp" data-zoom><img src="../assets/media/binding-eyedropper.webp" alt="The eyedropper is on: the sidebar asks for a slider-like property. Right-click the light&#x27;s Exposure field to bind the selected slider to it." width="1350" height="507" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The eyedropper is on: the sidebar asks for a slider-like property. Right-click the light's <strong>Exposure</strong> field to bind the selected slider to it.</figcaption></figure>
+<ol start="3">
+<li>Right-click the property you want, in any editor (the Properties editor, the sidebar of the 3D Viewport...).
+</li>
+<li>Done: the path is filled in for you. For a slider, <strong>Min</strong> and <strong>Max</strong> are also set from the property's range.
+</li>
+</ol>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/binding-data-path.webp" data-zoom><img src="../assets/media/binding-data-path.webp" alt="After the pick: the field holds active_object.data.exposure, the pin control under it shows the slider drives this light, and the slider is labelled and shows its value." width="1008" height="372" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>After the pick: the field holds <code>active_object.<wbr>data.<wbr>exposure</code>, the pin control under it shows the slider drives this light, and the slider is labelled and shows its value.</figcaption></figure>
+<p>Press <span class="fs-keys"><kbd>Esc</kbd></span> to cancel at any time.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> For an <strong>Operator</strong> button, use <strong>Pick Operator from UI</strong> instead and right-click a button: the operator and its settings are copied.</p></aside>
+<h2 id="follow-the-active-object-or-pin-one">Follow the active object or pin one<a class="fs-anchor" href="#follow-the-active-object-or-pin-one" aria-label="Link to this section">#</a></h2>
+<p>A path that starts with <code>active_object</code> (<code>active_object.<wbr>data.<wbr>energy</code>, the power of a light) can work two ways. The pin control under the <strong>Data Path</strong> field shows which one:</p>
+<ul>
+<li><strong>Active Object</strong>: the widget drives whatever object is active. Select another light and it drives that one.
+</li>
+<li><strong>Pinned</strong> (the object's name, with a pin icon): the widget always drives that object, whatever is active. Renaming the object keeps the binding.
+</li>
+</ul>
+<p>Click the pin control to switch: pinning takes the object that is active now, unpinning makes the widget follow the active object again. The object field next to it pins any other object.</p>
+<p>On a FlexSpace canvas, the eyedropper and <strong>Add from Property</strong> pin the object you picked from, so a control panel keeps driving "this light's power". Unpin a widget that should follow the active object.</p>
+<p>On an Armature Picker, they leave the widget following the active object, so a picker drives whichever rig you are posing. Pin a widget that should always drive one object.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> If a pinned object is deleted, the widget shows <strong>Pinned object is gone</strong>. Pin another object, or unpin it to follow the active object. Until then the deleted object stays in the file, kept by the pin, so undo or a re-link into the scene brings the binding back.</p></aside>
+<h2 id="copy-full-data-path">Copy Full Data Path<a class="fs-anchor" href="#copy-full-data-path" aria-label="Link to this section">#</a></h2>
+<p>Right-click any property in Blender and choose <strong>Copy Full Data Path</strong> (or hover it and press <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Shift</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>C</kbd></span>), then paste it into the Data Path field with <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>V</kbd></span>.</p>
+<p>A path like <code>bpy.<wbr>data.<wbr>objects[&quot;Cube&quot;].<wbr>location</code> is turned into the form FlexSpace stores, <code>blend_data.<wbr>objects[&quot;Cube&quot;].<wbr>location</code>. It always drives that object, whatever is active.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> <strong>Copy Data Path</strong> (without "Full") gives only the end of the path, like <code>location</code>, which doesn't say whose location. Use <strong>Copy Full Data Path</strong>.</p></aside>
+<h2 id="when-a-binding-is-broken">When a binding is broken<a class="fs-anchor" href="#when-a-binding-is-broken" aria-label="Link to this section">#</a></h2>
+<p>In Edit Mode a widget whose path doesn't work gets a dashed warning outline and a note in its badge. The sidebar says why under the field:</p>
+<ul>
+<li><strong>Pick a property, or paste its path</strong> (muted): nothing is bound yet.
+</li>
+<li><strong>Path not found</strong>: the path doesn't lead anywhere (a renamed object or bone, a typo).
+</li>
+<li><strong>Pinned object is gone</strong>: the object the widget is pinned to was deleted.
+</li>
+<li><strong>Not a number</strong>, <strong>Not a boolean</strong>, <strong>Not an enum or integer</strong> or <strong>Not a colour</strong>: the property is of the wrong kind for this widget.
+</li>
+<li><strong>No items</strong>: an Enum bound to an integer has no item list yet (and no small range to show).
+</li>
+</ul>
+<p>The canvas top bar counts them on every layer that works in the current mode and with the active object (<strong>⚠ 2 broken</strong>, <strong>1 unbound</strong>). Click the count to jump to the next broken widget, see <strong>The canvas top bar</strong>.</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/broken-bindings.webp" data-zoom><img src="../assets/media/broken-bindings.webp" alt="A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.</figcaption></figure>
+<h2 id="show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property<a class="fs-anchor" href="#show-hide-or-disable-a-widget-with-a-property" aria-label="Link to this section">#</a></h2>
+<p>Any widget can follow a boolean property: show it only while <strong>Simplify</strong> is on, grey a slider out while the rig is in FK. Select the widget in Edit Mode and open the <strong>Conditions</strong> panel of the sidebar (<strong>Widget</strong> tab):</p>
+<ul>
+<li><strong>Visible When</strong>: the widget is shown only while this property is on. In Live Mode a hidden widget is not drawn, can't be clicked, and is left out of the minimap. In Edit Mode it is drawn faint, so you can still select, move and edit it.
+</li>
+<li><strong>Disabled When</strong>: the widget is greyed out while this property is on (faded by the theme's <strong>Disabled Opacity</strong>). In Live Mode a click or drag on it does nothing and adds no undo step.
+</li>
+</ul>
+<p>Each one takes a data path to a boolean, like a toggle's (for example <code>scene.<wbr>render.<wbr>use_simplify</code>). Type or paste it, or use the eyedropper button and right-click a checkbox anywhere in Blender. The arrows button next to the field (<strong>Invert</strong>) flips it: shown or disabled while the property is off.</p>
+<p>Under the field the panel says what the condition does now (<strong>Shown now</strong>, <strong>Hidden now</strong>, <strong>Disabled now</strong>, <strong>Usable now</strong>). A path that doesn't lead to a boolean has no effect (the widget stays shown and usable) and is marked in red.</p>
+<p>To pick one item of a checkbox row (for example one of an armature's layers), right-click that checkbox: the path gets its index, like <code>data.<wbr>some_flags[2]</code>.</p>
+<p>A path that starts with <code>active_object</code> follows the widget's pin, like its data path: a pinned widget reads the condition from its pinned object.</p>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-conditions.webp" data-zoom><img src="../assets/img/frame-conditions.webp" alt="A tooltip with the property&#x27;s name, description and data path; Visible When and Disabled When in the sidebar; a broken binding flagged." width="1780" height="1175" decoding="async" loading="lazy"></a><figcaption>A tooltip with the property&#x27;s name, description and data path; Visible When and Disabled When in the sidebar; a broken binding flagged.</figcaption></figure>
+<h3 id="conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups<a class="fs-anchor" href="#conditions-on-frames-flex-boxes-and-groups" aria-label="Link to this section">#</a></h3>
+<p>A condition on a <strong>Frame</strong>, a <strong>Flex Box</strong> or a <strong>group</strong> applies to every widget inside it too: hide a frame and its members hide with it, disable a Flex Box and all its children are disabled. A widget inside keeps its own conditions as well; it is hidden if it or anything around it is hidden, and disabled the same way. The panel of a widget inside lists what it also follows.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A hidden child of a Flex Box keeps its place in the box, so the row shows an empty slot. To close the gap, put the widgets that come and go at the end of the box, or in a box of their own.</p></aside>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A condition never changes the widget itself. Layers still decide which widgets are shown at all; a condition only hides or disables a widget that its layer shows.</p></aside>
+<h2 id="units">Units<a class="fs-anchor" href="#units" aria-label="Link to this section">#</a></h2>
+<p>Values are shown the way Blender shows them:</p>
+<ul>
+<li>Sliders show their value with the property's unit, in the scene's unit system (metres or feet, degrees for rotations).
+</li>
+<li>A slider's <strong>Unit Type</strong> set to <strong>Angle</strong> lets you type its range in degrees.
+</li>
+<li>A property label has a <strong>Units</strong> option, a <strong>Format</strong> and a <strong>Precision</strong>.
+</li>
+</ul>
+<h2 id="animation-state-and-keyframes">Animation state and keyframes<a class="fs-anchor" href="#animation-state-and-keyframes" aria-label="Link to this section">#</a></h2>
+<p>A bound widget shows its property's animation state in Blender's own colours (Preferences &gt; Themes &gt; User Interface &gt; State), like Blender's buttons:</p>
+<ul>
+<li><strong>Green</strong>: animated, no keyframe on this frame.
+</li>
+<li><strong>Yellow</strong>: a keyframe on the current frame.
+</li>
+<li><strong>Purple</strong>: driven by a driver.
+</li>
+<li><strong>Orange</strong>: animated, but changed since (not keyed yet).
+</li>
+</ul>
+<p>Sliders and knobs tint their track, toggles, enums and number fields their body, a 2D slider its pad, a Color Swatch, a Color Picker and a Color Palette their border and a property label its text. An array item (<code>location[0]</code>) shows its own channel; a widget bound to a whole array (a colour) shows any of its channels. A pinned widget shows the state of its pinned object's property, whatever object is active.</p>
+<p>In Live Mode (Pose Mode on a picker), with the mouse over the widget:</p>
+<ul>
+<li><span class="fs-keys"><kbd>I</kbd></span> inserts a keyframe on its property (with your keyframing preferences: <strong>Only Insert Needed</strong>, visual and cycle-aware keying, the keyframe type).
+</li>
+<li><span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>I</kbd></span> deletes the keyframe on the current frame, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>I</kbd></span> clears all its keyframes.
+</li>
+<li><span class="fs-keys"><kbd>Backspace</kbd></span> resets it to its default value (a custom property: the default of its settings).
+</li>
+</ul>
+<p>Each one is a single undo step. On a pinned widget they act on the pinned object. Over a bone button or empty space the same keys are Blender's Pose Mode keys, as before.</p>
+<h2 id="auto-keying">Auto-keying<a class="fs-anchor" href="#auto-keying" aria-label="Link to this section">#</a></h2>
+<p>When Blender's <strong>Auto Keying</strong> is on (the record button of the Timeline), the end of a slider or number field drag keys the properties it drives, in the same undo step as the change. A click on an Enum or on a toggle in <strong>Set Value</strong> mode is keyed the same way, and so is a colour changed in a Color Swatch's picker, when the picker closes. A Color Picker drag is keyed on release, and a click on a Color Palette swatch right away. FlexSpace follows your Auto Keying options: <strong>Only Insert Available</strong>, <strong>Only Insert Needed</strong>, Replace mode, visual and cycle-aware keying, the keyframe type and <strong>Only Active Keying Set</strong>.</p>
+<p>The IK/FK puck of the picker is keyed the same way when you click it.</p>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="editing.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Editing Tools</strong></a><a class="fs-pager__link fs-pager__link--next" href="picker.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>The Armature Picker</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

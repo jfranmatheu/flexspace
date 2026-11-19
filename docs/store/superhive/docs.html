@@ -1,0 +1,776 @@
+<div class="fsx">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400..700&family=JetBrains+Mono:wght@500&display=swap");
+
+/* FlexSpace store docs. Superhive fragment: every selector is scoped under .fsx, values are literal (no var()),
+   keyframes are fsx-*, no scripts. Source: docs/_design/DESIGN.md (sections 5 and 6) and flexspace/help/*.md. */
+
+.fsx {
+  container-type: inline-size;
+  container-name: fsx;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  border-radius: 26px;
+  background: #0a0a0c;
+  color: #f4f2ee;
+  font-family: Inter, "Segoe UI Variable Text", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  text-align: left;
+  letter-spacing: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+.fsx *, .fsx *::before, .fsx *::after { box-sizing: border-box; }
+.fsx h1, .fsx h2, .fsx h3, .fsx h4, .fsx p, .fsx ul, .fsx ol, .fsx li, .fsx figure, .fsx figcaption, .fsx dl, .fsx dt, .fsx dd,
+.fsx table, .fsx thead, .fsx tbody, .fsx tr, .fsx th, .fsx td, .fsx section, .fsx nav, .fsx header, .fsx footer, .fsx blockquote {
+  margin: 0; padding: 0; border: 0; background: none; color: inherit; font: inherit; letter-spacing: normal;
+  text-transform: none; text-align: inherit; box-shadow: none;
+}
+.fsx div, .fsx span, .fsx article, .fsx small, .fsx em, .fsx i { margin: 0; padding: 0; border: 0; line-height: inherit; }
+.fsx ul, .fsx ol { list-style: none; }
+.fsx li::marker { content: none; }
+.fsx img { display: block; max-width: 100%; height: auto; border: 0; margin: 0; padding: 0; background: none; box-shadow: none; }
+.fsx picture { display: block; }
+.fsx a { color: #f6cb82; text-decoration: none; background: none; border: 0; box-shadow: none; transition: color 120ms cubic-bezier(.2,.8,.2,1); }
+.fsx a:hover { color: #f0b557; }
+.fsx a:focus-visible { outline: 2px solid #2f6fff; outline-offset: 2px; border-radius: 6px; }
+.fsx strong, .fsx b { font-weight: 600; color: #f4f2ee; }
+.fsx code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace; font-size: .84em; font-weight: 500;
+  color: #dcceb8; background: #1a1a1e; border: 1px solid rgba(255,255,255,.08); border-radius: 6px; padding: .08em .4em; overflow-wrap: anywhere; }
+
+/* ---------- type ---------- */
+.fsx h1, .fsx h2, .fsx h3 {
+  font-family: "Bricolage Grotesque", "Segoe UI Variable Display", "SF Pro Display", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-optical-sizing: auto; color: #f4f2ee; text-wrap: balance;
+}
+.fsx h1 { font-size: 40px; font-size: clamp(40px, 7.2cqi, 76px); line-height: .98; font-weight: 720; letter-spacing: -.02em; }
+.fsx h2 { font-size: 26px; font-size: clamp(26px, 3.6cqi, 36px); line-height: 1.1; font-weight: 700; letter-spacing: -.02em; }
+.fsx h3 { margin-top: 26px; font-size: 18px; line-height: 1.3; font-weight: 650; letter-spacing: -.01em; }
+.fsx .fs-ember {
+  color: #f0b557;
+  background: linear-gradient(100deg, #f0b557 0%, #edb967 18%, #e6c187 40%, #dfcaa8 62%, #d8d2c8 82%, #d5d6d8 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.fsx .fs-eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; line-height: 1; color: #f0b557; }
+.fsx .fs-eyebrow::before { content: ""; width: 18px; height: 2px; border-radius: 2px; background: linear-gradient(90deg, #f0b557, #dcceb8); }
+.fsx .fs-lead { margin-top: 12px; max-width: 64ch; font-size: 17.5px; line-height: 1.55; color: #b6b3ad; text-wrap: pretty; }
+.fsx .fs-kbd {
+  display: inline-block; min-width: 24px; padding: 2px 7px 1px; border-radius: 5px; vertical-align: 1px;
+  font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace; font-size: 12.5px; font-weight: 500; line-height: 1.4;
+  text-align: center; white-space: nowrap; color: #f4f2ee; background: #24242a; border: 1px solid #3a3a42; border-bottom-width: 3px;
+}
+
+/* ---------- header ---------- */
+.fsx .fs-head { position: relative; padding: 48px 16px 40px; overflow: hidden; border-bottom: 1px solid rgba(255,255,255,.07); }
+.fsx .fs-head::before { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(50% 70% at 8% 0%, rgba(240,181,87,.2), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgba(47,111,255,.14), transparent 70%); }
+.fsx .fs-head::after { content: ""; position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 70% 90% at 70% 30%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 70% 90% at 70% 30%, #000 20%, transparent 75%);
+  animation: fsx-drift 30s linear infinite; }
+.fsx .fs-head > * { position: relative; z-index: 1; }
+.fsx .fs-head h1 { margin-top: 16px; }
+.fsx .fs-head .fs-lead { margin-top: 16px; }
+.fsx .fs-meta { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+.fsx .fs-chip { display: inline-flex; align-items: center; padding: 7px 12px; border-radius: 999px; font-size: 12px; font-weight: 600; letter-spacing: .08em;
+  text-transform: uppercase; line-height: 1; color: #dcceb8; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); }
+.fsx .fs-btn { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: 12px; font-size: 15px; font-weight: 600; line-height: 1;
+  color: #1a1206; background: #e8a94f linear-gradient(100deg, #f6cb82 0%, #f0b557 45%, #d18a2e 100%); box-shadow: inset 0 1px 0 rgba(255,255,255,.28);
+  transition: transform 200ms cubic-bezier(.2,.8,.2,1), box-shadow 200ms cubic-bezier(.2,.8,.2,1); }
+.fsx .fs-btn:hover { color: #1a1206; transform: translateY(-2px); box-shadow: 0 0 0 1px rgba(240,181,87,.45), 0 8px 40px -6px rgba(240,181,87,.45); }
+.fsx .fs-head .fs-btn { margin-top: 26px; }
+
+/* ---------- index ---------- */
+.fsx .fs-index { padding: 28px 16px 8px; }
+.fsx .fs-index p { font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #85827c; margin-bottom: 14px; }
+.fsx .fs-index ol { display: grid; grid-template-columns: 1fr; gap: 6px; counter-reset: fsxidx; }
+.fsx .fs-index li { counter-increment: fsxidx; }
+.fsx .fs-index a { display: flex; align-items: center; gap: 12px; padding: 10px 12px; border-radius: 10px; color: #d9d6d0; font-size: 15px; font-weight: 500; line-height: 1.3;
+  background: #111114; border: 1px solid rgba(255,255,255,.06); transition: background-color 120ms cubic-bezier(.2,.8,.2,1), border-color 120ms cubic-bezier(.2,.8,.2,1), transform 200ms cubic-bezier(.2,.8,.2,1); }
+.fsx .fs-index a::before { content: counter(fsxidx, decimal-leading-zero); min-width: 22px; font-family: "JetBrains Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 12px; color: #f0b557; }
+.fsx .fs-index a:hover { color: #f4f2ee; background: #1a1a1e; border-color: rgba(240,181,87,.35); transform: translateX(2px); }
+
+/* ---------- sections ---------- */
+.fsx .fs-docs { padding: 16px 16px 40px; display: grid; gap: 16px; counter-reset: fsxsec; }
+.fsx .fs-doc { position: relative; counter-increment: fsxsec; padding: 26px 20px 22px; border-radius: 18px; background: #111114; border: 1px solid rgba(255,255,255,.07);
+  scroll-margin-top: 24px; transition: border-color 320ms cubic-bezier(.2,.8,.2,1), box-shadow 320ms cubic-bezier(.2,.8,.2,1); }
+.fsx .fs-doc:target { border-color: rgba(240,181,87,.7); box-shadow: 0 0 0 1px rgba(240,181,87,.35), 0 8px 40px -10px rgba(240,181,87,.35); }
+.fsx .fs-doc:target h2::after { content: ""; display: block; width: 64px; height: 3px; margin-top: 12px; border-radius: 3px;
+  background: linear-gradient(90deg, #f0b557, #dcceb8); animation: fsx-grow 600ms cubic-bezier(.2,.8,.2,1) both; transform-origin: 0 50%; }
+.fsx .fs-doc > .fs-num { display: inline-block; font-family: "JetBrains Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 12px; color: #f0b557; letter-spacing: .08em; margin-bottom: 8px; }
+.fsx .fs-doc > .fs-num::before { content: counter(fsxsec, decimal-leading-zero) " / "; }
+.fsx .fs-doc p { margin-top: 12px; color: #b6b3ad; max-width: 70ch; }
+.fsx .fs-doc .fs-lead { margin-top: 10px; }
+.fsx .fs-list { margin-top: 14px; display: grid; gap: 8px; }
+.fsx .fs-list li { position: relative; padding-left: 20px; color: #c9c6c0; font-size: 15.5px; line-height: 1.55; }
+.fsx .fs-list li::before { content: ""; position: absolute; left: 2px; top: .62em; width: 7px; height: 7px; border-radius: 2px; background: #f0b557; transform: rotate(45deg); }
+.fsx .fs-steps { margin-top: 16px; display: grid; gap: 10px; counter-reset: fsxstep; }
+.fsx .fs-steps li { position: relative; counter-increment: fsxstep; padding: 12px 14px 12px 52px; border-radius: 12px; background: #17171b; border: 1px solid rgba(255,255,255,.06); color: #c9c6c0; font-size: 15.5px; line-height: 1.55; }
+.fsx .fs-steps li::before { content: counter(fsxstep); position: absolute; left: 12px; top: 11px; width: 26px; height: 26px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  font-family: "Bricolage Grotesque", system-ui, sans-serif; font-weight: 700; font-size: 14px; color: #1a1206; background: linear-gradient(100deg, #f0b557, #e6c187 60%, #d8d2c8); }
+.fsx .fs-note { margin-top: 16px; padding: 12px 14px; border-radius: 10px; font-size: 14.5px; line-height: 1.55; color: #c9c6c0; background: rgba(247,142,165,.06); border-left: 3px solid #f78ea5; }
+.fsx .fs-tip { background: rgba(130,179,160,.07); border-left-color: #82b3a0; }
+.fsx .fs-note b { color: #f4f2ee; }
+.fsx .fs-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-top: 20px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.06); font-size: 14.5px; }
+.fsx .fs-foot a { font-weight: 600; }
+.fsx .fs-foot .fs-up { color: #85827c; font-weight: 500; }
+.fsx .fs-foot .fs-up:hover { color: #f4f2ee; }
+.fsx .fs-fig { margin-top: 18px; border-radius: 14px; overflow: hidden; background: radial-gradient(80% 80% at 30% 20%, #17171b, #0c0c0e); border: 1px solid rgba(255,255,255,.07); }
+.fsx .fs-fig img { width: 100%; }
+.fsx .fs-fig figcaption { padding: 10px 14px 12px; font-size: 13.5px; line-height: 1.45; color: #85827c; border-top: 1px solid rgba(255,255,255,.06); background: #111114; }
+.fsx .fs-fig-gif { background: #1c1c1d; }
+.fsx .fs-fig-gif img { max-width: 520px; margin: 0 auto; }
+
+/* ---------- tables ---------- */
+.fsx .fs-scroll { margin-top: 16px; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); }
+.fsx .fs-table { width: 100%; border-collapse: collapse; font-size: 14.5px; line-height: 1.5; }
+.fsx .fs-table th, .fsx .fs-table td { padding: 10px 12px; text-align: left; vertical-align: top; border-top: 1px solid rgba(255,255,255,.06); color: #c9c6c0; }
+.fsx .fs-table thead th { border-top: 0; background: #1a1a1e; color: #f4f2ee; font-weight: 600; font-size: 12px; letter-spacing: .1em; text-transform: uppercase; }
+.fsx .fs-table tbody tr:nth-child(even) td { background: rgba(255,255,255,.015); }
+.fsx .fs-table td:first-child { white-space: nowrap; color: #f4f2ee; }
+.fsx .fs-table-wrap td:first-child { white-space: normal; min-width: 150px; }
+.fsx .fs-keys td:first-child { width: 1%; }
+.fsx .fs-keys td:first-child .fs-kbd { margin: 0 2px 4px 0; }
+.fsx .fs-cols { display: grid; gap: 4px 20px; }
+
+/* ---------- widget reference ---------- */
+.fsx .fs-wref { margin-top: 18px; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.fsx .fs-wref li { display: grid; grid-template-columns: 136px 1fr; gap: 12px; align-items: center; padding: 8px; border-radius: 12px; background: #17171b; border: 1px solid rgba(255,255,255,.06);
+  transition: border-color 200ms cubic-bezier(.2,.8,.2,1), transform 200ms cubic-bezier(.2,.8,.2,1); }
+.fsx .fs-wref li:hover { border-color: rgba(91,140,255,.45); transform: translateY(-2px); }
+.fsx .fs-wref img { width: 136px; height: 84px; object-fit: cover; object-position: 50% 50%; border-radius: 8px; background: #1c1c1d; }
+.fsx .fs-wref strong { display: block; font-size: 14.5px; line-height: 1.3; }
+.fsx .fs-wref span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.4; color: #a9a6a0; }
+.fsx .fs-wref em { display: inline-block; margin-top: 6px; padding: 3px 7px; border-radius: 999px; font-style: normal; font-size: 10.5px; font-weight: 650; letter-spacing: .1em; text-transform: uppercase;
+  line-height: 1; color: #c8c8ce; background: #232328; border: 1px solid #3a3a42; }
+.fsx .fs-wref em.fs-pk { color: #d2c2fb; background: #2a2340; border-color: #6a55a8; }
+.fsx .fs-sub { margin-top: 22px; font-size: 12.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: #85827c; }
+
+/* ---------- misc ---------- */
+.fsx .fs-legend { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 14px; }
+.fsx .fs-legend li { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; color: #d9d6d0; }
+.fsx .fs-legend i { width: 14px; height: 14px; border-radius: 4px; }
+.fsx .fs-side-l { background: #4c8dff; }
+.fsx .fs-side-r { background: #ff5a5f; }
+.fsx .fs-side-c { background: #f2c94c; }
+.fsx .fs-side-root { background: #a77bff; }
+.fsx .fs-st-anim { background: #5fb34a; }
+.fsx .fs-st-key { background: #e8c93a; }
+.fsx .fs-st-drv { background: #a35bd6; }
+.fsx .fs-st-chg { background: #e5862e; }
+.fsx .fs-pill { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 13px; line-height: 1.5; font-weight: 500; white-space: nowrap; color: #ffd27a; background: rgba(229,134,46,.14); border: 1px solid rgba(229,134,46,.45); }
+.fsx .fs-pill-ok { color: #a9d7c4; background: rgba(130,179,160,.12); border-color: rgba(130,179,160,.4); }
+.fsx .fs-pill-mute { color: #b6b3ad; background: #1c1c1d; border-color: #353538; }
+.fsx .fs-end { position: relative; overflow: hidden; padding: 48px 16px 52px; text-align: center; background: #060607; border-top: 1px solid rgba(255,255,255,.07); }
+.fsx .fs-end::before { content: ""; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(50% 80% at 50% 0%, rgba(240,181,87,.16), transparent 70%); }
+.fsx .fs-end > * { position: relative; }
+.fsx .fs-end .fs-lead { margin: 12px auto 0; }
+.fsx .fs-end .fs-btn { margin-top: 22px; }
+.fsx .fs-end small { display: block; margin-top: 26px; font-size: 13px; color: #6f6c67; }
+
+/* ---------- real media: recordings (GIF) and screenshots taken in Blender (assets/media/store/) ---------- */
+.fsx .fs-rf { margin: 0; min-width: 0; }
+.fsx .fs-rf-frame { position: relative; border-radius: 18px; overflow: hidden; background: #1a1a1a; border: 1px solid rgba(255,255,255,.1);
+  box-shadow: 0 12px 28px rgba(0,0,0,.4); }
+.fsx .fs-rf-frame img { width: 100%; }
+.fsx .fs-rf-fit .fs-rf-frame { aspect-ratio: 16 / 10; }
+.fsx .fs-rf-fit .fs-rf-frame picture { height: 100%; }
+.fsx .fs-rf-fit .fs-rf-frame img { height: 100%; object-fit: contain; }
+.fsx .fs-rf figcaption { margin-top: 10px; font-size: 13.5px; line-height: 1.5; color: #85827c; }
+.fsx .fs-rf figcaption strong { color: #b6b3ad; }
+.fsx .fs-rf-tag { position: absolute; left: 10px; top: 10px; display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px 5px 8px;
+  border-radius: 999px; font-size: 10.5px; font-weight: 600; line-height: 1; letter-spacing: .1em; text-transform: uppercase;
+  color: #f4f2ee; background: rgba(10,10,12,.78); border: 1px solid rgba(255,255,255,.12); }
+.fsx .fs-rf-tag::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #5b8cff; }
+.fsx .fs-rf-tag-still::before { background: #f0b557; }
+.fsx .fs-action-main { max-width: 1040px; margin: 36px auto 0; }
+.fsx .fs-action-main .fs-rf-frame { border-radius: 22px; box-shadow: 0 30px 70px rgba(0,0,0,.55), 0 0 0 1px rgba(240,181,87,.2); }
+.fsx .fs-action-main figcaption { text-align: center; font-size: 14.5px; }
+.fsx .fs-action-grid { display: grid; gap: 22px 16px; margin-top: 28px; grid-template-columns: minmax(0, 1fr); }
+.fsx .fs-inb { margin-top: 22px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08); }
+.fsx .fs-row .fs-inb { grid-column: 1 / -1; }
+.fsx .fs-inb-label { margin-bottom: 14px; }
+.fsx .fs-inb-grid { display: grid; gap: 20px 16px; grid-template-columns: minmax(0, 1fr); align-items: start; }
+@container fsx (min-width: 600px) {
+  .fsx .fs-action-grid, .fsx .fs-inb-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@container fsx (min-width: 900px) {
+  .fsx .fs-action-grid, .fsx .fs-inb-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+@container fsx (min-width: 600px) {
+  .fsx .fs-head { padding: 64px 36px 48px; }
+  .fsx .fs-index { padding: 32px 36px 8px; }
+  .fsx .fs-index ol { grid-template-columns: 1fr 1fr; }
+  .fsx .fs-docs { padding: 16px 36px 48px; }
+  .fsx .fs-doc { padding: 32px 30px 24px; }
+  .fsx .fs-wref { grid-template-columns: 1fr 1fr; }
+  .fsx .fs-cols { grid-template-columns: 1fr 1fr; }
+  .fsx .fs-keys td:first-child { width: 220px; }
+}
+@container fsx (min-width: 900px) {
+  .fsx .fs-index ol { grid-template-columns: repeat(3, 1fr); }
+  .fsx .fs-wref { grid-template-columns: repeat(3, 1fr); }
+  .fsx .fs-doc-split { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; }
+  .fsx .fs-doc-split .fs-fig { margin-top: 4px; }
+}
+
+@keyframes fsx-drift { 0% { background-position: 0 0, 0 0; } 100% { background-position: 24px 24px, 24px 24px; } }
+@keyframes fsx-grow { 0% { transform: scaleX(0); } 100% { transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) {
+  .fsx { scroll-behavior: auto; }
+  .fsx *, .fsx *::before, .fsx *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .fsx .fs-head::after { animation: none !important; }
+}
+</style>
+
+<header class="fs-head" id="fsx-top">
+  <p class="fs-eyebrow">Documentation · v1.4.0</p>
+  <h1>FlexSpace <span class="fs-ember">Guide</span></h1>
+  <p class="fs-lead">Everything you need to get going. The full docs live at <a href="https://franb3d.github.io/flexspace/docs/">franb3d.github.io/flexspace/docs</a>, and inside Blender in the canvas header's <strong>Help</strong> menu.</p>
+  <div class="fs-meta"><span class="fs-chip">Blender 5.3+</span><span class="fs-chip">Flex Space</span><span class="fs-chip">Armature Picker</span></div>
+  <a class="fs-btn" href="https://franb3d.github.io/flexspace/docs/">Open the full docs →</a>
+</header>
+
+<nav class="fs-index" aria-label="Guide contents">
+  <p>Contents</p>
+  <ol>
+    <li><a href="#fsx-install">Install</a></li>
+    <li><a href="#fsx-first">Your first canvas</a></li>
+    <li><a href="#fsx-modes">Edit Mode and Live Mode</a></li>
+    <li><a href="#fsx-add">Add widgets</a></li>
+    <li><a href="#fsx-widgets">Widget reference</a></li>
+    <li><a href="#fsx-bind">Bind properties</a></li>
+    <li><a href="#fsx-layers">Layers and modes</a></li>
+    <li><a href="#fsx-edit">Editing tools</a></li>
+    <li><a href="#fsx-color">Color &amp; brush widgets</a></li>
+    <li><a href="#fsx-picker">The Armature Picker</a></li>
+    <li><a href="#fsx-rigify">Picker with Rigify</a></li>
+    <li><a href="#fsx-presets">Presets and sharing</a></li>
+    <li><a href="#fsx-keys">Shortcuts</a></li>
+    <li><a href="#fsx-trouble">Troubleshooting</a></li>
+    <li><a href="#fsx-bug">Report a bug</a></li>
+  </ol>
+</nav>
+
+<div class="fs-docs">
+
+<!-- 01 -->
+<section class="fs-doc" id="fsx-install">
+  <span class="fs-num"></span>
+  <h2>Install</h2>
+  <p class="fs-lead">FlexSpace is a Blender extension for Blender 5.3 or newer.</p>
+  <ol class="fs-steps">
+    <li>Download the zip from your Superhive library.</li>
+    <li>In Blender, open <strong>Edit › Preferences › Get Extensions</strong>.</li>
+    <li>Open the menu at the top right and choose <strong>Install from Disk...</strong>, then pick the zip.</li>
+  </ol>
+  <p>Its settings are in <strong>Edit › Preferences › Add-ons › FlexSpace</strong>: <strong>Modules</strong>, <strong>Themes</strong>, <strong>Demo Files</strong> and <strong>Addon Settings</strong> (Appearance, widget animations, Key Hints, the Selection Bar, Update Unmodified Presets, the Shared Presets Folder and the theme library folder).</p>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/getting-started.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 02 -->
+<section class="fs-doc" id="fsx-first">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Your first canvas</h2>
+      <p class="fs-lead">Three steps from an empty area to a working slider.</p>
+      <ol class="fs-steps">
+        <li>Open an area's <strong>Editor Type</strong> menu (the first button of the header), pick <strong>Flex Space</strong> and click <strong>New</strong>.</li>
+        <li>Press <span class="fs-kbd">Tab</span> for Edit Mode and <span class="fs-kbd">Shift A</span> to add a widget, for example <strong>Data › Numbers › Lineal</strong> (or just type <code>lineal</code>). Click to place it.</li>
+        <li>In the sidebar (<span class="fs-kbd">N</span>), <strong>Widget</strong> tab, set its <strong>Data Path</strong>, such as <code>scene.frame_current</code>, or use <strong>From Property</strong>. Press <span class="fs-kbd">Tab</span> again and use it.</li>
+      </ol>
+      <div class="fs-note">The canvas is a data-block saved in your .blend file, like a material or a node group. Pick, rename or make one from the selector in the middle of the header.</div>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-control.png" width="1288" height="1020" alt="The Studio Control Panel in Live Mode: Lighting with Key, Fill and Rim lights, Render settings and Playback buttons, every widget bound to the scene." loading="lazy">
+      <figcaption>A finished canvas in Live Mode: lights, render settings, playback and objects, one click away.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/empty-state.png" width="600" height="380" alt="No canvas yet? One click makes one, or open a finished demo to see how it is built." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Get started.</strong> No canvas yet? One click makes one, or open a finished demo to see how it is built.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/control-panel-dark.jpg" width="1600" height="900" alt="A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Studio control panel (Dark).</strong> A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/getting-started.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 03 -->
+<section class="fs-doc" id="fsx-modes">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Edit Mode and Live Mode</h2>
+      <p class="fs-lead">Every canvas has two modes. <span class="fs-kbd">Tab</span> over the canvas switches, or click <strong>Edit</strong> in the header.</p>
+      <ul class="fs-list">
+        <li><strong>Edit Mode</strong> builds the layout: add, move, resize, rotate, group and style widgets.</li>
+        <li><strong>Live Mode</strong> uses it: buttons run, toggles switch, sliders change their property. Rest the mouse on a widget for a tooltip.</li>
+        <li>On an Armature Picker, Live Mode is Blender's own <strong>Pose Mode</strong>.</li>
+        <li>Every edit and every use of a widget is one undo step. Switching modes is not a step.</li>
+      </ul>
+      <div class="fs-note fs-tip">The pill at the bottom of the canvas reminds you of <span class="fs-kbd">Tab</span>. Turn it off with <b>Key Hints</b> in the add-on preferences.</div>
+    </div>
+    <figure class="fs-fig fs-fig-gif">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="https://franb3d.github.io/flexspace/assets/img/store/gif-live-mode-still.png">
+        <img src="https://franb3d.github.io/flexspace/assets/img/store/gif-live-mode.gif" width="756" height="378" alt="Live Mode: dragging a Lineal slider bound to a light's power; the Number Field bound to the same property follows." loading="lazy">
+      </picture>
+      <figcaption>Live Mode: two widgets bound to the same property stay in step.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/canvas.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 04 -->
+<section class="fs-doc" id="fsx-add">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Add widgets</h2>
+      <p class="fs-lead"><span class="fs-kbd">Shift A</span> in Edit Mode opens the <strong>Add Widget</strong> panel over the canvas.</p>
+      <ul class="fs-list">
+        <li><strong>Search:</strong> just start typing. The best match is selected, and <span class="fs-kbd">Enter</span> adds it.</li>
+        <li><strong>Categories</strong> on the left: Buttons, Data, Tools, Graphics, Layout (in a picker, Bone Picker comes first). <span class="fs-kbd">Tab</span> goes to the next one.</li>
+        <li>Click a card: the new widget follows the mouse, click to place it.</li>
+        <li>The header's <strong>Add</strong> menu has the same, and the add-on preferences can make it a <strong>Pie</strong>.</li>
+      </ul>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/frame-add-widget.png" width="1780" height="1288" alt="The Add Widget panel: search, categories, widget cards and the From Property button." loading="lazy">
+      <figcaption>The Add Widget panel, with From Property next to the search.</figcaption>
+    </figure>
+  </div>
+  <h3>From Property: the quickest way</h3>
+  <p><span class="fs-kbd">Shift A</span> › <strong>From Property</strong>, then right-click any property in Blender's interface. The widget that controls it appears, already bound and labelled. Undo removes it in one step.</p>
+  <div class="fs-scroll">
+    <table class="fs-table">
+      <thead><tr><th>Property</th><th>Widget</th></tr></thead>
+      <tbody>
+        <tr><td>On / off</td><td><strong>Toggle</strong> (Checkbox)</td></tr>
+        <tr><td>Enum</td><td><strong>Enum</strong> (Segmented with 5 items or less, else Dropdown)</td></tr>
+        <tr><td>Number</td><td><strong>Number Field</strong></td></tr>
+        <tr><td>Factor or Percentage</td><td><strong>Lineal</strong> slider with that range</td></tr>
+        <tr><td>Colour</td><td><strong>Color Swatch</strong></td></tr>
+        <tr><td>Vector (2 to 4 values)</td><td>Vertical <strong>Flex Box</strong> with one Number Field per value</td></tr>
+        <tr><td>Anything else</td><td><strong>Label</strong> that reads the value out</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid fs-inb-grid-3">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://franb3d.github.io/flexspace/assets/media/store/add-panel-still.png"><img src="https://franb3d.github.io/flexspace/assets/media/store/add-panel.gif" width="900" height="942" alt="Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+        <figcaption><strong>Add any widget in seconds.</strong> Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/add-browser-search.png" width="907" height="628" alt="Type a few letters and the best matches show across every category; Enter adds the selected one." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Search as you type.</strong> Type a few letters and the best matches show across every category; Enter adds the selected one.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/add-browser.jpg" width="1600" height="900" alt="Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Add Widget browser.</strong> Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/widgets.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 05 -->
+<section class="fs-doc" id="fsx-widgets">
+  <span class="fs-num"></span>
+  <h2>Widget reference</h2>
+  <p class="fs-lead">Every widget at a glance. Select one in Edit Mode and set it up in the sidebar, <strong>Widget</strong> tab: Label, Style, Conditions and Tooltip.</p>
+  <p class="fs-sub">Flex Space and Armature Picker</p>
+  <ul class="fs-wref">
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-operator.png" width="720" height="324" alt="Operator button" loading="lazy"><div><strong>Operator</strong><span>Runs a Blender operator</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-custom-script.png" width="720" height="324" alt="Custom Script button" loading="lazy"><div><strong>Custom Script</strong><span>Runs your own Python script</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-toggle.png" width="720" height="324" alt="Toggle switch" loading="lazy"><div><strong>Toggle</strong><span>Switches an on / off property, or sets an enum or integer value</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-enum.png" width="720" height="324" alt="Segmented Enum" loading="lazy"><div><strong>Enum</strong><span>Picks one value of an enum or integer</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-color-swatch.png" width="720" height="324" alt="Color Swatch" loading="lazy"><div><strong>Color Swatch</strong><span>Shows a colour and opens Blender's colour picker</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-color-picker.png" width="720" height="324" alt="Color Picker" loading="lazy"><div><strong>Color Picker</strong><span>Edits a colour on the canvas</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-color-palette.png" width="720" height="324" alt="Color Palette" loading="lazy"><div><strong>Color Palette</strong><span>A grid of colour swatches</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-brush-picker.png" width="720" height="324" alt="Brush Picker" loading="lazy"><div><strong>Brush Picker</strong><span>Makes one brush the active brush</span><em>Brush modes</em></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-ring-menu.png" width="720" height="324" alt="Ring Menu" loading="lazy"><div><strong>Ring Menu</strong><span>Brushes, toggles and operators in a ring, like a sculpt wheel</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-list.png" width="720" height="324" alt="List" loading="lazy"><div><strong>List</strong><span>Layers, material slots, vertex groups and other lists as rows you can click</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-lineal-slider.png" width="720" height="324" alt="Lineal slider" loading="lazy"><div><strong>Lineal slider</strong><span>Drag along a bar to change a number</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-number-field.png" width="720" height="324" alt="Number Field" loading="lazy"><div><strong>Number Field</strong><span>A number field like Blender's own</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-label.png" width="720" height="324" alt="Label" loading="lazy"><div><strong>Label</strong><span>Text, or a property's value</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-image.png" width="720" height="324" alt="Image" loading="lazy"><div><strong>Image</strong><span>Shows a picture; turn on Backdrop to put it behind everything</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-frame.png" width="720" height="324" alt="Frame" loading="lazy"><div><strong>Frame</strong><span>A titled area, square or round, that holds and moves other widgets</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-flex-box.png" width="720" height="324" alt="Flex Box" loading="lazy"><div><strong>Flex Box</strong><span>Lines up other widgets in a row or a column</span></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-group.png" width="720" height="324" alt="Group" loading="lazy"><div><strong>Group</strong><span>Moves and resizes other widgets as one</span></div></li>
+  </ul>
+  <p class="fs-sub">The picker's own</p>
+  <ul class="fs-wref">
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-bone-collection-toggle.png" width="720" height="324" alt="Bone Collection toggle" loading="lazy"><div><strong>Bone Collection toggle</strong><span>Shows, hides or solos a bone collection</span><em class="fs-pk">Picker</em></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-radial-slider.png" width="720" height="324" alt="Radial slider" loading="lazy"><div><strong>Radial slider</strong><span>A knob you drag to change a number</span><em class="fs-pk">Picker</em></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-lineal-2d-slider.png" width="720" height="324" alt="Lineal 2D slider" loading="lazy"><div><strong>Lineal 2D slider</strong><span>A pad that drives two properties at once</span><em class="fs-pk">Picker</em></div></li>
+    <li><img src="https://franb3d.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers" loading="lazy"><div><strong>Button, Button Image, Geometry Shape</strong><span>Bone pickers: select their bone</span><em class="fs-pk">Picker</em></div></li>
+  </ul>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/widgets.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 06 -->
+<section class="fs-doc" id="fsx-bind">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Bind properties</h2>
+      <p class="fs-lead">Sliders, toggles and property labels control a Blender property through a <strong>Data Path</strong>, starting from the context, as <code>bpy.context</code> does.</p>
+      <ul class="fs-list">
+        <li><strong>Eyedropper:</strong> click the button next to <strong>Data Path</strong>, then right-click the property anywhere in Blender. A slider also gets its Min and Max.</li>
+        <li><strong>Follow or pin:</strong> a path starting with <code>active_object</code> drives whatever is active, or always one pinned object. Click the pin control under the field to switch.</li>
+        <li><strong>Copy Full Data Path</strong> (<span class="fs-kbd">Ctrl Shift Alt C</span>) and paste it with <span class="fs-kbd">Ctrl V</span>.</li>
+        <li><strong>Visible When / Disabled When</strong> in the <strong>Conditions</strong> panel show or grey out a widget while a boolean is on. On a frame, Flex Box or group, everything inside follows.</li>
+      </ul>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-binding.png" width="1232" height="828" alt="Binding with the eyedropper: right-click Exposure in Blender's Light properties and the canvas slider is bound to it; its data path shows below." loading="lazy">
+      <figcaption>The eyedropper asks for a slider-like property; right-click Exposure and the path is filled in.</figcaption>
+    </figure>
+  </div>
+  <h3>Animation state and keys</h3>
+  <p>A bound widget shows its property's state in Blender's colours:</p>
+  <ul class="fs-legend" aria-label="Animation state colours">
+    <li><i class="fs-st-anim"></i>Animated</li>
+    <li><i class="fs-st-key"></i>Key on this frame</li>
+    <li><i class="fs-st-drv"></i>Driver</li>
+    <li><i class="fs-st-chg"></i>Changed, not keyed</li>
+  </ul>
+  <p>In Live Mode, over the widget: <span class="fs-kbd">I</span> inserts a keyframe, <span class="fs-kbd">Alt I</span> deletes the one on this frame, <span class="fs-kbd">Shift Alt I</span> clears all, <span class="fs-kbd">Backspace</span> resets to the default. With Auto Keying on, the end of a drag is keyed in the same undo step.</p>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://franb3d.github.io/flexspace/assets/media/store/from-property-still.png"><img src="https://franb3d.github.io/flexspace/assets/media/store/from-property.gif" width="980" height="746" alt="Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+        <figcaption><strong>Bind any property with a right-click.</strong> Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/binding-eyedropper.png" width="1350" height="507" alt="Bind a slider with the eyedropper: right-click any slider-like property, here the light&#x27;s Exposure." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Binding eyedropper.</strong> Bind a slider with the eyedropper: right-click any slider-like property, here the light&#x27;s Exposure.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/binding-data-path.png" width="1008" height="372" alt="After the pick the slider is bound to the light&#x27;s exposure, pinned to that light, and labelled for you." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Bound data path.</strong> After the pick the slider is bound to the light&#x27;s exposure, pinned to that light, and labelled for you.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/broken-bindings.png" width="911" height="954" alt="A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Broken bindings.</strong> A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/binding.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 07 -->
+<section class="fs-doc" id="fsx-layers">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Layers and modes</h2>
+      <p class="fs-lead">One canvas can hold a sculpting layer, a weight paint layer, one object's controls and an everyday layer, and show the right one.</p>
+      <ul class="fs-list">
+        <li><strong>Show When</strong> (sidebar, <strong>Canvas</strong> tab, <strong>Layers</strong>): <strong>Always</strong>, <strong>Mode</strong>, <strong>Object</strong> or <strong>Object in Mode</strong>.</li>
+        <li><strong>Switch Layers Automatically</strong> (on by default) shows the layer that fits Blender's mode and the active object.</li>
+        <li>When the layer needs another mode, a notice says so: click <strong>Enter</strong>. For another object, click <strong>Select</strong>.</li>
+        <li><span class="fs-kbd">M</span> in Edit Mode moves the selected widgets to another layer.</li>
+      </ul>
+      <div class="fs-note">Changing a layer's mode never deletes widgets. An Armature Picker's layers always work in Pose Mode.</div>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-layers.png" width="1312" height="912" alt="A canvas with a layer per mode: the layer tabs, Sculpt active, and the Sculpt layer's brushes and stroke settings." loading="lazy">
+      <figcaption>The Sculpt layer of a canvas with a tab for each mode.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid fs-inb-grid-3">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/layer-tabs.png" width="911" height="954" alt="One canvas, a layer per mode: the tabs show each layer&#x27;s mode, the active one is outlined." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Layers and modes.</strong> One canvas, a layer per mode: the tabs show each layer&#x27;s mode, the active one is outlined.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/studio-sculpt.jpg" width="1574" height="954" alt="Enter Sculpt Mode and the canvas jumps to its Sculpt layer: brushes, stroke, remesh, masks and face sets." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>FlexSpace Studio: Sculpt layer.</strong> Enter Sculpt Mode and the canvas jumps to its Sculpt layer: brushes, stroke, remesh, masks and face sets.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/studio-weight-paint.jpg" width="1574" height="954" alt="In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>FlexSpace Studio: Weight Paint layer.</strong> In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/canvas.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 08 -->
+<section class="fs-doc" id="fsx-edit">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Editing tools</h2>
+      <p class="fs-lead">Everything here happens in Edit Mode.</p>
+      <ul class="fs-list">
+        <li><strong>Select:</strong> click, <span class="fs-kbd">Shift</span> click to add, drag on empty space to box select, <span class="fs-kbd">A</span> for all.</li>
+        <li><strong>Transform:</strong> <span class="fs-kbd">G</span> <span class="fs-kbd">R</span> <span class="fs-kbd">S</span>, or the handles (edges and corners resize, the round knob rotates).</li>
+        <li><strong>Smart snapping:</strong> the magnet in the header. Edges, centres, equal gaps and the grid, with guides.</li>
+        <li><strong>Selection Bar:</strong> with two or more widgets selected, align, distribute and match sizes.</li>
+        <li><strong>Groups</strong> <span class="fs-kbd">Ctrl G</span>, <strong>frames</strong> <span class="fs-kbd">Ctrl J</span>, <strong>Flex Boxes</strong>, copy and paste <span class="fs-kbd">Ctrl C</span> <span class="fs-kbd">Ctrl V</span>.</li>
+        <li><strong>Minimap</strong> (picture button in the header) and <strong>themes</strong> in <strong>View › Theme</strong>: Auto, Dark, Light or your own.</li>
+      </ul>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-edit-mode.png" width="1288" height="1356" alt="Edit Mode: the Preview frame dragged under Lighting snaps to its left edge; a magenta guide and the 22 px gap show what it lined up with." loading="lazy">
+      <figcaption>Dragging a frame: it snaps to the edge of the one above, and the guide shows it.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid fs-inb-grid-3">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><picture><source media="(prefers-reduced-motion: reduce)" srcset="https://franb3d.github.io/flexspace/assets/media/store/edit-layout-still.png"><img src="https://franb3d.github.io/flexspace/assets/media/store/edit-layout.gif" width="900" height="558" alt="Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one." loading="lazy"></picture><span class="fs-rf-tag">Recording</span></div>
+        <figcaption><strong>Lay out with snapping and the Selection Bar.</strong> Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/snapping-guides.png" width="907" height="644" alt="Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Smart snapping.</strong> Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/selection-bar.png" width="512" height="444" alt="With several widgets selected, the Selection Bar aligns, distributes and matches their sizes." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Selection Bar.</strong> With several widgets selected, the Selection Bar aligns, distributes and matches their sizes.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/editing.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 09 -->
+<section class="fs-doc" id="fsx-color">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Color &amp; brush widgets</h2>
+      <p class="fs-lead">Edit colours and switch brushes without leaving the canvas.</p>
+      <ul class="fs-list">
+        <li><strong>Color Picker:</strong> a <strong>Wheel</strong> or <strong>Ring + Square</strong>, an old / new strip, and RGB, HSV and Alpha sliders. <span class="fs-kbd">Esc</span> during a drag puts the colour back.</li>
+        <li><strong>Color Palette:</strong> its own colours, or a Blender palette. Click a swatch to use it.</li>
+        <li><strong>Brush Picker:</strong> one brush, one click. Works in Sculpt, the paint modes, Sculpt Curves and the Grease Pencil brush modes.</li>
+        <li><strong>Ring Menu:</strong> brushes in the outer ring, toggles and operators in the inner ring, the name in the core. Pages hold more brushes; one button fills the ring with every Essentials brush of the layer's mode.</li>
+      </ul>
+      <div class="fs-note fs-tip">The <b>Sculpt Wheel</b> demo has a Ring Menu with every sculpt brush, ready to try.</div>
+    </div>
+    <figure class="fs-fig fs-fig-gif">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="https://franb3d.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
+        <img src="https://franb3d.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
+      </picture>
+      <figcaption>The active brush has the accent ring and its name in the core.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/color-brush.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 10  (swap: picker-redesign) -->
+<section class="fs-doc" id="fsx-picker">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>The Armature Picker</h2>
+      <p class="fs-lead">A canvas of buttons that select the bones of your rig. It is saved with the armature data, so it travels when the rig is linked or appended.</p>
+      <ol class="fs-steps">
+        <li>Select your rig and enter <strong>Pose Mode</strong> (<span class="fs-kbd">Ctrl Tab</span> in the 3D Viewport).</li>
+        <li>Set an area to <strong>Armature Picker</strong> and click <strong>New Picker</strong>.</li>
+        <li>Select bones in the viewport, click <strong>Import Selected Bones</strong> and click to place each button. Left and right come together.</li>
+        <li>Press <span class="fs-kbd">Tab</span> to pose: click a button to select its bone, <span class="fs-kbd">Shift</span> click to add.</li>
+      </ol>
+      <ul class="fs-list">
+        <li>Your Pose Mode keys work over the picker: <span class="fs-kbd">G</span> <span class="fs-kbd">R</span> <span class="fs-kbd">S</span>, <span class="fs-kbd">I</span>, copy and paste pose...</li>
+        <li><strong>Toolbar</strong> (<span class="fs-kbd">T</span>): Select &amp; Control, Move, Rotate, Scale or Gimball on press.</li>
+        <li><strong>Mirror:</strong> moving one of a pair mirrors the other across the red centre line.</li>
+        <li><strong>Bone collections</strong> and <strong>Bone Names</strong> in the sidebar, <strong>Armature</strong> tab.</li>
+      </ul>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-picker.png" width="1396" height="1584" alt="A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle and a Solo button for each bone collection." loading="lazy">
+      <figcaption>A body picker with rig settings and bone collection toggles.</figcaption>
+    </figure>
+  </div>
+  <!-- REAL-PICKER-MEDIA: real picker screenshots / GIF (assets/media/store/real-picker-*) go here once the redesigned picker ships. -->
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/picker.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 11 -->
+<section class="fs-doc" id="fsx-rigify">
+  <span class="fs-num"></span>
+  <h2>Picker with Rigify</h2>
+  <p class="fs-lead">A full Humanoid Body picker in one step: select the generated rig, press <span class="fs-kbd">Shift A</span> in the picker's Edit Mode and choose <strong>Bone Picker › Humanoid Body (Rigify)</strong>.</p>
+  <div class="fs-cols">
+    <ul class="fs-list">
+      <li><strong>Body:</strong> Adult Male or Adult Female, made to measure.</li>
+      <li><strong>Pages:</strong> Body, Hands and Feet, each in its own layer tab (or side by side with <strong>One Layer per Page</strong> off).</li>
+      <li><strong>IK/FK Switches:</strong> a puck next to each IK hand and foot.</li>
+    </ul>
+    <ul class="fs-list">
+      <li><strong>Hands &amp; Feet View:</strong> Front (default) or Own.</li>
+      <li><strong>Toes:</strong> per-toe shapes need toe chains <code>toe1.01.L</code> to <code>toe5.03.L</code> with <strong>limbs.super_finger</strong>.</li>
+      <li><strong>Repair Bone Bindings</strong> (<strong>Utils</strong>) after regenerating the rig.</li>
+    </ul>
+  </div>
+  <ul class="fs-legend" aria-label="Picker colours">
+    <li><i class="fs-side-l"></i>Left</li>
+    <li><i class="fs-side-r"></i>Right</li>
+    <li><i class="fs-side-c"></i>Centre</li>
+    <li><i class="fs-side-root"></i>Root</li>
+  </ul>
+  <div class="fs-note">Make the picker for the generated rig (the <code>RIG-...</code> object you animate), not for the metarig. The Body page is a front view: the character's left is on your right.</div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/rigify.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 12 -->
+<section class="fs-doc" id="fsx-presets">
+  <span class="fs-num"></span>
+  <div class="fs-doc-split">
+    <div>
+      <h2>Presets and sharing</h2>
+      <p class="fs-lead">A global preset is a canvas saved outside the .blend, so every project can use it. Presets survive add-on updates.</p>
+      <ul class="fs-list">
+        <li>In Edit Mode, click <strong>Save as Global...</strong> on the top bar. Add it anywhere from the presets menu.</li>
+        <li>A linked canvas shows its state: <span class="fs-pill fs-pill-ok">✓ Up to date</span> <span class="fs-pill fs-pill-mute">● Modified</span> <span class="fs-pill fs-pill-mute">↓ vN available</span>.</li>
+        <li><strong>Overwrite</strong> sends your canvas to the preset, <strong>Sync</strong> takes the preset's, <strong>Unlink</strong> keeps a plain copy. <strong>Restore Previous Version</strong> has the last 5.</li>
+        <li><strong>Manage › Export</strong> writes a <code>.flexspace</code> file; <strong>Manage › Import...</strong> adds one.</li>
+        <li>Set a <strong>Shared Presets Folder</strong> in the add-on preferences to share with your team.</li>
+      </ul>
+    </div>
+    <figure class="fs-fig">
+      <img src="https://franb3d.github.io/flexspace/assets/img/store/focus-presets.png" width="1160" height="1204" alt="The Global Presets menu: four presets as thumbnails, one from the shared folder, with Save as Global Preset and Manage." loading="lazy">
+      <figcaption>The presets menu with thumbnails, an exported file and a shared folder.</figcaption>
+    </figure>
+  </div>
+  <div class="fs-inb">
+    <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
+    <div class="fs-inb-grid">
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/presets-menu.png" width="528" height="167" alt="Save any canvas as a global preset and add it to any project from a menu of thumbnails." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Global presets.</strong> Save any canvas as a global preset and add it to any project from a menu of thumbnails.</figcaption>
+      </figure>
+      <figure class="fs-rf fs-rf-fit">
+        <div class="fs-rf-frame"><img src="https://franb3d.github.io/flexspace/assets/media/store/library.png" width="911" height="954" alt="The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
+        <figcaption><strong>Library.</strong> The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/canvas.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 13 -->
+<section class="fs-doc" id="fsx-keys">
+  <span class="fs-num"></span>
+  <h2>Shortcuts</h2>
+  <p class="fs-lead">With the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap, yours included.</p>
+  <h3>Everywhere</h3>
+  <div class="fs-scroll"><table class="fs-table fs-keys"><tbody>
+    <tr><td><span class="fs-kbd">Tab</span></td><td>Edit Mode ↔ Live Mode (Pose Mode on a picker)</td></tr>
+    <tr><td><span class="fs-kbd">Middle mouse</span> <span class="fs-kbd">Wheel</span></td><td>Pan, zoom</td></tr>
+    <tr><td><span class="fs-kbd">Home</span></td><td>Frame every widget</td></tr>
+    <tr><td><span class="fs-kbd">N</span> <span class="fs-kbd">T</span></td><td>Sidebar, toolbar</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl Z</span> <span class="fs-kbd">Ctrl Shift Z</span></td><td>Undo, redo</td></tr>
+  </tbody></table></div>
+  <h3>Edit Mode</h3>
+  <div class="fs-scroll"><table class="fs-table fs-keys"><tbody>
+    <tr><td><span class="fs-kbd">Shift A</span></td><td>Add a widget: type to search, <span class="fs-kbd">Enter</span> adds</td></tr>
+    <tr><td><span class="fs-kbd">G</span> <span class="fs-kbd">R</span> <span class="fs-kbd">S</span></td><td>Move, rotate, scale (<span class="fs-kbd">Alt R</span> clears rotation)</td></tr>
+    <tr><td><span class="fs-kbd">Shift D</span></td><td>Duplicate</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl C</span> <span class="fs-kbd">Ctrl V</span></td><td>Copy, paste (into this or another canvas of the same kind)</td></tr>
+    <tr><td><span class="fs-kbd">X</span> <span class="fs-kbd">Delete</span></td><td>Delete</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl G</span> <span class="fs-kbd">Alt G</span></td><td>Group, ungroup (double-click a group to enter it)</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl J</span> <span class="fs-kbd">Alt P</span></td><td>Frame the selection, remove from frame</td></tr>
+    <tr><td><span class="fs-kbd">M</span></td><td>Move the selection to another layer</td></tr>
+    <tr><td><span class="fs-kbd">Arrows</span></td><td>Nudge 10 units (<span class="fs-kbd">Shift</span>: 1)</td></tr>
+  </tbody></table></div>
+  <h3>While moving, resizing or rotating</h3>
+  <div class="fs-scroll"><table class="fs-table fs-keys"><tbody>
+    <tr><td><span class="fs-kbd">X</span> <span class="fs-kbd">Y</span></td><td>Lock an axis</td></tr>
+    <tr><td><span class="fs-kbd">Shift</span></td><td>Lock the drag axis, keep or free the ratio, 15 degree steps, finer scale</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl</span></td><td>Snap (or drag free with smart snapping on); 5 degree steps</td></tr>
+    <tr><td><span class="fs-kbd">Alt</span></td><td>From the centre, each widget on its own, don't drop into a Flex Box</td></tr>
+    <tr><td><span class="fs-kbd">Enter</span> <span class="fs-kbd">Esc</span></td><td>Confirm, cancel (type a number for an exact value)</td></tr>
+  </tbody></table></div>
+  <h3>Live Mode</h3>
+  <div class="fs-scroll"><table class="fs-table fs-keys"><tbody>
+    <tr><td><span class="fs-kbd">Shift</span> drag</td><td>10 times finer on a Lineal slider or Number Field</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl</span> drag</td><td>Snap to the property's step</td></tr>
+    <tr><td><span class="fs-kbd">Ctrl</span> click</td><td>Type a Lineal slider's value (or double-click it)</td></tr>
+    <tr><td><span class="fs-kbd">I</span> <span class="fs-kbd">Alt I</span></td><td>Insert, delete a keyframe on the property under the mouse</td></tr>
+    <tr><td><span class="fs-kbd">Shift Alt I</span></td><td>Clear all its keyframes</td></tr>
+    <tr><td><span class="fs-kbd">Backspace</span></td><td>Reset it to its default value</td></tr>
+  </tbody></table></div>
+  <h3>Picker, Pose Mode</h3>
+  <div class="fs-scroll"><table class="fs-table fs-keys"><tbody>
+    <tr><td>Click, <span class="fs-kbd">Shift</span> click</td><td>Select a bone, add it to the selection</td></tr>
+    <tr><td>Drag on empty space</td><td>Box select bones (click empty space: deselect all)</td></tr>
+    <tr><td>Right-click</td><td>Insert Keyframe pie (with an active bone)</td></tr>
+  </tbody></table></div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/shortcuts.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 14 -->
+<section class="fs-doc" id="fsx-trouble">
+  <span class="fs-num"></span>
+  <h2>Troubleshooting</h2>
+  <p class="fs-lead">Find what you see, then its cause and its fix.</p>
+  <div class="fs-scroll">
+    <table class="fs-table fs-table-wrap">
+      <thead><tr><th>You see</th><th>Why</th><th>Fix</th></tr></thead>
+      <tbody>
+        <tr><td>Some widgets are gone</td><td>The <strong>View Object Types</strong> menu hides them, or they are on another layer.</td><td>Turn the type back on at the end of the header, or check the layer selector.</td></tr>
+        <tr><td>A dashed outline in Edit Mode</td><td>Its binding doesn't work: a wrong path, or the wrong kind of property.</td><td>Select it and read the note under its <strong>Data Path</strong>.</td></tr>
+        <tr><td><span class="fs-pill">⚠ N broken</span> on the top bar</td><td>That many widgets have a broken binding.</td><td>Click it: it frames the next one and opens its settings.</td></tr>
+        <tr><td>An operator button is red</td><td>The operator can't run right now, for example a pose tool with no armature in Pose Mode.</td><td>Use it in the right mode, or pick another operator.</td></tr>
+        <tr><td>"Run Untrusted Code?"</td><td>The button runs code stored in the .blend and <strong>Auto Run Python Scripts</strong> is off.</td><td>Click <strong>Trust and Run</strong> if you trust the file. It asks once per session.</td></tr>
+        <tr><td><span class="fs-kbd">Shift A</span> does nothing</td><td>Widgets are added in Edit Mode.</td><td>Press <span class="fs-kbd">Tab</span> first. In a picker, the rig must be in Pose Mode too.</td></tr>
+        <tr><td>The picker shows a card</td><td>A picker works on its own armature, in Pose Mode.</td><td>The card's button fixes it: <strong>Enter Pose Mode</strong>, <strong>Pose "rig"</strong> or <strong>Use it for ...</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/troubleshooting.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+<!-- 15 -->
+<section class="fs-doc" id="fsx-bug">
+  <span class="fs-num"></span>
+  <h2>Report a bug</h2>
+  <p class="fs-lead">Found something broken? Report it from inside Blender.</p>
+  <ol class="fs-steps">
+    <li>Open <strong>Help › Report a Bug...</strong> in the canvas header (or <strong>Report a Bug</strong> in the add-on preferences).</li>
+    <li>Write a title, what happened, the steps to make it happen again and what you expected. FlexSpace adds the Blender and FlexSpace versions, your system and GPU, the canvas, the modules and the last errors of this session.</li>
+    <li>Click <strong>Open on GitHub</strong>: a new issue opens in your browser, filled in. Review it and submit it there.</li>
+  </ol>
+  <p>No GitHub account? Click <strong>Copy Report</strong> and paste it in a comment on the product page or in an email. Nothing is sent by FlexSpace itself, and your home folder in any file path is replaced by <code>~</code>. You can also <a href="https://github.com/franb3d/flexspace/issues">open an issue by hand</a>.</p>
+  <div class="fs-foot"><a href="https://franb3d.github.io/flexspace/docs/troubleshooting.html">Full guide →</a><a class="fs-up" href="#fsx-top">↑ Contents</a></div>
+</section>
+
+</div>
+
+<footer class="fs-end">
+  <h2>There's more in <span class="fs-ember">the full docs.</span></h2>
+  <p class="fs-lead">Twelve guides, the recipes for a full studio canvas, and every setting explained.</p>
+  <a class="fs-btn" href="https://franb3d.github.io/flexspace/docs/">franb3d.github.io/flexspace/docs →</a>
+  <small>FlexSpace 1.4.0 · GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</small>
+</footer>
+</div>

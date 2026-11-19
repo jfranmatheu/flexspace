@@ -1,0 +1,14 @@
+{
+  "name": "FlexSpace",
+  "short_name": "FlexSpace",
+  "description": "Control panels and rig pickers for Blender, built your way.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "background_color": "#0a0a0c",
+  "theme_color": "#0a0a0c",
+  "icons": [
+    { "src": "assets/img/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "assets/img/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

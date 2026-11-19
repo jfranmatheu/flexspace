@@ -1,0 +1,683 @@
+{
+ "source": "B3D-MySpace/marketing/flexspace/manifest.json",
+ "items": {
+  "live-mode": {
+   "kind": "loop",
+   "file": "gifs/live_mode.gif",
+   "title": "Your panel drives the scene",
+   "caption": "In Live Mode every toggle, field and slider changes the scene right away: modifiers, light shadows, light power and the current frame.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/live-mode.mp4",
+   "poster": "assets/media/live-mode.webp",
+   "gif": "assets/media/store/live-mode.gif",
+   "still": "assets/media/store/live-mode-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "add-panel": {
+   "kind": "loop",
+   "file": "gifs/add_panel.gif",
+   "title": "Add any widget in seconds",
+   "caption": "Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.",
+   "w": 1100,
+   "h": 1152,
+   "mp4": "assets/media/add-panel.mp4",
+   "poster": "assets/media/add-panel.webp",
+   "gif": "assets/media/store/add-panel.gif",
+   "still": "assets/media/store/add-panel-still.png",
+   "gw": 900,
+   "gh": 942
+  },
+  "sculpt-wheel": {
+   "kind": "loop",
+   "file": "gifs/sculpt_wheel.gif",
+   "title": "A Ring Menu for sculpting",
+   "caption": "Hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/sculpt-wheel.mp4",
+   "poster": "assets/media/sculpt-wheel.webp",
+   "gif": "assets/media/store/sculpt-wheel.gif",
+   "still": "assets/media/store/sculpt-wheel-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "studio-modes": {
+   "kind": "loop",
+   "file": "gifs/studio_modes.gif",
+   "title": "One canvas, a layer per mode",
+   "caption": "Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.",
+   "w": 1280,
+   "h": 776,
+   "mp4": "assets/media/studio-modes.mp4",
+   "poster": "assets/media/studio-modes.webp",
+   "gif": "assets/media/store/studio-modes.gif",
+   "still": "assets/media/store/studio-modes-still.png",
+   "gw": 960,
+   "gh": 582
+  },
+  "edit-layout": {
+   "kind": "loop",
+   "file": "gifs/edit_layout.gif",
+   "title": "Lay out with snapping and the Selection Bar",
+   "caption": "Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.",
+   "w": 910,
+   "h": 564,
+   "mp4": "assets/media/edit-layout.mp4",
+   "poster": "assets/media/edit-layout.webp",
+   "gif": "assets/media/store/edit-layout.gif",
+   "still": "assets/media/store/edit-layout-still.png",
+   "gw": 900,
+   "gh": 558
+  },
+  "from-property": {
+   "kind": "loop",
+   "file": "gifs/from_property.gif",
+   "title": "Bind any property with a right-click",
+   "caption": "Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.",
+   "w": 1254,
+   "h": 956,
+   "mp4": "assets/media/from-property.mp4",
+   "poster": "assets/media/from-property.webp",
+   "gif": "assets/media/store/from-property.gif",
+   "still": "assets/media/store/from-property-still.png",
+   "gw": 980,
+   "gh": 746
+  },
+  "lineal-slider": {
+   "kind": "loop",
+   "file": "gifs/lineal_slider.gif",
+   "title": "Precise sliders",
+   "caption": "Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value.",
+   "w": 860,
+   "h": 534,
+   "mp4": "assets/media/lineal-slider.mp4",
+   "poster": "assets/media/lineal-slider.webp"
+  },
+  "themes": {
+   "kind": "loop",
+   "file": "gifs/themes.gif",
+   "title": "Themes",
+   "caption": "One canvas through the Default theme, two user themes and the Light appearance.",
+   "w": 760,
+   "h": 478,
+   "mp4": "assets/media/themes.mp4",
+   "poster": "assets/media/themes.webp",
+   "gif": "assets/media/store/themes.gif",
+   "still": "assets/media/store/themes-still.png",
+   "gw": 760,
+   "gh": 479
+  },
+  "control-panel-dark": {
+   "kind": "shot",
+   "file": "shots/control_panel_dark.png",
+   "title": "Studio control panel (Dark)",
+   "caption": "A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/control-panel-dark.webp",
+   "store": "assets/media/store/control-panel-dark.jpg",
+   "sw": 1600,
+   "sh": 900
+  },
+  "control-panel-light": {
+   "kind": "shot",
+   "file": "shots/control_panel_light.png",
+   "title": "Studio control panel (Light)",
+   "caption": "The same control panel in the Light appearance, next to a light Blender theme.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/control-panel-light.webp",
+   "store": "assets/media/store/control-panel-light.jpg",
+   "sw": 1600,
+   "sh": 900
+  },
+  "control-panel-dark-area": {
+   "kind": "shot",
+   "file": "shots/control_panel_dark_area.png",
+   "title": "Control panel canvas (Dark)",
+   "caption": "A finished canvas in Live Mode: switches, sliders, number fields, swatches and buttons grouped in frames.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/control-panel-dark-area.webp"
+  },
+  "control-panel-light-area": {
+   "kind": "shot",
+   "file": "shots/control_panel_light_area.png",
+   "title": "Control panel canvas (Light)",
+   "caption": "The control panel canvas in the Light appearance.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/control-panel-light-area.webp"
+  },
+  "studio-sculpt": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_sculpt.png",
+   "title": "FlexSpace Studio: Sculpt layer",
+   "caption": "Enter Sculpt Mode and the canvas jumps to its Sculpt layer: brushes, stroke, remesh, masks and face sets.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-sculpt.webp",
+   "store": "assets/media/store/studio-sculpt.jpg",
+   "sw": 1574,
+   "sh": 954
+  },
+  "studio-texture-paint": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_texture_paint.png",
+   "title": "FlexSpace Studio: Texture Paint layer",
+   "caption": "In Texture Paint the canvas shows a colour picker, swatches, paint brushes, masks and projection settings.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-texture-paint.webp",
+   "store": "assets/media/store/studio-texture-paint.jpg",
+   "sw": 1574,
+   "sh": 954
+  },
+  "studio-object": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_object.png",
+   "title": "FlexSpace Studio: Object layer",
+   "caption": "Select the Geometry Nodes tower and the canvas shows its layer: shape, details, materials and colour controls.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-object.webp"
+  },
+  "studio-look-dev": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_look_dev.png",
+   "title": "FlexSpace Studio: Look Dev layer",
+   "caption": "Click the shader ball and its Look Dev layer goes live: colour pickers for the material, the world and the key light.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-look-dev.webp"
+  },
+  "studio-weight-paint": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_weight_paint.png",
+   "title": "FlexSpace Studio: Weight Paint layer",
+   "caption": "In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-weight-paint.webp",
+   "store": "assets/media/store/studio-weight-paint.jpg",
+   "sw": 1574,
+   "sh": 954
+  },
+  "studio-draw": {
+   "kind": "shot",
+   "file": "shots/flexspace_studio_draw.png",
+   "title": "FlexSpace Studio: Draw layer",
+   "caption": "In Grease Pencil Draw Mode the canvas shows pencils and inks, colour, layers, stroke, animation and canvas tools.",
+   "w": 1574,
+   "h": 954,
+   "webp": "assets/media/studio-draw.webp"
+  },
+  "layer-tabs": {
+   "kind": "shot",
+   "file": "shots/features/layer_tabs_full.png",
+   "title": "Layers and modes",
+   "caption": "One canvas, a layer per mode: the tabs show each layer's mode, the active one is outlined.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/layer-tabs.webp",
+   "store": "assets/media/store/layer-tabs.png",
+   "sw": 911,
+   "sh": 954
+  },
+  "layers-panel": {
+   "kind": "shot",
+   "file": "shots/features/layers_panel_full.png",
+   "title": "Layers panel",
+   "caption": "The Layers panel: a layer per mode, Show When and Switch Layers Automatically.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/layers-panel.webp"
+  },
+  "ring-menu-inner": {
+   "kind": "shot",
+   "file": "shots/features/ring_menu_inner.png",
+   "title": "Ring Menu toggles",
+   "caption": "The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks.",
+   "w": 738,
+   "h": 811,
+   "webp": "assets/media/ring-menu-inner.webp",
+   "store": "assets/media/store/ring-menu-inner.png",
+   "sw": 738,
+   "sh": 811
+  },
+  "ring-menu-page": {
+   "kind": "shot",
+   "file": "shots/features/ring_menu_page.png",
+   "title": "Ring Menu pages",
+   "caption": "More brushes than fit? Pages: the tab under the ring flips them.",
+   "w": 738,
+   "h": 811,
+   "webp": "assets/media/ring-menu-page.webp",
+   "store": "assets/media/store/ring-menu-page.png",
+   "sw": 738,
+   "sh": 811
+  },
+  "ring-menu-canvas": {
+   "kind": "shot",
+   "file": "shots/features/ring_menu_canvas.png",
+   "title": "Sculpt Wheel demo",
+   "caption": "The Sculpt Wheel demo: a Ring Menu, a round Favorites frame, quick brushes, radius and strength.",
+   "w": 1006,
+   "h": 526,
+   "webp": "assets/media/ring-menu-canvas.webp"
+  },
+  "add-browser": {
+   "kind": "shot",
+   "file": "shots/features/add_browser_full.png",
+   "title": "Add Widget browser",
+   "caption": "Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/add-browser.webp",
+   "store": "assets/media/store/add-browser.jpg",
+   "sw": 1600,
+   "sh": 900
+  },
+  "add-browser-search": {
+   "kind": "shot",
+   "file": "shots/features/add_browser_search.png",
+   "title": "Search as you type",
+   "caption": "Type a few letters and the best matches show across every category; Enter adds the selected one.",
+   "w": 907,
+   "h": 628,
+   "webp": "assets/media/add-browser-search.webp",
+   "store": "assets/media/store/add-browser-search.png",
+   "sw": 907,
+   "sh": 628
+  },
+  "add-browser-data": {
+   "kind": "shot",
+   "file": "shots/features/add_browser_data.png",
+   "title": "Categories and subcategories",
+   "caption": "The Data category opens into Toggles, Choices, Numbers, Color, Text and Lists, each under its own heading.",
+   "w": 907,
+   "h": 628,
+   "webp": "assets/media/add-browser-data.webp"
+  },
+  "add-menu": {
+   "kind": "shot",
+   "file": "shots/features/add_menu.png",
+   "title": "Header Add menu",
+   "caption": "The header's Add menu: Search, From Property and every category, its subcategories under headings.",
+   "w": 470,
+   "h": 516,
+   "webp": "assets/media/add-menu.webp"
+  },
+  "snapping-guides": {
+   "kind": "shot",
+   "file": "shots/features/snapping_guides.png",
+   "title": "Smart snapping",
+   "caption": "Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.",
+   "w": 907,
+   "h": 644,
+   "webp": "assets/media/snapping-guides.webp",
+   "store": "assets/media/store/snapping-guides.png",
+   "sw": 907,
+   "sh": 644
+  },
+  "selection-bar": {
+   "kind": "shot",
+   "file": "shots/features/selection_bar.png",
+   "title": "Selection Bar",
+   "caption": "With several widgets selected, the Selection Bar aligns, distributes and matches their sizes.",
+   "w": 512,
+   "h": 444,
+   "webp": "assets/media/selection-bar.webp",
+   "store": "assets/media/store/selection-bar.png",
+   "sw": 512,
+   "sh": 444
+  },
+  "selection-handles": {
+   "kind": "shot",
+   "file": "shots/features/selection_handles.png",
+   "title": "Selection handles",
+   "caption": "Handles resize the selection, the round knob rotates it and the chip shows its size.",
+   "w": 446,
+   "h": 726,
+   "webp": "assets/media/selection-handles.webp"
+  },
+  "minimap": {
+   "kind": "shot",
+   "file": "shots/features/minimap_canvas.png",
+   "title": "Minimap",
+   "caption": "The minimap shows the whole canvas while you work zoomed in: click to jump, drag to pan.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/minimap.webp"
+  },
+  "layout-widgets": {
+   "kind": "shot",
+   "file": "shots/features/layout_layer.png",
+   "title": "Frames, groups and flex boxes",
+   "caption": "Frames hold widgets and move them as one; Flex Boxes and Groups keep them in line.",
+   "w": 911,
+   "h": 487,
+   "webp": "assets/media/layout-widgets.webp"
+  },
+  "flex-box": {
+   "kind": "shot",
+   "file": "shots/features/flex_box.png",
+   "title": "Flex Box",
+   "caption": "Flex Boxes line widgets up in a row or a column: here Suzanne's location, rotation and scale, each added in one pick with From Property.",
+   "w": 833,
+   "h": 256,
+   "webp": "assets/media/flex-box.webp"
+  },
+  "frames": {
+   "kind": "shot",
+   "file": "shots/features/frames.png",
+   "title": "Frames",
+   "caption": "Frames give a panel its sections: a title, a background, and they carry their widgets when moved.",
+   "w": 865,
+   "h": 550,
+   "webp": "assets/media/frames.webp"
+  },
+  "group": {
+   "kind": "shot",
+   "file": "shots/features/group.png",
+   "title": "Group",
+   "caption": "A Group moves, rotates and resizes several widgets as one; double-click to go inside.",
+   "w": 595,
+   "h": 238,
+   "webp": "assets/media/group.webp"
+  },
+  "from-property-shot": {
+   "kind": "shot",
+   "file": "shots/features/from_property_full.png",
+   "title": "Add from Property",
+   "caption": "The light's colour, right-clicked in the Properties editor, is now a Color Swatch on the canvas.",
+   "w": 1920,
+   "h": 1080,
+   "webp": "assets/media/from-property-shot.webp"
+  },
+  "binding-eyedropper": {
+   "kind": "shot",
+   "file": "shots/binding_eyedropper.png",
+   "title": "Binding eyedropper",
+   "caption": "Bind a slider with the eyedropper: right-click any slider-like property, here the light's Exposure.",
+   "w": 1350,
+   "h": 507,
+   "webp": "assets/media/binding-eyedropper.webp",
+   "store": "assets/media/store/binding-eyedropper.png",
+   "sw": 1350,
+   "sh": 507
+  },
+  "binding-data-path": {
+   "kind": "shot",
+   "file": "shots/binding_data_path.png",
+   "title": "Bound data path",
+   "caption": "After the pick the slider is bound to the light's exposure, pinned to that light, and labelled for you.",
+   "w": 1008,
+   "h": 372,
+   "webp": "assets/media/binding-data-path.webp",
+   "store": "assets/media/store/binding-data-path.png",
+   "sw": 1008,
+   "sh": 372
+  },
+  "broken-bindings": {
+   "kind": "shot",
+   "file": "shots/features/broken_bindings.png",
+   "title": "Broken bindings",
+   "caption": "A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/broken-bindings.webp",
+   "store": "assets/media/store/broken-bindings.png",
+   "sw": 911,
+   "sh": 954
+  },
+  "top-bar-status": {
+   "kind": "shot",
+   "file": "shots/features/top_bar_status.png",
+   "title": "Canvas top bar",
+   "caption": "The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you.",
+   "w": 911,
+   "h": 62,
+   "webp": "assets/media/top-bar-status.webp"
+  },
+  "theme-sunset": {
+   "kind": "shot",
+   "file": "shots/features/theme_sunset.png",
+   "title": "Sunset theme",
+   "caption": "The same canvas in a user theme, Sunset: made in the theme editor in a few clicks.",
+   "w": 911,
+   "h": 574,
+   "webp": "assets/media/theme-sunset.webp",
+   "store": "assets/media/store/theme-sunset.png",
+   "sw": 911,
+   "sh": 574
+  },
+  "theme-violet": {
+   "kind": "shot",
+   "file": "shots/features/theme_violet.png",
+   "title": "Violet theme",
+   "caption": "The same canvas in a user theme, Violet: made in the theme editor in a few clicks.",
+   "w": 911,
+   "h": 574,
+   "webp": "assets/media/theme-violet.webp"
+  },
+  "theme-light": {
+   "kind": "shot",
+   "file": "shots/features/theme_light.png",
+   "title": "Light appearance",
+   "caption": "Every theme has a Dark and a Light mode; Auto follows Blender's own theme.",
+   "w": 911,
+   "h": 574,
+   "webp": "assets/media/theme-light.webp"
+  },
+  "theme-menu": {
+   "kind": "shot",
+   "file": "shots/features/theme_menu.png",
+   "title": "Themes and Appearance",
+   "caption": "Pick a theme and its appearance, Auto, Dark or Light, or open the theme editor, from the View menu.",
+   "w": 420,
+   "h": 283,
+   "webp": "assets/media/theme-menu.webp"
+  },
+  "presets-menu": {
+   "kind": "shot",
+   "file": "shots/features/presets_menu.png",
+   "title": "Global presets",
+   "caption": "Save any canvas as a global preset and add it to any project from a menu of thumbnails.",
+   "w": 528,
+   "h": 167,
+   "webp": "assets/media/presets-menu.webp",
+   "store": "assets/media/store/presets-menu.png",
+   "sw": 528,
+   "sh": 167
+  },
+  "top-bar-preset": {
+   "kind": "shot",
+   "file": "shots/features/top_bar_preset.png",
+   "title": "Global presets",
+   "caption": "A canvas linked to a global preset: the top bar shows its name and that it is up to date.",
+   "w": 911,
+   "h": 64,
+   "webp": "assets/media/top-bar-preset.webp"
+  },
+  "library": {
+   "kind": "shot",
+   "file": "shots/features/library_full.png",
+   "title": "Library",
+   "caption": "The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.",
+   "w": 911,
+   "h": 954,
+   "webp": "assets/media/library.webp",
+   "store": "assets/media/store/library.png",
+   "sw": 911,
+   "sh": 954
+  },
+  "empty-state": {
+   "kind": "shot",
+   "file": "shots/features/empty_state_card.png",
+   "title": "Get started",
+   "caption": "No canvas yet? One click makes one, or open a finished demo to see how it is built.",
+   "w": 600,
+   "h": 380,
+   "webp": "assets/media/empty-state.webp",
+   "store": "assets/media/store/empty-state.png",
+   "sw": 600,
+   "sh": 380
+  },
+  "w-operator": {
+   "kind": "widget",
+   "file": "shots/widgets/operator.png",
+   "title": "Widget: Operator button",
+   "caption": "A button that runs any Blender operator, here Render Image.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/operator.webp"
+  },
+  "w-custom-script": {
+   "kind": "widget",
+   "file": "shots/widgets/custom_script.png",
+   "title": "Widget: Script button",
+   "caption": "A button that runs your own Python script.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/custom-script.webp"
+  },
+  "w-toggle": {
+   "kind": "widget",
+   "file": "shots/widgets/toggle.png",
+   "title": "Widget: Toggle",
+   "caption": "A switch bound to a true/false property, here a light's shadow.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/toggle.webp"
+  },
+  "w-enum": {
+   "kind": "widget",
+   "file": "shots/widgets/enum.png",
+   "title": "Widget: Enum",
+   "caption": "A segmented choice bound to an enum property, here the render engine.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/enum.webp"
+  },
+  "w-color-swatch": {
+   "kind": "widget",
+   "file": "shots/widgets/color_swatch.png",
+   "title": "Widget: Color Swatch",
+   "caption": "A colour swatch bound to a colour property, here the light colour.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/color-swatch.webp"
+  },
+  "w-color-picker": {
+   "kind": "widget",
+   "file": "shots/widgets/color_picker.png",
+   "title": "Widget: Color Picker",
+   "caption": "A full colour picker on the canvas with a wheel, value bar and HSV rows.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/color-picker.webp"
+  },
+  "w-color-palette": {
+   "kind": "widget",
+   "file": "shots/widgets/color_palette.png",
+   "title": "Widget: Color Palette",
+   "caption": "A palette of swatches: click one to set the bound colour.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/color-palette.webp"
+  },
+  "w-brush-picker": {
+   "kind": "widget",
+   "file": "shots/widgets/brush_picker.png",
+   "title": "Widget: Brush Picker",
+   "caption": "A button that makes one brush active, with its preview.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/brush-picker.webp"
+  },
+  "w-ring-menu": {
+   "kind": "widget",
+   "file": "shots/widgets/ring_menu.png",
+   "title": "Widget: Ring Menu",
+   "caption": "Brushes on an outer ring, toggles and operators on an inner ring, in pages.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/ring-menu.webp"
+  },
+  "w-list": {
+   "kind": "widget",
+   "file": "shots/widgets/list.png",
+   "title": "Widget: List",
+   "caption": "A list of items with add and remove buttons, here the material slots.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/list.webp"
+  },
+  "w-lineal-slider": {
+   "kind": "widget",
+   "file": "shots/widgets/slider_lineal.png",
+   "title": "Widget: Slider",
+   "caption": "A linear slider bound to a number, here the light power.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/lineal-slider.webp"
+  },
+  "w-number-field": {
+   "kind": "widget",
+   "file": "shots/widgets/number_field.png",
+   "title": "Widget: Number Field",
+   "caption": "A Blender-style number field you drag, click or type into.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/number-field.webp"
+  },
+  "w-label": {
+   "kind": "widget",
+   "file": "shots/widgets/label.png",
+   "title": "Widget: Label",
+   "caption": "A text label that can show a live value, here the current frame.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/label.webp"
+  },
+  "w-image": {
+   "kind": "widget",
+   "file": "shots/widgets/image.png",
+   "title": "Widget: Image",
+   "caption": "An image on the canvas, here a packed render of the scene.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/image.webp"
+  },
+  "w-frame": {
+   "kind": "widget",
+   "file": "shots/widgets/frame.png",
+   "title": "Widget: Frame",
+   "caption": "A titled frame that holds and moves a group of widgets.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/frame.webp"
+  },
+  "w-flex-box": {
+   "kind": "widget",
+   "file": "shots/widgets/flex_box.png",
+   "title": "Widget: Flex Box",
+   "caption": "A box that lays its widgets out for you, made in one go from a vector property.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/flex-box.webp"
+  },
+  "w-group": {
+   "kind": "widget",
+   "file": "shots/widgets/group.png",
+   "title": "Widget: Group",
+   "caption": "Widgets grouped to move and resize together, shown selected in Edit Mode.",
+   "w": 480,
+   "h": 267,
+   "webp": "assets/media/widgets/group.webp"
+  }
+ }
+}

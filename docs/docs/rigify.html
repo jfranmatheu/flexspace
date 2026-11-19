@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Picker with Rigify · FlexSpace Docs</title>
+<meta name="description" content="Picker with Rigify: the one-step Humanoid Body picker, toes for Rigify, and a step by step guide to your own picker: import, mirror, IK/FK, bone collections, sliders and repairing bindings.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/rigify.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Picker with Rigify · FlexSpace Docs">
+<meta property="og:description" content="Picker with Rigify: the one-step Humanoid Body picker, toes for Rigify, and a step by step guide to your own picker: import, mirror, IK/FK, bone collections, sliders and repairing bindings.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/rigify.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html" aria-current="page">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Picker with Rigify</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html" aria-current="page">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Armature Picker</p>
+      <h1>Picker with Rigify</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#quick-start-humanoid-body">Quick start: Humanoid Body</a></li><li class="lv3"><a href="#colours-and-views">Colours and views</a></li><li class="lv3"><a href="#missing-bones">Missing bones</a></li><li class="lv3"><a href="#toes-for-rigify">Toes for Rigify</a></li><li class="lv3"><a href="#use-the-shapes-in-your-own-picker">Use the shapes in your own picker</a></li><li class="lv3"><a href="#demo-files">Demo files</a></li><li class="lv2"><a href="#1-use-the-generated-rig">1. Use the generated rig</a></li><li class="lv2"><a href="#2-import-the-controls">2. Import the controls</a></li><li class="lv2"><a href="#3-mirror">3. Mirror</a></li><li class="lv2"><a href="#4-the-ik-fk-puck">4. The IK/FK puck</a></li><li class="lv2"><a href="#5-bone-collections">5. Bone collections</a></li><li class="lv2"><a href="#6-sliders-for-custom-properties">6. Sliders for custom properties</a></li><li class="lv2"><a href="#repair-bindings">Repair bindings</a></li></ul></details>
+    <article class="fs-prose">
+<p>How to build a picker for a rig generated with Rigify. The same ideas work for any rig.</p>
+<h2 id="quick-start-humanoid-body">Quick start: Humanoid Body<a class="fs-anchor" href="#quick-start-humanoid-body" aria-label="Link to this section">#</a></h2>
+<p>Want a full picker in one step?</p>
+<ol>
+<li>Select the generated rig.
+</li>
+<li>In the picker's Edit Mode, press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span>.
+</li>
+<li>Choose <strong>Bone Picker &gt; Humanoid Body (Rigify)</strong>.
+</li>
+</ol>
+<p>The chart comes with its own character drawings: a male and a female body, both hands and both feet. Every shape is traced from them, so each control sits on the right part of the drawing.</p>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-picker.webp" data-zoom><img src="../assets/img/frame-picker.webp" alt="A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles." width="1780" height="1696" decoding="async" loading="lazy"></a><figcaption>A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.</figcaption></figure>
+<ul>
+<li><strong>Body</strong>: Adult Male or Adult Female. Each has its own drawing, and the shapes follow it.
+</li>
+<li><strong>Pages</strong>: Body, Hands and Feet. Each page goes in its own layer (tab), or side by side with <strong>One Layer per Page</strong> off.
+</li>
+<li><strong>Body page</strong>: the body split into head, neck, chest, torso, hips, shoulders, arms, hands, legs and feet (the FK and torso controls), plus the IK hands and feet, the elbow and knee poles, the spine and the tweaks. The IK hand (diamond) and its IK/FK switch are past the fingertips, the IK feet beside the feet, the poles and the IK arm and thigh bars just outside the limbs.
+</li>
+<li><strong>Hands page</strong>: both hands, large: the palm, every finger and thumb segment, the fingertips (past each fingertip, along the finger) and the finger masters (in a row past the fingertips, each under its finger; the thumb's past its tip). The wrist band is the FK hand, with the hand tweak (dot) on it. Next to it: the IK hand (pill) and its IK/FK switch.
+</li>
+<li><strong>Feet page</strong>: both feet seen from above, large: heel, foot, ball (foot spin) and toe controls, every toe with its tip and master, and the FK foot and toe bars on the outer side.
+</li>
+<li><strong>Scale</strong> sets the size of the chart.
+</li>
+<li><strong>IK/FK Switches</strong>: when on, each arm and leg gets a Rigify IK/FK puck of its own, right next to the IK hand or foot (never on top of it), so both are easy to click.
+</li>
+<li><strong>Character Backdrop</strong> (on by default): puts each page's drawing behind it as a locked <strong>Backdrop Image</strong>, at the same scale as the shapes. The drawing is faded and half grey (75 % opacity, 50 % saturation, a light cool tint) and the body shapes are see-through over it, so you see the art and the colours at once. Clicks go through the drawing to the controls. Change its look in its <strong>Image Look</strong> section, or delete it. Turn the option off for the shapes alone, solid.
+</li>
+<li><strong>Hands Side</strong>: <strong>Back</strong> (the default) or <strong>Palm</strong>: the drawing of the Hands page, and the shapes follow it. The thumbs point inwards on the backs of the hands, outwards on the palms.
+</li>
+</ul>
+
+<h3 id="colours-and-views">Colours and views<a class="fs-anchor" href="#colours-and-views" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>Left is blue, right is red, the centre is yellow and the root is purple.
+</li>
+<li>The Body page is a front view: the character's left is on your right.
+</li>
+<li><strong>Hands &amp; Feet View</strong> sets the other two pages (their drawings turn with them):
+<ul>
+<li><strong>Front</strong> (the default): the same front view as the Body page. The right hand and foot are on the left, fingers and toes point down, wrists and heels are at the top.
+</li>
+<li><strong>Own</strong>: as you see your own hands and feet. Left is on the left, fingers and toes point up.
+</li>
+</ul>
+</li>
+<li>Big toes point inwards in both views. Thumbs point inwards with the backs of the hands, outwards with the palms (<strong>Hands Side</strong>).
+</li>
+</ul>
+
+
+<h3 id="missing-bones">Missing bones<a class="fs-anchor" href="#missing-bones" aria-label="Link to this section">#</a></h3>
+<p>Each shape is bound to the bone of the same name. Bones your rig doesn't have are skipped, and a warning lists them. A page with none of its bones gets no tab.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Rigify's human metarig has one toe per foot, so the per-toe shapes are skipped unless you add toe bones named <code>toe1.01.L</code> to <code>toe5.03.L</code> with the <strong>limbs.super_finger</strong> rig type (see Toes for Rigify below). The demo files do this. Missing toes get their own short note, so a real naming problem elsewhere still shows.</p></aside>
+<h3 id="toes-for-rigify">Toes for Rigify<a class="fs-anchor" href="#toes-for-rigify" aria-label="Link to this section">#</a></h3>
+<p>To get one control per toe, do this on the metarig before you generate:</p>
+<ol>
+<li>Add five toe chains to each foot. Name them <code>toe1.01.L</code> (big toe) to <code>toe5.03.L</code>. The big toe has two bones, the others three.
+</li>
+<li>Give the first bone of each chain the <strong>limbs.super_finger</strong> rig type. Rigify then makes a tip, a master and an FK control per segment.
+</li>
+<li>Put them in their own bone collection, for example "Toes".
+</li>
+</ol>
+<p>The <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong> demo files have toes made this way.</p>
+<h3 id="use-the-shapes-in-your-own-picker">Use the shapes in your own picker<a class="fs-anchor" href="#use-the-shapes-in-your-own-picker" aria-label="Link to this section">#</a></h3>
+<p>The shapes are stored in the picker, so they travel with the .blend (the drawings too: they are packed). Any Geometry Shape of the same picker can use them:</p>
+<ol>
+<li>Add a <strong>Geometry Shape</strong> widget.
+</li>
+<li>Open its <strong>Custom Shape</strong> panel.
+</li>
+<li>Pick a shape under <strong>Canvas shapes</strong>.
+</li>
+<li>Set its bone, colour and size as usual.
+</li>
+</ol>
+<p>You can also delete the shapes you don't need, or move them to make your own layout.</p>
+<h3 id="demo-files">Demo files<a class="fs-anchor" href="#demo-files" aria-label="Link to this section">#</a></h3>
+<p>Two demos show the result: <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>. Each has a generated rig with toes, the three pages over their drawings, IK/FK and stretch sliders, head and neck follow knobs, and bone collection toggles. Open them from the demo list.</p>
+<h2 id="1-use-the-generated-rig">1. Use the generated rig<a class="fs-anchor" href="#1-use-the-generated-rig" aria-label="Link to this section">#</a></h2>
+<p>Make the picker for the <strong>generated rig</strong> (the <code>RIG-...</code> object you animate), not for the metarig.</p>
+<ol>
+<li>Select it and enter <strong>Pose Mode</strong>.
+</li>
+<li>Set an area to <strong>Armature Picker</strong>.
+</li>
+<li>Click <strong>New Picker</strong>.
+</li>
+</ol>
+<h2 id="2-import-the-controls">2. Import the controls<a class="fs-anchor" href="#2-import-the-controls" aria-label="Link to this section">#</a></h2>
+<ol>
+<li>In the 3D Viewport, select the controls you want buttons for: the torso, hips, chest and head controls, the hand and foot IK controls, the FK controls, the fingers...
+</li>
+<li>Click <strong>Import Selected Bones</strong> on the card (or <strong>Utils &gt; Import Selected Bones</strong> in Edit Mode).
+</li>
+<li>Click to place each button. Left and right controls come in pairs.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Repeat with more bones whenever you like. Bones that already have a button are skipped.</p></aside>
+<h2 id="3-mirror">3. Mirror<a class="fs-anchor" href="#3-mirror" aria-label="Link to this section">#</a></h2>
+<p>Rigify names its controls with <code>.L</code> and <code>.R</code>, so the picker pairs them. In Edit Mode, move, resize or rotate the left button and the right one follows, mirrored across the red centre line. Centre controls (torso, chest, head) stay on the line.</p>
+<h2 id="4-the-ik-fk-puck">4. The IK/FK puck<a class="fs-anchor" href="#4-the-ik-fk-puck" aria-label="Link to this section">#</a></h2>
+<p>Rigify limbs switch between IK and FK with an <code>IK_FK</code> property (0 is IK, 1 is FK) on the limb's <code>..._parent</code> control. A bone picker can show a small puck that flips it:</p>
+<ol>
+<li>In Edit Mode, select the button of a limb control, for example <code>hand_ik.L</code> or <code>upper_arm_fk.L</code>.
+</li>
+<li>In the sidebar <strong>Widget</strong> tab, find the <strong>IK/FK</strong> row and click the <strong>armature</strong> button at its end (<strong>Rigify IK/FK</strong>).
+</li>
+<li>FlexSpace reads the rig's drivers to find the right limb and sets everything: the <strong>Data Path</strong> (<code>pose.<wbr>bones[&quot;upper_arm_parent.<wbr>L&quot;][&quot;IK_FK&quot;]</code>) and <strong>IK Value: Min</strong>. If it can't tell the limb, it lists every bone with an <code>IK_FK</code> property, the same side first.
+</li>
+</ol>
+<p>In Pose Mode, click the puck to switch. The puck:</p>
+<ul>
+<li>shows the current state,
+</li>
+<li>follows the property when you change it elsewhere,
+</li>
+<li>is keyed when Auto Keying is on,
+</li>
+<li>makes every click one undo step.
+</li>
+</ul>
+<p><strong>Toggle Size</strong> sets its size.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Not Rigify? Choose <strong>Bone</strong> (a custom property of a bone, with a list of its bool, int and float properties) or <strong>Data Path</strong>, and set <strong>IK Value</strong> to the end that means IK.</p></aside>
+<h2 id="5-bone-collections">5. Bone collections<a class="fs-anchor" href="#5-bone-collections" aria-label="Link to this section">#</a></h2>
+<p>Rigify sorts its controls into bone collections (Torso, Arm.L (IK), Arm.L (FK), Fingers...). Add a toggle for each one you show and hide often:</p>
+<ol>
+<li>In Edit Mode, press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Bone Picker &gt; Bone Collection</strong>.
+</li>
+<li>Pick the collection and place it.
+</li>
+<li>Choose <strong>Visible</strong> or <strong>Solo</strong> in its <strong>Bone Collection</strong> panel.
+</li>
+</ol>
+<p>With <strong>Sync Bone Collections Visibility</strong> on (sidebar, <strong>Armature</strong> tab), the buttons of hidden collections hide too, so the picker matches the viewport.</p>
+
+<p>The <strong>Face</strong> tab of the <strong>Rigify Human Picker</strong> demo is a good start for your own face picker. Every face control of Rigify's human sits on the drawn feature of a face picture, coloured by side (left blue, right red, centre yellow):</p>
+<ul>
+<li><strong>Eyes</strong>: a ring around each eye moves the whole eye (<code>master_eye</code>), a dot on the pupil aims it (<code>eye</code>), almond segments on the lash lines move the lids, and the <strong>EYES</strong> bar on the forehead moves the common eye target.
+</li>
+<li><strong>Brows</strong>: three arched strips on each brow, and a row of dots under it.
+</li>
+<li><strong>Nose, cheeks, lips and jaw</strong>: the nose master is the diamond on the bridge, the lips are arcs above and below the mouth line with a dot at each corner, the <strong>JAW</strong> bar is under the chin.
+</li>
+<li><strong>Teeth &amp; Tongue</strong>: the open mouth in its own frame, the upper and lower teeth and the tongue with its chain.
+</li>
+<li><strong>Expressions</strong>: a <strong>Gaze (Eyes)</strong> pad bound to the eye target, a pad per mouth corner, and knobs for <strong>Mouth Lock</strong> and <strong>Eyes Follow</strong>.
+</li>
+</ul>
+<p>The face picture is a locked <strong>Backdrop Image</strong>, so clicks go through it to the controls. The lighter controls are the finer ones of the <strong>Face (Secondary)</strong> collection, the darker ones are masters.</p>
+<h2 id="6-sliders-for-custom-properties">6. Sliders for custom properties<a class="fs-anchor" href="#6-sliders-for-custom-properties" aria-label="Link to this section">#</a></h2>
+<p>Rigify puts many settings on its controls as custom properties (IK stretch, follow, FK limb follow...). To bind a slider to one:</p>
+<ol>
+<li>Add <strong>Data &gt; Numbers &gt; Lineal</strong>.
+</li>
+<li>Click the eyedropper next to <strong>Data Path</strong>.
+</li>
+<li>Right-click the property in the 3D Viewport sidebar (<strong>Item</strong> tab, <strong>Rig Main Properties</strong>, or the bone's <strong>Custom Properties</strong>).
+</li>
+</ol>
+<h2 id="repair-bindings">Repair bindings<a class="fs-anchor" href="#repair-bindings" aria-label="Link to this section">#</a></h2>
+<p>Buttons remember their bone by name and by a hidden bone id, so they follow renamed bones. If you <strong>regenerate</strong> the rig, change bone names in the metarig, or paste buttons from another picker:</p>
+<ul>
+<li>Open the picker in Edit Mode and run <strong>Utils &gt; Repair Bone Bindings</strong>. It follows renamed bones, binds buttons by bone name, and reports the bones still missing.
+</li>
+<li>Buttons with a <strong>Missing bone</strong> badge need a new bone: pick it in the <strong>Bone</strong> field.
+</li>
+<li>If the picker shows <strong>Not the picker of ...</strong> after regenerating, click <strong>Use it for ...</strong> on the card to give it back to the rig.
+</li>
+</ul>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="picker.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>The Armature Picker</strong></a><a class="fs-pager__link fs-pager__link--next" href="recipes.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Recipes</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#quick-start-humanoid-body">Quick start: Humanoid Body</a></li><li class="lv3"><a href="#colours-and-views">Colours and views</a></li><li class="lv3"><a href="#missing-bones">Missing bones</a></li><li class="lv3"><a href="#toes-for-rigify">Toes for Rigify</a></li><li class="lv3"><a href="#use-the-shapes-in-your-own-picker">Use the shapes in your own picker</a></li><li class="lv3"><a href="#demo-files">Demo files</a></li><li class="lv2"><a href="#1-use-the-generated-rig">1. Use the generated rig</a></li><li class="lv2"><a href="#2-import-the-controls">2. Import the controls</a></li><li class="lv2"><a href="#3-mirror">3. Mirror</a></li><li class="lv2"><a href="#4-the-ik-fk-puck">4. The IK/FK puck</a></li><li class="lv2"><a href="#5-bone-collections">5. Bone collections</a></li><li class="lv2"><a href="#6-sliders-for-custom-properties">6. Sliders for custom properties</a></li><li class="lv2"><a href="#repair-bindings">Repair bindings</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

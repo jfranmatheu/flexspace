@@ -7,8 +7,10 @@ This repository is the bug tracker of two Blender add-ons made from the same bas
 
 Both require Blender 5.3 or newer, and both can be installed at the same time.
 
+Website and docs: https://franb3d.github.io/flexspace/
+
 ## Reporting a bug
 
-In Blender, open **View > Report a Bug...** in the canvas header (or **Report a Bug** in the add-on preferences). It opens a new issue here with your versions, system and recent errors already filled in.
+In Blender, open **Help > Report a Bug...** in the canvas header (or **Report a Bug** in the add-on preferences). It opens a new issue here with your versions, system and recent errors already filled in.
 
 You can also open an [issue](../../issues/new/choose) by hand: pick the template of your add-on. If you bought it on Superhive, you can report problems there too.

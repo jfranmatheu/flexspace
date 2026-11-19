@@ -1,0 +1,262 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Editing Tools · FlexSpace Docs</title>
+<meta name="description" content="Editing Tools: how to select, move, resize and rotate widgets, snap them, group and frame them, align them with the Selection Bar, use the minimap, and pick a theme.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/editing.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Editing Tools · FlexSpace Docs">
+<meta property="og:description" content="Editing Tools: how to select, move, resize and rotate widgets, snap them, group and frame them, align them with the Selection Bar, use the minimap, and pick a theme.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/editing.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html" aria-current="page">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Editing Tools</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html" aria-current="page">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
+      <h1>Editing Tools</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#select">Select</a></li><li class="lv2"><a href="#move-resize-rotate">Move, resize, rotate</a></li><li class="lv2"><a href="#smart-snapping">Smart snapping</a></li><li class="lv2"><a href="#duplicate-copy-delete">Duplicate, copy, delete</a></li><li class="lv2"><a href="#groups">Groups</a></li><li class="lv2"><a href="#frames">Frames</a></li><li class="lv2"><a href="#selection-bar">Selection Bar</a></li><li class="lv2"><a href="#right-click-menu">Right-click menu</a></li><li class="lv2"><a href="#minimap">Minimap</a></li><li class="lv2"><a href="#themes">Themes</a></li></ul></details>
+    <article class="fs-prose">
+<p>Everything on this page happens in <strong>Edit Mode</strong> (<span class="fs-keys"><kbd>Tab</kbd></span>).</p>
+<h2 id="select">Select<a class="fs-anchor" href="#select" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Click</strong> a widget to select it.
+</li>
+<li><span class="fs-keys"><kbd>Shift</kbd></span> click adds it to the selection. <span class="fs-keys"><kbd>Shift</kbd></span> click the active one to deselect it.
+</li>
+<li><strong>Drag</strong> on empty space to box select. <strong>Click</strong> empty space to deselect all.
+</li>
+<li><span class="fs-keys"><kbd>A</kbd></span> selects all.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A locked widget (the lock in its <strong>Transform</strong> panel) can be selected but not moved.</p></aside>
+<h2 id="move-resize-rotate">Move, resize, rotate<a class="fs-anchor" href="#move-resize-rotate" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Drag</strong> a widget to move it.
+</li>
+<li><span class="fs-keys"><kbd>G</kbd></span> moves the selection, <span class="fs-keys"><kbd>R</kbd></span> rotates it, <span class="fs-keys"><kbd>S</kbd></span> scales it, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>R</kbd></span> clears the rotation.
+</li>
+<li>The <strong>arrow keys</strong> nudge by 10 units, <span class="fs-keys"><kbd>Shift</kbd></span> + arrow by 1.
+</li>
+<li>The <strong>handles</strong> around the selection resize it (edges and corners) and rotate it (the round knob).
+</li>
+<li>Hold <span class="fs-keys"><kbd>Alt</kbd></span> to show the <strong>pivot</strong> and drag it.
+</li>
+</ul>
+
+<p>While you transform, the status bar lists the keys. The main ones:</p>
+<ul>
+<li><span class="fs-keys"><kbd>X</kbd></span> / <span class="fs-keys"><kbd>Y</kbd></span> lock an axis.
+</li>
+<li><span class="fs-keys"><kbd>Shift</kbd></span> keeps or frees the aspect ratio (resize), snaps to 15 degrees (rotate) or is finer (scale).
+</li>
+<li><span class="fs-keys"><kbd>Alt</kbd></span> resizes from the centre.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd></span> snaps or, with smart snapping on, drags free.
+</li>
+<li>Type a number for an exact value.
+</li>
+<li><span class="fs-keys"><kbd>Enter</kbd></span> confirms, <span class="fs-keys"><kbd>Esc</kbd></span> or right-click cancels.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Exact numbers live in the sidebar, <strong>Widget</strong> tab, <strong>Transform</strong> panel.</p></aside>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/selection-handles.webp" data-zoom><img src="../assets/media/selection-handles.webp" alt="Handles resize the selection, the round knob rotates it and the chip shows its size." width="446" height="726" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Handles resize the selection, the round knob rotates it and the chip shows its size.</figcaption></figure>
+<h2 id="smart-snapping">Smart snapping<a class="fs-anchor" href="#smart-snapping" aria-label="Link to this section">#</a></h2>
+<p>The magnet in the header turns snapping on or off for this canvas. Its arrow opens the settings:</p>
+<ul>
+<li><strong>Snap To</strong>: edges, centres, spacing (equal gaps) and the grid (with its <strong>Grid Size</strong>).
+</li>
+<li><strong>Snap Distance</strong> and <strong>Show Guides</strong> (the lines that show what you snapped to).
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Hold <span class="fs-keys"><kbd>Ctrl</kbd></span> while dragging to do the opposite of the current setting.</p></aside>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-edit-mode.webp" data-zoom><img src="../assets/img/frame-edit-mode.webp" alt="Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide." width="1780" height="1304" decoding="async" loading="lazy"></a><figcaption>Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide.</figcaption></figure>
+
+
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/edit-layout.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/edit-layout.webp" data-src="../assets/media/edit-layout.mp4" width="910" height="564" aria-label="Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/snapping-guides.webp" data-zoom><img src="../assets/media/snapping-guides.webp" alt="Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why." width="907" height="644" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.</figcaption></figure>
+<h2 id="duplicate-copy-delete">Duplicate, copy, delete<a class="fs-anchor" href="#duplicate-copy-delete" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>D</kbd></span> duplicates and moves the copy.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>C</kbd></span> copies the selected widgets. A group or Flex Box is copied with what is inside it, a frame with its widgets.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>V</kbd></span> pastes them under the mouse, on the active layer, and you move them like after <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>D</kbd></span>. A click places them, <span class="fs-keys"><kbd>Esc</kbd></span> leaves them under the mouse.
+</li>
+<li><span class="fs-keys"><kbd>X</kbd></span> or <span class="fs-keys"><kbd>Delete</kbd></span> deletes.
+</li>
+</ul>
+<p>Copy and Paste are also in the <strong>Selection</strong> menu and the right-click menu. Paste from the right-click menu puts the widgets where you right-clicked; from the <strong>Selection</strong> menu, in the middle of the view. Once something is copied, a right-click with nothing selected opens a menu with just Paste. The status bar says how many widgets were copied or pasted, or why nothing was copied.</p>
+<p>What you copy stays copied until you copy again:</p>
+<ul>
+<li>Paste as many times as you like. Each paste is a new copy with its own settings, operator arguments included.
+</li>
+<li>A Script button is pasted with its script as it was when you copied it, in a new text of its own.
+</li>
+<li>Paste into another canvas of the same kind: Flex Space widgets go into Flex Space canvases, picker widgets into picker canvases. The status bar says when the kinds don't match.
+</li>
+<li>The copy is kept even if you delete the original widgets or open another file.
+</li>
+<li>A widget copied without its group, Flex Box or frame is pasted on its own.
+</li>
+</ul>
+<p><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> undoes a paste in one step.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Deleting a frame keeps its widgets. Deleting a group deletes what is inside.</p></aside>
+<h2 id="groups">Groups<a class="fs-anchor" href="#groups" aria-label="Link to this section">#</a></h2>
+<p>A group moves, rotates and resizes several widgets as one. It has no graphic of its own.</p>
+<ul>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>G</kbd></span> groups the selection, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>G</kbd></span> ungroups it.
+</li>
+<li><strong>Double-click</strong> a group to enter it and select one of its widgets. Double-click again to go into a group inside it.
+</li>
+<li><span class="fs-keys"><kbd>Esc</kbd></span> or a click outside leaves the group.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd></span> click picks one widget inside a group without entering it first.
+</li>
+<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> inside an open group adds the new widget to that group.
+</li>
+</ul>
+<h2 id="frames">Frames<a class="fs-anchor" href="#frames" aria-label="Link to this section">#</a></h2>
+<p>A frame is a titled area that owns the widgets in it: moving it moves them.</p>
+<ul>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> frames the selection.
+</li>
+<li><span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span> removes widgets from their frame.
+</li>
+<li>Drop a widget inside a frame to add it.
+</li>
+<li>With <strong>Shrink</strong> on, the frame fits its contents.
+</li>
+</ul>
+<h2 id="selection-bar">Selection Bar<a class="fs-anchor" href="#selection-bar" aria-label="Link to this section">#</a></h2>
+<p>With two or more widgets (or a group) selected, a bar appears at the bottom of the canvas:</p>
+<ul>
+<li><strong>Align</strong> left, centre, right, top, middle, bottom, and <strong>Align To</strong> (the selection bounds, the active widget or the canvas origin).
+</li>
+<li><strong>Distribute</strong> horizontally or vertically.
+</li>
+<li><strong>Size</strong>: match or normalize sizes.
+</li>
+<li><strong>Group</strong> and <strong>Ungroup</strong>, and <strong>More</strong> for the rest of the <strong>Selection</strong> menu.
+</li>
+</ul>
+<p>Good to know:</p>
+<ul>
+<li>Hover a button to see what it does, and why a greyed one can't.
+</li>
+<li>The bar moves to the top when the selection is under it.
+</li>
+<li>Choose where it shows, or turn it off, in <strong>View &gt; Selection Bar</strong> (also in the add-on preferences).
+</li>
+<li>The same tools are in the header <strong>Selection</strong> menu and the right-click menu, with <strong>Order</strong> (bring forward, send back) and <strong>Match Rotation</strong>.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/selection-bar.webp" data-zoom><img src="../assets/media/selection-bar.webp" alt="With several widgets selected, the Selection Bar aligns, distributes and matches their sizes." width="512" height="444" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>With several widgets selected, the Selection Bar aligns, distributes and matches their sizes.</figcaption></figure>
+<h2 id="right-click-menu">Right-click menu<a class="fs-anchor" href="#right-click-menu" aria-label="Link to this section">#</a></h2>
+<p>Right-click a selection for the context menu: frames, Flex Box, groups, order and <strong>Delete</strong>.</p>
+<h2 id="minimap">Minimap<a class="fs-anchor" href="#minimap" aria-label="Link to this section">#</a></h2>
+<p>The picture button in the header shows the minimap, a small map of the whole canvas. Its arrow sets when it shows (Edit Mode, Live Mode), its <strong>Corner</strong>, its <strong>Size</strong> and whether it draws the widgets.</p>
+<ul>
+<li><strong>Click</strong> the map to centre the view there, <strong>drag</strong> to pan.
+</li>
+<li><strong>Double-click</strong> frames every widget, the <strong>wheel</strong> zooms.
+</li>
+<li>Drag its corner grips to move it to another corner or resize it.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/minimap.webp" data-zoom><img src="../assets/media/minimap.webp" alt="The minimap shows the whole canvas while you work zoomed in: click to jump, drag to pan." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The minimap shows the whole canvas while you work zoomed in: click to jump, drag to pan.</figcaption></figure>
+<h2 id="themes">Themes<a class="fs-anchor" href="#themes" aria-label="Link to this section">#</a></h2>
+<p>The theme sets the colours, shapes and type of every widget, on every canvas.</p>
+<ul>
+<li>Pick a theme from <strong>View &gt; Theme</strong> in the header.
+</li>
+<li>The same menu has <strong>Appearance</strong> (Auto follows Blender's theme, Dark, Light), <strong>Edit Themes...</strong> and <strong>Reload Library</strong>.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/theme-menu.webp" data-zoom><img src="../assets/media/theme-menu.webp" alt="Pick a theme and its appearance, Auto, Dark or Light, or open the theme editor, from the View menu." width="420" height="283" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Pick a theme and its appearance, Auto, Dark or Light, or open the theme editor, from the View menu.</figcaption></figure>
+<p>To make your own theme:</p>
+<ol>
+<li>Open <strong>Edit Themes...</strong> (the <strong>Themes</strong> section of the add-on preferences).
+</li>
+<li>Make a <strong>New Theme</strong> (a copy of Default) or <strong>Duplicate</strong> the active one.
+</li>
+<li>Change it.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Built-in themes have a lock. Your themes are saved as files in the theme library folder, so they survive updates.</p></aside>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> One widget can keep its own look. In its <strong>Style</strong> panel, turn on <strong>Override Theme</strong>. <strong>Reset to Theme</strong> brings it back.</p></aside>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/themes.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/themes.webp" data-src="../assets/media/themes.mp4" width="760" height="478" aria-label="One canvas through the Default theme, two user themes and the Light appearance."></video><span class="fs-figure__tag">Recording</span></a><figcaption>One canvas through the Default theme, two user themes and the Light appearance.</figcaption></figure>
+
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="color-brush.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Color &amp; Brush Widgets</strong></a><a class="fs-pager__link fs-pager__link--next" href="binding.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Binding Properties</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#select">Select</a></li><li class="lv2"><a href="#move-resize-rotate">Move, resize, rotate</a></li><li class="lv2"><a href="#smart-snapping">Smart snapping</a></li><li class="lv2"><a href="#duplicate-copy-delete">Duplicate, copy, delete</a></li><li class="lv2"><a href="#groups">Groups</a></li><li class="lv2"><a href="#frames">Frames</a></li><li class="lv2"><a href="#selection-bar">Selection Bar</a></li><li class="lv2"><a href="#right-click-menu">Right-click menu</a></li><li class="lv2"><a href="#minimap">Minimap</a></li><li class="lv2"><a href="#themes">Themes</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

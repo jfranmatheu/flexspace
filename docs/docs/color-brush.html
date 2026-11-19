@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Color &amp; Brush Widgets · FlexSpace Docs</title>
+<meta name="description" content="Color &amp; Brush Widgets: how to edit a colour on the canvas (Color Picker), pick from a set of colours (Color Palette), switch brushes with one click (Brush Picker), and put brushes, toggles and operators in a ring (Ring Menu).">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/color-brush.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Color &amp; Brush Widgets · FlexSpace Docs">
+<meta property="og:description" content="Color &amp; Brush Widgets: how to edit a colour on the canvas (Color Picker), pick from a set of colours (Color Palette), switch brushes with one click (Brush Picker), and put brushes, toggles and operators in a ring (Ring Menu).">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/color-brush.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html" aria-current="page">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Color &amp; Brush</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html" aria-current="page">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
+      <h1>Color &amp; Brush Widgets</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#color-picker">Color Picker</a></li><li class="lv3"><a href="#shape">Shape</a></li><li class="lv3"><a href="#using-it">Using it</a></li><li class="lv3"><a href="#colour-spaces-and-bright-colours">Colour spaces and bright colours</a></li><li class="lv2"><a href="#color-palette">Color Palette</a></li><li class="lv3"><a href="#where-the-colours-come-from">Where the colours come from</a></li><li class="lv3"><a href="#look">Look</a></li><li class="lv2"><a href="#brush-picker">Brush Picker</a></li><li class="lv3"><a href="#choosing-the-brush">Choosing the brush</a></li><li class="lv3"><a href="#display">Display</a></li><li class="lv3"><a href="#what-it-tells-you">What it tells you</a></li><li class="lv2"><a href="#ring-menu">Ring Menu</a></li><li class="lv3"><a href="#items">Items</a></li><li class="lv3"><a href="#the-editor">The editor</a></li><li class="lv3"><a href="#pages">Pages</a></li><li class="lv3"><a href="#look-2">Look</a></li></ul></details>
+    <article class="fs-prose">
+<div class="fs-table"><table>
+<thead><tr>
+<th>Widget</th>
+<th>What it does</th>
+<th>Modes</th>
+<th>Where in the Add menu</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr><td>Color Picker</td><td>Edits a colour right on the canvas</td><td>All</td><td>Next to the Color Swatch</td><td><img class="fs-cell-art" src="../assets/img/w-color-picker.webp" alt="A Color Picker bound to a light&#x27;s colour" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Color Palette</td><td>A grid of colour swatches, click one to use it</td><td>All</td><td>Next to the Color Picker</td><td><img class="fs-cell-art" src="../assets/img/w-color-palette.webp" alt="A Color Palette, the light&#x27;s colour active" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Brush Picker</td><td>Makes one brush the active brush</td><td>Brush modes</td><td>Under Action Buttons</td><td><img class="fs-cell-art" src="../assets/img/w-brush-picker.webp" alt="A Brush Picker for the Clay Strips brush, active" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Ring Menu</td><td>Brushes, toggles and operators in two rings</td><td>All</td><td>Under Action Buttons</td><td><img class="fs-cell-art" src="../assets/img/w-ring-menu.webp" alt="A Ring Menu of sculpt brushes and toggles" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+</tbody></table></div>
+<hr class="fs-rule">
+<h2 id="color-picker">Color Picker<a class="fs-anchor" href="#color-picker" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Color Picker</strong> edits a colour right on the canvas. Its <strong>Data Path</strong> points to a colour property, like the Color Swatch: a light, the world, a material's Base Color or viewport colour.</p>
+
+<p>It shows:</p>
+<ul>
+<li>a hue and saturation wheel with a brightness bar beside it,
+</li>
+<li>an old / new swatch strip,
+</li>
+<li>sliders.
+</li>
+</ul>
+<p>In the sidebar, <strong>Show</strong> picks the parts: Wheel, RGB, HSV and Alpha (alpha only for colours with 4 items). By default the wheel and HSV are on and RGB is off.</p>
+<h3 id="shape">Shape<a class="fs-anchor" href="#shape" aria-label="Link to this section">#</a></h3>
+<p><strong>Shape</strong> picks how the colour area looks:</p>
+<ul>
+<li><strong>Wheel</strong>: the hue and saturation wheel with the brightness bar. New pickers and old files use it.
+</li>
+<li><strong>Ring + Square</strong>: a hue ring around a square, as in Krita or Photoshop. Drag on the ring to change the hue. Drag in the square to set the saturation (left to right) and the brightness (bottom to top).
+</li>
+</ul>
+
+<h3 id="using-it">Using it<a class="fs-anchor" href="#using-it" aria-label="Link to this section">#</a></h3>
+<p>Drag any part in Live Mode. The colour changes live.</p>
+<ul>
+<li>When you release, the change is one undo step, and it is keyed if Auto Keying is on.
+</li>
+<li>Press <span class="fs-keys"><kbd>Esc</kbd></span> or right-click during a drag to put the colour back.
+</li>
+<li>The swatch strip shows the colour from the start of the last drag on the left.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> <strong>From Property</strong> still adds a Color Swatch for colour properties. Add a Color Picker from the Add menu, next to the Color Swatch.</p></aside>
+<h3 id="colour-spaces-and-bright-colours">Colour spaces and bright colours<a class="fs-anchor" href="#colour-spaces-and-bright-colours" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The wheel and the HSV sliders work in display space, as Blender's own picker does.
+</li>
+<li>The RGB sliders show the stored values (scene linear for most colours), like Blender's R, G and B fields.
+</li>
+<li>Bright (HDR) colours above 1 are kept. The V and R, G, B sliders then run from 0 to the value at the start of the drag. The brightness bar stops at 1.
+</li>
+<li>Negative channels are kept when you edit other values.
+</li>
+</ul>
+<hr class="fs-rule">
+<h2 id="color-palette">Color Palette<a class="fs-anchor" href="#color-palette" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Color Palette</strong> is a grid of colour swatches. Its <strong>Data Path</strong> points to a colour property, like the Color Picker: the Texture Paint colour, a brush colour, a light or a material colour.</p>
+
+<p>Click a swatch in Live Mode and the property gets that colour.</p>
+<ul>
+<li>The click is one undo step, and it is keyed if Auto Keying is on.
+</li>
+<li>A colour with alpha keeps its alpha.
+</li>
+</ul>
+<p>Add a Color Palette from the Add menu, next to the Color Picker.</p>
+<h3 id="where-the-colours-come-from">Where the colours come from<a class="fs-anchor" href="#where-the-colours-come-from" aria-label="Link to this section">#</a></h3>
+<p>Pick one of two <strong>Sources</strong>:</p>
+<ul>
+<li><strong>Own Colors</strong>: a list kept in the widget. A new palette starts with twelve colours.
+</li>
+<li><strong>Palette</strong>: a Blender palette, the same kind Texture Paint uses. Pick it or make a new one in the sidebar.
+</li>
+</ul>
+<p>The sidebar lists the swatches:</p>
+<ul>
+<li>Change a colour there, move it up or down with the arrows, or remove it with the cross.
+</li>
+<li><strong>Add Current Color</strong> adds the colour the property has now.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> With a Blender palette, these edits change that palette.</p></aside>
+<h3 id="look">Look<a class="fs-anchor" href="#look" aria-label="Link to this section">#</a></h3>
+<ul>
+<li><strong>Columns</strong>: how many swatches go in a row. The swatches grow to fill the widget.
+</li>
+<li><strong>Swatch Size</strong>: a largest size for them (0 means fit the widget).
+</li>
+<li><strong>Swatch Roundness</strong>: rounds their corners.
+</li>
+<li><strong>Show Active</strong>: rings the swatch that matches the current colour.
+</li>
+<li><strong>Add Button</strong>: puts a plus button after the swatches. A click on it adds the current colour, like Add Current Color.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Swatches are display colours, as in Blender's palettes. A scene linear property gets the matching linear value.</p></aside>
+<hr class="fs-rule">
+<h2 id="brush-picker">Brush Picker<a class="fs-anchor" href="#brush-picker" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Brush Picker</strong> is one brush on the canvas. Click it in Live Mode and that brush becomes the active brush, as when you pick it in the tool shelf or the asset shelf. A click is one undo step.</p>
+
+<p>It works in the modes that use brushes:</p>
+<ul>
+<li>Sculpt, Vertex Paint, Weight Paint, Texture Paint and Sculpt Curves,
+</li>
+<li>the Grease Pencil Draw, Sculpt, Weight and Vertex modes.
+</li>
+</ul>
+<p>Find it in the Add menu under Action Buttons. When the active layer is set to another mode, it is greyed out there. The Armature Picker has none, since it always works in Pose Mode.</p>
+<h3 id="choosing-the-brush">Choosing the brush<a class="fs-anchor" href="#choosing-the-brush" aria-label="Link to this section">#</a></h3>
+<p>In the sidebar, <strong>Choose Brush</strong> searches the brush assets:</p>
+<ul>
+<li>the Essentials that come with Blender,
+</li>
+<li>the brushes marked as assets in this file,
+</li>
+<li>your own asset libraries.
+</li>
+</ul>
+<p>The list shows the brushes of the active layer's mode, or of the mode Blender is in.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The eyedropper button, <strong>Use Active Brush</strong>, stores the brush you are using now. A Brush Picker added while you paint starts with that brush.</p></aside>
+<h3 id="display">Display<a class="fs-anchor" href="#display" aria-label="Link to this section">#</a></h3>
+<p><strong>Display</strong> picks what the widget shows: the icon and the name, only the icon, or only the name.</p>
+<p><strong>Roundness</strong> gives the button its own corners. Turn on the checkbox next to it, then:</p>
+<ul>
+<li><strong>0</strong> is a square button, <strong>1</strong> is fully round.
+</li>
+<li>A square widget showing only the icon, at <strong>1</strong>, is a round brush button. The brush preview is cut to the same shape.
+</li>
+<li>Off, the button keeps the theme's corners.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Put round brush buttons in a <strong>Frame</strong> set to <strong>Circle</strong> for a small round palette of favourite brushes.</p></aside>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The icon is the brush preview, even for a brush not used yet: it is read from the asset file, like the asset shelf does, without adding the brush to your file. The previews are kept in a cache with the date and size of the library file they came from, so they are read again only when that library changes.</p></aside>
+<h3 id="what-it-tells-you">What it tells you<a class="fs-anchor" href="#what-it-tells-you" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>The active brush is highlighted.
+</li>
+<li>In a mode that can't use the brush, the widget is dimmed and shows an amber mark.
+</li>
+<li>If the brush asset can't be found any more (a library was removed or renamed), the widget says "missing" and a click tells you why instead of failing.
+</li>
+</ul>
+<hr class="fs-rule">
+<h2 id="ring-menu">Ring Menu<a class="fs-anchor" href="#ring-menu" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Ring Menu</strong> puts brushes, toggles and operators in a ring on the canvas, like a sculpt wheel. It stays on the canvas: it is not a pie menu that opens and closes.</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/ring-menu-inner.webp" data-zoom><img src="../assets/media/ring-menu-inner.webp" alt="The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks." width="738" height="811" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks.</figcaption></figure>
+<p>It has three parts:</p>
+<ul>
+<li>The <strong>outer ring</strong>: round slots. A brush slot shows the brush preview.
+</li>
+<li>The <strong>inner ring</strong>: segments, as many as it has items.
+</li>
+<li>The <strong>core</strong> in the middle: the name of the item under the mouse, or of the active brush.
+</li>
+</ul>
+<p>In Live Mode:</p>
+<ul>
+<li>Click a brush and it becomes the active brush. The active brush has the accent ring.
+</li>
+<li>Click a toggle and it switches on or off. A toggle that is on has the accent colour.
+</li>
+<li>Click an operator and it runs, here or in a 3D Viewport where it can.
+</li>
+<li>Each click is one undo step.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/sculpt-wheel.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/sculpt-wheel.webp" data-src="../assets/media/sculpt-wheel.mp4" width="1280" height="776" aria-label="Hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring.</figcaption></figure>
+<h3 id="items">Items<a class="fs-anchor" href="#items" aria-label="Link to this section">#</a></h3>
+<p>Each item has a <strong>Type</strong>:</p>
+<div class="fs-table"><table>
+<thead><tr>
+<th>Type</th>
+<th>What a click does</th>
+<th>What to set</th>
+</tr></thead><tbody>
+<tr><td>Brush</td><td>Makes the brush active</td><td><strong>Choose Brush</strong>, or the eyedropper for the brush you use now</td></tr>
+<tr><td>Toggle</td><td>Switches an on / off property</td><td><strong>Property</strong>: its path, for example <code>tool_settings.<wbr>sculpt.<wbr>mesh_automasking_settings.<wbr>use_automasking_topology</code></td></tr>
+<tr><td>Operator</td><td>Runs an operator</td><td><strong>Operator</strong>, for example <code>paint.<wbr>mask_flood_fill</code>, and its <strong>Arguments</strong>, for example <code>mode=&#x27;INVERT&#x27;</code>. <strong>On When</strong> (optional): a property, for example <code>sculpt_object.<wbr>use_dynamic_topology_sculpting</code>; while it is on, the item is drawn pressed. Dyntopo uses that one when it is empty</td></tr>
+</tbody></table></div>
+<p>A toggle or an operator can also have a <strong>Disabled When</strong> property: while it is on, the item is greyed out and a click does nothing. For example, <strong>Voxel Remesh</strong> is disabled while Dyntopo is on (<code>sculpt_object.<wbr>use_dynamic_topology_sculpting</code>, its default when the field is empty).</p>
+<h3 id="the-editor">The editor<a class="fs-anchor" href="#the-editor" aria-label="Link to this section">#</a></h3>
+<p>The sidebar follows the ring, top to bottom:</p>
+<ul>
+<li><strong>Page 1 of N</strong>: the arrows go to the previous and next page (they wrap around). <strong>+</strong> adds an empty page after the one shown; the bin removes it, and its brushes (it asks first). Pages only change the outer ring.
+</li>
+<li><strong>Outer Ring</strong>: the brushes of the page shown. <strong>+</strong> searches the brush assets and adds one. The brushes button fills the ring with every Essentials brush of the layer's mode, from this page on, on as many pages as they need.
+</li>
+<li><strong>Inner Ring</strong>: the actions. They are the same on every page. <strong>+</strong> opens the presets: symmetry, automasking, mask and face sets, Dyntopo, Voxel Remesh, undo and redo, or a custom toggle or operator.
+</li>
+<li><strong>The selected item</strong>:
+<ul>
+<li>The arrows move it earlier or later in its ring. You can also duplicate or remove it.
+</li>
+<li>Its settings: what it does (see the table), <strong>Use a Preset...</strong> for an action, its <strong>Label</strong> in the core and its <strong>Icon</strong> (a name from the icon packs, for example <code>phosphor:eraser</code>).
+</li>
+<li><strong>Page</strong> moves a brush to another page, and <strong>Ring</strong> moves the item to the other ring.
+</li>
+</ul>
+</li>
+<li><strong>Ring Look</strong>: how the ring is drawn (see below).
+</li>
+</ul>
+<p>In Edit Mode, the selected item has an accent outline on the ring.</p>
+<h3 id="pages">Pages<a class="fs-anchor" href="#pages" aria-label="Link to this section">#</a></h3>
+<p>Pages hold more brushes: each page has its own outer ring, and the inner ring stays the same. When the ring has more than one page, a tab under it shows the page, for example <strong>1 / 3</strong>.</p>
+<ul>
+<li>Click the arrows on the tab to go back or forward. A click in the middle goes forward.
+</li>
+<li>Or turn the mouse wheel over the tab or the core in the middle. Over the rest of the ring the wheel zooms the canvas as usual.
+</li>
+</ul>
+<h3 id="look-2">Look<a class="fs-anchor" href="#look-2" aria-label="Link to this section">#</a></h3>
+<ul>
+<li><strong>Outer Slots</strong> is how many slots the outer ring has at least. Empty slots are drawn faded.
+</li>
+<li><strong>Outer Ring</strong> and <strong>Inner Ring</strong> set how wide each ring is.
+</li>
+<li><strong>Slot Roundness</strong>: 1 for round slots, 0 for square ones.
+</li>
+<li><strong>Name in the Core</strong> turns the name in the middle on or off.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The <strong>Sculpt Wheel</strong> demo has a Ring Menu with every sculpt brush, ready to try (see <a class="fs-xref" href="demo-files.html"><strong>Demo Files</strong></a>).</p></aside>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="widgets.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Widgets</strong></a><a class="fs-pager__link fs-pager__link--next" href="editing.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Editing Tools</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#color-picker">Color Picker</a></li><li class="lv3"><a href="#shape">Shape</a></li><li class="lv3"><a href="#using-it">Using it</a></li><li class="lv3"><a href="#colour-spaces-and-bright-colours">Colour spaces and bright colours</a></li><li class="lv2"><a href="#color-palette">Color Palette</a></li><li class="lv3"><a href="#where-the-colours-come-from">Where the colours come from</a></li><li class="lv3"><a href="#look">Look</a></li><li class="lv2"><a href="#brush-picker">Brush Picker</a></li><li class="lv3"><a href="#choosing-the-brush">Choosing the brush</a></li><li class="lv3"><a href="#display">Display</a></li><li class="lv3"><a href="#what-it-tells-you">What it tells you</a></li><li class="lv2"><a href="#ring-menu">Ring Menu</a></li><li class="lv3"><a href="#items">Items</a></li><li class="lv3"><a href="#the-editor">The editor</a></li><li class="lv3"><a href="#pages">Pages</a></li><li class="lv3"><a href="#look-2">Look</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Features · FlexSpace for Blender</title>
+<meta name="description" content="Everything FlexSpace does: canvases with Edit and Live Mode, 21 widgets, binding with From Property and the eyedropper, layers per mode or object, smart snapping, the Ring Menu, global presets and the Armature Picker.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/features.html">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("fs-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t="dark"}d.setAttribute("data-theme",t);d.className=d.className.replace("no-js","js")})();</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="FlexSpace features: everything, by topic">
+<meta property="og:description" content="Canvases, widgets, binding, layers per mode, editing tools, colour and brush widgets, presets and the Armature Picker.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/features.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FlexSpace: control panels and rig pickers, built your way.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FlexSpace features: everything, by topic">
+<meta name="twitter:description" content="Canvases, widgets, binding, layers per mode, editing tools, presets and the Armature Picker.">
+<meta name="twitter:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<link rel="icon" href="assets/img/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400..700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="fs-skip" href="#main">Skip to content</a>
+
+<header class="fs-nav">
+  <nav class="fs-wrap fs-wrap--wide fs-nav__inner" aria-label="Main">
+    <a class="fs-logo" href="./" aria-label="FlexSpace home">
+      <img class="fs-logo--dark" src="assets/brand/flexspace.svg" alt="FlexSpace" width="538" height="110">
+      <img class="fs-logo--light" src="assets/brand/flexspace-light.svg" alt="" width="538" height="110">
+    </a>
+    <ul class="fs-nav__links">
+      <li><a href="features.html" aria-current="page">Features</a></li>
+      <li><a href="widgets.html">Widgets</a></li>
+      <li><a href="picker.html">Picker</a></li>
+      <li><a href="docs/">Docs</a></li>
+      <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog <svg class="fs-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <div class="fs-nav__end">
+      <button class="fs-theme" type="button" aria-label="Switch theme" aria-pressed="false">
+        <svg class="fs-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="fs-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-nav__cta" href="https://superhivemarket.com/" data-link="superhive"><span class="fs-long">Get it on Superhive</span><span class="fs-short">Get it</span></a>
+      <details class="fs-menu">
+        <summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <div class="fs-menu__panel">
+          <ul>
+            <li><a href="features.html" aria-current="page">Features</a></li>
+            <li><a href="widgets.html">Widgets</a></li>
+            <li><a href="picker.html">Picker</a></li>
+            <li><a href="docs/">Docs</a></li>
+            <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog <svg class="fs-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="fs-hero fs-hero--page" aria-labelledby="page-title">
+    <div class="fs-grid-bg" aria-hidden="true"></div>
+    <div class="fs-wrap">
+      <div class="fs-hero__copy">
+        <span class="fs-chip fs-chip--accent"><span class="fs-dot"></span>Features</span>
+        <h1 class="fs-h1" id="page-title">Everything it does, <span class="fs-grad-text">by topic.</span></h1>
+        <p class="fs-lead">A canvas you design on and then use, widgets bound to anything in Blender, layers that follow your mode, the tools of a design app, presets your whole team can share, and a picker for every rig.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="fs-subnav" aria-label="On this page">
+    <div class="fs-wrap">
+      <ul>
+        <li><a href="#canvas">Canvas</a></li>
+        <li><a href="#widgets">Widgets</a></li>
+        <li><a href="#binding">Binding</a></li>
+        <li><a href="#layers">Layers</a></li>
+        <li><a href="#editing">Editing</a></li>
+        <li><a href="#color-brush">Color &amp; Brush</a></li>
+        <li><a href="#presets">Presets</a></li>
+        <li><a href="#picker">Picker</a></li>
+        <li><a href="#details">Details</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ============================================================ CANVAS -->
+  <section class="fs-section fs-anchor" id="canvas" aria-labelledby="canvas-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">01</span><h2 class="fs-h2" id="canvas-title">The canvas</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Two kinds of canvas</span>
+            <h3 class="fs-h3">A blank board for your own control panel.</h3>
+            <p><strong>Flex Space</strong> is for control panels: operator buttons, scripts, sliders, toggles, labels and images, used from any workspace. <strong>Armature Picker</strong> is a canvas saved with an armature, for picking its bones while you pose. Both work the same way.</p>
+            <ul class="fs-ticks">
+              <li>Set any area to Flex Space and click <strong>New</strong></li>
+              <li>Each canvas is a data-block saved in your .blend file</li>
+              <li>The header selector switches, renames and keeps canvases</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-control-panel.webp" data-zoom><img src="assets/img/focus-control.webp" width="1288" height="1020" loading="lazy" decoding="async" alt="The Studio Control Panel in Live Mode: Lighting with Key, Fill and Rim lights, Render settings and Playback buttons, every widget bound to the scene."></a>
+            <figcaption>A control panel canvas: lights, render settings, playback and objects, one click away.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/live-mode.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/live-mode.webp" data-src="assets/media/live-mode.mp4" width="1280" height="776" aria-label="Your panel drives the scene: In Live Mode every toggle, field and slider changes the scene right away: modifiers, light shadows, light power and the current frame."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Your panel drives the scene.</b> In Live Mode every toggle, field and slider changes the scene right away: modifiers, light shadows, light power and the current frame.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/control-panel-dark.webp" data-zoom><img src="assets/media/control-panel-dark.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Studio control panel (Dark).</b> A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/control-panel-light.webp" data-zoom><img src="assets/media/control-panel-light.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="The same control panel in the Light appearance, next to a light Blender theme."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Studio control panel (Light).</b> The same control panel in the Light appearance, next to a light Blender theme.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--3" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Edit Mode and Live Mode</h3>
+          <p><kbd class="fs-kbd">Tab</kbd> switches. Edit Mode builds the layout; Live Mode uses it. On a picker, Live Mode is Blender's own Pose Mode.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Move around</h3>
+          <p><kbd class="fs-kbd">Middle mouse</kbd> pans, the <kbd class="fs-kbd">Wheel</kbd> zooms, <kbd class="fs-kbd">Home</kbd> frames every widget. The minimap shows the whole canvas: click to centre, drag to pan.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Keys you already know</h3>
+          <p>Canvas keys come first. Any other key goes to Blender: <kbd class="fs-kbd">Space</kbd> plays, <kbd class="fs-kbd">Ctrl S</kbd> saves, <kbd class="fs-kbd">Ctrl Z</kbd> undoes. Industry Compatible and custom bindings work too.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">One undo step each</h3>
+          <p>Every edit and every use of a widget is one undo step. Undo never switches you out of Live Mode.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Copy a whole canvas</h3>
+          <p>Make it single user, Duplicate it in the Outliner, or Append it from another file: layers, frames, groups and Flex Boxes come along.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Show or hide widget types</h3>
+          <p>The last menu of the header hides or shows each widget type in this editor: hide the buttons to work on sliders.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ WIDGETS -->
+  <section class="fs-section fs-section--alt fs-anchor" id="widgets" aria-labelledby="widgets-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">02</span><h2 class="fs-h2" id="widgets-title">Widgets</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">21 widgets</span>
+            <h3 class="fs-h3">Buttons, data, tools, graphics and layout.</h3>
+            <p>Operator and Custom Script buttons. Toggles, Enums, Lineal sliders, Number Fields, Labels and Lists for any property. Color Swatch, Color Picker, Color Palette, Brush Picker and Ring Menu. Images, Frames, Flex Boxes and Groups. The picker adds knobs, 2D pads, bone collection toggles and bone pickers.</p>
+            <ul class="fs-ticks">
+              <li>A Label, a Style and Conditions on most widgets</li>
+              <li>Your own tooltip text on any widget</li>
+              <li>Themes set the look of all of them at once</li>
+            </ul>
+            <div class="fs-actions" style="margin-top:24px"><a class="fs-btn fs-btn--secondary" href="widgets.html">See every widget</a></div>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-widgets-board.webp" data-zoom><img src="assets/img/frame-widgets-board.webp" width="1780" height="1042" loading="lazy" decoding="async" alt="Twelve FlexSpace widgets on a board: buttons, toggles, enums, sliders, colours, brushes, lists, knobs, pads and bone pickers."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/lineal-slider.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/lineal-slider.webp" data-src="assets/media/lineal-slider.mp4" width="860" height="534" aria-label="Precise sliders: Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Precise sliders.</b> Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/layout-widgets.webp" data-zoom><img src="assets/media/layout-widgets.webp" width="911" height="487" loading="lazy" decoding="async" alt="Frames hold widgets and move them as one; Flex Boxes and Groups keep them in line."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Frames, groups and flex boxes.</b> Frames hold widgets and move them as one; Flex Boxes and Groups keep them in line.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/flex-box.webp" data-zoom><img src="assets/media/flex-box.webp" width="833" height="256" loading="lazy" decoding="async" alt="Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Flex Box.</b> Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <article class="fs-row fs-row--flip fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">The Add menu</span>
+            <h3 class="fs-h3">Type, <kbd class="fs-kbd">Enter</kbd>, click to place.</h3>
+            <p><kbd class="fs-kbd">Shift A</kbd> opens the Add Widget panel over the canvas. Start typing: the best match is selected. <kbd class="fs-kbd">Tab</kbd> goes to the next category; the arrow keys move the selection. Or use the header's <strong>Add</strong> menu, or set <strong>Add Menu</strong> to <strong>Pie</strong>.</p>
+            <ul class="fs-ticks">
+              <li><strong>From Property</strong>: right-click a property, get the right widget, bound and labelled</li>
+              <li>Widgets the layer's mode can't take are dimmed, with the reason</li>
+              <li>Undo removes a whole addition in one step</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-add-widget.webp" data-zoom><img src="assets/img/frame-add-widget.webp" width="1780" height="1288" loading="lazy" decoding="async" alt="The Add Widget browser: search, categories, widget cards and From Property."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--fit fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/add-panel.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/add-panel.webp" data-src="assets/media/add-panel.mp4" width="1100" height="1152" aria-label="Add any widget in seconds: Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Add any widget in seconds.</b> Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/add-browser-search.webp" data-zoom><img src="assets/media/add-browser-search.webp" width="907" height="628" loading="lazy" decoding="async" alt="Type a few letters and the best matches show across every category; Enter adds the selected one."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Search as you type.</b> Type a few letters and the best matches show across every category; Enter adds the selected one.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/add-menu.webp" data-zoom><img src="assets/media/add-menu.webp" width="470" height="516" loading="lazy" decoding="async" alt="The header&#x27;s Add menu: Search, From Property and every category, its subcategories under headings."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Header Add menu.</b> The header&#x27;s Add menu: Search, From Property and every category, its subcategories under headings.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ BINDING -->
+  <section class="fs-section fs-anchor" id="binding" aria-labelledby="binding-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">03</span><h2 class="fs-h2" id="binding-title">Binding</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Data paths and the eyedropper</span>
+            <h3 class="fs-h3">Point at a property. Done.</h3>
+            <p>A data path starts from the current context, the way Python reaches it through <code class="fs-path">bpy.context</code>: <code class="fs-path">scene.frame_current</code>, <code class="fs-path">active_object.location[0]</code>. Click the eyedropper next to the field and right-click the property in any editor: the path is filled in, and a slider gets its Min and Max too.</p>
+            <ul class="fs-ticks">
+              <li>Follow the active object, or pin one: renaming it keeps the binding</li>
+              <li><strong>Copy Full Data Path</strong> pastes straight in</li>
+              <li><strong>Pick Operator from UI</strong> copies a button's operator and settings</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-binding.webp" data-zoom><img src="assets/img/focus-binding.webp" width="1232" height="828" loading="lazy" decoding="async" alt="Binding with the eyedropper: right-click Exposure in Blender's Light properties and the canvas slider is bound to it; its data path shows below."></a>
+            <figcaption>The eyedropper is on: right-click the light's Exposure and the selected slider is bound to it.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/from-property.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/from-property.webp" data-src="assets/media/from-property.mp4" width="1254" height="956" aria-label="Bind any property with a right-click: Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Bind any property with a right-click.</b> Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/binding-eyedropper.webp" data-zoom><img src="assets/media/binding-eyedropper.webp" width="1350" height="507" loading="lazy" decoding="async" alt="Bind a slider with the eyedropper: right-click any slider-like property, here the light&#x27;s Exposure."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Binding eyedropper.</b> Bind a slider with the eyedropper: right-click any slider-like property, here the light&#x27;s Exposure.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/binding-data-path.webp" data-zoom><img src="assets/media/binding-data-path.webp" width="1008" height="372" loading="lazy" decoding="async" alt="After the pick the slider is bound to the light&#x27;s exposure, pinned to that light, and labelled for you."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Bound data path.</b> After the pick the slider is bound to the light&#x27;s exposure, pinned to that light, and labelled for you.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <article class="fs-row fs-row--flip fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Conditions, tooltips, broken bindings</span>
+            <h3 class="fs-h3">Panels that explain and adapt.</h3>
+            <p><strong>Visible When</strong> shows a widget only while a property is on; <strong>Disabled When</strong> greys it out. Put a condition on a Frame, a Flex Box or a group and everything inside follows. In Edit Mode, a widget whose path doesn't work gets a dashed outline, and the top bar counts them: <strong>&#9888; 2 broken</strong>.</p>
+            <ul class="fs-ticks">
+              <li>The panel says what the condition does now: Shown, Hidden, Disabled, Usable</li>
+              <li>Click the count to frame the next broken widget</li>
+              <li>Tooltips show the property, its data path and any problem</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-conditions.webp" data-zoom><img src="assets/img/focus-conditions.webp" width="1224" height="1184" loading="lazy" decoding="async" alt="A tooltip with the property's name, description and data path over a Simplify slider; the top bar counts 2 broken bindings and a widget whose path is gone is flagged Path not found."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid fs-inblender__grid--two">
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/broken-bindings.webp" data-zoom><img src="assets/media/broken-bindings.webp" width="911" height="954" loading="lazy" decoding="async" alt="A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Broken bindings.</b> A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.</figcaption>
+            </figure>
+            <figure class="fs-real">
+              <a class="fs-real__frame" href="assets/media/top-bar-status.webp" data-zoom><img src="assets/media/top-bar-status.webp" width="911" height="62" loading="lazy" decoding="async" alt="The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Canvas top bar.</b> The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--3" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Animation state</h3>
+          <p>A bound widget shows its property's state in Blender's own colours: green animated, yellow keyframe, purple driver, orange changed.</p>
+          <p class="fs-sides" style="margin-top:12px" aria-hidden="true">
+            <span><i style="background:#5fb34a"></i></span><span><i style="background:#e8c93a"></i></span><span><i style="background:#a35bd6"></i></span><span><i style="background:#e5862e"></i></span>
+          </p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Key it from the canvas</h3>
+          <p>Over a widget in Live Mode: <kbd class="fs-kbd">I</kbd> inserts a keyframe, <kbd class="fs-kbd">Alt I</kbd> deletes it, <kbd class="fs-kbd">Backspace</kbd> resets it to its default.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Auto Keying</h3>
+          <p>With Auto Keying on, the end of a drag keys the properties it drives, in the same undo step. Your Auto Keying options are followed.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ LAYERS -->
+  <section class="fs-section fs-section--alt fs-anchor" id="layers" aria-labelledby="layers-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">04</span><h2 class="fs-h2" id="layers-title">Layers and modes</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Show When</span>
+            <h3 class="fs-h3">The right layer for what you're doing.</h3>
+            <p>A canvas can hold a sculpting layer full of brushes, a weight paint layer, the controls of one object and an everyday layer. Each layer shows <strong>Always</strong>, in one <strong>Mode</strong>, for one <strong>Object</strong>, or for one <strong>Object in Mode</strong>. <strong>Switch Layers Automatically</strong> shows the one that fits best.</p>
+            <ul class="fs-ticks">
+              <li>A thin border in the mode's colour shows the layer's mode</li>
+              <li>A notice says which mode it needs; <strong>Enter</strong> switches to it</li>
+              <li>A layer for another object offers <strong>Select</strong></li>
+            </ul>
+            <p class="fs-keyline"><span><kbd class="fs-kbd">M</kbd> moves widgets to another layer</span></p>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-layers.webp" data-zoom><img src="assets/img/focus-layers.webp" width="1312" height="912" loading="lazy" decoding="async" alt="A canvas with a layer per mode: the layer tabs, Sculpt active, and the Sculpt layer's brushes and stroke settings."></a>
+            <figcaption>The Sculpt layer of a canvas that has a layer for each mode.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/studio-modes.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/studio-modes.webp" data-src="assets/media/studio-modes.mp4" width="1280" height="776" aria-label="One canvas, a layer per mode: Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>One canvas, a layer per mode.</b> Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/layer-tabs.webp" data-zoom><img src="assets/media/layer-tabs.webp" width="911" height="954" loading="lazy" decoding="async" alt="One canvas, a layer per mode: the tabs show each layer&#x27;s mode, the active one is outlined."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Layers and modes.</b> One canvas, a layer per mode: the tabs show each layer&#x27;s mode, the active one is outlined.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/studio-object.webp" data-zoom><img src="assets/media/studio-object.webp" width="1574" height="954" loading="lazy" decoding="async" alt="Select the Geometry Nodes tower and the canvas shows its layer: shape, details, materials and colour controls."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>FlexSpace Studio: Object layer.</b> Select the Geometry Nodes tower and the canvas shows its layer: shape, details, materials and colour controls.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--2" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Buttons that change the mode</h3>
+          <p>An Operator button that runs <strong>Enter Mode</strong> makes an object active and selected, frames it if you like, and enters a mode with it. The <strong>FlexSpace Studio</strong> demo has one for each mode.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Nothing is ever lost</h3>
+          <p>Changing a layer's mode never deletes widgets: a warning tells you how many don't fit. Edit Mode still works in any Blender mode, so you can build a layer's layout first.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ EDITING -->
+  <section class="fs-section fs-anchor" id="editing" aria-labelledby="editing-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">05</span><h2 class="fs-h2" id="editing-title">Editing tools</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Smart snapping</span>
+            <h3 class="fs-h3">Lay out like a design tool.</h3>
+            <p>Drag a widget, or use <kbd class="fs-kbd">G</kbd> <kbd class="fs-kbd">R</kbd> <kbd class="fs-kbd">S</kbd>; the handles resize it and the round knob rotates it. Snapping lines it up with edges, centres, equal gaps and the grid, and guides show what it snapped to. Hold <kbd class="fs-kbd">Ctrl</kbd> to do the opposite.</p>
+            <ul class="fs-ticks">
+              <li>Type a number for an exact value; <kbd class="fs-kbd">X</kbd> / <kbd class="fs-kbd">Y</kbd> lock an axis</li>
+              <li>Arrow keys nudge by 10 units, <kbd class="fs-kbd">Shift</kbd> by 1</li>
+              <li>Exact numbers in the sidebar's Transform panel</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-edit-mode.webp" data-zoom><img src="assets/img/focus-edit-mode.webp" width="1288" height="1356" loading="lazy" decoding="async" alt="Edit Mode: the Preview frame dragged under Lighting snaps to its left edge; a magenta guide and the 22 px gap show what it lined up with."></a>
+            <figcaption>A frame dragged under Lighting snaps to its left edge.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/edit-layout.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/edit-layout.webp" data-src="assets/media/edit-layout.mp4" width="910" height="564" aria-label="Lay out with snapping and the Selection Bar: Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Lay out with snapping and the Selection Bar.</b> Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/snapping-guides.webp" data-zoom><img src="assets/media/snapping-guides.webp" width="907" height="644" loading="lazy" decoding="async" alt="Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Smart snapping.</b> Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/selection-bar.webp" data-zoom><img src="assets/media/selection-bar.webp" width="512" height="444" loading="lazy" decoding="async" alt="With several widgets selected, the Selection Bar aligns, distributes and matches their sizes."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Selection Bar.</b> With several widgets selected, the Selection Bar aligns, distributes and matches their sizes.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/selection-handles.webp" data-zoom><img src="assets/media/selection-handles.webp" width="446" height="726" loading="lazy" decoding="async" alt="Handles resize the selection, the round knob rotates it and the chip shows its size."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Selection handles.</b> Handles resize the selection, the round knob rotates it and the chip shows its size.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/minimap.webp" data-zoom><img src="assets/media/minimap.webp" width="911" height="954" loading="lazy" decoding="async" alt="The minimap shows the whole canvas while you work zoomed in: click to jump, drag to pan."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Minimap.</b> The minimap shows the whole canvas while you work zoomed in: click to jump, drag to pan.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/group.webp" data-zoom><img src="assets/media/group.webp" width="595" height="238" loading="lazy" decoding="async" alt="A Group moves, rotates and resizes several widgets as one; double-click to go inside."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Group.</b> A Group moves, rotates and resizes several widgets as one; double-click to go inside.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--2" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Selection Bar</h3>
+          <p>With two or more widgets selected, a bar appears at the bottom of the canvas: <strong>Align</strong>, <strong>Distribute</strong>, match or normalize <strong>Size</strong>, <strong>Group</strong> and <strong>Ungroup</strong>.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Groups, Frames, Flex Boxes</h3>
+          <p><kbd class="fs-kbd">Ctrl G</kbd> groups, <kbd class="fs-kbd">Ctrl J</kbd> frames. A Flex Box lines up its children in a row or a column, like a web page.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Copy and paste</h3>
+          <p><kbd class="fs-kbd">Ctrl C</kbd> and <kbd class="fs-kbd">Ctrl V</kbd> work across canvases of the same kind. A Script button is pasted with its script, in a new text of its own.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Minimap</h3>
+          <p>A small map of the whole canvas, in the corner you choose. Click to centre, drag to pan, double-click to frame everything.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ COLOR & BRUSH -->
+  <section class="fs-section fs-section--alt fs-anchor" id="color-brush" aria-labelledby="cb-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">06</span><h2 class="fs-h2" id="cb-title">Color &amp; Brush</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Ring Menu</span>
+            <h3 class="fs-h3">A sculpt wheel that stays on the canvas.</h3>
+            <p>The outer ring holds brushes, the inner ring holds toggles and operators, and the core names the item under the mouse or the active brush. It is not a pie menu that opens and closes: it stays put.</p>
+            <ul class="fs-ticks">
+              <li>Fill it with every Essentials brush of the layer's mode in one click</li>
+              <li>Pages for more brushes; the inner ring stays the same</li>
+              <li>Presets: symmetry, automasking, mask and face sets, Dyntopo, Voxel Remesh, undo and redo</li>
+              <li><strong>Disabled When</strong> per item: Voxel Remesh greys out while Dyntopo is on</li>
+            </ul>
+          </div>
+          <figure class="fs-media" style="max-width:520px;justify-self:center">
+            <a href="assets/img/frame-ring-menu.webp" data-zoom><img src="assets/img/frame-ring-menu.webp" width="1780" height="1975" loading="lazy" decoding="async" alt="A Ring Menu: sculpt brushes in the outer ring, toggles in the inner ring, Clay Strips named in the core, page 1 of 5."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/sculpt-wheel.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/sculpt-wheel.webp" data-src="assets/media/sculpt-wheel.mp4" width="1280" height="776" aria-label="A Ring Menu for sculpting: Hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>A Ring Menu for sculpting.</b> Hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/ring-menu-inner.webp" data-zoom><img src="assets/media/ring-menu-inner.webp" width="738" height="811" loading="lazy" decoding="async" alt="The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Ring Menu toggles.</b> The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/ring-menu-page.webp" data-zoom><img src="assets/media/ring-menu-page.webp" width="738" height="811" loading="lazy" decoding="async" alt="More brushes than fit? Pages: the tab under the ring flips them."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Ring Menu pages.</b> More brushes than fit? Pages: the tab under the ring flips them.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--3" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/img/w-color-picker.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Color Picker: hue and saturation wheel, brightness bar, swatch strip and sliders."></div>
+          <div class="fs-wcard__body"><h3>Color Picker</h3><p>Edits a colour on the canvas: a Wheel, or a Ring + Square. Bright (HDR) colours above 1 are kept. <kbd class="fs-kbd">Esc</kbd> during a drag puts the colour back.</p></div>
+        </article>
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/img/w-color-palette.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Color Palette of twelve swatches, the orange one active, and a plus button."></div>
+          <div class="fs-wcard__body"><h3>Color Palette</h3><p>Click a swatch and the property gets that colour. Its own colours, or a Blender palette shared with Texture Paint.</p></div>
+        </article>
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/img/w-brush-picker.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Brush Picker for the Clay Strips brush, active."></div>
+          <div class="fs-wcard__body"><h3>Brush Picker</h3><p>One click makes a brush active, in Sculpt, the paint modes, Sculpt Curves and the Grease Pencil modes. Previews come straight from the asset file.</p></div>
+        </article>
+      </div>
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid fs-inblender__grid--two">
+          <figure class="fs-real fs-real--lead">
+            <a class="fs-real__frame" href="assets/media/studio-texture-paint.webp" data-zoom><img src="assets/media/studio-texture-paint.webp" width="1574" height="954" loading="lazy" decoding="async" alt="In Texture Paint the canvas shows a colour picker, swatches, paint brushes, masks and projection settings."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>FlexSpace Studio: Texture Paint layer.</b> In Texture Paint the canvas shows a colour picker, swatches, paint brushes, masks and projection settings.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/studio-look-dev.webp" data-zoom><img src="assets/media/studio-look-dev.webp" width="1574" height="954" loading="lazy" decoding="async" alt="Click the shader ball and its Look Dev layer goes live: colour pickers for the material, the world and the key light."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>FlexSpace Studio: Look Dev layer.</b> Click the shader ball and its Look Dev layer goes live: colour pickers for the material, the world and the key light.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PRESETS -->
+  <section class="fs-section fs-anchor" id="presets" aria-labelledby="presets-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">07</span><h2 class="fs-h2" id="presets-title">Presets, sharing and demos</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Global presets</span>
+            <h3 class="fs-h3">Build it once. Use it in every project.</h3>
+            <p>A global preset is a canvas saved outside the .blend file, in the add-on's user folder, so it survives add-on updates. A canvas added from it stays <strong>linked</strong>: it knows which version it came from, and your edits stay in this file until you choose to send them.</p>
+            <ul class="fs-ticks">
+              <li><strong>Overwrite</strong> sends your canvas to the preset; <strong>Sync</strong> takes the preset's</li>
+              <li><strong>Restore Previous Version</strong>: the last 5 versions</li>
+              <li>Unchanged linked canvases update when a file opens</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-presets.webp" data-zoom><img src="assets/img/focus-presets.webp" width="1160" height="1204" loading="lazy" decoding="async" data-swap="picker-redesign" alt="The Global Presets menu: four presets as thumbnails, one from the shared folder, with Save as Global Preset and Manage."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/presets-menu.webp" data-zoom><img src="assets/media/presets-menu.webp" width="528" height="167" loading="lazy" decoding="async" alt="Save any canvas as a global preset and add it to any project from a menu of thumbnails."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Global presets.</b> Save any canvas as a global preset and add it to any project from a menu of thumbnails.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/top-bar-preset.webp" data-zoom><img src="assets/media/top-bar-preset.webp" width="911" height="64" loading="lazy" decoding="async" alt="A canvas linked to a global preset: the top bar shows its name and that it is up to date."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Global presets.</b> A canvas linked to a global preset: the top bar shows its name and that it is up to date.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/library.webp" data-zoom><img src="assets/media/library.webp" width="911" height="954" loading="lazy" decoding="async" alt="The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Library.</b> The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-reveal" style="margin-top:clamp(48px,6vw,80px)">
+        <div class="fs-table-wrap">
+          <table class="fs-table">
+            <caption class="fs-sr">The badges of a linked canvas on the top bar</caption>
+            <thead><tr><th scope="col">Badge</th><th scope="col">Meaning</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">&#10003; Up to date</th><td>Same as the preset.</td></tr>
+              <tr><th scope="row">&#9679; Modified</th><td>You changed the canvas. The preset is unchanged.</td></tr>
+              <tr><th scope="row">&#8595; vN available</th><td>Another project overwrote the preset: version N is newer.</td></tr>
+              <tr><th scope="row">&#9888; Missing</th><td>The preset's files are not on this computer. The canvas keeps working from its own copy.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--3" style="margin-top:16px">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">.flexspace files</h3>
+          <p><strong>Manage &gt; Export</strong> writes one <code class="fs-path">.flexspace</code> file with the preset and its thumbnail. <strong>Manage &gt; Import...</strong> checks the file first and keeps the preset's identity.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Shared presets folder</h3>
+          <p>Point everyone at one folder, for example on a network drive. It is read in the background, so a slow or offline drive never freezes Blender.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">The Library</h3>
+          <p>The Canvas tab of the sidebar lists every global preset and every local canvas. Click one to add it or show it.</p>
+        </article>
+      </div>
+      <div class="fs-rows" style="margin-top:clamp(72px,10vw,128px)">
+        <article class="fs-row fs-row--flip fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Demo files</span>
+            <h3 class="fs-h3">Open a demo, take it apart.</h3>
+            <p>Nine finished scenes: Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, and four armature pickers. A demo opens in another Blender window, as a copy: your file is never touched.</p>
+            <ul class="fs-ticks">
+              <li><strong>Help &gt; Demo Files</strong>, or <strong>Open a Demo</strong> on an empty editor</li>
+              <li>Type to search, double-click or <kbd class="fs-kbd">Enter</kbd> to open</li>
+              <li><strong>File &gt; Save As</strong> to keep the copy</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-demo-browser.webp" data-zoom><img src="assets/img/frame-demo-browser.webp" width="1780" height="1219" loading="lazy" decoding="async" data-swap="picker-redesign" alt="The demo browser: categories, demo cards and Open in New Window."></a>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/empty-state.webp" data-zoom><img src="assets/media/empty-state.webp" width="600" height="380" loading="lazy" decoding="async" alt="No canvas yet? One click makes one, or open a finished demo to see how it is built."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Get started.</b> No canvas yet? One click makes one, or open a finished demo to see how it is built.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PICKER -->
+  <!-- REAL-PICKER-MEDIA: the real picker recording and screenshots go in this band once the redesigned picker ships. -->
+  <section class="fs-band fs-band--picker fs-anchor" id="picker" aria-labelledby="picker-title">
+    <div class="fs-grid-bg" aria-hidden="true"></div>
+    <div class="fs-wrap">
+      <div class="fs-band__grid">
+        <div class="fs-reveal">
+          <div class="fs-group-title" style="margin-bottom:20px"><span class="fs-num">08</span><h2 class="fs-h2" id="picker-title">Armature Picker</h2></div>
+          <p class="fs-lead">A canvas of buttons that select the bones of your rig, saved with the armature data. Click to select, <kbd class="fs-kbd">Shift</kbd> click to add, drag to box select, right-click for the Insert Keyframe pie. Your Pose Mode keys work as in the 3D Viewport.</p>
+          <ul class="fs-ticks" style="margin-top:24px">
+            <li>Humanoid Body (Rigify) in one step: body, hands and feet</li>
+            <li>IK/FK pucks, knobs, 2D pads and a gaze control</li>
+            <li>Mirroring across the centre line while you lay it out</li>
+          </ul>
+          <div class="fs-actions" style="margin-top:32px"><a class="fs-btn fs-btn--secondary" href="picker.html">All about the picker</a></div>
+        </div>
+        <figure class="fs-media fs-reveal">
+          <a href="assets/img/frame-picker.webp" data-zoom><img src="assets/img/focus-picker.webp" width="1396" height="1584" loading="lazy" decoding="async" data-swap="picker-redesign" alt="A body picker: bone buttons split by side, left blue and right red, and the Visibility frame with a toggle and a Solo button for each bone collection."></a>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ DETAILS -->
+  <section class="fs-section fs-anchor" id="details" aria-labelledby="details-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">09</span><h2 class="fs-h2" id="details-title">Details</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Themes</span>
+            <h3 class="fs-h3">One theme for every widget.</h3>
+            <p>Pick a theme from <strong>View &gt; Theme</strong>. <strong>Appearance</strong> follows Blender's theme (Auto), or stays Dark or Light. Make your own in <strong>Edit Themes...</strong>: your themes are files in the theme library folder, so they survive updates.</p>
+            <ul class="fs-ticks">
+              <li>Colours, shapes and type, on every canvas</li>
+              <li>Built-in themes have a lock; duplicate one to change it</li>
+              <li><strong>Override Theme</strong> lets one widget keep its own look</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/img/frame-control-panel-light.webp" data-zoom><img src="assets/img/focus-control-light.webp" width="1288" height="1020" loading="lazy" decoding="async" alt="The same Studio Control Panel with the Light appearance."></a>
+            <figcaption>The Studio Control Panel with the Light appearance.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/themes.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/themes.webp" data-src="assets/media/themes.mp4" width="760" height="478" aria-label="Themes: One canvas through the Default theme, two user themes and the Light appearance."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Themes.</b> One canvas through the Default theme, two user themes and the Light appearance.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/theme-menu.webp" data-zoom><img src="assets/media/theme-menu.webp" width="420" height="283" loading="lazy" decoding="async" alt="Pick a theme and its appearance, Auto, Dark or Light, or open the theme editor, from the View menu."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Themes and Appearance.</b> Pick a theme and its appearance, Auto, Dark or Light, or open the theme editor, from the View menu.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/theme-sunset.webp" data-zoom><img src="assets/media/theme-sunset.webp" width="911" height="574" loading="lazy" decoding="async" alt="The same canvas in a user theme, Sunset: made in the theme editor in a few clicks."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Sunset theme.</b> The same canvas in a user theme, Sunset: made in the theme editor in a few clicks.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/theme-violet.webp" data-zoom><img src="assets/media/theme-violet.webp" width="911" height="574" loading="lazy" decoding="async" alt="The same canvas in a user theme, Violet: made in the theme editor in a few clicks."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Violet theme.</b> The same canvas in a user theme, Violet: made in the theme editor in a few clicks.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/theme-light.webp" data-zoom><img src="assets/media/theme-light.webp" width="911" height="574" loading="lazy" decoding="async" alt="Every theme has a Dark and a Light mode; Auto follows Blender&#x27;s own theme."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>Light appearance.</b> Every theme has a Dark and a Light mode; Auto follows Blender&#x27;s own theme.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--2" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Report a bug from Blender</h3>
+          <p><strong>Help &gt; Report a Bug...</strong> fills in your Blender and FlexSpace versions, system, GPU and recent errors, then opens a GitHub issue in your browser for you to review. Nothing is sent by FlexSpace itself.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Docs inside Blender</h3>
+          <p>The canvas header's <strong>Help</strong> menu holds the guide, the demo files and Report a Bug. The same guide is <a href="docs/">online</a>.</p>
+        </article>
+      </div>
+
+      <div class="fs-reveal" style="margin-top:clamp(64px,8vw,112px)">
+        <h3 class="fs-h3" style="margin-bottom:20px">Flex Space vs Armature Picker</h3>
+        <div class="fs-table-wrap">
+          <table class="fs-table">
+            <caption class="fs-sr">The two canvases of FlexSpace compared</caption>
+            <thead><tr><th scope="col"></th><th scope="col">Flex Space</th><th scope="col">Armature Picker</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">For</th><td>Control panels for any workflow</td><td>Picking the bones of a rig while you pose</td></tr>
+              <tr><th scope="row">Saved in</th><td>The .blend file, as a canvas data-block</td><td>The armature data: it travels with the rig, linked or appended</td></tr>
+              <tr><th scope="row">Using it</th><td>Live Mode</td><td>Blender's Pose Mode</td></tr>
+              <tr><th scope="row">Layers</th><td>Always, Mode, Object, or Object in Mode</td><td>Always in Pose Mode</td></tr>
+              <tr><th scope="row">Its own widgets</th><td>Flex Box, Brush Picker</td><td>Bone pickers, Bone Collection toggle, Radial and Lineal 2D sliders, IK/FK puck</td></tr>
+              <tr><th scope="row">Global presets</th><td>Yes</td><td>Yes: a picker preset finds its bones by name</td></tr>
+              <tr><th scope="row">Extras</th><td>Enter Mode buttons, layers per object</td><td>Humanoid Body (Rigify), mirror, Repair Bone Bindings, Import Geo Collection</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="fs-band fs-cta" aria-labelledby="cta-title">
+    <div class="fs-grid-bg" aria-hidden="true"></div>
+    <div class="fs-wrap fs-reveal">
+      <h2 class="fs-h2" id="cta-title">Make Blender <span class="fs-grad-text">fit your hands.</span></h2>
+      <p class="fs-lead">Start with a demo, then build the panel your workflow deserves.</p>
+      <div class="fs-actions">
+        <a class="fs-btn fs-btn--primary" href="https://superhivemarket.com/" data-link="superhive">Get it on Superhive</a>
+        <a class="fs-btn fs-btn--secondary" href="docs/">Read the docs</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fs-footer">
+  <div class="fs-wrap fs-wrap--wide">
+    <div class="fs-footer__grid">
+      <div class="fs-footer__brand">
+        <a class="fs-logo" href="./" aria-label="FlexSpace home">
+          <img class="fs-logo--dark" src="assets/brand/flexspace.svg" alt="FlexSpace" width="538" height="110" loading="lazy">
+          <img class="fs-logo--light" src="assets/brand/flexspace-light.svg" alt="" width="538" height="110" loading="lazy">
+        </a>
+        <p>Control panels and rig pickers, built your way. For Blender 5.3 and newer.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="widgets.html">Widgets</a></li>
+          <li><a href="picker.html">Armature Picker</a></li>
+          <li><a href="https://superhivemarket.com/" data-link="superhive">Superhive</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="docs/">Docs</a></li>
+          <li><a href="docs/getting-started.html">Getting started</a></li>
+          <li><a href="docs/shortcuts.html">Shortcuts</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" data-link="bug" rel="noopener">Report a bug</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/issues" data-link="issues" rel="noopener">GitHub issues</a></li>
+          <li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fs-footer__legal">
+      <p>&copy; 2023&ndash;2026 J. Fran Matheu. FlexSpace is GPL-3.0-or-later.</p>
+      <p>Blender is a trademark of the Blender Foundation.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,269 @@
+/* FlexSpace web tokens. Source of truth: docs/_design/DESIGN.md.
+   Dark is the default; light is opt-in with <html data-theme="light">.
+   Superhive fragments inline these values (literal, scoped under .fsx); keep both in sync. */
+
+:root {
+  color-scheme: dark;
+
+  /* ---------- Raw palette ---------- */
+  --fs-ink-1000: #060607;
+  --fs-ink-950: #0a0a0c;
+  --fs-ink-900: #0f0f12;
+  --fs-ink-850: #141417;
+  --fs-ink-800: #1a1a1e;
+  --fs-canvas: #1d1d1d;          /* the add-on's dark canvas, product art only */
+  --fs-ink-700: #24242a;
+  --fs-ink-600: #2e2e35;
+  --fs-ink-500: #3a3a42;
+
+  --fs-paper-50: #fbfaf7;
+  --fs-paper-100: #f7f5f1;
+  --fs-paper-200: #efebe4;
+  --fs-paper-300: #e3ddd2;
+
+  --fs-gold-300: #f6cb82;
+  --fs-gold-400: #f0b557;        /* brand primary (logo top) */
+  --fs-gold-500: #e8a94f;
+  --fs-gold-600: #d18a2e;
+  --fs-gold-700: #9a5b12;        /* brand text on light */
+  --fs-sand: #dcceb8;
+  --fs-mist: #d5d6d8;            /* logo end */
+
+  --fs-blue-400: #5b8cff;
+  --fs-blue-500: #2f6fff;        /* product UI accent */
+  --fs-blue-600: #1f55e0;
+
+  --fs-rose: #f78ea5;            /* docs accent, primary */
+  --fs-sage: #82b3a0;            /* docs accent, secondary */
+
+  /* Picker side colours and Blender animation states: product art only */
+  --fs-side-left: #4c8dff;
+  --fs-side-right: #ff5a5f;
+  --fs-side-center: #f2c94c;
+  --fs-side-root: #a77bff;
+  --fs-anim-animated: #5fb34a;
+  --fs-anim-keyed: #e8c93a;
+  --fs-anim-driver: #a35bd6;
+  --fs-anim-changed: #e5862e;
+
+  /* ---------- Semantic (dark) ---------- */
+  --bg: var(--fs-ink-950);
+  --bg-deep: var(--fs-ink-1000);
+  --bg-alt: var(--fs-ink-900);
+  --surface-1: var(--fs-ink-850);
+  --surface-2: var(--fs-ink-800);
+  --surface-3: var(--fs-ink-700);
+  --surface-canvas: var(--fs-canvas);
+
+  --text-1: #f4f2ee;
+  --text-2: #b6b3ad;
+  --text-3: #85827c;
+  --text-on-accent: #1a1206;
+
+  --border-1: rgba(255, 255, 255, 0.07);
+  --border-2: rgba(255, 255, 255, 0.12);
+  --border-strong: var(--fs-ink-600);
+
+  --accent: var(--fs-gold-400);
+  --accent-hover: var(--fs-gold-300);
+  --accent-press: var(--fs-gold-500);
+  --accent-text: var(--fs-gold-300);
+  --accent-soft: rgba(240, 181, 87, 0.12);
+  --ui: var(--fs-blue-500);
+  --ui-text: var(--fs-blue-400);
+  --link: var(--fs-gold-300);
+  --focus: var(--fs-blue-400);
+  --tick: var(--fs-sage);
+  --note: var(--fs-rose);
+  --tip: var(--fs-sage);
+
+  /* ---------- Gradients (from the logo) ---------- */
+  --grad-brand: linear-gradient(100deg, #f0b557 0%, #edb967 18%, #e6c187 40%, #dfcaa8 62%, #d8d2c8 82%, #d5d6d8 100%);
+  --grad-brand-hot: linear-gradient(100deg, #f6cb82 0%, #f0b557 45%, #d18a2e 100%);
+  --grad-ember: linear-gradient(100deg, #f0b557 0%, #e6c187 45%, #5b8cff 100%);
+  --grad-hero-glow:
+    radial-gradient(60% 55% at 18% 8%, rgba(240, 181, 87, 0.18) 0%, rgba(240, 181, 87, 0) 70%),
+    radial-gradient(55% 50% at 88% 92%, rgba(47, 111, 255, 0.14) 0%, rgba(47, 111, 255, 0) 70%);
+  --grad-fade-down: linear-gradient(180deg, rgba(10, 10, 12, 0) 0%, var(--bg) 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+
+  /* The node-editor grid */
+  --fs-grid-minor: rgba(255, 255, 255, 0.035);
+  --fs-grid-major: rgba(255, 255, 255, 0.07);
+  --fs-grid-size: 24px;
+  --fs-grid-major-size: 120px;
+  --grad-grid:
+    linear-gradient(var(--fs-grid-major) 1px, transparent 1px) 0 0 / var(--fs-grid-major-size) var(--fs-grid-major-size),
+    linear-gradient(90deg, var(--fs-grid-major) 1px, transparent 1px) 0 0 / var(--fs-grid-major-size) var(--fs-grid-major-size),
+    linear-gradient(var(--fs-grid-minor) 1px, transparent 1px) 0 0 / var(--fs-grid-size) var(--fs-grid-size),
+    linear-gradient(90deg, var(--fs-grid-minor) 1px, transparent 1px) 0 0 / var(--fs-grid-size) var(--fs-grid-size);
+  --fs-grid-mask: radial-gradient(70% 60% at 50% 40%, #000 30%, transparent 100%);
+
+  /* ---------- Type ---------- */
+  --font-display: "Bricolage Grotesque", "Segoe UI Variable Display", "SF Pro Display", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-text: Inter, "Segoe UI Variable Text", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
+
+  /* fluid: min @ 360px -> max @ 1440px */
+  --fs-text-display: clamp(3rem, 2.1rem + 3.8vw, 5.25rem);
+  --fs-text-h1: clamp(2.5rem, 1.833rem + 2.963vw, 4.5rem);
+  --fs-text-h2: clamp(2rem, 1.583rem + 1.852vw, 3.25rem);
+  --fs-text-h3: clamp(1.375rem, 1.208rem + 0.741vw, 1.875rem);
+  --fs-text-h4: clamp(1.125rem, 1.063rem + 0.278vw, 1.3125rem);
+  --fs-text-lead: clamp(1.125rem, 1.042rem + 0.37vw, 1.375rem);
+  --fs-text-body: clamp(1rem, 0.979rem + 0.093vw, 1.0625rem);
+  --fs-text-small: 0.875rem;
+  --fs-text-eyebrow: 0.78125rem;
+
+  --fs-lh-display: 0.95;
+  --fs-lh-h1: 1;
+  --fs-lh-h2: 1.05;
+  --fs-lh-h3: 1.15;
+  --fs-lh-h4: 1.25;
+  --fs-lh-lead: 1.5;
+  --fs-lh-body: 1.6;
+
+  --fs-track-display: -0.022em;
+  --fs-track-heading: -0.02em;
+  --fs-track-eyebrow: 0.14em;
+
+  --fs-weight-h1: 750;
+  --fs-weight-h2: 700;
+  --fs-weight-h3: 650;
+  --fs-weight-ui: 500;
+  --fs-weight-label: 600;
+
+  --fs-measure-prose: 68ch;
+  --fs-measure-lead: 56ch;
+
+  /* ---------- Space & layout ---------- */
+  --fs-space-1: 4px;
+  --fs-space-2: 8px;
+  --fs-space-3: 12px;
+  --fs-space-4: 16px;
+  --fs-space-5: 20px;
+  --fs-space-6: 24px;
+  --fs-space-8: 32px;
+  --fs-space-10: 40px;
+  --fs-space-12: 48px;
+  --fs-space-16: 64px;
+  --fs-space-20: 80px;
+  --fs-space-24: 96px;
+  --fs-space-32: 128px;
+
+  --fs-section-y: clamp(64px, 9vw, 112px);
+  --fs-gutter: clamp(16px, 4vw, 40px);
+  --fs-container-text: 760px;
+  --fs-container: 1200px;
+  --fs-container-wide: 1360px;
+  --fs-grid-gap: clamp(16px, 2vw, 24px);
+  --fs-nav-h: 64px;
+
+  /* ---------- Radii ---------- */
+  --fs-radius-xs: 4px;
+  --fs-radius-sm: 8px;
+  --fs-radius-md: 12px;
+  --fs-radius-lg: 18px;
+  --fs-radius-xl: 26px;
+  --fs-radius-2xl: 36px;
+  --fs-radius-pill: 999px;
+
+  /* ---------- Depth ---------- */
+  --fs-shadow-1: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 1px 2px rgba(0, 0, 0, 0.5), 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+  --fs-shadow-2: 0 1px 0 rgba(255, 255, 255, 0.05) inset, 0 2px 4px rgba(0, 0, 0, 0.5), 0 12px 32px -8px rgba(0, 0, 0, 0.6);
+  --fs-shadow-3: 0 1px 0 rgba(255, 255, 255, 0.06) inset, 0 8px 16px -4px rgba(0, 0, 0, 0.55), 0 32px 64px -16px rgba(0, 0, 0, 0.7);
+  --fs-shadow-4: 0 1px 0 rgba(255, 255, 255, 0.07) inset, 0 24px 48px -12px rgba(0, 0, 0, 0.7), 0 64px 128px -32px rgba(0, 0, 0, 0.85);
+
+  --fs-glow-gold: 0 0 0 1px rgba(240, 181, 87, 0.45), 0 8px 40px -6px rgba(240, 181, 87, 0.45);
+  --fs-glow-blue: 0 0 0 1px rgba(91, 140, 255, 0.5), 0 8px 36px -6px rgba(47, 111, 255, 0.5);
+
+  --fs-glass-bg: rgba(15, 15, 18, 0.62);
+  --fs-glass-border: rgba(255, 255, 255, 0.08);
+  --fs-glass-blur: blur(16px) saturate(140%);
+
+  --fs-focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus);
+
+  /* ---------- Motion ---------- */
+  --fs-dur-1: 120ms;
+  --fs-dur-2: 200ms;
+  --fs-dur-3: 320ms;
+  --fs-dur-4: 600ms;
+  --fs-dur-loop: 9s;
+  --fs-ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --fs-ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --fs-ease-pop: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --fs-lift: -3px;
+
+  /* ---------- Layers ---------- */
+  --fs-z-base: 0;
+  --fs-z-raised: 10;
+  --fs-z-sticky: 100;
+  --fs-z-nav: 200;
+  --fs-z-overlay: 300;
+}
+
+/* ---------- Light theme (opt-in on GitHub Pages) ---------- */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: var(--fs-paper-100);
+  --bg-deep: var(--fs-paper-200);
+  --bg-alt: var(--fs-paper-50);
+  --surface-1: #ffffff;
+  --surface-2: var(--fs-paper-50);
+  --surface-3: var(--fs-paper-200);
+  --surface-canvas: var(--fs-canvas);   /* product art stays on the dark canvas */
+
+  --text-1: #141416;
+  --text-2: #4a4844;
+  --text-3: #6e6b66;
+  --text-on-accent: #1a1206;
+
+  --border-1: rgba(20, 20, 22, 0.08);
+  --border-2: rgba(20, 20, 22, 0.14);
+  --border-strong: var(--fs-paper-300);
+
+  --accent: var(--fs-gold-400);
+  --accent-hover: var(--fs-gold-500);
+  --accent-press: var(--fs-gold-600);
+  --accent-text: var(--fs-gold-700);
+  --accent-soft: rgba(240, 181, 87, 0.18);
+  --ui: var(--fs-blue-600);
+  --ui-text: var(--fs-blue-600);
+  --link: var(--fs-gold-700);
+  --focus: var(--fs-blue-600);
+  --tick: #3f7d66;
+  --note: #c2456a;
+  --tip: #3f7d66;
+
+  --grad-hero-glow:
+    radial-gradient(60% 55% at 18% 8%, rgba(240, 181, 87, 0.28) 0%, rgba(240, 181, 87, 0) 70%),
+    radial-gradient(55% 50% at 88% 92%, rgba(47, 111, 255, 0.12) 0%, rgba(47, 111, 255, 0) 70%);
+  --grad-fade-down: linear-gradient(180deg, rgba(247, 245, 241, 0) 0%, var(--bg) 100%);
+  --grad-surface: linear-gradient(180deg, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 100%);
+
+  --fs-grid-minor: rgba(20, 20, 22, 0.04);
+  --fs-grid-major: rgba(20, 20, 22, 0.075);
+
+  --fs-shadow-1: 0 1px 2px rgba(60, 40, 10, 0.08), 0 4px 12px -4px rgba(60, 40, 10, 0.1);
+  --fs-shadow-2: 0 2px 4px rgba(60, 40, 10, 0.08), 0 12px 32px -8px rgba(60, 40, 10, 0.16);
+  --fs-shadow-3: 0 8px 16px -4px rgba(60, 40, 10, 0.12), 0 32px 64px -16px rgba(60, 40, 10, 0.22);
+  --fs-shadow-4: 0 24px 48px -12px rgba(60, 40, 10, 0.18), 0 64px 128px -32px rgba(60, 40, 10, 0.28);
+
+  --fs-glow-gold: 0 0 0 1px rgba(209, 138, 46, 0.5), 0 8px 32px -6px rgba(240, 181, 87, 0.55);
+
+  --fs-glass-bg: rgba(251, 250, 247, 0.72);
+  --fs-glass-border: rgba(20, 20, 22, 0.08);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --fs-dur-1: 0.01ms;
+    --fs-dur-2: 0.01ms;
+    --fs-dur-3: 0.01ms;
+    --fs-dur-4: 0.01ms;
+    --fs-dur-loop: 0s;
+    --fs-lift: 0px;
+  }
+}

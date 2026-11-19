@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Recipes · FlexSpace Docs</title>
+<meta name="description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, layer by layer, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/recipes.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Recipes · FlexSpace Docs">
+<meta property="og:description" content="Recipes: step-by-step setups for a canvas that follows Blender&#x27;s mode, layer by layer, and a Rigify body picker. Each recipe shows the result, what you need, the steps, and the demo file that has it finished.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/recipes.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html" aria-current="page">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Recipes</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html" aria-current="page">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Going further</p>
+      <h1>Recipes</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-layer">Look Dev layer</a></li><li class="lv2"><a href="#sculpt-layer">Sculpt layer</a></li><li class="lv2"><a href="#texture-paint-layer">Texture Paint layer</a></li><li class="lv2"><a href="#weight-paint-layer">Weight Paint layer</a></li><li class="lv2"><a href="#draw-layer-grease-pencil">Draw layer: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></details>
+    <article class="fs-prose">
+<p>Every recipe uses the same few moves:</p>
+<ul>
+<li>Make a canvas and set its layer's mode (the icon next to the layer in the sidebar's <strong>Layers</strong> panel, see <a class="fs-xref" href="canvas.html#layers-and-modes"><strong>The Canvas &gt; Layers and modes</strong></a>). One canvas can hold a layer per mode: it shows the right one when you change mode.
+</li>
+<li>In Edit Mode, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> adds a widget. <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>From Property</strong> adds one already bound to a property you right-click.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> puts the selected widgets in a <strong>Frame</strong>. Give it a <strong>Title</strong> and a colour.
+</li>
+<li><span class="fs-keys"><kbd>Tab</kbd></span> goes back to Live Mode to use the canvas.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Want to see the finished version first? Open the matching demo (<strong>Help &gt; Demo Files</strong>) and take it apart.</p></aside>
+<h2 id="flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode<a class="fs-anchor" href="#flexspace-studio-one-canvas-for-every-mode" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-object.webp" data-zoom><img src="../assets/media/studio-object.webp" alt="The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object layer, with the note and its Try it buttons on top." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The FlexSpace Studio demo in Object Mode: the studio scene in the 3D Viewport and the canvas on its Object layer, with the note and its Try it buttons on top.</figcaption></figure>
+<p>The <strong>FlexSpace Studio</strong> demo is one canvas with a Home layer and a layer for each mode, and one scene with an object for each layer: a Geometry Nodes tower, a shader ball, a head to sculpt, a box to paint, a rigged arm and a Grease Pencil drawing. Change the mode and the canvas changes with it. The recipes below build its layers one by one.</p>
+<p><strong>You will need:</strong> a Flex Space canvas with one layer per mode, and an object that can enter each mode.</p>
+<ol>
+<li>Make the canvas. Add a layer per mode with the <strong>+</strong> next to the layer selector, and set each layer's mode in the <strong>Layers</strong> panel of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>): for example Object Mode, Sculpt Mode, Texture Paint, Weight Paint and Draw Mode.
+</li>
+<li>Keep <strong>Switch Layers Automatically</strong> on (the Layers panel). Now <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Tab</kbd></span>, or the mode menu in the 3D Viewport header, also changes the canvas to that mode's layer. Two layers can share a mode: the first one shows, and you pick the other from its tab. A layer made for an object (<strong>Show When</strong> &gt; <strong>Object</strong>) shows when you select that object.
+</li>
+<li>Build each layer in Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>). Edit Mode works in any Blender mode, so you don't have to enter the mode first.
+</li>
+<li>Add a note on each layer: a <strong>Frame</strong> whose <strong>Title</strong> says which mode it is for, coloured like the mode, with a <strong>Label</strong> or two in it.
+</li>
+<li>Add <strong>Try it</strong> buttons to the note: Operator buttons that run <strong>Enter Mode</strong> (<code>flexspace.<wbr>enter_mode</code>). Set its <strong>Mode</strong>, its <strong>Object</strong> and <strong>View Object</strong>. A click makes that object active and selected, frames it in the 3D Viewport and enters the mode, and the canvas shows the mode's layer.
+</li>
+</ol>
+<ol start="6">
+<li>Add a default layer as the first tab: a <strong>Home</strong> layer with <strong>Show When</strong> &gt; <strong>Always</strong>. Switch Layers Automatically shows the most specific layer that fits, and Always is the least specific, so Home only shows when no other layer does. Without it, leaving Sculpt Mode with the head still active would leave the canvas on the Sculpt layer, dimmed because it no longer fits. Give Home a welcome note and a button for each of the other layers.
+</li>
+</ol>
+
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Enter Mode takes no text, only choices, so its buttons run at once, even in a file that can't run scripts.</p></aside>
+<p><strong>Demo file:</strong> <strong>FlexSpace Studio</strong>. It opens in Object Mode on the Object layer. Home has a button for each layer, and every other layer has the note and a Try it button for each of the other modes.</p>
+<h2 id="object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls<a class="fs-anchor" href="#object-layer-geometry-nodes-controls" aria-label="Link to this section">#</a></h2>
+<p><strong>You will need:</strong> an object with a Geometry Nodes modifier, an <strong>Object Mode</strong> layer, Enums, Number Fields, Sliders, Toggles, a Color Picker, a Color Palette, a Script button, a List and Frames.</p>
+<ol>
+<li>Select the object, and set the layer's <strong>Show When</strong> to <strong>Object in Mode</strong>: <strong>Object Mode</strong>, with the tower as its <strong>Object</strong> (<strong>Use Active</strong>). The layer now shows while the tower is active in Object Mode.
+</li>
+<li>Bind widgets to the modifier's inputs by their path, for example <code>active_object.<wbr>modifiers[&quot;GeometryNodes&quot;].<wbr>properties.<wbr>inputs.<wbr>Socket_2.<wbr>value</code>. To get an input's path, right-click it in the modifier panel and choose <strong>Copy Data Path</strong>, then put <code>active_object.</code> in front. <strong>Pin</strong> each widget to the object, so the canvas keeps driving it when another object is active.
+</li>
+<li>A <strong>Menu Switch</strong> input is an enum: an <strong>Enum</strong> set to <strong>Segmented</strong> shows its items as buttons. Use Number Fields for counts (Floors, Windows), Sliders for sizes (Width, Taper, Twist) and Toggles for on/off inputs (Balconies, Trees).
+</li>
+<li>Add a <strong>Color Picker</strong> bound to a colour input. To use it in a material, store the colour with a <strong>Store Named Attribute</strong> node and read it with an <strong>Attribute</strong> node in the material. A <strong>Color Palette</strong> with a few ready colours goes under it.
+</li>
+<li>For a <strong>Randomize</strong> button, add a Script button that sets the Seed input to <code>random.<wbr>randint(0, 9999)</code>.
+</li>
+<li>Add a <strong>List</strong> with its Source set to <strong>Material Slots</strong>: click a row to select the material, then a slider for its roughness (<code>active_object.<wbr>active_material.<wbr>.<wbr>.<wbr></code>).
+</li>
+<li>Frame the blocks: Shape, Details, Scatter, Materials and Colour.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A Script button runs code saved in the file. In a file you don't trust, Flex Space asks once before it runs it.</p></aside>
+<p>In the demo: the tower on its plaza with trees, made by one Geometry Nodes modifier.</p>
+<h2 id="look-dev-layer">Look Dev layer<a class="fs-anchor" href="#look-dev-layer" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-look-dev.webp" data-zoom><img src="../assets/media/studio-look-dev.webp" alt="The Look Dev layer: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport&#x27;s Scene World and Scene Lights." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Look Dev layer: Color Pickers for the shader ball, the world and the key light, with roughness, metallic, strength and power, and the viewport's Scene World and Scene Lights.</figcaption></figure>
+<p><strong>You will need:</strong> a layer made for the shader ball, Color Pickers, Sliders, Number Fields, Toggles and Frames.</p>
+<ol>
+<li>Add a layer, select the shader ball, and set the layer's <strong>Show When</strong> to <strong>Object</strong>, with <strong>Use Active</strong>. Now selecting the ball shows this layer.
+</li>
+<li>Add a <strong>Color Picker</strong> for the material's <strong>Base Color</strong>, and sliders for <strong>Roughness</strong> and <strong>Metallic</strong>. Pin them to the object.
+</li>
+<li>Add a Color Picker for the world colour and a Number Field for its <strong>Strength</strong>.
+</li>
+<li>Add a Color Picker and a Number Field for the key light's colour and <strong>Power</strong>, and a swatch and a field for the rim light. Pin each one to its light.
+</li>
+<li>Add toggles for the 3D Viewport's <strong>Scene World</strong> and <strong>Scene Lights</strong>. Material Preview ignores the scene's lights and world without them.
+</li>
+</ol>
+<p>In the demo: the shader ball, the studio's key and rim lights, and the world.</p>
+<h2 id="sculpt-layer">Sculpt layer<a class="fs-anchor" href="#sculpt-layer" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-sculpt.webp" data-zoom><img src="../assets/media/studio-sculpt.webp" alt="Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt layer with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Sculpt Mode, entered with the Try it button: the head framed in the 3D Viewport, and the Sculpt layer with Brush Pickers in titled blocks, the stroke, Voxel Remesh, mask and face set tools, and viewport toggles.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Sculpt Mode</strong> layer, Brush Pickers, Sliders, an Enum, Toggles, Operator buttons and Frames.</p>
+<ol>
+<li>Add a layer and set its mode to <strong>Sculpt Mode</strong>.
+</li>
+<li>Add the brushes: <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Buttons &gt; Brush Picker</strong>. In the sidebar, <strong>Choose Brush</strong> picks one, for example Draw, Clay Strips, Inflate, Smooth, Flatten or Grab. Add one per brush.
+</li>
+<li>Group them by job. Select a few and press <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> to frame them: for example Basic, Smooth &amp; Flatten, Detail and Masking.
+</li>
+<li>Add the stroke: sliders for <strong>Radius</strong> and <strong>Strength</strong>, an Enum for the brush <strong>Direction</strong>, and X, Y, Z toggles for symmetry. <strong>From Property</strong> on the tool settings is the quickest way.
+</li>
+<li>Add Operator buttons for <strong>Voxel Remesh</strong>, <strong>Symmetrize</strong>, the mask tools and the face set tools.
+</li>
+<li>Add the viewport rows: Set Value toggles for <strong>Solid</strong> and <strong>Material</strong> shading and for <strong>Matcap</strong> and <strong>Studio</strong> lighting, toggles for Wireframe and X-Ray, and a <strong>Dyntopo</strong> button.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Turn on the unified radius and strength in Blender's tool settings. Then one slider works for every brush.</p></aside>
+<p>In the demo: a base head ready to sculpt.</p>
+<h2 id="texture-paint-layer">Texture Paint layer<a class="fs-anchor" href="#texture-paint-layer" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-texture-paint.webp" data-zoom><img src="../assets/media/studio-texture-paint.webp" alt="Texture Paint: the paint box in the 3D Viewport, and the layer with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Texture Paint: the paint box in the 3D Viewport, and the layer with a Color Picker and a palette, paint brushes in blocks, brush settings, mask and stencil toggles, and Save All Images.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Texture Paint</strong> layer, a Color Picker, a Color Palette, Brush Pickers, Sliders, Toggles, Operator buttons and Frames.</p>
+<ol>
+<li>Add a layer and set its mode to <strong>Texture Paint</strong>. Its object needs UVs and an image in its material.
+</li>
+<li>Add a <strong>Color Picker</strong> bound to the paint colour. Set its <strong>Shape</strong> to <strong>Ring + Square</strong> and turn on RGB and HSV under <strong>Show</strong>. Add a <strong>Swap</strong> button next to it for the secondary colour.
+</li>
+<li>Add a <strong>Color Palette</strong> under it, bound to the same colour. Set its <strong>Source</strong> to <strong>Palette</strong> to use a Blender palette.
+</li>
+<li>Add Brush Pickers for the paint brushes, in framed blocks: for example Paint (Paint Hard, Paint Soft, Airbrush), Blend &amp; Fill (Smear, Blur, Clone, Fill) and Erase &amp; Mask.
+</li>
+<li>Add brush settings (radius and strength sliders), toggles for the mask, the stencil and symmetry, and viewport toggles.
+</li>
+<li>Finish with a <strong>Save All Images</strong> button, so your painting is never lost.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Turn on the unified colour in Blender's tool settings. Then every brush paints with the colour of the picker.</p></aside>
+<p>In the demo: a rounded box with a few dabs of paint on its image.</p>
+<h2 id="weight-paint-layer">Weight Paint layer<a class="fs-anchor" href="#weight-paint-layer" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-weight-paint.webp" data-zoom><img src="../assets/media/studio-weight-paint.webp" alt="Weight Paint: the rigged arm with its bones, and the layer with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Weight Paint: the rigged arm with its bones, and the layer with weight brushes, the brush weight with quick values, paint options, symmetry, vertex group tools and overlays.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Weight Paint</strong> layer, Brush Pickers, Sliders, Enums, Toggles, Operator buttons and Frames.</p>
+<ol>
+<li>Add a layer and set its mode to <strong>Weight Paint</strong>. Its object is a rigged mesh.
+</li>
+<li>Add Brush Pickers for the weight brushes in two framed blocks: Paint (Set Weight, Add Weight) and Blend (Blur, Average, Smear).
+</li>
+<li>Add the brush: sliders for radius and strength, Enums for the blend and the falloff.
+</li>
+<li>Add a <strong>Brush Weight</strong> slider. Under it, a row of small Operator buttons for quick values: 0, .25, .5, .75 and 1.
+</li>
+<li>Add toggles for <strong>Auto Normalize</strong>, <strong>Multi-Paint</strong>, <strong>Lock-Relative</strong> and <strong>Restrict</strong>, and for mirror symmetry.
+</li>
+<li>Add Operator buttons to clean up the vertex groups, and viewport toggles for zero weights, contours and wireframe.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A Set Value toggle only takes enums and integers. For the quick weight buttons, use Operator buttons that set the value instead.</p></aside>
+<p>In the demo: a rigged arm. Enter Mode selects its armature too, so <span class="fs-keys"><kbd>Ctrl</kbd></span> click a bone to paint its group.</p>
+<h2 id="draw-layer-grease-pencil">Draw layer: Grease Pencil<a class="fs-anchor" href="#draw-layer-grease-pencil" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/studio-draw.webp" data-zoom><img src="../assets/media/studio-draw.webp" alt="Draw Mode: the drawing on its paper board, and the layer with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles." width="1574" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Draw Mode: the drawing on its paper board, and the layer with draw brushes, a Color Picker and swatches, materials, stroke settings, a List of the layers, animation and canvas toggles.</figcaption></figure>
+<p><strong>You will need:</strong> a <strong>Draw Mode</strong> layer, Brush Pickers, a Color Picker, a Color Palette, a List, Sliders, Toggles, Operator buttons and Frames.</p>
+<ol>
+<li>Add a layer and set its mode to <strong>Draw Mode</strong>. Its object is a Grease Pencil object.
+</li>
+<li>Add a <strong>Color Picker</strong> and a <strong>Color Palette</strong> for the brush colour. Set the Color Mode to Vertex Color, so that colour is the one drawn.
+</li>
+<li>Add Brush Pickers for the draw brushes in framed blocks: Pencils &amp; Inks, Markers &amp; Fill, and Erasers.
+</li>
+<li>Add buttons for the material slots, and a Stroke block: radius, strength, pressure and the stabilizer.
+</li>
+<li>Add a Layers block: a <strong>List</strong> with its Source set to <strong>Grease Pencil Layers</strong> (click a layer to make it active, the eye and lock on each row, <strong>+</strong> and <strong>−</strong> to add and remove), and a slider for the active layer's opacity. Then add an Animation block: <strong>Prev Key</strong>, <strong>Play</strong>, <strong>Next Key</strong>, <strong>Insert Blank Keyframe</strong> and onion skinning.
+</li>
+<li>Add a Canvas block with toggles for the grid and the guides.
+</li>
+</ol>
+<p>In the demo: a small drawing on three layers (Sketch, Color, Ink) and a ball keyed on three frames.</p>
+<h2 id="rigify-body-picker">Rigify body picker<a class="fs-anchor" href="#rigify-body-picker" aria-label="Link to this section">#</a></h2>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-picker.webp" data-zoom><img src="../assets/img/frame-picker.webp" alt="A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles." width="1780" height="1696" decoding="async" loading="lazy"></a><figcaption>A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.</figcaption></figure>
+<p><strong>You will need:</strong> a rig generated with Rigify, an Armature Picker, and the <strong>Humanoid Body (Rigify)</strong> chart.</p>
+<ol>
+<li>Select the generated rig (not the metarig) and enter Pose Mode.
+</li>
+<li>Set an area to <strong>Armature Picker</strong> and click <strong>New Picker</strong>.
+</li>
+<li>Press <span class="fs-keys"><kbd>Tab</kbd></span> for Edit Mode, then <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Bone Picker &gt; Humanoid Body (Rigify)</strong>.
+</li>
+<li>Pick the <strong>Body</strong> (Adult Male or Adult Female), the pages (Body, Hands, Feet), the <strong>Scale</strong>, and turn on <strong>IK/FK Switches</strong>. Keep <strong>Character Backdrop</strong> on to have the drawing behind each page.
+</li>
+<li>Press <span class="fs-keys"><kbd>Tab</kbd></span> and click a shape to pick its bone.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Rigify's human metarig has one toe per foot. For a control per toe, add toe chains before you generate (see <a class="fs-xref" href="rigify.html"><strong>Picker with Rigify</strong></a>).</p></aside>
+<p><strong>Demo files:</strong> <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>.</p>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="rigify.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Picker with Rigify</strong></a><a class="fs-pager__link fs-pager__link--next" href="demo-files.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Demo Files</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#flexspace-studio-one-canvas-for-every-mode">FlexSpace Studio: one canvas for every mode</a></li><li class="lv2"><a href="#object-layer-geometry-nodes-controls">Object layer: Geometry Nodes controls</a></li><li class="lv2"><a href="#look-dev-layer">Look Dev layer</a></li><li class="lv2"><a href="#sculpt-layer">Sculpt layer</a></li><li class="lv2"><a href="#texture-paint-layer">Texture Paint layer</a></li><li class="lv2"><a href="#weight-paint-layer">Weight Paint layer</a></li><li class="lv2"><a href="#draw-layer-grease-pencil">Draw layer: Grease Pencil</a></li><li class="lv2"><a href="#rigify-body-picker">Rigify body picker</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

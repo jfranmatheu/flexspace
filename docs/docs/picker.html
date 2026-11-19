@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Armature Picker · FlexSpace Docs</title>
+<meta name="description" content="The Armature Picker: what a picker is, how to make one, how to pose with it, and how to build and mirror its layout.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/picker.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="The Armature Picker · FlexSpace Docs">
+<meta property="og:description" content="The Armature Picker: what a picker is, how to make one, how to pose with it, and how to build and mirror its layout.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/picker.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html" aria-current="page">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Armature Picker</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html" aria-current="page">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Armature Picker</p>
+      <h1>The Armature Picker</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#one-picker-per-armature">One picker per armature</a></li><li class="lv2"><a href="#get-started">Get started</a></li><li class="lv2"><a href="#when-the-picker-shows-a-card">When the picker shows a card</a></li><li class="lv2"><a href="#posing-with-the-picker">Posing with the picker</a></li><li class="lv2"><a href="#transform-tools">Transform tools</a></li><li class="lv2"><a href="#bone-names">Bone names</a></li><li class="lv2"><a href="#bone-collections">Bone collections</a></li><li class="lv2"><a href="#gaze-control">Gaze control</a></li><li class="lv2"><a href="#build-and-edit-the-layout">Build and edit the layout</a></li><li class="lv3"><a href="#reference-image-behind-your-picker">Reference image behind your picker</a></li><li class="lv2"><a href="#mirror">Mirror</a></li></ul></details>
+    <article class="fs-prose">
+<p>A picker is a canvas of buttons that select the bones of a rig. You pose without hunting for bones in the viewport. Like any canvas, it can also hold sliders, toggles, labels and images.</p>
+<h2 id="one-picker-per-armature">One picker per armature<a class="fs-anchor" href="#one-picker-per-armature" aria-label="Link to this section">#</a></h2>
+<p>The picker belongs to the <strong>armature data</strong>, so it travels with the rig, also when the rig is linked or appended. Make another armature active and the editor shows that armature's picker.</p>
+<p>You can also see and change it in <strong>Properties &gt; Object Data (armature) &gt; Picker</strong>.</p>
+<h2 id="get-started">Get started<a class="fs-anchor" href="#get-started" aria-label="Link to this section">#</a></h2>
+<ol>
+<li>Select your rig and enter <strong>Pose Mode</strong> (<span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Tab</kbd></span> in the 3D Viewport).
+</li>
+<li>Set an area to <strong>Armature Picker</strong> (Editor Type menu).
+</li>
+<li>Click <strong>New Picker</strong> on the card in the middle.
+</li>
+<li>Select some bones in the 3D Viewport and click <strong>Import Selected Bones</strong> on the card. The picker switches to Edit Mode: click to place each button. The left and right bones of a pair come together. Right-click or <span class="fs-keys"><kbd>Esc</kbd></span> cancels the import.
+</li>
+<li>Press <span class="fs-keys"><kbd>Tab</kbd></span> to go back to posing.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Using Rigify? A full Humanoid Body picker (body, hands and feet) takes one step. See <a class="fs-xref" href="rigify.html"><strong>Picker with Rigify</strong></a>.</p></aside>
+
+
+<h2 id="when-the-picker-shows-a-card">When the picker shows a card<a class="fs-anchor" href="#when-the-picker-shows-a-card" aria-label="Link to this section">#</a></h2>
+<p>The picker only works on its own armature, in Pose Mode. Otherwise it shows a card that says why, with a button to fix it:</p>
+<ul>
+<li><strong>No armature selected</strong> or <strong>Select an armature</strong>: make the rig active. The card offers <strong>Pose "rig name"</strong> when it can tell which rig uses this picker.
+</li>
+<li><strong>Not in Pose Mode</strong>: click <strong>Enter Pose Mode</strong>.
+</li>
+<li><strong>The picker of "rig name"</strong>: this editor shows another armature's picker. A picker never poses the wrong rig.
+</li>
+<li><strong>Not the picker of ...</strong>: no armature uses this picker yet. Click <strong>Use it for ...</strong> to give it to the active armature.
+</li>
+</ul>
+<h2 id="posing-with-the-picker">Posing with the picker<a class="fs-anchor" href="#posing-with-the-picker" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Click</strong> a button: select its bone (the other bones are deselected).
+</li>
+<li><span class="fs-keys"><kbd>Shift</kbd></span> click: add the bone to the selection. Shift click the active bone to deselect it.
+</li>
+<li><strong>Drag</strong> on empty space: box select bones. <strong>Click</strong> empty space: deselect all.
+</li>
+<li><strong>Right-click</strong> (with an active bone): the <strong>Insert Keyframe</strong> pie (Location, Rotation, Scaling, Available).
+</li>
+<li>Your <strong>Pose Mode keys work here</strong>, as if the mouse were in the 3D Viewport: <span class="fs-keys"><kbd>G</kbd></span> <span class="fs-keys"><kbd>R</kbd></span> <span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>I</kbd></span>, <span class="fs-keys"><kbd>A</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span>, <span class="fs-keys"><kbd>H</kbd></span>, copy and paste pose...
+</li>
+</ul>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-picker.webp" data-zoom><img src="../assets/img/frame-picker.webp" alt="A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles." width="1780" height="1696" decoding="async" loading="lazy"></a><figcaption>A body chart picker: the silhouette split into bone regions, left blue and right red, rig settings and bone collection toggles.</figcaption></figure>
+<h2 id="transform-tools">Transform tools<a class="fs-anchor" href="#transform-tools" aria-label="Link to this section">#</a></h2>
+<p>Open the toolbar (<span class="fs-keys"><kbd>T</kbd></span>) to pick what a press on a button does:</p>
+<ul>
+<li><strong>Select &amp; Control</strong> (default): select bones and use sliders.
+</li>
+<li><strong>Move</strong>, <strong>Rotate</strong>, <strong>Scale</strong>, <strong>Gimball</strong>: press a button and drag to transform its bone right away. Release to confirm.
+</li>
+</ul>
+<h2 id="bone-names">Bone names<a class="fs-anchor" href="#bone-names" aria-label="Link to this section">#</a></h2>
+<p>The name of the active bone shows next to its button while you pose. To change this, open the sidebar, <strong>Armature</strong> tab, <strong>Bone Collections</strong> panel: <strong>Bone Names</strong> (Off, Active Bone, Selected Bones).</p>
+<h2 id="bone-collections">Bone collections<a class="fs-anchor" href="#bone-collections" aria-label="Link to this section">#</a></h2>
+<p>In the same panel:</p>
+<ul>
+<li><strong>Sync Bone Collections Visibility</strong> hides the buttons of bones whose collections are hidden in the viewport.
+</li>
+<li>The armature's bone collections are listed, so you can show and hide them from here.
+</li>
+</ul>
+<p>To get a button that shows or hides a collection, add <strong>Bone Picker &gt; Bone Collection</strong> with <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> in Edit Mode.</p>
+<h2 id="gaze-control">Gaze control<a class="fs-anchor" href="#gaze-control" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Lineal 2D</strong> pad can be drawn as a pair of eyes: drag anywhere on it and the eyes look that way. The irises follow the value, also when it changes elsewhere (keys, undo, the viewport).</p>
+<ul>
+<li>In Edit Mode, press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Data &gt; Numbers &gt; Gaze (Eyes)</strong>. It comes wide, labelled <strong>Gaze</strong>, with <strong>Look: Eyes</strong>.
+</li>
+<li>On a Rigify face rig it is bound right away: X and Y move the eye target (<code>eyes</code>, or <code>eye_common</code> on the newer face rigs) left / right and up / down, as far as twice the distance between the eyes.
+</li>
+<li>Any pad can switch: in the sidebar <strong>Widget</strong> tab, set <strong>Look</strong> to <strong>Pad</strong> (the grid and handle) or <strong>Eyes</strong>. The <strong>armature</strong> button next to it (<strong>Rigify Gaze</strong>) binds the pad to the active rig's eye target.
+</li>
+</ul>
+<p>The eyes take the pad's style: the whites are the <strong>Handle Color</strong>, the irises the accent colour, and the pad behind them keeps its colour, so they follow a light or dark canvas. A keyed or animated property tints the pad as usual. In Live Mode an unbound pad shows the eyes without irises (in Edit Mode they look straight ahead, like the Pad handle at the centre). On a dark pad the lashes get a faint light rim.</p>
+<p>The gaze is relative to the face: X and Y move the eyes right / up as seen from the front of the face, so the pad still works when the head or the whole rig turns.</p>
+<h2 id="build-and-edit-the-layout">Build and edit the layout<a class="fs-anchor" href="#build-and-edit-the-layout" aria-label="Link to this section">#</a></h2>
+<p>Press <span class="fs-keys"><kbd>Tab</kbd></span> to edit the picker. The <strong>Utils</strong> menu in the header has:</p>
+<ul>
+<li><strong>Import Selected Bones</strong>: a button for each bone selected in the viewport that has none yet.
+</li>
+<li><strong>Import Geo Collection</strong>: turns the flat meshes of a collection into <strong>Geometry Shape</strong> buttons. A mesh named like a bone is bound to that bone.
+</li>
+<li><strong>Repair Bone Bindings</strong>: see <a class="fs-xref" href="rigify.html#repair-bindings"><strong>Picker with Rigify &gt; Repair bindings</strong></a>.
+</li>
+<li><strong>Move Selected to Another Layer</strong>.
+</li>
+</ul>
+<p>To bind a button by hand, select it. Then, in the sidebar <strong>Widget</strong> tab, either:</p>
+<ul>
+<li>pick the <strong>Bone</strong> from the list, or
+</li>
+<li>select the bone in the viewport and click the arrow button at the left of the field (<strong>Assign Active Bone</strong>).
+</li>
+</ul>
+<p>A button with no label takes the bone's name.</p>
+
+<p>Moving things around works like any canvas, smart snapping included (see <a class="fs-xref" href="editing.html#smart-snapping"><strong>Editing Tools &gt; Smart snapping</strong></a>).</p>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-edit-mode.webp" data-zoom><img src="../assets/img/frame-edit-mode.webp" alt="Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide." width="1780" height="1304" decoding="async" loading="lazy"></a><figcaption>Edit Mode: a frame dragged under Lighting, snapped to its left edge, the gap shown by a magenta guide.</figcaption></figure>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Buttons follow renamed bones. A button whose bone is gone shows <strong>Missing bone</strong> and does nothing when clicked.</p></aside>
+<h3 id="reference-image-behind-your-picker">Reference image behind your picker<a class="fs-anchor" href="#reference-image-behind-your-picker" aria-label="Link to this section">#</a></h3>
+<p>A picture of the character behind its buttons makes the picker easier to read, and to build.</p>
+<ol>
+<li>In Edit Mode, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>Graphics</strong> &gt; <strong>Backdrop Image</strong>.
+</li>
+<li>Open the picture in the sidebar, <strong>Widget</strong> tab, then move and resize it under the buttons.
+</li>
+<li>Set its look in <strong>Image Look</strong>: it starts at 35 % opacity and in grey, so the buttons stand out. Raise <strong>Saturation</strong> to bring its colours back, or use <strong>Tint</strong> to give it one colour.
+</li>
+<li>Turn on <strong>Lock</strong> so it stays put while you place buttons on top of it. Dragging over a locked backdrop draws a selection box, so you can still select the buttons on it.
+</li>
+</ol>
+<p>A backdrop draws below every widget, Frames included, and in Live Mode clicks go through it to the buttons. See <a class="fs-xref" href="widgets.html#image"><strong>Widgets &gt; Image</strong></a> for every option.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The <strong>Face</strong> tab of the <strong>Rigify Human Picker</strong> demo is built this way: a face picture as a locked backdrop, with every face control drawn on its feature. See <strong>Rigify &gt; Bone collections</strong> for what is on it.</p></aside>
+<h2 id="mirror">Mirror<a class="fs-anchor" href="#mirror" aria-label="Link to this section">#</a></h2>
+<p>Buttons of bones named with a side (<code>hand.L</code>, <code>hand_R</code>, <code>Left</code>/<code>Right</code>...) know their other side. In Edit Mode, moving, resizing or rotating one of a pair mirrors the other across the red centre line.</p>
+<ul>
+<li>Buttons of centre bones stay on the line.
+</li>
+<li>A side button can't cross it.
+</li>
+</ul>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="binding.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Binding Properties</strong></a><a class="fs-pager__link fs-pager__link--next" href="rigify.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Picker with Rigify</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#one-picker-per-armature">One picker per armature</a></li><li class="lv2"><a href="#get-started">Get started</a></li><li class="lv2"><a href="#when-the-picker-shows-a-card">When the picker shows a card</a></li><li class="lv2"><a href="#posing-with-the-picker">Posing with the picker</a></li><li class="lv2"><a href="#transform-tools">Transform tools</a></li><li class="lv2"><a href="#bone-names">Bone names</a></li><li class="lv2"><a href="#bone-collections">Bone collections</a></li><li class="lv2"><a href="#gaze-control">Gaze control</a></li><li class="lv2"><a href="#build-and-edit-the-layout">Build and edit the layout</a></li><li class="lv3"><a href="#reference-image-behind-your-picker">Reference image behind your picker</a></li><li class="lv2"><a href="#mirror">Mirror</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>

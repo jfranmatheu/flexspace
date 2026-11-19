@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en" class="no-js" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Widgets · FlexSpace for Blender</title>
+<meta name="description" content="Every FlexSpace widget: Operator and Custom Script buttons, Toggle, Enum, sliders, Number Field, Label, List, Color Swatch, Color Picker, Color Palette, Brush Picker, Ring Menu, Image, Frame, Flex Box, Group, and the Armature Picker's own.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/widgets.html">
+<meta name="theme-color" content="#0a0a0c">
+<meta name="color-scheme" content="dark light">
+<script>(function(){var d=document.documentElement,t=null;try{t=localStorage.getItem("fs-theme")}catch(e){}if(t!=="light"&&t!=="dark"){t="dark"}d.setAttribute("data-theme",t);d.className=d.className.replace("no-js","js")})();</script>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="FlexSpace widgets: every control, bound to anything">
+<meta property="og:description" content="21 widgets for your own Blender panels and rig pickers, each bound to any property, operator or script.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/widgets.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="FlexSpace: control panels and rig pickers, built your way.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FlexSpace widgets: every control, bound to anything">
+<meta name="twitter:description" content="21 widgets for your own Blender panels and rig pickers.">
+<meta name="twitter:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<link rel="icon" href="assets/img/icons/favicon.ico" sizes="any">
+<link rel="icon" href="assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/icons/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Inter:wght@400..700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script src="assets/js/site.js" defer></script>
+</head>
+<body>
+<a class="fs-skip" href="#main">Skip to content</a>
+
+<header class="fs-nav">
+  <nav class="fs-wrap fs-wrap--wide fs-nav__inner" aria-label="Main">
+    <a class="fs-logo" href="./" aria-label="FlexSpace home">
+      <img class="fs-logo--dark" src="assets/brand/flexspace.svg" alt="FlexSpace" width="538" height="110">
+      <img class="fs-logo--light" src="assets/brand/flexspace-light.svg" alt="" width="538" height="110">
+    </a>
+    <ul class="fs-nav__links">
+      <li><a href="features.html">Features</a></li>
+      <li><a href="widgets.html" aria-current="page">Widgets</a></li>
+      <li><a href="picker.html">Picker</a></li>
+      <li><a href="docs/">Docs</a></li>
+      <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog <svg class="fs-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+      <li><a href="support.html">Support</a></li>
+    </ul>
+    <div class="fs-nav__end">
+      <button class="fs-theme" type="button" aria-label="Switch theme" aria-pressed="false">
+        <svg class="fs-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
+        <svg class="fs-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+      </button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-nav__cta" href="https://superhivemarket.com/" data-link="superhive"><span class="fs-long">Get it on Superhive</span><span class="fs-short">Get it</span></a>
+      <details class="fs-menu">
+        <summary aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <div class="fs-menu__panel">
+          <ul>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="widgets.html" aria-current="page">Widgets</a></li>
+            <li><a href="picker.html">Picker</a></li>
+            <li><a href="docs/">Docs</a></li>
+            <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog <svg class="fs-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M8 7h9v9"/></svg></a></li>
+            <li><a href="support.html">Support</a></li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </nav>
+</header>
+
+<main id="main">
+
+  <section class="fs-hero fs-hero--page" aria-labelledby="page-title">
+    <div class="fs-grid-bg" aria-hidden="true"></div>
+    <div class="fs-wrap">
+      <div class="fs-hero__copy">
+        <span class="fs-chip fs-chip--accent"><span class="fs-dot"></span>21 widgets</span>
+        <h1 class="fs-h1" id="page-title">Every control you need, <span class="fs-grad-text">drawn on the canvas.</span></h1>
+        <p class="fs-lead">Buttons that run operators and scripts, switches, sliders and fields that drive any property, colour and brush tools, lists, images and layout widgets. The Armature Picker adds knobs, pads and bone pickers of its own.</p>
+        <div class="fs-actions">
+          <a class="fs-btn fs-btn--secondary" href="#gallery">Browse the widgets</a>
+          <a class="fs-btn fs-btn--ghost" href="assets/img/widget-gallery.webp" data-zoom data-caption="All 21 FlexSpace widgets on one sheet, each with its name and what it does.">All of them on one sheet <span class="fs-arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ GALLERY (CSS-only filters) -->
+  <section class="fs-section" id="gallery" aria-labelledby="gallery-title" style="padding-top:clamp(24px,4vw,48px)">
+    <div class="fs-wrap fs-wrap--wide">
+      <h2 class="fs-sr" id="gallery-title">Widget gallery</h2>
+      <input class="fs-filter" type="radio" name="wf" id="f-all" checked>
+      <input class="fs-filter" type="radio" name="wf" id="f-buttons">
+      <input class="fs-filter" type="radio" name="wf" id="f-data">
+      <input class="fs-filter" type="radio" name="wf" id="f-color">
+      <input class="fs-filter" type="radio" name="wf" id="f-layout">
+      <input class="fs-filter" type="radio" name="wf" id="f-picker">
+      <input class="fs-filter" type="radio" name="wv" id="v-art" checked>
+      <input class="fs-filter" type="radio" name="wv" id="v-real">
+      <div class="fs-filters" role="group" aria-label="Show widgets by category">
+        <label for="f-all">All <span>21</span></label>
+        <label for="f-buttons">Buttons <span>2</span></label>
+        <label for="f-data">Data <span>6</span></label>
+        <label for="f-color">Color &amp; Brush <span>5</span></label>
+        <label for="f-layout">Layout &amp; Graphics <span>4</span></label>
+        <label for="f-picker">Armature Picker <span>4</span></label>
+      </div>
+      <div class="fs-view" role="group" aria-label="Show the widgets as">
+        <label for="v-art">Illustration</label>
+        <label for="v-real">In Blender</label>
+      </div>
+
+      <ul class="fs-gallery" role="list">
+        <li data-cat="buttons" id="operator"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-operator.webp" width="720" height="400" loading="lazy" decoding="async" alt="An Operator button labelled Render Image."><span class="fs-wcard__real"><img src="assets/media/widgets/operator.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A button that runs any Blender operator, here Render Image."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Operator</h3>
+            <p>Runs a Blender operator.</p>
+            <p class="fs-more"><strong>Pick Operator from UI</strong>: right-click any button in Blender to copy its operator and settings. It turns red when the operator can't run right now.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Buttons</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="buttons" id="custom-script"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-custom-script.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Custom Script button labelled Randomize Colours."><span class="fs-wcard__real"><img src="assets/media/widgets/custom-script.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A button that runs your own Python script."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Custom Script</h3>
+            <p>Runs your own Python script.</p>
+            <p class="fs-more">Write it in a Text Editor window. It can use <code class="fs-path">active_object</code>, <code class="fs-path">active_widget</code> and <code class="fs-path">canvas</code>. With Blender's Auto Run Python Scripts off, the first click asks before running it.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Buttons</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="toggle"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-toggle.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Toggle switch, on, labelled Shadow."><span class="fs-wcard__real"><img src="assets/media/widgets/toggle.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A switch bound to a true/false property, here a light&#x27;s shadow."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Toggle</h3>
+            <p>Switches an on / off property, or sets an enum or integer value.</p>
+            <p class="fs-more">Three looks: Radial, Switch and Checkbox. Put a few <strong>Set Value</strong> toggles side by side for radio buttons.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="enum"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-enum.webp" width="720" height="400" loading="lazy" decoding="async" alt="A segmented Enum: EEVEE, Workbench and Cycles, EEVEE active."><span class="fs-wcard__real"><img src="assets/media/widgets/enum.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A segmented choice bound to an enum property, here the render engine."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Enum</h3>
+            <p>Picks one value of an enum or integer.</p>
+            <p class="fs-more">Segmented, Dropdown, or Auto: segmented with 5 items or less. An integer gets its own list of items.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="color" id="color-swatch"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-color-swatch.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Color Swatch labelled Light Colour, showing orange."><span class="fs-wcard__real"><img src="assets/media/widgets/color-swatch.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A colour swatch bound to a colour property, here the light colour."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Color Swatch</h3>
+            <p>Shows a colour and opens Blender's colour picker.</p>
+            <p class="fs-more">A light, the world, a material's Base Color or viewport colour. A colour with alpha shows a checkerboard half.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Color &amp; Brush</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="color" id="color-picker"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-color-picker.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Color Picker: hue and saturation wheel, brightness bar, swatch strip and sliders."><span class="fs-wcard__real"><img src="assets/media/widgets/color-picker.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A full colour picker on the canvas with a wheel, value bar and HSV rows."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Color Picker</h3>
+            <p>Edits a colour right on the canvas.</p>
+            <p class="fs-more">A Wheel, or a Ring + Square as in Krita or Photoshop, with RGB, HSV and Alpha sliders as you choose.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Color &amp; Brush</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="color" id="color-palette"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-color-palette.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Color Palette of twelve swatches, the orange one active, and a plus button."><span class="fs-wcard__real"><img src="assets/media/widgets/color-palette.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A palette of swatches: click one to set the bound colour."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Color Palette</h3>
+            <p>A grid of colour swatches: click one to use it.</p>
+            <p class="fs-more">Its own colours, or a Blender palette, the kind Texture Paint uses. <strong>Show Active</strong> rings the current colour.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Color &amp; Brush</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="color" id="brush-picker"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-brush-picker.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Brush Picker for the Clay Strips brush, active."><span class="fs-wcard__real"><img src="assets/media/widgets/brush-picker.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A button that makes one brush active, with its preview."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Brush Picker</h3>
+            <p>Makes one brush the active brush.</p>
+            <p class="fs-more">The Essentials, your file's brush assets or your own libraries. Icon, name or both. Square and icon-only at Roundness 1, it is a round brush button.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Color &amp; Brush</span><span class="fs-chip">Brush modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="color" id="ring-menu"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-ring-menu.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Ring Menu: brushes in the outer ring, toggles in the inner ring, Draw named in the core."><span class="fs-wcard__real"><img src="assets/media/widgets/ring-menu.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: Brushes on an outer ring, toggles and operators on an inner ring, in pages."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Ring Menu</h3>
+            <p>Brushes, toggles and operators in a ring, like a sculpt wheel.</p>
+            <p class="fs-more">Brushes in the outer ring, on as many pages as you need; actions in the inner ring; the name in the core.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Color &amp; Brush</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="list"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-list.webp" width="720" height="400" loading="lazy" decoding="async" alt="A List of three material slots, Teal active, with Add and Remove buttons."><span class="fs-wcard__real"><img src="assets/media/widgets/list.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A list of items with add and remove buttons, here the material slots."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>List</h3>
+            <p>Shows layers, material slots, vertex groups and other lists as rows you can click.</p>
+            <p class="fs-more">Grease Pencil layers, UV maps, shape keys, bone collections, view layers, or any list with <strong>Custom</strong>.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="lineal-slider"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-lineal-slider.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Lineal slider labelled Power, half way."><span class="fs-wcard__real"><img src="assets/media/widgets/lineal-slider.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A linear slider bound to a number, here the light power."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Lineal slider</h3>
+            <p>Drag along a bar to change a number.</p>
+            <p class="fs-more"><kbd class="fs-kbd">Shift</kbd> is 10 times finer, <kbd class="fs-kbd">Ctrl</kbd> snaps to the step, <kbd class="fs-kbd">Ctrl</kbd> + click types the value.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="number-field"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-number-field.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Number Field: Location X, 1.25 m, with arrows on the sides."><span class="fs-wcard__real"><img src="assets/media/widgets/number-field.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A Blender-style number field you drag, click or type into."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Number Field</h3>
+            <p>A number field like Blender's own.</p>
+            <p class="fs-more">Drag it, click an arrow, or click to type an expression or a unit (<code class="fs-path">1.5 m</code>, <code class="fs-path">10/4</code>).</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="data" id="label"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-label.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Label reading Frame 24."><span class="fs-wcard__real"><img src="assets/media/widgets/label.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A text label that can show a live value, here the current frame."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Label</h3>
+            <p>Text, or a property's value.</p>
+            <p class="fs-more">Always up to date, with a Format (Number, Percent, Yes / No...), Units, Prefix and Suffix.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Data</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="layout" id="image"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-image.webp" width="720" height="400" loading="lazy" decoding="async" alt="An Image widget showing a picture of a box on a ground grid."><span class="fs-wcard__real"><img src="assets/media/widgets/image.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: An image on the canvas, here a packed render of the scene."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Image</h3>
+            <p>Shows a picture.</p>
+            <p class="fs-more">Opacity, Saturation, Brightness and Tint of its own. <strong>Backdrop</strong> puts it behind every other widget.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Graphics</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="layout" id="frame"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-frame.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Frame titled Key Light holding a Shadow switch and a Power slider."><span class="fs-wcard__real"><img src="assets/media/widgets/frame.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A titled frame that holds and moves a group of widgets."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Frame</h3>
+            <p>A titled area, square or round, that holds and moves other widgets.</p>
+            <p class="fs-more"><kbd class="fs-kbd">Ctrl J</kbd> frames the selection. <strong>Shrink</strong> fits it to its contents.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Layout</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="layout" id="flex-box"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-flex-box.webp" width="720" height="400" loading="lazy" decoding="async" alt="A vertical Flex Box of three Number Fields: Location X, Y and Z."><span class="fs-wcard__real"><img src="assets/media/widgets/flex-box.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: A box that lays its widgets out for you, made in one go from a vector property."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Flex Box</h3>
+            <p>Lines up other widgets in a row or a column.</p>
+            <p class="fs-more">Direction, Wrap, Justify, Align, Padding and Gap; Grow, Shrink and Basis per child.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Layout</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="layout" id="group"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-group.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Group of three buttons, Prev, Play and Next, selected in Edit Mode with its handles."><span class="fs-wcard__real"><img src="assets/media/widgets/group.webp" width="480" height="267" loading="lazy" decoding="async" alt="In Blender: Widgets grouped to move and resize together, shown selected in Edit Mode."><span class="fs-wcard__badge">In Blender</span></span></div>
+          <div class="fs-wcard__body">
+            <h3>Group</h3>
+            <p>Moves and resizes other widgets as one.</p>
+            <p class="fs-more"><kbd class="fs-kbd">Ctrl G</kbd> groups, double-click works inside it, <kbd class="fs-kbd">Alt G</kbd> ungroups.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip">Layout</span><span class="fs-chip">All modes</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="picker" id="bone-collection-toggle"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-bone-collection-toggle.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Bone Collection toggle for Torso, on, with its Solo button."><span class="fs-wcard__badge fs-wcard__badge--art">Illustration</span></div>
+          <div class="fs-wcard__body">
+            <h3>Bone Collection toggle</h3>
+            <p>Shows, hides or solos a bone collection.</p>
+            <p class="fs-more">Choose <strong>Visible</strong> or <strong>Solo</strong> in its Bone Collection panel.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip fs-chip--picker">Armature Picker</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="picker" id="radial-slider"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-radial-slider.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Radial slider knob labelled Head Follow."><span class="fs-wcard__badge fs-wcard__badge--art">Illustration</span></div>
+          <div class="fs-wcard__body">
+            <h3>Radial slider</h3>
+            <p>A knob you drag to change a number.</p>
+            <p class="fs-more">Drag right or up to increase. <kbd class="fs-kbd">Shift</kbd> is finer, <kbd class="fs-kbd">Ctrl</kbd> snaps (5 degrees for an angle).</p>
+            <div class="fs-wcard__meta"><span class="fs-chip fs-chip--picker">Armature Picker</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="picker" id="lineal-2d-slider"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-lineal-2d-slider.webp" width="720" height="400" loading="lazy" decoding="async" alt="A Lineal 2D pad labelled Gaze, its handle right of centre."><span class="fs-wcard__badge fs-wcard__badge--art">Illustration</span></div>
+          <div class="fs-wcard__body">
+            <h3>Lineal 2D slider</h3>
+            <p>A pad that drives two properties at once.</p>
+            <p class="fs-more">One Data Path per axis, for eyes, jaws or facial controls. <strong>Look: Eyes</strong> draws it as a gaze control.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip fs-chip--picker">Armature Picker</span></div>
+          </div>
+        </article></li>
+
+        <li data-cat="picker" id="bone-pickers"><article class="fs-wcard">
+          <div class="fs-wcard__art"><img src="assets/img/w-bone-pickers.webp" width="720" height="400" loading="lazy" decoding="async" alt="Bone pickers: a Button labelled Torso, a round Button Image with a bone icon, and a red IK button with its IK/FK puck at the edge."><span class="fs-wcard__badge fs-wcard__badge--art">Illustration</span></div>
+          <div class="fs-wcard__body">
+            <h3>Button, Button Image, Geometry Shape</h3>
+            <p>Bone pickers: select their bone.</p>
+            <p class="fs-more">A Geometry Shape takes any flat shape. Each can show an IK/FK puck at its edge.</p>
+            <div class="fs-wcard__meta"><span class="fs-chip fs-chip--picker">Armature Picker</span></div>
+          </div>
+        </article></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================================ ADD ONE -->
+  <section class="fs-section fs-section--alt" aria-labelledby="add-title">
+    <div class="fs-wrap">
+      <div class="fs-row">
+        <div class="fs-row__copy fs-reveal">
+          <span class="fs-eyebrow">The Add menu</span>
+          <h2 class="fs-h2" id="add-title" style="margin-top:14px">Add one <span class="fs-grad-text">in a second.</span></h2>
+          <p>In Edit Mode, <kbd class="fs-kbd">Shift A</kbd> opens the <strong>Add Widget</strong> panel over the canvas. Just start typing: the best match is selected, and <kbd class="fs-kbd">Enter</kbd> adds it. The new widget follows the mouse; click to place it.</p>
+          <ul class="fs-ticks">
+            <li>Categories: Buttons, Data, Tools, Graphics, Layout, and Bone Picker in a picker</li>
+            <li>A widget the layer's mode can't take is dimmed, and the panel says why</li>
+            <li>Prefer the pie? Set <strong>Add Menu</strong> to <strong>Pie</strong> in the preferences</li>
+          </ul>
+        </div>
+        <figure class="fs-media fs-reveal">
+          <a href="assets/img/frame-add-widget.webp" data-zoom><img src="assets/img/frame-add-widget.webp" width="1780" height="1288" loading="lazy" decoding="async" alt="The Add Widget browser: search, categories, widget cards and From Property."></a>
+          <figcaption>The Add Widget panel: search, categories, cards and From Property.</figcaption>
+        </figure>
+      </div>
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--fit fs-real--lead">
+            <a class="fs-real__frame" href="assets/media/add-panel.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/add-panel.webp" data-src="assets/media/add-panel.mp4" width="1100" height="1152" aria-label="Add any widget in seconds: Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Add any widget in seconds.</b> Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/add-browser-search.webp" data-zoom><img src="assets/media/add-browser-search.webp" width="907" height="628" loading="lazy" decoding="async" alt="Type a few letters and the best matches show across every category; Enter adds the selected one."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Search as you type.</b> Type a few letters and the best matches show across every category; Enter adds the selected one.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/add-browser-data.webp" data-zoom><img src="assets/media/add-browser-data.webp" width="907" height="628" loading="lazy" decoding="async" alt="The Data category opens into Toggles, Choices, Numbers, Color, Text and Lists, each under its own heading."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Categories and subcategories.</b> The Data category opens into Toggles, Choices, Numbers, Color, Text and Lists, each under its own heading.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ FROM PROPERTY -->
+  <section class="fs-section" aria-labelledby="fp-title">
+    <div class="fs-wrap">
+      <div class="fs-row fs-row--flip">
+        <div class="fs-row__copy fs-reveal">
+          <span class="fs-eyebrow">From Property</span>
+          <h2 class="fs-h2" id="fp-title" style="margin-top:14px">Right-click a property. <span class="fs-grad-text">Get the widget.</span></h2>
+          <ol class="fs-steps" style="margin-top:24px">
+            <li>Press <kbd class="fs-kbd">Shift A</kbd> &gt; <strong>From Property</strong>.</li>
+            <li>Right-click any property in Blender's interface: the Properties editor, the sidebar, a node...</li>
+            <li>The widget that controls it appears where you opened the menu, already bound and labelled.</li>
+          </ol>
+          <p class="fs-small fs-muted" style="margin-top:16px">Custom properties work too. Undo removes the whole addition in one step.</p>
+        </div>
+        <div class="fs-reveal">
+          <div class="fs-table-wrap">
+            <table class="fs-table">
+              <caption class="fs-sr">What From Property adds for each kind of property</caption>
+              <thead><tr><th scope="col">Property</th><th scope="col">Widget</th></tr></thead>
+              <tbody>
+                <tr><th scope="row">On / off</th><td><strong>Toggle</strong> (Checkbox)</td></tr>
+                <tr><th scope="row">Enum</th><td><strong>Enum</strong> (Segmented with 5 items or less, else Dropdown)</td></tr>
+                <tr><th scope="row">Number</th><td><strong>Number Field</strong></td></tr>
+                <tr><th scope="row">Factor or Percentage</th><td><strong>Lineal</strong> slider with that range</td></tr>
+                <tr><th scope="row">Colour</th><td><strong>Color Swatch</strong></td></tr>
+                <tr><th scope="row">Vector</th><td>Vertical <strong>Flex Box</strong> with one Number Field per value</td></tr>
+                <tr><th scope="row">Anything else</th><td><strong>Label</strong> that reads the value out</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="fs-small fs-muted" style="margin-top:12px">In a picker, a vector becomes a <strong>Group</strong> of Number Fields, because the picker has no Flex Box.</p>
+        </div>
+      </div>
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--lead">
+            <a class="fs-real__frame" href="assets/media/from-property.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/from-property.webp" data-src="assets/media/from-property.mp4" width="1254" height="956" aria-label="Bind any property with a right-click: Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Bind any property with a right-click.</b> Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/from-property-shot.webp" data-zoom><img src="assets/media/from-property-shot.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="The light&#x27;s colour, right-clicked in the Properties editor, is now a Color Swatch on the canvas."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Add from Property.</b> The light&#x27;s colour, right-clicked in the Properties editor, is now a Color Swatch on the canvas.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/flex-box.webp" data-zoom><img src="assets/media/flex-box.webp" width="833" height="256" loading="lazy" decoding="async" alt="Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>Flex Box.</b> Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ TOOLTIPS + STATES -->
+  <section class="fs-section fs-section--alt" aria-labelledby="live-title">
+    <div class="fs-wrap">
+      <div class="fs-head fs-reveal">
+        <span class="fs-eyebrow">In Live Mode</span>
+        <h2 class="fs-h2" id="live-title">Widgets that behave like <span class="fs-grad-text">Blender's own.</span></h2>
+      </div>
+      <div class="fs-cols fs-cols--3">
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Tooltips</h3>
+          <p>Rest the mouse on a widget: an operator's name and description, or the property's name, description and data path. When an operator can't run, it says <strong>Can't run here</strong>, and why.</p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Animation colours</h3>
+          <p>A bound widget shows its property's state in Blender's own colours.</p>
+          <p class="fs-sides" style="margin-top:12px">
+            <span><i style="background:#5fb34a"></i>Animated</span>
+            <span><i style="background:#e8c93a"></i>Keyframe</span>
+            <span><i style="background:#a35bd6"></i>Driver</span>
+            <span><i style="background:#e5862e"></i>Changed</span>
+          </p>
+        </article>
+        <article class="fs-card fs-card--pad fs-reveal">
+          <h3 class="fs-h4">Keys over a widget</h3>
+          <p><kbd class="fs-kbd">I</kbd> inserts a keyframe, <kbd class="fs-kbd">Alt I</kbd> deletes it, <kbd class="fs-kbd">Shift Alt I</kbd> clears them all, <kbd class="fs-kbd">Backspace</kbd> resets to the default. Auto Keying keys the end of a drag.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="fs-band fs-cta" aria-labelledby="cta-title">
+    <div class="fs-grid-bg" aria-hidden="true"></div>
+    <div class="fs-wrap fs-reveal">
+      <h2 class="fs-h2" id="cta-title">Put them <span class="fs-grad-text">on your canvas.</span></h2>
+      <p class="fs-lead">Every widget is in the Add menu, ready to bind.</p>
+      <div class="fs-actions">
+        <a class="fs-btn fs-btn--primary" href="https://superhivemarket.com/" data-link="superhive">Get it on Superhive</a>
+        <a class="fs-btn fs-btn--secondary" href="docs/widgets.html">Widget docs</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="fs-footer">
+  <div class="fs-wrap fs-wrap--wide">
+    <div class="fs-footer__grid">
+      <div class="fs-footer__brand">
+        <a class="fs-logo" href="./" aria-label="FlexSpace home">
+          <img class="fs-logo--dark" src="assets/brand/flexspace.svg" alt="FlexSpace" width="538" height="110" loading="lazy">
+          <img class="fs-logo--light" src="assets/brand/flexspace-light.svg" alt="" width="538" height="110" loading="lazy">
+        </a>
+        <p>Control panels and rig pickers, built your way. For Blender 5.3 and newer.</p>
+      </div>
+      <div>
+        <h2>Product</h2>
+        <ul>
+          <li><a href="features.html">Features</a></li>
+          <li><a href="widgets.html">Widgets</a></li>
+          <li><a href="picker.html">Armature Picker</a></li>
+          <li><a href="https://superhivemarket.com/" data-link="superhive">Superhive</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Learn</h2>
+        <ul>
+          <li><a href="docs/">Docs</a></li>
+          <li><a href="docs/getting-started.html">Getting started</a></li>
+          <li><a href="docs/shortcuts.html">Shortcuts</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/releases" data-link="changelog" rel="noopener">Changelog</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2>Help</h2>
+        <ul>
+          <li><a href="support.html">Support</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" data-link="bug" rel="noopener">Report a bug</a></li>
+          <li><a href="https://github.com/franb3d/flexspace/issues" data-link="issues" rel="noopener">GitHub issues</a></li>
+          <li><a href="docs/troubleshooting.html">Troubleshooting</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="fs-footer__legal">
+      <p>&copy; 2023&ndash;2026 J. Fran Matheu. FlexSpace is GPL-3.0-or-later.</p>
+      <p>Blender is a trademark of the Blender Foundation.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

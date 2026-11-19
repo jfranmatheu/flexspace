@@ -1,0 +1,529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Widgets · FlexSpace Docs</title>
+<meta name="description" content="Widgets: every widget at a glance, the quickest way to add one (From Property), and the settings of each widget.">
+<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/widgets.html">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#0a0a0c">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="FlexSpace">
+<meta property="og:title" content="Widgets · FlexSpace Docs">
+<meta property="og:description" content="Widgets: every widget at a glance, the quickest way to add one (From Property), and the settings of each widget.">
+<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/widgets.html">
+<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
+<link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
+<link rel="icon" href="../assets/img/icons/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../assets/img/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&amp;family=Inter:wght@400..700&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/docs.css">
+<script src="../assets/js/docs.js" defer></script>
+</head>
+<body class="fs-docs " id="top">
+<a class="fs-skip" href="#main">Skip to content</a>
+<header class="fs-top">
+  <div class="fs-top__in">
+    <a class="fs-top__brand" href="../index.html" aria-label="FlexSpace home"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22"></a>
+    <a class="fs-top__docs" href="index.html">Docs</a>
+    <nav class="fs-top__nav" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a></nav>
+    <div class="fs-top__actions">
+      <button class="fs-searchbtn" type="button" data-search-open aria-label="Search the docs"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span>Search</span><kbd>/</kbd></button>
+      <button class="fs-iconbtn" type="button" data-theme-toggle aria-label="Switch to the light theme" title="Light / dark"><svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg></button>
+      <a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a>
+      <details class="fs-top__menu"><summary aria-label="Menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></summary>
+        <nav class="fs-top__sheet" aria-label="Site"><a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a><a href="index.html" aria-current="true">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4l-9 9M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg></a><a href="../support.html">Support</a><a class="fs-btn fs-btn--primary fs-btn--sm fs-top__buy" href="https://superhivemarket.com/" target="_blank" rel="noopener">Get it on Superhive</a></nav>
+      </details>
+    </div>
+  </div>
+</header>
+<div class="fs-doc">
+  <aside class="fs-doc__side" aria-label="Guides">
+    <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html" aria-current="page">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
+    <div class="fs-side__foot">
+      <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
+      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+    </div>
+  </aside>
+  <main id="main" class="fs-doc__main">
+    <details class="fs-doc__mnav"><summary><span>Guides</span><strong>Widgets</strong><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html" aria-current="page">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav></details>
+    <header class="fs-doc__head">
+      <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
+      <h1>Widgets</h1>
+    </header>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></details>
+    <article class="fs-prose">
+<div class="fs-table"><table>
+<thead><tr>
+<th>Widget</th>
+<th>What it does</th>
+<th>Modes</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr><td>Operator</td><td>Runs a Blender operator</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-operator.webp" alt="An Operator button that renders the image" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Custom Script</td><td>Runs your own Python script</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-custom-script.webp" alt="A Custom Script button" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Toggle</td><td>Switches an on / off property, or sets an enum or integer value</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-toggle.webp" alt="A Toggle switch bound to a light&#x27;s shadow" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Enum</td><td>Picks one value of an enum or integer</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-enum.webp" alt="A segmented Enum bound to the render engine" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Color Swatch</td><td>Shows a colour and opens Blender's colour picker</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-color-swatch.webp" alt="A Color Swatch bound to a light&#x27;s colour" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Color Picker</td><td>Edits a colour on the canvas (see <a class="fs-xref" href="color-brush.html"><strong>Color &amp; Brush Widgets</strong></a>)</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-color-picker.webp" alt="A Color Picker bound to a light&#x27;s colour" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Color Palette</td><td>A grid of colour swatches (see <a class="fs-xref" href="color-brush.html"><strong>Color &amp; Brush Widgets</strong></a>)</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-color-palette.webp" alt="A Color Palette, the light&#x27;s colour active" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Brush Picker</td><td>Makes one brush the active brush (see <a class="fs-xref" href="color-brush.html"><strong>Color &amp; Brush Widgets</strong></a>)</td><td>Brush modes</td><td><img class="fs-cell-art" src="../assets/img/w-brush-picker.webp" alt="A Brush Picker for the Clay Strips brush, active" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Ring Menu</td><td>Brushes, toggles and operators in a ring, like a sculpt wheel (see <a class="fs-xref" href="color-brush.html"><strong>Color &amp; Brush Widgets</strong></a>)</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-ring-menu.webp" alt="A Ring Menu of sculpt brushes and toggles" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>List</td><td>Shows layers, material slots, vertex groups and other lists as rows you can click</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-list.webp" alt="A List of material slots" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Lineal slider</td><td>Drag along a bar to change a number</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-lineal-slider.webp" alt="A Lineal slider bound to a light&#x27;s power" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Number Field</td><td>A number field like Blender's own</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-number-field.webp" alt="A Number Field bound to the X location" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Label</td><td>Text, or a property's value</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-label.webp" alt="A Label showing the current frame" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Image</td><td>Shows a picture</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-image.webp" alt="An Image widget" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Frame</td><td>A titled area, square or round, that holds and moves other widgets</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-frame.webp" alt="A Frame holding a toggle and a slider" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Flex Box</td><td>Lines up other widgets in a row or a column</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-flex-box.webp" alt="A vertical Flex Box of three Number Fields" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Group</td><td>Moves and resizes other widgets as one</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-group.webp" alt="A Group of three buttons, selected in Edit Mode" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+</tbody></table></div>
+<p>The picker adds a few widgets of its own:</p>
+<div class="fs-table"><table>
+<thead><tr>
+<th>Widget</th>
+<th>What it does</th>
+<th>Modes</th>
+<th>Example</th>
+</tr></thead><tbody>
+<tr><td>Bone Collection toggle</td><td>Shows, hides or solos a bone collection</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-bone-collection-toggle.webp" alt="A Bone Collection toggle and its Solo button" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Radial slider</td><td>A knob you drag to change a number</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-radial-slider.webp" alt="A Radial slider bound to Head Follow" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Lineal 2D slider</td><td>A pad that drives two properties at once</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-lineal-2d-slider.webp" alt="A Lineal 2D pad that moves the eyes" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>Button, Button Image, Geometry Shape</td><td>Bone pickers: select their bone</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-bone-pickers.webp" alt="A Button, a Button Image and a Geometry Shape" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+</tbody></table></div>
+<p>How to add and set up a widget:</p>
+<ol>
+<li>In Edit Mode, press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> and pick a widget (see <strong>The Add menu</strong> below), or use the header's <strong>Add</strong> menu.
+</li>
+<li>Select it and open the sidebar (<span class="fs-keys"><kbd>N</kbd></span>), <strong>Widget</strong> tab.
+</li>
+<li>Set its <strong>Label</strong>: Auto (the name of the bound property), Custom (your text) or None.
+</li>
+<li>Change its look in the <strong>Style</strong> panel (see <a class="fs-xref" href="editing.html#themes"><strong>Editing Tools &gt; Themes</strong></a>).
+</li>
+<li>Optional: in the <strong>Conditions</strong> panel, show it only while a property is on (<strong>Visible When</strong>) or grey it out (<strong>Disabled When</strong>). See <a class="fs-xref" href="binding.html#show-hide-or-disable-a-widget-with-a-property"><strong>Binding Properties &gt; Show, hide or disable a widget with a property</strong></a>.
+</li>
+</ol>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Most widgets have the <strong>Label</strong> and <strong>Style</strong> settings, not all of them.</p></aside>
+<h3 id="tooltips">Tooltips<a class="fs-anchor" href="#tooltips" aria-label="Link to this section">#</a></h3>
+<p>In Live Mode, rest the mouse on a widget for a moment and a tooltip tells what it does:</p>
+<ul>
+<li>an <strong>Operator</strong> button: the operator's name and description. When it can't run right now, the tooltip says <strong>Can't run here</strong>, and why when the operator tells (for example <em>No active object</em>). With Blender's <strong>Python Tooltips</strong> on, it also shows the operator's Python name.
+</li>
+<li>a <strong>Custom Script</strong> button: the script it runs.
+</li>
+<li>a widget bound to a property (Toggle, sliders, Number Field, Enum, colour widgets, List, a Label showing a value): the property's name and description, and its data path, muted. A problem with the binding (a path that leads nowhere, a read-only property, a property of the wrong kind) shows in the warning colour, as on the widget.
+</li>
+<li>a <strong>Brush Picker</strong>: the brush's name.
+</li>
+</ul>
+<p>An Operator or Custom Script button from an untrusted file also says that a click asks before running it.</p>
+<p>Other widgets (Frame, Flex Box, Image, a text Label, bone pickers) have no tooltip of their own. To write your own for any widget, select it in Edit Mode and type it in the sidebar, <strong>Widget</strong> tab, <strong>Tooltip</strong> panel. Your text replaces the description; the name, the data path and any warning stay. A Label or an Image with a tooltip of yours shows it too, and clicks still go through them; over a widget that takes the click, that widget's tooltip shows instead, since it tells what the click does. A long text is cut short, so keep it to a sentence or two.</p>
+<p>As in Blender, the tooltip waits until the mouse rests; moving the mouse hides it and resting again brings it back. It hides when the mouse leaves the widget or the canvas, on a click or a key (Shift, Ctrl or Alt alone keep it), and in Edit Mode. It follows Blender's <strong>Preferences &gt; Interface &gt; Tooltips</strong>: off there, no widget tooltips either. The Ring Menu has none: it names its items itself.</p>
+<h3 id="the-add-menu">The Add menu<a class="fs-anchor" href="#the-add-menu" aria-label="Link to this section">#</a></h3>
+<p><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> opens the <strong>Add Widget</strong> panel over the canvas:</p>
+<ul>
+<li><strong>Search:</strong> just start typing, no click needed. The best match is selected, and <span class="fs-keys"><kbd>Enter</kbd></span> adds it.
+</li>
+<li><strong>Categories:</strong> the column on the left. <span class="fs-keys"><kbd>Tab</kbd></span> goes to the next one.
+<ul>
+<li><strong>Buttons:</strong> Operator, Custom Script.
+</li>
+<li><strong>Data:</strong> widgets that show or edit a property, in subcategories: Toggles, Choices, Numbers, Color, Text, Lists. Click <strong>Data</strong> to see them all under headings, or a subcategory for just those.
+</li>
+<li><strong>Tools:</strong> Brush Picker, Ring Menu.
+</li>
+<li><strong>Graphics:</strong> Image, Backdrop Image.
+</li>
+<li><strong>Layout:</strong> Flex Boxes, Frame.
+</li>
+<li>In an armature picker, <strong>Bone Picker</strong> comes first.
+</li>
+</ul>
+</li>
+<li><strong>From Property</strong> has its own button next to the search: pick a property in Blender and get the right widget for it.
+</li>
+<li><strong>Cards:</strong> click one to add it. The new widget follows the mouse; click to place it. The arrow keys move the selection.
+</li>
+<li>A widget the layer's mode can't take is dimmed, and the bottom of the panel says why.
+</li>
+<li><span class="fs-keys"><kbd>Esc</kbd></span>, a right-click or a click outside closes it.
+</li>
+</ul>
+<p>The editor's header has an <strong>Add</strong> menu with <strong>Search...</strong> (the panel), <strong>From Property...</strong> and the same categories, the subcategories under headings. From Live Mode it switches to Edit Mode first.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Prefer the pie? In the add-on preferences, set <strong>Add Menu</strong> to <strong>Pie</strong>.</p></aside>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/control-panel-light-area.webp" data-zoom><img src="../assets/media/control-panel-light-area.webp" alt="Buttons, sliders, switches, readouts and an image on one canvas, in the Light appearance." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Buttons, sliders, switches, readouts and an image on one canvas, in the Light appearance.</figcaption></figure>
+<figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-add-widget.webp" data-zoom><img src="../assets/img/frame-add-widget.webp" alt="The Add Widget browser: search, categories, widget cards and From Property." width="1780" height="1288" decoding="async" loading="lazy"></a><figcaption>The Add Widget browser: search, categories, widget cards and From Property.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/add-browser-search.webp" data-zoom><img src="../assets/media/add-browser-search.webp" alt="Type a few letters and the best matches show across every category; Enter adds the selected one." width="907" height="628" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Type a few letters and the best matches show across every category; Enter adds the selected one.</figcaption></figure>
+<hr class="fs-rule">
+<h2 id="add-from-property">Add from Property<a class="fs-anchor" href="#add-from-property" aria-label="Link to this section">#</a></h2>
+<p>The quickest way to add a control:</p>
+<ol>
+<li>Press <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> &gt; <strong>From Property</strong>.
+</li>
+<li>Right-click any property in Blender's interface (the Properties editor, the sidebar, a node...).
+</li>
+<li>The widget that controls it appears where you opened the menu, already bound and labelled.
+</li>
+</ol>
+<p>Blender's menu for that property stays open: move away or press <span class="fs-keys"><kbd>Esc</kbd></span> to close it. <span class="fs-keys"><kbd>Esc</kbd></span> before picking cancels. Undo removes the whole addition in one step.</p>
+<p>What you get:</p>
+<div class="fs-table"><table>
+<thead><tr>
+<th>Property</th>
+<th>Widget</th>
+</tr></thead><tbody>
+<tr><td>On / off</td><td><strong>Toggle</strong> (Checkbox)</td></tr>
+<tr><td>Enum</td><td><strong>Enum</strong> (Segmented with 5 items or less, else Dropdown)</td></tr>
+<tr><td>Number</td><td><strong>Number Field</strong></td></tr>
+<tr><td>Number with a 0–1 style range (Factor or Percentage, with a soft minimum and maximum)</td><td><strong>Lineal</strong> slider with that range</td></tr>
+<tr><td>Colour</td><td><strong>Color Swatch</strong></td></tr>
+<tr><td>Vector (Location, Rotation, Scale... 2 to 4 values)</td><td>Vertical <strong>Flex Box</strong> with one Number Field per value</td></tr>
+<tr><td>Anything else (a name, a data-block, a flag enum, a matrix)</td><td><strong>Label</strong> that reads the value out</td></tr>
+</tbody></table></div>
+<ul>
+<li>Custom properties work too: their subtype and soft range decide, as above.
+</li>
+<li>Right-clicking one item of a vector adds the whole vector.
+</li>
+<li>A property the canvas can't reach is reported, and you can pick another one.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> In the picker, <strong>From Property</strong> is also in the header's <strong>Utils</strong> menu (the widget goes to the middle of the view). Pose-bone properties work as any other. A vector becomes a <strong>Group</strong> of Number Fields, because the picker has no Flex Box.</p></aside>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/from-property.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/from-property.webp" data-src="../assets/media/from-property.mp4" width="1254" height="956" aria-label="Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</figcaption></figure>
+<hr class="fs-rule">
+<h2 id="buttons">Buttons<a class="fs-anchor" href="#buttons" aria-label="Link to this section">#</a></h2>
+<p>Buttons can show a text, an image (<strong>Use Image</strong>), or both. <strong>Fit To Text</strong> sizes the button to its label.</p>
+<h3 id="operator">Operator<a class="fs-anchor" href="#operator" aria-label="Link to this section">#</a></h3>
+<p>Runs a Blender operator, like a button of Blender's own interface.</p>
+<ul>
+<li><strong>Pick Operator from UI</strong>: click it, then right-click any button in Blender. Its operator and settings are copied.
+</li>
+<li>Or type it: <strong>Context</strong> and <strong>Action</strong> are the two parts of the operator name (<code>pose</code> and <code>select_all</code> for <code>pose.select_all</code>).
+</li>
+<li><strong>Operator Properties</strong>: the settings it runs with.
+</li>
+</ul>
+<p>The button runs as if you clicked in the 3D Viewport.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The button turns red when its operator can't run right now, for example a pose tool with no armature in Pose Mode.</p></aside>
+<h3 id="custom-script">Custom Script<a class="fs-anchor" href="#custom-script" aria-label="Link to this section">#</a></h3>
+<p>Runs a Python script of your own.</p>
+<ul>
+<li>Click <strong>Create Script</strong> (later <strong>Open Script</strong>) to write it in a Text Editor window.
+</li>
+<li>The script can use <code>active_object</code>, <code>active_widget</code> and <code>canvas</code>.
+</li>
+<li>With an armature active, it can also use <code>armature</code> and <code>pose</code>.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A script (and an operator that can run code) is code stored in the .blend file. If Blender's <strong>Auto Run Python Scripts</strong> is off for this file, the first click asks <strong>Run Untrusted Code?</strong> before running it. Changing the script asks again.</p></aside>
+<hr class="fs-rule">
+<h2 id="toggles">Toggles<a class="fs-anchor" href="#toggles" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Toggle</strong> switches an on / off property. Its <strong>Data Path</strong> must point to a boolean (for example <code>space_data.<wbr>overlay.<wbr>show_overlays</code>).</p>
+<ul>
+<li>Three looks, in the Add menu and in its <strong>Shape</strong> setting: <strong>Radial</strong>, <strong>Switch</strong> and <strong>Checkbox</strong>.
+</li>
+<li>A click is one undo step.
+</li>
+</ul>
+<h3 id="set-value">Set Value<a class="fs-anchor" href="#set-value" aria-label="Link to this section">#</a></h3>
+<p>Set the toggle's <strong>Mode</strong> to <strong>Set Value</strong> (or pick <strong>Set Value</strong> in the Add menu) to drive an enum or an integer instead.</p>
+<ul>
+<li>Pick the item (or type the number) in <strong>Value</strong>.
+</li>
+<li>The toggle is on while the property has that value, and a click sets it.
+</li>
+<li>A click is one undo step, keyed if Auto Keying is on.
+</li>
+<li>With <strong>Label</strong> on Auto, the toggle shows the item's name.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Put a few Set Value toggles side by side to get radio buttons: one per IK / FK value, or one per parent of a space switch.</p></aside>
+<h3 id="bone-collection">Bone Collection<a class="fs-anchor" href="#bone-collection" aria-label="Link to this section">#</a></h3>
+<p>A toggle bound to a bone collection of the rig. The Add menu asks for the collection. In the sidebar <strong>Bone Collection</strong> panel choose <strong>Visible</strong> (show / hide it) or <strong>Solo</strong>.</p>
+<hr class="fs-rule">
+<h2 id="enum">Enum<a class="fs-anchor" href="#enum" aria-label="Link to this section">#</a></h2>
+<p>An <strong>Enum</strong> picks one value of a property: a mode, IK / FK, a space or parent switch.</p>
+<p>Its <strong>Data Path</strong> points to:</p>
+<ul>
+<li>an enum property (for example <code>active_object.<wbr>rotation_mode</code>), or
+</li>
+<li>an integer, custom properties too (for example a Rigify parent switch, <code>active_object.<wbr>pose.<wbr>bones[&quot;hand_ik.<wbr>L&quot;][&quot;IK_parent&quot;]</code>).
+</li>
+</ul>
+<p>What it shows:</p>
+<ul>
+<li>An enum shows the items of the property, with their names (and their icons in the dropdown list).
+</li>
+<li>An integer needs a list of <strong>Items</strong> in the sidebar: each one is a <strong>Value</strong> and the <strong>Label</strong> shown for it. <strong>Add Item</strong> adds the next value. <strong>From Range</strong> makes one item per value between the property's minimum and maximum. Without items, a small range shows its numbers.
+</li>
+</ul>
+<p><strong>Display</strong> (the Add menu has both looks):</p>
+<ul>
+<li><strong>Segmented</strong>: every item side by side, the current one highlighted. Click an item to set it. <strong>Orientation</strong> stacks them in a column (<strong>Vertical</strong>).
+</li>
+<li><strong>Dropdown</strong>: the current item. Click it to open the list and choose.
+</li>
+<li><strong>Auto</strong>: segmented with 5 items or less, else a dropdown.
+</li>
+</ul>
+<p>A change is one undo step, and it is keyed if Blender's Auto Keying is on.</p>
+<hr class="fs-rule">
+<h2 id="color-swatch">Color Swatch<a class="fs-anchor" href="#color-swatch" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Color Swatch</strong> shows a colour and opens Blender's colour picker for it. Its <strong>Data Path</strong> points to a colour property, for example:</p>
+<ul>
+<li>a material's Base Color: <code>active_object.<wbr>active_material.<wbr>node_tree.<wbr>nodes[&quot;Principled BSDF&quot;].<wbr>inputs[0].<wbr>default_value</code>
+</li>
+<li>a material's viewport colour: <code>active_object.<wbr>active_material.<wbr>diffuse_color</code>
+</li>
+<li>a light: <code>active_object.<wbr>data.<wbr>color</code>, the world: <code>scene.world.color</code>
+</li>
+<li>an object's viewport display colour: <code>active_object.<wbr>color</code>
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The eyedropper takes any colour field: right-click it in the Properties editor, a node, the sidebar...</p></aside>
+<ul>
+<li>The swatch shows the colour the way Blender's own colour fields do.
+</li>
+<li>A colour with transparency shows the solid colour on its left half and the colour over a checkerboard on its right half.
+</li>
+<li>Click it in Live Mode to open the colour picker.
+</li>
+<li>Changes made there are Blender's own, so <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> undoes them as usual.
+</li>
+<li>If Auto Keying is on, the colour is keyed when the picker closes.
+</li>
+</ul>
+<hr class="fs-rule">
+<h2 id="list">List<a class="fs-anchor" href="#list" aria-label="Link to this section">#</a></h2>
+
+<p>A <strong>List</strong> shows a Blender list as rows, like the lists in the Properties editor. Click a row to make it the active item.</p>
+<p>Pick the list in <strong>Source</strong>:</p>
+<div class="fs-table"><table>
+<thead><tr>
+<th>Source</th>
+<th>Shows</th>
+<th>Row toggles</th>
+</tr></thead><tbody>
+<tr><td>Grease Pencil Layers</td><td>The layers of the active Grease Pencil object, top layer first</td><td>Hide, Lock</td></tr>
+<tr><td>Material Slots</td><td>The material slots of the active object</td><td>None</td></tr>
+<tr><td>UV Maps</td><td>The UV maps of the active mesh</td><td>Active Render</td></tr>
+<tr><td>Color Attributes</td><td>The color attributes of the active mesh</td><td>None</td></tr>
+<tr><td>Shape Keys</td><td>The shape keys of the active object</td><td>Mute</td></tr>
+<tr><td>Vertex Groups</td><td>The vertex groups of the active object</td><td>Lock</td></tr>
+<tr><td>Bone Collections</td><td>The bone collections of the active armature</td><td>Visible</td></tr>
+<tr><td>View Layers</td><td>The view layers of the scene</td><td>Use for Rendering</td></tr>
+<tr><td>Custom</td><td>Any list: set its <strong>Collection Data-Path</strong> and the <strong>Active Item Data-Path</strong></td><td>Your choice</td></tr>
+</tbody></table></div>
+<p>In Live Mode:</p>
+<ul>
+<li>Click a row to make it the active item. Each click is one undo step.
+</li>
+<li>Click a toggle at the end of a row (an eye, a lock...) to flip it on that item.
+</li>
+<li>Double-click a row to rename the item. For a material slot, this renames its material.
+</li>
+<li>Scroll with the mouse wheel when the rows don't fit. A thin scrollbar shows where you are.
+</li>
+<li>Click <strong>+</strong> to add an item, or <strong>−</strong> to remove the active one. Only the ready-made lists have these buttons.
+</li>
+</ul>
+<p>Settings in the sidebar:</p>
+<ul>
+<li><strong>Row Toggles:</strong> the true / false properties drawn on each row, separated by commas, for example <code>hide, lock</code>.
+</li>
+<li><strong>Row Icon:</strong> the icon before each name. Clear it, or turn it off, for names only.
+</li>
+<li><strong>Reverse Order:</strong> lists the last item first.
+</li>
+<li><strong>Row Height</strong> and <strong>Add / Remove</strong>.
+</li>
+</ul>
+<p>Like other widgets, the list follows the active object. To show one object's list whatever is active, pin it (see <a class="fs-xref" href="binding.html"><strong>Binding Properties</strong></a>).</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> For a Custom list, the active item path can be a number (<code>active_object.<wbr>active_material_index</code>) or the item itself (<code>active_object.<wbr>data.<wbr>layers.<wbr>active</code>).</p></aside>
+<hr class="fs-rule">
+<h2 id="sliders">Sliders<a class="fs-anchor" href="#sliders" aria-label="Link to this section">#</a></h2>
+<p>Drag a slider in Live Mode to change a number. When you release, the change is one undo step, and it is keyed if Blender's Auto Keying is on (see <a class="fs-xref" href="binding.html"><strong>Binding Properties</strong></a>).</p>
+<ul>
+<li><strong>Lineal</strong>: a bar. Press it and drag along it: the mouse position sets the value between <strong>Min</strong> and <strong>Max</strong>.
+<ul>
+<li>Hold <span class="fs-keys"><kbd>Shift</kbd></span> while dragging to move 10 times finer from where the value is (it never jumps, also when you let go of <span class="fs-keys"><kbd>Shift</kbd></span>).
+</li>
+<li>Hold <span class="fs-keys"><kbd>Ctrl</kbd></span> while dragging to snap to the property's step (1 degree for an angle).
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd></span> + click, or double-click, the bar to type the exact value, as in a <strong>Number Field</strong>. Press <span class="fs-keys"><kbd>Enter</kbd></span> to apply it. A typed value is limited by the property only, not by the slider's <strong>Min</strong> and <strong>Max</strong>.
+</li>
+</ul>
+</li>
+<li><strong>Radial</strong>: a knob. Drag right or up to increase. <span class="fs-keys"><kbd>Shift</kbd></span> is 10 times finer, <span class="fs-keys"><kbd>Ctrl</kbd></span> snaps to steps (5 degrees for an angle).
+</li>
+<li><strong>Lineal 2D</strong>: a pad that drives two properties at once, one per axis (each axis has its own Data Path and range). Great for eyes, jaws or facial controls.
+<ul>
+<li><strong>Look: Eyes</strong> draws it as two eyes that look where the value points: a gaze control (see <a class="fs-xref" href="picker.html#gaze-control"><strong>The Armature Picker &gt; Gaze control</strong></a>).
+</li>
+</ul>
+</li>
+</ul>
+
+<p>In the <strong>Slider</strong> panel:</p>
+<ul>
+<li><strong>Unit Type</strong>: <strong>Value</strong> or <strong>Angle</strong> (the range in degrees), with its <strong>Min</strong> and <strong>Max</strong>.
+</li>
+<li><strong>Show Value</strong>: draws the current value while you drag.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/lineal-slider.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/lineal-slider.webp" data-src="../assets/media/lineal-slider.mp4" width="860" height="534" aria-label="Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value.</figcaption></figure>
+<hr class="fs-rule">
+<h2 id="number-field">Number Field<a class="fs-anchor" href="#number-field" aria-label="Link to this section">#</a></h2>
+<p>A <strong>Number Field</strong> shows a number as Blender's own fields do: the value in the middle, with its unit (metres, degrees...) in the scene's unit system, and small arrows on the sides. Its <strong>Data Path</strong> points to an integer or a float (for example <code>active_object.<wbr>location[0]</code> or <code>scene.<wbr>frame_current</code>). It is in the Add menu under <strong>Sliders</strong>.</p>
+<p>In Live Mode:</p>
+<ul>
+<li><strong>Drag</strong> left or right to change the value. <span class="fs-keys"><kbd>Shift</kbd></span> is 10 times finer, <span class="fs-keys"><kbd>Ctrl</kbd></span> snaps to the step. Large values move faster.
+</li>
+<li><strong>Click an arrow</strong> to step the value down or up.
+</li>
+<li><strong>Click</strong> the field (without dragging) to type the exact value. Press <span class="fs-keys"><kbd>Enter</kbd></span> to apply it.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Clicking opens Blender's own field, so you can type an expression or a unit (<code>1.5 m</code>, <code>90</code>, <code>10/4</code>).</p></aside>
+<p>A drag, an arrow click or a typed value is one undo step, and it is keyed if Blender's Auto Keying is on.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The widget has no minimum or maximum of its own: only the property's limits apply.</p></aside>
+<p>In the sidebar:</p>
+<ul>
+<li><strong>Step</strong>: your own step for the arrows and <span class="fs-keys"><kbd>Ctrl</kbd></span>, in degrees for an angle. Off: the property's.
+</li>
+<li><strong>Precision</strong>: decimals shown. Off: the property's.
+</li>
+<li><strong>Show Arrows</strong>.
+</li>
+<li>The <strong>Label</strong> goes <strong>Inside</strong> the field by default, on the left of the value, or beside it.
+</li>
+</ul>
+<hr class="fs-rule">
+<h2 id="label">Label<a class="fs-anchor" href="#label" aria-label="Link to this section">#</a></h2>
+<p>Text on the canvas. <strong>Source</strong> is:</p>
+<ul>
+<li><strong>Text</strong>: what you type.
+</li>
+<li><strong>Property</strong>: a property's value, always up to date (a frame number, an object name, on / off, a count...).
+</li>
+</ul>
+<p>For a property: <strong>Format</strong> (Auto, Number, Percent, Yes / No, Identifier), <strong>Precision</strong>, <strong>Units</strong> (writes metres, degrees, seconds... in the scene's unit system), <strong>Prefix</strong> and <strong>Suffix</strong>.</p>
+<hr class="fs-rule">
+<h2 id="image">Image<a class="fs-anchor" href="#image" aria-label="Link to this section">#</a></h2>
+<p>Shows a picture: open or pick one in the <strong>Widget Properties</strong> panel.</p>
+<ul>
+<li><strong>Scale</strong> sizes the widget from the image size and keeps its aspect ratio.
+</li>
+<li><strong>Fit Image Aspect</strong> fixes a widget that was stretched.
+</li>
+</ul>
+<h3 id="image-look">Image Look<a class="fs-anchor" href="#image-look" aria-label="Link to this section">#</a></h3>
+<p>Each Image has its own look, in the <strong>Image Look</strong> section under the image:</p>
+<ul>
+<li><strong>Opacity</strong>: how see-through it is, as you see it on a dark or a light canvas alike (on top of the theme's Image opacity).
+</li>
+<li><strong>Saturation</strong>: 0 is grey, 1 the image's own colours, up to 2 for more vivid ones.
+</li>
+<li><strong>Brightness</strong>: 1 as it is; lower is darker, higher is brighter.
+</li>
+<li><strong>Tint Amount</strong>, <strong>Tint</strong> and <strong>Mode</strong>: colour the image. <strong>Colorize</strong> gives it the tint's colour at its own lightness (a duotone: its lightest parts go towards white), <strong>Multiply</strong> multiplies it by the tint. A Tint Amount of 0 leaves it as it is.
+</li>
+</ul>
+<h3 id="backdrop">Backdrop<a class="fs-anchor" href="#backdrop" aria-label="Link to this section">#</a></h3>
+<p>Turn on <strong>Backdrop</strong> to put the image behind everything: it draws below every other widget, Frames included. In Live Mode nothing hovers it, it shows no tooltip and clicks go through it to the widgets above. Turn Backdrop off to put a picture on top of a Frame.</p>
+<p>Inside a Group or a Flex Box a backdrop stays with its container: it draws below the other widgets of that container, not below the rest of the canvas. Keep a backdrop outside containers to have it behind everything.</p>
+<p><strong>Lock</strong> (next to Backdrop, the same as the Transform panel's lock) keeps it from being moved by accident while you edit the widgets on top of it. A click still selects it, and a drag that starts on a locked backdrop draws a selection box, as on empty space. A box selects a backdrop only when it holds all of it, like a Frame.</p>
+<p><strong>Add &gt; Graphics &gt; Backdrop Image</strong> adds one ready to go: Backdrop on, 35 % opacity, no colour. Until you open a picture, it shows a faded placeholder. Open your picture in it and resize it.</p>
+<hr class="fs-rule">
+<h2 id="layout-widgets">Layout widgets<a class="fs-anchor" href="#layout-widgets" aria-label="Link to this section">#</a></h2>
+<h3 id="frame">Frame<a class="fs-anchor" href="#frame" aria-label="Link to this section">#</a></h3>
+<p>A titled area that holds widgets, like a frame in Blender's node editors. Moving the frame moves what is inside.</p>
+<ul>
+<li>Drop a widget onto a frame to put it in. Drag it out to take it out.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> frames the selected widgets, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span> takes them out.
+</li>
+<li>Settings: <strong>Title</strong>, <strong>Title Size</strong>, a custom colour, and <strong>Shrink</strong> (the frame fits its contents; resizing the frame turns it off).
+</li>
+<li><strong>Shape</strong>: a rounded <strong>Rectangle</strong>, or a <strong>Circle</strong> around its contents. A circle frame stays round: resized, it stays square.
+</li>
+<li>The checkbox next to <strong>Title</strong> shows or hides the title. A frame with no title keeps no room for it, so it hugs its contents.
+</li>
+</ul>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/frames.webp" data-zoom><img src="../assets/media/frames.webp" alt="Frames give a panel its sections: a title, a background, and they carry their widgets when moved." width="865" height="550" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Frames give a panel its sections: a title, a background, and they carry their widgets when moved.</figcaption></figure>
+<h3 id="flex-box">Flex Box<a class="fs-anchor" href="#flex-box" aria-label="Link to this section">#</a></h3>
+<p>Lines up its children automatically, like a row or a column of a web page.</p>
+<ul>
+<li>Add a <strong>Horizontal Box</strong> or a <strong>Vertical Box</strong>, then drag widgets onto it.
+</li>
+<li>Drag a child to reorder it, or out of the box to take it out.
+</li>
+<li>Settings: <strong>Direction</strong>, <strong>Wrap</strong> and <strong>Lines</strong>, <strong>Justify</strong> (where the free space goes), <strong>Align</strong> (across), <strong>Padding</strong> and <strong>Gap</strong>.
+</li>
+<li>Each child has a <strong>Flex Item</strong> panel: <strong>Grow</strong>, <strong>Shrink</strong>, <strong>Basis</strong>, <strong>Align Self</strong> and fixed sizes.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Hold <span class="fs-keys"><kbd>Alt</kbd></span> while dropping a widget on a box to not put it in.</p></aside>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/flex-box.webp" data-zoom><img src="../assets/media/flex-box.webp" alt="Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property." width="833" height="256" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Flex Boxes line widgets up in a row or a column: here Suzanne&#x27;s location, rotation and scale, each added in one pick with From Property.</figcaption></figure>
+<h3 id="group">Group<a class="fs-anchor" href="#group" aria-label="Link to this section">#</a></h3>
+<p>Widgets that move, rotate and resize as one, with no graphic.</p>
+<ul>
+<li>Select widgets and press <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>G</kbd></span>.
+</li>
+<li>Double-click a group to work inside it, <span class="fs-keys"><kbd>Esc</kbd></span> to leave it.
+</li>
+<li><span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>G</kbd></span> ungroups.
+</li>
+</ul>
+<p>See <a class="fs-xref" href="editing.html"><strong>Editing Tools</strong></a>.</p>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/group.webp" data-zoom><img src="../assets/media/group.webp" alt="A Group moves, rotates and resizes several widgets as one; double-click to go inside." width="595" height="238" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>A Group moves, rotates and resizes several widgets as one; double-click to go inside.</figcaption></figure>
+<hr class="fs-rule">
+<h2 id="bone-pickers">Bone pickers<a class="fs-anchor" href="#bone-pickers" aria-label="Link to this section">#</a></h2>
+<ul>
+<li><strong>Button</strong>: a button that selects its bone. Its label is the bone name unless you type another.
+</li>
+<li><strong>Button Image</strong>: the same with an image.
+</li>
+<li><strong>Geometry Shape</strong>: a button with any flat shape. Pick a shape in the <strong>Custom Shape</strong> panel (built-in shapes, your library or the canvas), or make them from meshes with <strong>Utils &gt; Import Geo Collection</strong>. <strong>Hitbox Precision</strong>: Convex (fast) or Precise (exact outline).
+</li>
+</ul>
+<p>Each bone picker can show an <strong>IK/FK puck</strong>: a small round switch at its edge that flips the limb between IK and FK. Set it in the <strong>IK/FK</strong> row of the Widget Properties panel.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> See <a class="fs-xref" href="rigify.html"><strong>Picker with Rigify</strong></a> for the one-click setup.</p></aside>
+    </article>
+    <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="canvas.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>The Canvas</strong></a><a class="fs-pager__link fs-pager__link--next" href="color-brush.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>Color &amp; Brush Widgets</strong></a></nav>
+    <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+  </main>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+</div>
+<footer class="fs-foot">
+  <div class="fs-foot__in">
+    <div class="fs-foot__brand"><img src="../assets/img/icons/wordmark-gradient.png" alt="FlexSpace" width="111" height="22" loading="lazy">
+      <p>Control panels and rig pickers, built your way. v1.4.0 &middot; Blender 5.3+</p></div>
+    <nav class="fs-foot__links" aria-label="Footer">
+      <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
+      <a href="index.html">Docs</a><a href="https://github.com/franb3d/flexspace/releases" target="_blank" rel="noopener">Changelog</a>
+      <a href="../support.html">Support</a><a href="https://superhivemarket.com/" target="_blank" rel="noopener">Superhive</a>
+      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+    </nav>
+    <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+  </div>
+</footer>
+<div class="fs-search" id="fs-search" hidden>
+  <div class="fs-search__panel" role="dialog" aria-modal="true" aria-label="Search the documentation">
+    <div class="fs-search__field"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input type="search" placeholder="Search the docs" autocomplete="off" spellcheck="false" aria-label="Search the docs" aria-controls="fs-search-results"><kbd>Esc</kbd></div>
+    <ul class="fs-search__results" id="fs-search-results" role="listbox" aria-label="Results"></ul>
+    <p class="fs-search__empty" hidden>No results. Try another word.</p>
+    <p class="fs-search__hint"><span><kbd>&uarr;</kbd><kbd>&darr;</kbd> to choose</span><span><kbd>Enter</kbd> to open</span></p>
+  </div>
+</div>
+<div class="fs-lightbox" id="fs-lightbox" hidden><figure><img alt=""><video controls loop muted playsinline hidden></video><figcaption></figcaption></figure></div>
+</body>
+</html>
