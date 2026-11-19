@@ -1043,6 +1043,128 @@
    "w": 480,
    "h": 267,
    "webp": "assets/media/widgets/bone-pickers.webp"
+  },
+  "view-preview-overview": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/view_preview_overview_cursor.mp4",
+   "title": "Four live 3D views on one canvas",
+   "caption": "View Preview, Camera View, Viewport Mirror and Silhouette next to the 3D Viewport. Orbit the viewport and the mirror follows; click the ball and the preview and the silhouette frame it.",
+   "w": 1278,
+   "h": 648,
+   "mp4": "assets/media/view-preview-overview.mp4",
+   "poster": "assets/media/view-preview-overview.webp"
+  },
+  "view-preview-target": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/view_preview_target_cursor.mp4",
+   "title": "A close-up of the active object",
+   "caption": "View Preview frames the active object: click another object in the viewport and it frames that one.",
+   "w": 1278,
+   "h": 648,
+   "mp4": "assets/media/view-preview-target.mp4",
+   "poster": "assets/media/view-preview-target.webp"
+  },
+  "view-preview-camera": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/view_preview_camera_cursor.mp4",
+   "title": "What the camera sees",
+   "caption": "Camera View shows the scene camera's frame, with bars around it, while the camera swings round the props.",
+   "w": 1278,
+   "h": 648,
+   "mp4": "assets/media/view-preview-camera.mp4",
+   "poster": "assets/media/view-preview-camera.webp"
+  },
+  "view-preview-mirror": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/view_preview_mirror_cursor.mp4",
+   "title": "A second look at your viewport",
+   "caption": "Viewport Mirror follows the 3D Viewport: orbit it one way, then the other, and the mirror moves with it.",
+   "w": 1278,
+   "h": 648,
+   "mp4": "assets/media/view-preview-mirror.mp4",
+   "poster": "assets/media/view-preview-mirror.webp"
+  },
+  "view-preview-silhouette": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/view_preview_silhouette_cursor.mp4",
+   "title": "Check the shape, not the shading",
+   "caption": "Silhouette draws the target as one flat shape with an outline. A Toggle bound to its Silhouette switch shows the shaded view and back; then Suzanne turns and the shape follows.",
+   "w": 1278,
+   "h": 648,
+   "mp4": "assets/media/view-preview-silhouette.mp4",
+   "poster": "assets/media/view-preview-silhouette.webp"
+  },
+  "view-preview-collection": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_target_collection_canvas.png",
+   "title": "Frame a collection",
+   "caption": "Target set to the Props collection: the preview frames the pillar, the ball and the pyramid. It is a real view of the scene, so Suzanne, close by, shows too.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-collection.webp"
+  },
+  "view-preview-sidebar": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_sidebar_canvas.png",
+   "title": "View Preview settings",
+   "caption": "Edit Mode, the sidebar's Widget tab: the Source (Target, Camera, Navigate), the View and the Shading.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-sidebar.webp"
+  },
+  "view-preview-sidebar-silhouette": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_sidebar_silhouette_canvas.png",
+   "title": "Silhouette settings",
+   "caption": "Scope, Color, Background and the Outline, with its Width and Outline Color.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-sidebar-silhouette.webp"
+  },
+  "w-view-preview": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_target_suzanne_canvas.png",
+   "title": "View Preview",
+   "caption": "View Preview framing the active object, Suzanne.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/view-preview.webp"
+  },
+  "w-camera-view": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_camera_letterbox_canvas.png",
+   "title": "Camera View",
+   "caption": "Camera View: the scene camera's 2.39 : 1 frame with bars above and below.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/camera-view.webp"
+  },
+  "w-viewport-mirror": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_mirror_canvas.png",
+   "title": "Viewport Mirror",
+   "caption": "Viewport Mirror: the 3D Viewport's view, grid and outline included.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/viewport-mirror.webp"
+  },
+  "w-silhouette": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_silhouette_canvas.png",
+   "title": "Silhouette",
+   "caption": "Silhouette: the active object as a flat white shape with an orange outline.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/silhouette.webp"
+  },
+  "view-preview-canvas": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_overview_canvas.png",
+   "title": "The four 3D views",
+   "caption": "View Preview, Camera View, Viewport Mirror and Silhouette on one canvas, each a ready-made entry of the Add menu.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-canvas.webp"
   }
  }
 }
