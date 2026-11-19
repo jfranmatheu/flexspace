@@ -57,7 +57,7 @@
       <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
       <h1>Widgets</h1>
     </header>
-    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></details>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#view-preview">View Preview</a></li><li class="lv3"><a href="#sources">Sources</a></li><li class="lv3"><a href="#shading">Shading</a></li><li class="lv3"><a href="#silhouette">Silhouette</a></li><li class="lv3"><a href="#performance">Performance</a></li><li class="lv3"><a href="#limits">Limits</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></details>
     <article class="fs-prose">
 <div class="fs-table"><table>
 <thead><tr>
@@ -80,6 +80,7 @@
 <tr><td>Number Field</td><td>A number field like Blender's own</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-number-field.webp" alt="A Number Field bound to the X location" width="720" height="400" loading="lazy" decoding="async"></td></tr>
 <tr><td>Label</td><td>Text, or a property's value</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-label.webp" alt="A Label showing the current frame" width="720" height="400" loading="lazy" decoding="async"></td></tr>
 <tr><td>Image</td><td>Shows a picture</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-image.webp" alt="An Image widget" width="720" height="400" loading="lazy" decoding="async"></td></tr>
+<tr><td>View Preview</td><td>A live 3D view: objects, a camera or a viewport</td><td>All</td><td>—</td></tr>
 <tr><td>Frame</td><td>A titled area, square or round, that holds and moves other widgets</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-frame.webp" alt="A Frame holding a toggle and a slider" width="720" height="400" loading="lazy" decoding="async"></td></tr>
 <tr><td>Flex Box</td><td>Lines up other widgets in a row or a column</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-flex-box.webp" alt="A vertical Flex Box of three Number Fields" width="720" height="400" loading="lazy" decoding="async"></td></tr>
 <tr><td>Group</td><td>Moves and resizes other widgets as one</td><td>All</td><td><img class="fs-cell-art" src="../assets/img/w-group.webp" alt="A Group of three buttons, selected in Edit Mode" width="720" height="400" loading="lazy" decoding="async"></td></tr>
@@ -122,6 +123,8 @@
 </li>
 <li>a <strong>Brush Picker</strong>: the brush's name.
 </li>
+<li>a <strong>View Preview</strong>: what it shows (its target, its camera and resolution, or the viewport it follows) and, when you can orbit it, how.
+</li>
 </ul>
 <p>An Operator or Custom Script button from an untrusted file also says that a click asks before running it.</p>
 <p>Other widgets (Frame, Flex Box, Image, a text Label, bone pickers) have no tooltip of their own. To write your own for any widget, select it in Edit Mode and type it in the sidebar, <strong>Widget</strong> tab, <strong>Tooltip</strong> panel. Your text replaces the description; the name, the data path and any warning stay. A Label or an Image with a tooltip of yours shows it too, and clicks still go through them; over a widget that takes the click, that widget's tooltip shows instead, since it tells what the click does. A long text is cut short, so keep it to a sentence or two.</p>
@@ -139,7 +142,7 @@
 </li>
 <li><strong>Tools:</strong> Brush Picker, Ring Menu.
 </li>
-<li><strong>Graphics:</strong> Image, Backdrop Image.
+<li><strong>Graphics:</strong> Image, Backdrop Image, and the <strong>3D Views</strong>: View Preview, Camera View, Viewport Mirror, Silhouette.
 </li>
 <li><strong>Layout:</strong> Flex Boxes, Frame.
 </li>
@@ -442,6 +445,98 @@
 <p><strong>Lock</strong> (next to Backdrop, the same as the Transform panel's lock) keeps it from being moved by accident while you edit the widgets on top of it. A click still selects it, and a drag that starts on a locked backdrop draws a selection box, as on empty space. A box selects a backdrop only when it holds all of it, like a Frame.</p>
 <p><strong>Add &gt; Graphics &gt; Backdrop Image</strong> adds one ready to go: Backdrop on, 35 % opacity, no colour. Until you open a picture, it shows a faded placeholder. Open your picture in it and resize it.</p>
 <hr class="fs-rule">
+<h2 id="view-preview">View Preview<a class="fs-anchor" href="#view-preview" aria-label="Link to this section">#</a></h2>
+<p>A live 3D view on the canvas: a close-up of the object you are working on, what the camera sees, or a second look at your viewport. It updates as you work.</p>
+<p><strong>Add &gt; Graphics &gt; 3D Views</strong> has four ready-made entries. They are all the same widget, set up differently, and you can change any of them later:</p>
+<ul>
+<li><strong>View Preview</strong>: frames the active object.
+</li>
+<li><strong>Camera View</strong>: what the scene camera sees, inside its frame.
+</li>
+<li><strong>Viewport Mirror</strong>: follows your 3D Viewport.
+</li>
+<li><strong>Silhouette</strong>: the flat shape of the active object, seen from the front.
+</li>
+</ul>
+<h3 id="sources">Sources<a class="fs-anchor" href="#sources" aria-label="Link to this section">#</a></h3>
+<p>Pick the <strong>Source</strong> in the sidebar, <strong>Widget</strong> tab, <strong>Source</strong> section.</p>
+<p><strong>Target</strong> frames objects for you and keeps them framed when they move or change:</p>
+<ul>
+<li><strong>Active Object</strong>, <strong>Selected Objects</strong>, an <strong>Object</strong> you pick (the active object while none is set), or a <strong>Collection</strong> (its child collections included).
+</li>
+<li>Only objects visible in the view layer count. Lights, empties and cameras count as a point.
+</li>
+<li>It is a real view of the scene: other objects near the target show too. For the target alone, use <strong>Silhouette</strong> with <strong>Target Only</strong>.
+</li>
+<li><strong>View</strong>: Front, Back, Left, Right, Top, Bottom, or <strong>Custom</strong>, set with <strong>Yaw</strong> and <strong>Pitch</strong> (a three-quarter view at first). <strong>Local Axes</strong> turns the view with the object when the target is one object.
+</li>
+<li><strong>Projection</strong> (Perspective or Orthographic), <strong>Focal Length</strong>, <strong>Padding</strong> (the room around the objects) and <strong>Zoom</strong>.
+</li>
+<li><strong>Auto Frame</strong> frames the target again whenever it moves or changes. Turn it off to keep the framing where it is; <strong>Frame</strong> sets it again.
+</li>
+</ul>
+<p><strong>Camera</strong> shows what a camera sees: the <strong>Scene Camera</strong> (it follows camera markers) or a <strong>Camera Object</strong> you pick. The camera's frame keeps the render's aspect ratio inside the widget. With <strong>Passepartout</strong> on, what is outside the frame shows darkened (<strong>Alpha</strong> sets how much); off, the widget shows bars around the frame.</p>
+<p><strong>Navigate</strong> has two modes:</p>
+<ul>
+<li><strong>Follow Viewport</strong> mirrors a 3D Viewport's view as you navigate. <strong>Viewport</strong> 0 follows the largest one; 1, 2... a given one (the sidebar says which one, out of how many). A viewport looking through its camera shows the camera's frame.
+</li>
+<li><strong>Free Orbit</strong> is a view of its own. It starts from the viewport's view (a three-quarter view when the viewport looks straight down an axis). <strong>From Viewport</strong> copies the chosen viewport's view exactly; <strong>Frame Selected</strong> frames the selection, else everything.
+</li>
+</ul>
+<p>In Live Mode, a Target or Free Orbit preview with <strong>Interactive</strong> on can be moved with the mouse. <strong>Interactive</strong> is off for a new Target preview, so the wheel keeps zooming the canvas, and on for a new Free Orbit:</p>
+<ul>
+<li>drag: orbit;
+</li>
+<li><span class="fs-keys"><kbd>Shift</kbd></span> drag: pan (Free Orbit);
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd></span> drag or the mouse wheel: zoom;
+</li>
+<li>double-click: Free Orbit frames the selection (else everything); a Target goes back to zoom 1.
+</li>
+</ul>
+<p>Each drag is one undo step; <span class="fs-keys"><kbd>Esc</kbd></span> or a right-click while dragging puts the view back. Camera and Follow Viewport previews don't react to the mouse: the wheel zooms the canvas as usual.</p>
+<h3 id="shading">Shading<a class="fs-anchor" href="#shading" aria-label="Link to this section">#</a></h3>
+<ul>
+<li><strong>Shading</strong>: <strong>Solid</strong>, <strong>Wireframe</strong>, <strong>Material Preview</strong>, or <strong>Viewport</strong> (the viewport's own shading).
+</li>
+<li><strong>Material Preview</strong> is heavier: it shows EEVEE's first, noisier sample, and the first time it compiles shaders, which takes a moment.
+</li>
+<li><strong>Overlays</strong> draws the viewport's overlays (grid, outlines...). <strong>Transparent</strong> leaves out the world background: the canvas shows through.
+</li>
+<li>While you sculpt or paint, a preview uses the viewport's shading whenever Material Preview or Rendered is involved (the sidebar says so): switching shading there would make Blender update the mesh again and again.
+</li>
+</ul>
+<h3 id="silhouette">Silhouette<a class="fs-anchor" href="#silhouette" aria-label="Link to this section">#</a></h3>
+<p>Turn on <strong>Silhouette</strong> to show the flat shape in one colour, as an artist checks a pose or a design.</p>
+<ul>
+<li><strong>Scope</strong>: <strong>All Visible</strong> is everything the view shows, other objects included. <strong>Target Only</strong> is only the target objects (with a Camera or Navigate source, pick them in the same section), drawn by the widget itself: it works with no 3D Viewport open. A very heavy target (over 2 million triangles) uses All Visible instead.
+</li>
+<li><strong>Color</strong>, <strong>Background</strong> (off: transparent) and <strong>Background Color</strong>.
+</li>
+<li><strong>Outline</strong>: <strong>Outer</strong> draws a line around the shape, <strong>Inner</strong> along its edge, inside it. <strong>Width</strong> and <strong>Outline Color</strong> set it.
+</li>
+</ul>
+<p>Changing these colours or the outline is instant: the view is not drawn again.</p>
+<h3 id="performance">Performance<a class="fs-anchor" href="#performance" aria-label="Link to this section">#</a></h3>
+<p>A preview draws its view again only when something it shows changes: the scene, the camera, the followed viewport, its own settings or its size on screen. Otherwise it costs nothing, however many times the canvas redraws. Off-screen previews draw nothing until you scroll back to them, and the same canvas open in two editors at the same zoom draws its previews once.</p>
+<ul>
+<li><strong>Max FPS</strong> limits how often it draws again while things change (24 by default, 0 for no limit).
+</li>
+<li><strong>Live Update</strong> off: it changes only when you change one of its settings or click <strong>Refresh</strong>. Good for a heavy scene.
+</li>
+<li><strong>Quality</strong> draws more pixels (1.5x, 2x) for smoother edges; <strong>Max Size</strong> caps the size of the view, in pixels per side.
+</li>
+</ul>
+<h3 id="limits">Limits<a class="fs-anchor" href="#limits" aria-label="Link to this section">#</a></h3>
+<ul>
+<li>A preview needs an open 3D Viewport to draw with (a Target silhouette doesn't). Without one it says <strong>Open a 3D Viewport</strong>. Another window showing the same scene works too.
+</li>
+<li>It shows what that viewport shows: its local view, its collection visibility and its clipping.
+</li>
+<li>It shows nothing when Blender runs without a window (background mode).
+</li>
+</ul>
+<hr class="fs-rule">
 <h2 id="layout-widgets">Layout widgets<a class="fs-anchor" href="#layout-widgets" aria-label="Link to this section">#</a></h2>
 <h3 id="frame">Frame<a class="fs-anchor" href="#frame" aria-label="Link to this section">#</a></h3>
 <p>A titled area that holds widgets, like a frame in Blender's node editors. Moving the frame moves what is inside.</p>
@@ -501,7 +596,7 @@
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
       <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
-  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv3"><a href="#tooltips">Tooltips</a></li><li class="lv3"><a href="#the-add-menu">The Add menu</a></li><li class="lv2"><a href="#add-from-property">Add from Property</a></li><li class="lv2"><a href="#buttons">Buttons</a></li><li class="lv3"><a href="#operator">Operator</a></li><li class="lv3"><a href="#custom-script">Custom Script</a></li><li class="lv2"><a href="#toggles">Toggles</a></li><li class="lv3"><a href="#set-value">Set Value</a></li><li class="lv3"><a href="#bone-collection">Bone Collection</a></li><li class="lv2"><a href="#enum">Enum</a></li><li class="lv2"><a href="#color-swatch">Color Swatch</a></li><li class="lv2"><a href="#list">List</a></li><li class="lv2"><a href="#sliders">Sliders</a></li><li class="lv2"><a href="#number-field">Number Field</a></li><li class="lv2"><a href="#label">Label</a></li><li class="lv2"><a href="#image">Image</a></li><li class="lv3"><a href="#image-look">Image Look</a></li><li class="lv3"><a href="#backdrop">Backdrop</a></li><li class="lv2"><a href="#view-preview">View Preview</a></li><li class="lv3"><a href="#sources">Sources</a></li><li class="lv3"><a href="#shading">Shading</a></li><li class="lv3"><a href="#silhouette">Silhouette</a></li><li class="lv3"><a href="#performance">Performance</a></li><li class="lv3"><a href="#limits">Limits</a></li><li class="lv2"><a href="#layout-widgets">Layout widgets</a></li><li class="lv3"><a href="#frame">Frame</a></li><li class="lv3"><a href="#flex-box">Flex Box</a></li><li class="lv3"><a href="#group">Group</a></li><li class="lv2"><a href="#bone-pickers">Bone pickers</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
 <footer class="fs-foot">
   <div class="fs-foot__in">
