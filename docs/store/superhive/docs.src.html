@@ -1,0 +1,712 @@
+<!--
+  FlexSpace store docs (Superhive's Documentation tab), SOURCE. Build docs.html from it:  py -3.10 docs/_design/build_superhive.py docs
+  Superhive keeps only inline style="" with whitelisted CSS (see README.md), so this file is authored with classes and
+  ONE <style> of simple selectors, and the build inlines them. No media queries: grids switch at a 500 px row with
+  flex-basis: calc((500px - 100%) * 999) (one column below, min-width sets the columns above). Ids are stripped, so the
+  contents list is plain text and every section links to its full guide online instead of back to the top.
+-->
+<style>
+/* ---------- the tags we use: the host page styles them, so every one is set here ---------- */
+.fsx { display: block; position: relative; overflow: hidden; margin: 0; padding: 0; border-radius: 26px; background-color: #0a0a0c; color: #f4f2ee;
+  font-family: Inter, 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif; font-size: 16px; font-weight: 400;
+  font-style: normal; line-height: 1.6; letter-spacing: normal; text-align: left; }
+p { margin: 0; padding: 0; }
+h1, h2, h3 { margin: 0; margin-bottom: 0 !important; padding: 0; color: #f4f2ee; font-family: Inter, 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
+  font-weight: 700 !important; font-style: normal; letter-spacing: -0.02em; text-align: inherit; }
+h1 { font-size: 52px; line-height: 1.02; font-weight: 800 !important; letter-spacing: -0.045em; }
+h2 { font-size: 30px; line-height: 1.12; font-weight: 800 !important; letter-spacing: -0.025em; }
+h3 { margin-top: 26px; font-size: 18px; line-height: 1.3; letter-spacing: -0.015em; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+li { margin: 0; padding: 0; }
+img { display: block; max-width: 100%; height: auto; margin: 0; padding: 0; border: 0; }
+video { display: block; width: 100%; max-width: 100%; height: auto; margin: 0; padding: 0; border: 0; background-color: #1a1a1a; }
+a { color: #f6cb82; font-weight: 600; text-decoration: none; }
+strong, b { font-weight: 600; color: #f4f2ee; }
+code { font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 0.84em; font-weight: 500; color: #dcceb8;
+  background-color: #1a1a1e; border: 1px solid rgba(255,255,255,.08); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
+kbd { display: inline-block; min-width: 24px; margin: 0; padding: 2px 7px 1px; border-radius: 5px; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace;
+  font-size: 12.5px; font-weight: 500; line-height: 1.4; text-align: center; white-space: nowrap; color: #f4f2ee; background-color: #24242a;
+  border: 1px solid #3a3a42; border-bottom-width: 3px; vertical-align: 1px; }
+table { border-collapse: separate; border-spacing: 0; }
+th, td { margin: 0; border: 0; }
+
+/* ---------- header ---------- */
+.head { position: relative; overflow: hidden; padding: calc(32px + 3%) calc(8px + 3.5%) calc(28px + 2.5%); border-bottom: 1px solid rgba(255,255,255,.07);
+  background-color: #0a0a0c; background-image: radial-gradient(50% 70% at 8% 0%, rgba(240,181,87,.2), transparent 70%), radial-gradient(40% 70% at 100% 100%, rgba(47,111,255,.14), transparent 70%); }
+.gridbg { position: absolute; top: 0; left: 50%; width: 1600px; margin-left: -800px; }
+.gridbg img { width: 100%; }
+.wrap { position: relative; }
+.eyebrow { display: block; margin: 0 0 16px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; line-height: 16px; color: #f0b557; }
+.dash { display: inline-block; width: 18px; height: 2px; margin: 0 10px 0 0; border-radius: 2px; vertical-align: middle; background-color: #f0b557;
+  background-image: linear-gradient(90deg, #f0b557, #dcceb8); }
+.ember { color: #efbf72; }
+.lead { margin: 16px 0 0; max-width: 640px; font-size: 17.5px; line-height: 1.55 !important; color: #b6b3ad; }
+.chips { display: flex; flex-wrap: wrap; margin: 18px -4px 0; }
+.chip { display: inline-block; margin: 4px; padding: 7px 12px; border-radius: 999px; background-color: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em; line-height: 1; color: #dcceb8; white-space: nowrap; }
+.actions { display: flex; flex-wrap: wrap; margin: 18px -6px 0; }
+.btn { display: inline-block; margin: 6px; padding: 13px 18px; border-radius: 12px; border: 1px solid #eaae58; font-size: 15px; font-weight: 600; line-height: 18px;
+  text-decoration: none; color: #1a1206; background-color: #e8a94f; background-image: linear-gradient(100deg, #f6cb82 0%, #f0b557 45%, #d18a2e 100%); }
+
+/* ---------- contents: a plain overview (ids are stripped, nothing can jump) ---------- */
+.index { padding: calc(20px + 1.5%) calc(8px + 3.5%) 0; }
+.ilabel { margin: 0 0 10px; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; line-height: 1.4 !important; color: #85827c; }
+.igrid { display: flex; flex-wrap: wrap; margin: 0 -3px; }
+.icell { flex: 0 1 calc((500px - 100%) * 999); min-width: 33.333%; padding: 3px; display: flex; }
+.item { flex: 1 1 auto; display: block; padding: 9px 12px; border-radius: 10px; background-color: #111114; border: 1px solid rgba(255,255,255,.06);
+  color: #d9d6d0; font-size: 15px; font-weight: 500; line-height: 1.3; }
+.inum { display: inline-block; min-width: 22px; margin: 0 10px 0 0; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace;
+  font-size: 12px; color: #f0b557; }
+
+/* ---------- sections ---------- */
+.docs { padding: 8px calc(8px + 3.5%) calc(32px + 2%); }
+.doc { position: relative; margin: 16px 0 0; padding: calc(22px + 1%) calc(10px + 2.5%) 22px; border-radius: 18px; background-color: #111114;
+  border: 1px solid rgba(255,255,255,.07); }
+.num { display: block; margin: 0 0 8px; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 12px; line-height: 1.4;
+  letter-spacing: 0.08em; color: #f0b557; }
+.doc .lead { margin-top: 10px; max-width: 680px; }
+.body { margin: 12px 0 0; max-width: 680px; color: #b6b3ad; }
+
+/* lists: a gold diamond (a square with its corners painted over: transform is stripped) */
+.list { margin: 6px 0 0; }
+.list li { position: relative; margin: 8px 0 0; padding: 0 0 0 20px; color: #c9c6c0; font-size: 15.5px; line-height: 1.55; }
+.dia { position: absolute; left: 0; top: 8px; display: block; width: 10px; height: 10px; background-color: #f0b557;
+  background-image: linear-gradient(135deg, #111114 22%, rgba(17,17,20,0) 28%), linear-gradient(225deg, #111114 22%, rgba(17,17,20,0) 28%),
+    linear-gradient(315deg, #111114 22%, rgba(17,17,20,0) 28%), linear-gradient(45deg, #111114 22%, rgba(17,17,20,0) 28%); }
+.steps { margin: 6px 0 0; }
+.step { position: relative; margin: 10px 0 0; padding: 12px 14px 12px 52px; border-radius: 12px; background-color: #17171b; border: 1px solid rgba(255,255,255,.06);
+  color: #c9c6c0; font-size: 15.5px; line-height: 1.55; }
+.sn { position: absolute; left: 12px; top: 11px; display: block; width: 26px; height: 26px; border-radius: 8px; font-size: 14px; font-weight: 800; line-height: 26px;
+  text-align: center; color: #1a1206; background-color: #ecbd72; background-image: linear-gradient(100deg, #f0b557, #e6c187 60%, #d8d2c8); }
+.note { margin: 16px 0 0; padding: 12px 14px; border-radius: 10px; font-size: 14.5px; line-height: 1.55; color: #c9c6c0; background-color: rgba(247,142,165,.06);
+  border-left: 3px solid #f78ea5; }
+.tip { background-color: rgba(130,179,160,.07); border-left-color: #82b3a0; }
+.foot { margin: 20px 0 0; padding: 14px 0 0; border-top: 1px solid rgba(255,255,255,.06); font-size: 14.5px; line-height: 1.5 !important; }
+.sub { margin: 22px 0 0; font-size: 12.5px; font-weight: 600; letter-spacing: 0.14em; line-height: 1.4 !important; color: #85827c; }
+
+/* ---------- figures ---------- */
+.fig { margin: 18px 0 0; overflow: hidden; border-radius: 14px; background-color: #0f0f12; background-image: radial-gradient(80% 80% at 30% 20%, #17171b, #0c0c0e);
+  border: 1px solid rgba(255,255,255,.07); }
+.fig img { width: 100%; }
+.figg { margin: 18px 0 0; overflow: hidden; border-radius: 14px; background-color: #1c1c1d; border: 1px solid rgba(255,255,255,.07); }
+.figg video { max-width: 520px; margin: 0 auto; background-color: #1c1c1d; }
+.figcap { padding: 10px 14px 12px; font-size: 13.5px; line-height: 1.45 !important; color: #85827c; border-top: 1px solid rgba(255,255,255,.06); background-color: #111114; }
+
+/* ---------- In Blender: real recordings and screenshots ---------- */
+.inb { margin: 22px 0 0; padding: 20px 0 0; border-top: 1px solid rgba(255,255,255,.08); }
+.inb-label { margin: 0 0 4px; }
+.inb-label .chip { margin: 0; }
+.grid { display: flex; flex-wrap: wrap; align-items: flex-start; margin: 0 -8px; }
+.cell { padding: 10px 8px; min-width: 0; }
+.c2 { flex: 0 1 calc((500px - 100%) * 999); min-width: 50%; }
+.frame { position: relative; overflow: hidden; border-radius: 18px; background-color: #1a1a1a; border: 1px solid rgba(255,255,255,.1); }
+.frame img { width: 100%; }
+.fit { display: flex; align-items: center; justify-content: center; aspect-ratio: 16/10; }
+.fcap { margin: 10px 0 0; font-size: 13.5px; line-height: 1.5 !important; color: #85827c; }
+.fcap strong { color: #b6b3ad; }
+.tag { position: absolute; left: 10px; top: 10px; display: block; padding: 5px 10px 5px 8px; border-radius: 999px; font-size: 10.5px; font-weight: 600; line-height: 1;
+  letter-spacing: 0.1em; color: #f4f2ee; background-color: rgba(10,10,12,.78); border: 1px solid rgba(255,255,255,.12); white-space: nowrap; }
+.dot { display: inline-block; width: 6px; height: 6px; margin: 0 6px 1px 0; border-radius: 50%; vertical-align: middle; background-color: #5b8cff; }
+.dot-still { background-color: #f0b557; }
+
+/* ---------- tables ---------- */
+.tw { margin: 16px 0 0; overflow-x: auto; border-radius: 12px; border: 1px solid rgba(255,255,255,.08); }
+.tb { width: 100%; font-size: 14.5px; line-height: 1.5; }
+.tb th, .tb td { padding: 10px 11px; text-align: left; vertical-align: top; border-top: 1px solid rgba(255,255,255,.06); color: #c9c6c0; background-color: #111114; }
+.tb th { border-top: 0; background-color: #1a1a1e; color: #f4f2ee; font-weight: 600; font-size: 12px; letter-spacing: 0.1em; }
+.tb .ev td { background-color: #131316; }
+.tb .r1 td { border-top: 0; }
+.tb .k { color: #f4f2ee; }
+.pt .k { width: 30%; }
+.kt .k { width: 34%; }
+.kt .k kbd { margin: 0 2px 4px 0; }
+.tt th, .tt td { padding-left: 9px; padding-right: 9px; }
+.tt .k { width: 26%; }
+
+/* ---------- widget reference ---------- */
+.wgrid { display: flex; flex-wrap: wrap; margin: 13px -5px 0; }
+.wcell { flex: 0 1 calc((500px - 100%) * 999); min-width: 50%; padding: 5px; display: flex; }
+.wcard { flex: 1 1 auto; display: flex; align-items: center; padding: 8px; border-radius: 12px; background-color: #17171b; border: 1px solid rgba(255,255,255,.06); }
+.thumb { flex: none; width: 136px; height: 84px; overflow: hidden; border-radius: 8px; background-color: #1c1c1d; }
+.thumb img { width: 187px; max-width: none; height: 84px; margin: 0 0 0 -25.5px; }
+.wtext { flex: 1 1 auto; min-width: 0; padding: 0 0 0 12px; }
+.wname { display: block; font-size: 14.5px; font-weight: 600; line-height: 1.3; color: #f4f2ee; }
+.wdesc { display: block; margin: 2px 0 0; font-size: 13px; line-height: 1.4; color: #a9a6a0; }
+.cat { display: inline-block; margin: 6px 0 0; padding: 3px 7px; border-radius: 999px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; line-height: 1;
+  color: #c8c8ce; background-color: #232328; border: 1px solid #3a3a42; white-space: nowrap; }
+.cat-picker { color: #d2c2fb; background-color: #2a2340; border-color: #6a55a8; }
+
+/* ---------- misc ---------- */
+.cols { display: flex; flex-wrap: wrap; margin: 0 -10px; }
+.col { flex: 0 1 calc((500px - 100%) * 999); min-width: 50%; padding: 0 10px; }
+.legend { display: flex; flex-wrap: wrap; margin: 12px -8px 0; }
+.legend li { display: inline-block; margin: 4px 8px; font-size: 14px; line-height: 1.4; color: #d9d6d0; }
+.sw { display: inline-block; width: 14px; height: 14px; margin: 0 8px 0 0; border-radius: 4px; vertical-align: -2px; }
+.pill { display: inline-block; padding: 2px 8px; border-radius: 6px; font-size: 13px; font-weight: 500; line-height: 1.5; white-space: nowrap; color: #ffd27a;
+  background-color: rgba(229,134,46,.14); border: 1px solid rgba(229,134,46,.45); }
+.p-ok { color: #a9d7c4; background-color: rgba(130,179,160,.12); border-color: rgba(130,179,160,.4); }
+.p-mute { color: #b6b3ad; background-color: #1c1c1d; border-color: #353538; }
+
+/* ---------- closing band ---------- */
+.end { position: relative; overflow: hidden; padding: calc(36px + 2%) calc(8px + 3.5%) calc(40px + 2%); text-align: center; background-color: #060607;
+  background-image: radial-gradient(50% 80% at 50% 0%, rgba(240,181,87,.16), transparent 70%); border-top: 1px solid rgba(255,255,255,.07); }
+.end h2 { font-size: 34px; }
+.end .lead { margin: 12px auto 0; max-width: 700px; }
+.end .actions { justify-content: center; }
+.sign { margin: 22px 0 0; font-size: 13px; line-height: 1.5 !important; color: #6f6c67; }
+</style>
+<div class="fsx">
+
+<!-- ============================================================ HEADER -->
+<div class="head">
+  <div class="gridbg"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/grid-bg.png" width="1600" height="1100" alt=""></div>
+  <div class="wrap">
+    <div class="eyebrow"><span class="dash"></span>DOCUMENTATION · V1.4.0</div>
+    <h1>FlexSpace <span class="ember">Guide</span></h1>
+    <p class="lead">Everything you need to get going. The full docs live at <a href="https://jfranmatheu.github.io/flexspace/docs/">jfranmatheu.github.io/&#8203;flexspace/docs</a>, and inside Blender in the canvas header's <strong>Help</strong> menu.</p>
+    <ul class="chips"><li class="chip">BLENDER 5.3+</li><li class="chip">FLEX SPACE</li><li class="chip">ARMATURE PICKER</li></ul>
+    <div class="actions"><a class="btn" href="https://jfranmatheu.github.io/flexspace/docs/">Open the full docs →</a></div>
+  </div>
+</div>
+
+<!-- ============================================================ CONTENTS -->
+<div class="index">
+  <p class="ilabel">CONTENTS</p>
+  <ol class="igrid">
+    <li class="icell"><span class="item"><span class="inum">01</span>Install</span></li>
+    <li class="icell"><span class="item"><span class="inum">02</span>Your first canvas</span></li>
+    <li class="icell"><span class="item"><span class="inum">03</span>Edit Mode and Live Mode</span></li>
+    <li class="icell"><span class="item"><span class="inum">04</span>Add widgets</span></li>
+    <li class="icell"><span class="item"><span class="inum">05</span>Widget reference</span></li>
+    <li class="icell"><span class="item"><span class="inum">06</span>Bind properties</span></li>
+    <li class="icell"><span class="item"><span class="inum">07</span>Pages and modes</span></li>
+    <li class="icell"><span class="item"><span class="inum">08</span>Editing tools</span></li>
+    <li class="icell"><span class="item"><span class="inum">09</span>Color &amp; brush widgets</span></li>
+    <li class="icell"><span class="item"><span class="inum">10</span>The Armature Picker</span></li>
+    <li class="icell"><span class="item"><span class="inum">11</span>Picker with Rigify</span></li>
+    <li class="icell"><span class="item"><span class="inum">12</span>Presets and sharing</span></li>
+    <li class="icell"><span class="item"><span class="inum">13</span>Shortcuts</span></li>
+    <li class="icell"><span class="item"><span class="inum">14</span>Troubleshooting</span></li>
+    <li class="icell"><span class="item"><span class="inum">15</span>Report a bug</span></li>
+  </ol>
+</div>
+
+<div class="docs">
+
+<!-- 01 -->
+<div class="doc">
+  <span class="num">01 /</span>
+  <h2>Install</h2>
+  <p class="lead">FlexSpace is a Blender extension for Blender 5.3 or newer.</p>
+  <ol class="steps">
+    <li class="step"><span class="sn">1</span>Download the zip from your Superhive library.</li>
+    <li class="step"><span class="sn">2</span>In Blender, open <strong>Edit › Preferences › Get Extensions</strong>.</li>
+    <li class="step"><span class="sn">3</span>Open the menu at the top right and choose <strong>Install from Disk...</strong>, then pick the zip.</li>
+  </ol>
+  <p class="body">Its settings are in <strong>Edit › Preferences › Add-ons › FlexSpace</strong>: <strong>Modules</strong>, <strong>Themes</strong>, <strong>Demo Files</strong> and <strong>Addon Settings</strong> (Appearance, widget animations, Key Hints, the Selection Bar, Update Unmodified Presets, the Shared Presets Folder and the theme library folder).</p>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/getting-started.html">Full guide →</a></div>
+</div>
+
+<!-- 02 -->
+<div class="doc">
+  <span class="num">02 /</span>
+  <h2>Your first canvas</h2>
+  <p class="lead">Three steps from an empty area to a working slider.</p>
+  <ol class="steps">
+    <li class="step"><span class="sn">1</span>Open an area's <strong>Editor Type</strong> menu (the first button of the header), pick <strong>Flex Space</strong> and click <strong>New</strong>.</li>
+    <li class="step"><span class="sn">2</span>Press <kbd>Tab</kbd> for Edit Mode and <kbd>Shift A</kbd> to add a widget, for example <strong>Data › Numbers › Lineal</strong> (or just type <code>lineal</code>). Click to place it.</li>
+    <li class="step"><span class="sn">3</span>In the sidebar (<kbd>N</kbd>), <strong>Widget</strong> tab, set its <strong>Data Path</strong>, such as <code>scene.frame_current</code>, or use <strong>From Property</strong>. Press <kbd>Tab</kbd> again and use it.</li>
+  </ol>
+  <div class="note">The canvas is a data-block saved in your .blend file, like a material or a node group. Pick, rename or make one from the selector in the middle of the header.</div>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-control.png" width="1288" height="1020" alt="The Studio Control Panel in Live Mode: Lighting with Key, Fill and Rim lights, Render settings and Playback buttons, every widget bound to the scene.">
+    <p class="figcap">A finished canvas in Live Mode: lights, render settings, playback and objects, one click away.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/empty-state.png" width="600" height="380" alt="No canvas yet? One click makes one, or open a finished demo to see how it is built."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Get started.</strong> No canvas yet? One click makes one, or open a finished demo to see how it is built.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/control-panel-dark.jpg" width="1600" height="900" alt="A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Studio control panel (Dark).</strong> A control panel canvas next to the 3D Viewport: lights, render settings, playback and objects one click away.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/getting-started.html">Full guide →</a></div>
+</div>
+
+<!-- 03 -->
+<div class="doc">
+  <span class="num">03 /</span>
+  <h2>Edit Mode and Live Mode</h2>
+  <p class="lead">Every canvas has two modes. <kbd>Tab</kbd> over the canvas switches, or click <strong>Edit</strong> in the header.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Edit Mode</strong> builds the layout: add, move, resize, rotate, group and style widgets.</li>
+    <li><span class="dia"></span><strong>Live Mode</strong> uses it: buttons run, toggles switch, sliders change their property. Rest the mouse on a widget for a tooltip.</li>
+    <li><span class="dia"></span>On an Armature Picker, Live Mode is Blender's own <strong>Pose Mode</strong>.</li>
+    <li><span class="dia"></span>Every edit and every use of a widget is one undo step. Switching modes is not a step.</li>
+  </ul>
+  <div class="note tip">The pill at the bottom of the canvas reminds you of <kbd>Tab</kbd>. Turn it off with <b>Key Hints</b> in the add-on preferences.</div>
+  <div class="figg">
+    <video autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-live-mode-still.png" width="756" height="378"><source src="https://jfranmatheu.github.io/flexspace/assets/media/store/gif-live-mode.mp4" type="video/mp4">Live Mode: dragging a Lineal slider bound to a light's power; the Number Field bound to the same property follows.</video>
+    <p class="figcap">Live Mode: two widgets bound to the same property stay in step.</p>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/canvas.html">Full guide →</a></div>
+</div>
+
+<!-- 04 -->
+<div class="doc">
+  <span class="num">04 /</span>
+  <h2>Add widgets</h2>
+  <p class="lead"><kbd>Shift A</kbd> in Edit Mode opens the <strong>Add Widget</strong> panel over the canvas.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Search:</strong> just start typing. The best match is selected, and <kbd>Enter</kbd> adds it.</li>
+    <li><span class="dia"></span><strong>Categories</strong> on the left: Buttons, Data, Tools, Graphics, Layout (in a picker, Bone Picker comes first). <kbd>Tab</kbd> goes to the next one.</li>
+    <li><span class="dia"></span>Click a card: the new widget follows the mouse, click to place it.</li>
+    <li><span class="dia"></span>The header's <strong>Add</strong> menu has the same, and the add-on preferences can make it a <strong>Pie</strong>.</li>
+  </ul>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/frame-add-widget.png" width="1780" height="1288" alt="The Add Widget panel: search, categories, widget cards and the From Property button.">
+    <p class="figcap">The Add Widget panel, with From Property next to the search.</p>
+  </div>
+  <h3>From Property: the quickest way</h3>
+  <p class="body"><kbd>Shift A</kbd> › <strong>From Property</strong>, then right-click any property in Blender's interface. The widget that controls it appears, already bound and labelled. Undo removes it in one step.</p>
+  <div class="tw">
+    <table class="tb pt">
+      <thead><tr><th>PROPERTY</th><th>WIDGET</th></tr></thead>
+      <tbody>
+        <tr><td class="k">On / off</td><td><strong>Toggle</strong> (Checkbox)</td></tr>
+        <tr class="ev"><td class="k">Enum</td><td><strong>Enum</strong> (Segmented with 5 items or less, else Dropdown)</td></tr>
+        <tr><td class="k">Number</td><td><strong>Number Field</strong></td></tr>
+        <tr class="ev"><td class="k">Factor or Percentage</td><td><strong>Lineal</strong> slider with that range</td></tr>
+        <tr><td class="k">Colour</td><td><strong>Color Swatch</strong></td></tr>
+        <tr class="ev"><td class="k">Vector (2 to 4 values)</td><td>Vertical <strong>Flex Box</strong> with one Number Field per value</td></tr>
+        <tr><td class="k">Anything else</td><td><strong>Label</strong> that reads the value out</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/add-panel-still.png" width="1100" height="1152"><source src="https://jfranmatheu.github.io/flexspace/assets/media/add-panel.mp4" type="video/mp4">Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Add any widget in seconds.</strong> Press Shift A, type a few letters, pick the card and click to place the new widget on your canvas.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/add-browser-search.png" width="907" height="628" alt="Type a few letters and the best matches show across every category; Enter adds the selected one."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Search as you type.</strong> Type a few letters and the best matches show across every category; Enter adds the selected one.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/add-browser.jpg" width="1600" height="900" alt="Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Add Widget browser.</strong> Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/widgets.html">Full guide →</a></div>
+</div>
+
+<!-- 05 -->
+<div class="doc">
+  <span class="num">05 /</span>
+  <h2>Widget reference</h2>
+  <p class="lead">Every widget at a glance. Select one in Edit Mode and set it up in the sidebar, <strong>Widget</strong> tab: Label, Style, Conditions and Tooltip.</p>
+  <p class="sub">FLEX SPACE AND ARMATURE PICKER</p>
+  <ul class="wgrid">
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-operator.png" width="720" height="324" alt="Operator button"></div><div class="wtext"><strong class="wname">Operator</strong><span class="wdesc">Runs a Blender operator</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-custom-script.png" width="720" height="324" alt="Custom Script button"></div><div class="wtext"><strong class="wname">Custom Script</strong><span class="wdesc">Runs your own Python script</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-toggle.png" width="720" height="324" alt="Toggle switch"></div><div class="wtext"><strong class="wname">Toggle</strong><span class="wdesc">Switches an on / off property, or sets an enum or integer value</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-enum.png" width="720" height="324" alt="Segmented Enum"></div><div class="wtext"><strong class="wname">Enum</strong><span class="wdesc">Picks one value of an enum or integer</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-color-swatch.png" width="720" height="324" alt="Color Swatch"></div><div class="wtext"><strong class="wname">Color Swatch</strong><span class="wdesc">Shows a colour and opens Blender's colour picker</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-color-picker.png" width="720" height="324" alt="Color Picker"></div><div class="wtext"><strong class="wname">Color Picker</strong><span class="wdesc">Edits a colour on the canvas</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-color-palette.png" width="720" height="324" alt="Color Palette"></div><div class="wtext"><strong class="wname">Color Palette</strong><span class="wdesc">A grid of colour swatches</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-brush-picker.png" width="720" height="324" alt="Brush Picker"></div><div class="wtext"><strong class="wname">Brush Picker</strong><span class="wdesc">Makes one brush the active brush</span><span class="cat">BRUSH MODES</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-ring-menu.png" width="720" height="324" alt="Ring Menu"></div><div class="wtext"><strong class="wname">Ring Menu</strong><span class="wdesc">Brushes, toggles and operators in a ring, like a sculpt wheel</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-list.png" width="720" height="324" alt="List"></div><div class="wtext"><strong class="wname">List</strong><span class="wdesc">Layers, material slots, vertex groups and other lists as rows you can click</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-lineal-slider.png" width="720" height="324" alt="Lineal slider"></div><div class="wtext"><strong class="wname">Lineal slider</strong><span class="wdesc">Drag along a bar to change a number</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-number-field.png" width="720" height="324" alt="Number Field"></div><div class="wtext"><strong class="wname">Number Field</strong><span class="wdesc">A number field like Blender's own</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-label.png" width="720" height="324" alt="Label"></div><div class="wtext"><strong class="wname">Label</strong><span class="wdesc">Text, or a property's value</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-image.png" width="720" height="324" alt="Image"></div><div class="wtext"><strong class="wname">Image</strong><span class="wdesc">Shows a picture; turn on Backdrop to put it behind everything</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-frame.png" width="720" height="324" alt="Frame"></div><div class="wtext"><strong class="wname">Frame</strong><span class="wdesc">A titled area, square or round, that holds and moves other widgets</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-flex-box.png" width="720" height="324" alt="Flex Box"></div><div class="wtext"><strong class="wname">Flex Box</strong><span class="wdesc">Lines up other widgets in a row or a column</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-group.png" width="720" height="324" alt="Group"></div><div class="wtext"><strong class="wname">Group</strong><span class="wdesc">Moves and resizes other widgets as one</span></div></div></li>
+  </ul>
+  <p class="sub">THE PICKER'S OWN</p>
+  <ul class="wgrid">
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-collection-toggle.png" width="720" height="324" alt="Bone Collection toggle"></div><div class="wtext"><strong class="wname">Bone Collection toggle</strong><span class="wdesc">Shows, hides or solos a bone collection</span><span class="cat cat-picker">PICKER</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-radial-slider.png" width="720" height="324" alt="Radial slider"></div><div class="wtext"><strong class="wname">Radial slider</strong><span class="wdesc">A knob you drag to change a number</span><span class="cat cat-picker">PICKER</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-lineal-2d-slider.png" width="720" height="324" alt="Lineal 2D slider"></div><div class="wtext"><strong class="wname">Lineal 2D slider</strong><span class="wdesc">A pad that drives two properties at once</span><span class="cat cat-picker">PICKER</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers"></div><div class="wtext"><strong class="wname">Button, Button Image, Geometry Shape</strong><span class="wdesc">Bone pickers: select their bone</span><span class="cat cat-picker">PICKER</span></div></div></li>
+  </ul>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/widgets.html">Full guide →</a></div>
+</div>
+
+<!-- 06 -->
+<div class="doc">
+  <span class="num">06 /</span>
+  <h2>Bind properties</h2>
+  <p class="lead">Sliders, toggles and property labels control a Blender property through a <strong>Data Path</strong>, starting from the context, as <code>bpy.context</code> does.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Eyedropper:</strong> click the button next to <strong>Data Path</strong>, then right-click the property anywhere in Blender. A slider also gets its Min and Max.</li>
+    <li><span class="dia"></span><strong>Follow or pin:</strong> a path starting with <code>active_object</code> drives whatever is active, or always one pinned object. Click the pin control under the field to switch.</li>
+    <li><span class="dia"></span><strong>Copy Full Data Path</strong> (<kbd>Ctrl Shift Alt C</kbd>) and paste it with <kbd>Ctrl V</kbd>.</li>
+    <li><span class="dia"></span><strong>Visible When / Disabled When</strong> in the <strong>Conditions</strong> panel show or grey out a widget while a boolean is on. On a frame, Flex Box or group, everything inside follows.</li>
+  </ul>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-binding.png" width="1232" height="828" alt="Binding with the eyedropper: right-click Exposure in Blender's Light properties and the canvas slider is bound to it; its data path shows below.">
+    <p class="figcap">The eyedropper asks for a slider-like property; right-click Exposure and the path is filled in.</p>
+  </div>
+  <h3>Animation state and keys</h3>
+  <p class="body">A bound widget shows its property's state in Blender's colours:</p>
+  <ul class="legend">
+    <li><span class="sw" style="background-color:#5fb34a"></span>Animated</li>
+    <li><span class="sw" style="background-color:#e8c93a"></span>Key on this frame</li>
+    <li><span class="sw" style="background-color:#a35bd6"></span>Driver</li>
+    <li><span class="sw" style="background-color:#e5862e"></span>Changed, not keyed</li>
+  </ul>
+  <p class="body">In Live Mode, over the widget: <kbd>I</kbd> inserts a keyframe, <kbd>Alt I</kbd> deletes the one on this frame, <kbd>Shift Alt I</kbd> clears all, <kbd>Backspace</kbd> resets to the default. With Auto Keying on, the end of a drag is keyed in the same undo step.</p>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/from-property-still.png" width="1254" height="956"><source src="https://jfranmatheu.github.io/flexspace/assets/media/from-property.mp4" type="video/mp4">Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Bind any property with a right-click.</strong> Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/binding-eyedropper.png" width="1350" height="507" alt="Bind a slider with the eyedropper: right-click any slider-like property, here the light's Exposure."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Binding eyedropper.</strong> Bind a slider with the eyedropper: right-click any slider-like property, here the light's Exposure.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/binding-data-path.png" width="1008" height="372" alt="After the pick the slider is bound to the light's exposure, pinned to that light, and labelled for you."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Bound data path.</strong> After the pick the slider is bound to the light's exposure, pinned to that light, and labelled for you.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/broken-bindings.png" width="911" height="954" alt="A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Broken bindings.</strong> A mistyped path or the wrong kind of property gets a dashed outline, and the top bar counts them.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/binding.html">Full guide →</a></div>
+</div>
+
+<!-- 07 -->
+<div class="doc">
+  <span class="num">07 /</span>
+  <h2>Pages and modes</h2>
+  <p class="lead">One canvas can hold a sculpting page, a weight paint page, one object's controls and an everyday page, and show the right one.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Show When</strong> (sidebar, <strong>Canvas</strong> tab, <strong>Pages</strong>): <strong>Always</strong>, <strong>Mode</strong>, <strong>Object</strong> or <strong>Object in Mode</strong>.</li>
+    <li><span class="dia"></span><strong>Switch Pages Automatically</strong> (on by default) shows the page that fits Blender's mode and the active object.</li>
+    <li><span class="dia"></span>When the page needs another mode, a notice says so: click <strong>Enter</strong>. For another object, click <strong>Select</strong>.</li>
+    <li><span class="dia"></span><kbd>M</kbd> in Edit Mode moves the selected widgets to another page.</li>
+  </ul>
+  <div class="note">Changing a page's mode never deletes widgets. An Armature Picker's pages always work in Pose Mode.</div>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-layers.png" width="1312" height="912" alt="A canvas with a page per mode: the page tabs, Sculpt active, and the Sculpt page's brushes and stroke settings.">
+    <p class="figcap">The Sculpt page of a canvas with a tab for each mode.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/layer-tabs.png" width="911" height="954" alt="One canvas, a page per mode: the tabs show each page's mode, the active one is outlined."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Pages and modes.</strong> One canvas, a page per mode: the tabs show each page's mode, the active one is outlined.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/studio-sculpt.jpg" width="1574" height="954" alt="Enter Sculpt Mode and the canvas jumps to its Sculpt page: brushes, stroke, remesh, masks and face sets."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>FlexSpace Studio: Sculpt page.</strong> Enter Sculpt Mode and the canvas jumps to its Sculpt page: brushes, stroke, remesh, masks and face sets.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/studio-weight-paint.jpg" width="1574" height="954" alt="In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>FlexSpace Studio: Weight Paint page.</strong> In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/canvas.html">Full guide →</a></div>
+</div>
+
+<!-- 08 -->
+<div class="doc">
+  <span class="num">08 /</span>
+  <h2>Editing tools</h2>
+  <p class="lead">Everything here happens in Edit Mode.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Select:</strong> click, <kbd>Shift</kbd> click to add, drag on empty space to box select, <kbd>A</kbd> for all.</li>
+    <li><span class="dia"></span><strong>Transform:</strong> <kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd>, or the handles (edges and corners resize, the round knob rotates).</li>
+    <li><span class="dia"></span><strong>Smart snapping:</strong> the magnet in the header. Edges, centres, equal gaps and the grid, with guides.</li>
+    <li><span class="dia"></span><strong>Selection Bar:</strong> with two or more widgets selected, align, distribute and match sizes.</li>
+    <li><span class="dia"></span><strong>Groups</strong> <kbd>Ctrl G</kbd>, <strong>frames</strong> <kbd>Ctrl J</kbd>, <strong>Flex Boxes</strong>, copy and paste <kbd>Ctrl C</kbd> <kbd>Ctrl V</kbd>.</li>
+    <li><span class="dia"></span><strong>Minimap</strong> (picture button in the header) and <strong>themes</strong> in <strong>View › Theme</strong>: Auto, Dark, Light or your own.</li>
+  </ul>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-edit-mode.png" width="1288" height="1356" alt="Edit Mode: the Preview frame dragged under Lighting snaps to its left edge; a magenta guide and the 22 px gap show what it lined up with.">
+    <p class="figcap">Dragging a frame: it snaps to the edge of the one above, and the guide shows it.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/edit-layout-still.png" width="910" height="564"><source src="https://jfranmatheu.github.io/flexspace/assets/media/edit-layout.mp4" type="video/mp4">Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Lay out with snapping and the Selection Bar.</strong> Drag widgets with smart snapping guides, align and distribute them from the Selection Bar, then group them and move them as one.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/snapping-guides.png" width="907" height="644" alt="Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Smart snapping.</strong> Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/selection-bar.png" width="512" height="444" alt="With several widgets selected, the Selection Bar aligns, distributes and matches their sizes."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Selection Bar.</strong> With several widgets selected, the Selection Bar aligns, distributes and matches their sizes.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/editing.html">Full guide →</a></div>
+</div>
+
+<!-- 09 -->
+<div class="doc">
+  <span class="num">09 /</span>
+  <h2>Color &amp; brush widgets</h2>
+  <p class="lead">Edit colours and switch brushes without leaving the canvas.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Color Picker:</strong> a <strong>Wheel</strong> or <strong>Ring + Square</strong>, an old / new strip, and RGB, HSV and Alpha sliders. <kbd>Esc</kbd> during a drag puts the colour back.</li>
+    <li><span class="dia"></span><strong>Color Palette:</strong> its own colours, or a Blender palette. Click a swatch to use it.</li>
+    <li><span class="dia"></span><strong>Brush Picker:</strong> one brush, one click. Works in Sculpt, the paint modes, Sculpt Curves and the Grease Pencil brush modes.</li>
+    <li><span class="dia"></span><strong>Ring Menu:</strong> brushes in the outer ring, toggles and operators in the inner ring, the name in the core. Pages hold more brushes; one button fills the ring with every Essentials brush of the page's mode.</li>
+  </ul>
+  <div class="note tip">The <b>Sculpt Wheel</b> demo has a Ring Menu with every sculpt brush, ready to try.</div>
+  <div class="figg">
+    <video autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png" width="666" height="728"><source src="https://jfranmatheu.github.io/flexspace/assets/media/store/gif-ring-menu.mp4" type="video/mp4">A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core.</video>
+    <p class="figcap">The active brush has the accent ring and its name in the core.</p>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/color-brush.html">Full guide →</a></div>
+</div>
+
+<!-- 10 -->
+<div class="doc">
+  <span class="num">10 /</span>
+  <h2>The Armature Picker</h2>
+  <p class="lead">A canvas of buttons that select the bones of your rig. It is saved with the armature data, so it travels when the rig is linked or appended.</p>
+  <ol class="steps">
+    <li class="step"><span class="sn">1</span>Select your rig and enter <strong>Pose Mode</strong> (<kbd>Ctrl Tab</kbd> in the 3D Viewport).</li>
+    <li class="step"><span class="sn">2</span>Set an area to <strong>Armature Picker</strong> and click <strong>New Picker</strong>.</li>
+    <li class="step"><span class="sn">3</span>Select bones in the viewport, click <strong>Import Selected Bones</strong> and click to place each button. Left and right come together.</li>
+    <li class="step"><span class="sn">4</span>Press <kbd>Tab</kbd> to pose: click a button to select its bone, <kbd>Shift</kbd> click to add.</li>
+  </ol>
+  <ul class="list">
+    <li><span class="dia"></span>Your Pose Mode keys work over the picker: <kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd>, <kbd>I</kbd>, copy and paste pose...</li>
+    <li><span class="dia"></span><strong>Toolbar</strong> (<kbd>T</kbd>): Select &amp; Control, Move, Rotate, Scale or Gimball on press.</li>
+    <li><span class="dia"></span><strong>Mirror:</strong> moving one of a pair mirrors the other across the red centre line.</li>
+    <li><span class="dia"></span><strong>Bone collections</strong> and <strong>Bone Names</strong> in the sidebar, <strong>Armature</strong> tab.</li>
+  </ul>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-picker.png" width="832" height="1093" alt="The Body page of the Armature Picker over the Adult Male art: the chest and the right foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow, root purple.">
+    <p class="figcap">The Body page in Pose Mode: the active bone is named next to its button.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-select-transform-still.png" width="1280" height="776"><source src="https://jfranmatheu.github.io/flexspace/assets/media/picker-select-transform.mp4" type="video/mp4">With the rig's controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Click in the picker, pose in the viewport.</strong> With the rig's controls hidden, click a body part in the picker, then move or rotate it with G or R in the viewport: the arm, the head and the spine.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-hero.jpg" width="1600" height="900" alt="A rigged character posed from the Body page: click a body part to select its control, then move it in the 3D Viewport."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Pose a character from its picker.</strong> A rigged character posed from the Body page: click a body part to select its control, then move it in the 3D Viewport.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/picker.html">Full guide →</a></div>
+</div>
+
+<!-- 11 -->
+<div class="doc">
+  <span class="num">11 /</span>
+  <h2>Picker with Rigify</h2>
+  <p class="lead">A full Humanoid Body picker in one step: select the generated rig, press <kbd>Shift A</kbd> in the picker's Edit Mode and choose <strong>Bone Picker › Humanoid Body (Rigify)</strong>.</p>
+  <div class="cols">
+    <div class="col">
+      <ul class="list">
+        <li><span class="dia"></span><strong>Body:</strong> Adult Male or Adult Female, made to measure.</li>
+        <li><span class="dia"></span><strong>Pages:</strong> Body, Hands, Feet and Face, each on its own page with its own tab (or side by side with <strong>Each on Its Own Page</strong> off).</li>
+        <li><span class="dia"></span><strong>Face:</strong> every face control on the face art, a <strong>Gaze</strong> pad drawn as eyes, mouth pads, the <strong>Mouth Lock</strong> and <strong>Eyes Follow</strong> knobs, teeth, tongue and the face collections.</li>
+        <li><span class="dia"></span><strong>IK/FK Switches:</strong> a puck next to each IK hand and foot.</li>
+      </ul>
+    </div>
+    <div class="col">
+      <ul class="list">
+        <li><span class="dia"></span><strong>Hands &amp; Feet View:</strong> Front (default) or Own.</li>
+        <li><span class="dia"></span><strong>Toes:</strong> per-toe shapes need toe chains <code>toe1.01.L</code> to <code>toe5.03.L</code> with <strong>limbs.super_finger</strong>.</li>
+        <li><span class="dia"></span><strong>Repair Bone Bindings</strong> (<strong>Utils</strong>) after regenerating the rig.</li>
+      </ul>
+    </div>
+  </div>
+  <ul class="legend">
+    <li><span class="sw" style="background-color:#4c8dff"></span>Left</li>
+    <li><span class="sw" style="background-color:#ff5a5f"></span>Right</li>
+    <li><span class="sw" style="background-color:#f2c94c"></span>Centre</li>
+    <li><span class="sw" style="background-color:#a77bff"></span>Root</li>
+  </ul>
+  <div class="note">Make the picker for the generated rig (the <code>RIG-...</code> object you animate), not for the metarig. The Body page is a front view: the character's left is on your right.</div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-layer-female-face.png" width="1355" height="1003" alt="The whole Face page: every face control on the female face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Face page (Adult Female).</strong> The whole Face page: every face control on the female face, the Expressions frame with the gaze pad drawn as eyes (here looking aside), the mouth pads and knobs, the teeth and tongue and the face bone collections.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-pages-still.png" width="1280" height="776"><source src="https://jfranmatheu.github.io/flexspace/assets/media/picker-pages.mp4" type="video/mp4">Each part of the character has its own tab, drawn over the character art: switch tabs and pick fingers, feet or the jaw.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Body, hands, feet and face on tabs.</strong> Each part of the character has its own tab, drawn over the character art: switch tabs and pick fingers, feet or the jaw.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/rigify.html">Full guide →</a></div>
+</div>
+
+<!-- 12 -->
+<div class="doc">
+  <span class="num">12 /</span>
+  <h2>Presets and sharing</h2>
+  <p class="lead">A global preset is a canvas saved outside the .blend, so every project can use it. Presets survive add-on updates.</p>
+  <ul class="list">
+    <li><span class="dia"></span>In Edit Mode, click <strong>Save as Global...</strong> on the top bar. Add it anywhere from the presets menu.</li>
+    <li><span class="dia"></span>A linked canvas shows its state: <span class="pill p-ok">✓ Up to date</span> <span class="pill p-mute">● Modified</span> <span class="pill p-mute">↓ vN available</span>.</li>
+    <li><span class="dia"></span><strong>Overwrite</strong> sends your canvas to the preset, <strong>Sync</strong> takes the preset's, <strong>Unlink</strong> keeps a plain copy. <strong>Restore Previous Version</strong> has the last 5.</li>
+    <li><span class="dia"></span><strong>Manage › Export</strong> writes a <code>.flexspace</code> file; <strong>Manage › Import...</strong> adds one.</li>
+    <li><span class="dia"></span>Set a <strong>Shared Presets Folder</strong> in the add-on preferences to share with your team.</li>
+  </ul>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-presets.png" width="1160" height="1204" alt="The Global Presets menu: four presets as thumbnails, one from the shared folder, with Save as Global Preset and Manage.">
+    <p class="figcap">The presets menu with thumbnails, an exported file and a shared folder.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/presets-menu.png" width="528" height="167" alt="Save any canvas as a global preset and add it to any project from a menu of thumbnails."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Global presets.</strong> Save any canvas as a global preset and add it to any project from a menu of thumbnails.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/library.png" width="911" height="954" alt="The Canvas tab of the sidebar: the pages and the Library of global presets and local canvases."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Library.</strong> The Canvas tab of the sidebar: the pages and the Library of global presets and local canvases.</p>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/canvas.html">Full guide →</a></div>
+</div>
+
+<!-- 13 -->
+<div class="doc">
+  <span class="num">13 /</span>
+  <h2>Shortcuts</h2>
+  <p class="lead">With the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap, yours included.</p>
+  <h3>Everywhere</h3>
+  <div class="tw"><table class="tb kt"><tbody>
+    <tr class="r1"><td class="k"><kbd>Tab</kbd></td><td>Edit Mode ↔ Live Mode (Pose Mode on a picker)</td></tr>
+    <tr class="ev"><td class="k"><kbd>Middle mouse</kbd> <kbd>Wheel</kbd></td><td>Pan, zoom</td></tr>
+    <tr><td class="k"><kbd>Home</kbd></td><td>Frame every widget</td></tr>
+    <tr class="ev"><td class="k"><kbd>N</kbd> <kbd>T</kbd></td><td>Sidebar, toolbar</td></tr>
+    <tr><td class="k"><kbd>Ctrl Z</kbd> <kbd>Ctrl Shift Z</kbd></td><td>Undo, redo</td></tr>
+  </tbody></table></div>
+  <h3>Edit Mode</h3>
+  <div class="tw"><table class="tb kt"><tbody>
+    <tr class="r1"><td class="k"><kbd>Shift A</kbd></td><td>Add a widget: type to search, <kbd>Enter</kbd> adds</td></tr>
+    <tr class="ev"><td class="k"><kbd>G</kbd> <kbd>R</kbd> <kbd>S</kbd></td><td>Move, rotate, scale (<kbd>Alt R</kbd> clears rotation)</td></tr>
+    <tr><td class="k"><kbd>Shift D</kbd></td><td>Duplicate</td></tr>
+    <tr class="ev"><td class="k"><kbd>Ctrl C</kbd> <kbd>Ctrl V</kbd></td><td>Copy, paste (into this or another canvas of the same kind)</td></tr>
+    <tr><td class="k"><kbd>X</kbd> <kbd>Delete</kbd></td><td>Delete</td></tr>
+    <tr class="ev"><td class="k"><kbd>Ctrl G</kbd> <kbd>Alt G</kbd></td><td>Group, ungroup (double-click a group to enter it)</td></tr>
+    <tr><td class="k"><kbd>Ctrl J</kbd> <kbd>Alt P</kbd></td><td>Frame the selection, remove from frame</td></tr>
+    <tr class="ev"><td class="k"><kbd>M</kbd></td><td>Move the selection to another page</td></tr>
+    <tr><td class="k"><kbd>Arrows</kbd></td><td>Nudge 10 units (<kbd>Shift</kbd>: 1)</td></tr>
+  </tbody></table></div>
+  <h3>While moving, resizing or rotating</h3>
+  <div class="tw"><table class="tb kt"><tbody>
+    <tr class="r1"><td class="k"><kbd>X</kbd> <kbd>Y</kbd></td><td>Lock an axis</td></tr>
+    <tr class="ev"><td class="k"><kbd>Shift</kbd></td><td>Lock the drag axis, keep or free the ratio, 15 degree steps, finer scale</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd></td><td>Snap (or drag free with smart snapping on); 5 degree steps</td></tr>
+    <tr class="ev"><td class="k"><kbd>Alt</kbd></td><td>From the centre, each widget on its own, don't drop into a Flex Box</td></tr>
+    <tr><td class="k"><kbd>Enter</kbd> <kbd>Esc</kbd></td><td>Confirm, cancel (type a number for an exact value)</td></tr>
+  </tbody></table></div>
+  <h3>Live Mode</h3>
+  <div class="tw"><table class="tb kt"><tbody>
+    <tr class="r1"><td class="k"><kbd>Shift</kbd> drag</td><td>10 times finer on a Lineal slider or Number Field</td></tr>
+    <tr class="ev"><td class="k"><kbd>Ctrl</kbd> drag</td><td>Snap to the property's step</td></tr>
+    <tr><td class="k"><kbd>Ctrl</kbd> click</td><td>Type a Lineal slider's value (or double-click it)</td></tr>
+    <tr class="ev"><td class="k"><kbd>I</kbd> <kbd>Alt I</kbd></td><td>Insert, delete a keyframe on the property under the mouse</td></tr>
+    <tr><td class="k"><kbd>Shift Alt I</kbd></td><td>Clear all its keyframes</td></tr>
+    <tr class="ev"><td class="k"><kbd>Backspace</kbd></td><td>Reset it to its default value</td></tr>
+  </tbody></table></div>
+  <h3>Picker, Pose Mode</h3>
+  <div class="tw"><table class="tb kt"><tbody>
+    <tr class="r1"><td class="k">Click, <kbd>Shift</kbd> click</td><td>Select a bone, add it to the selection</td></tr>
+    <tr class="ev"><td class="k">Drag on empty space</td><td>Box select bones (click empty space: deselect all)</td></tr>
+    <tr><td class="k">Right-click</td><td>Insert Keyframe pie (with an active bone)</td></tr>
+  </tbody></table></div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/shortcuts.html">Full guide →</a></div>
+</div>
+
+<!-- 14 -->
+<div class="doc">
+  <span class="num">14 /</span>
+  <h2>Troubleshooting</h2>
+  <p class="lead">Find what you see, then its cause and its fix.</p>
+  <div class="tw">
+    <table class="tb tt">
+      <thead><tr><th>YOU SEE</th><th>WHY</th><th>FIX</th></tr></thead>
+      <tbody>
+        <tr><td class="k">Some widgets are gone</td><td>The <strong>View Object Types</strong> menu hides them, or they are on another page.</td><td>Turn the type back on at the end of the header, or check the page selector.</td></tr>
+        <tr class="ev"><td class="k">A dashed outline in Edit Mode</td><td>Its binding doesn't work: a wrong path, or the wrong kind of property.</td><td>Select it and read the note under its <strong>Data Path</strong>.</td></tr>
+        <tr><td class="k"><span class="pill">⚠ N broken</span> on the top bar</td><td>That many widgets have a broken binding.</td><td>Click it: it frames the next one and opens its settings.</td></tr>
+        <tr class="ev"><td class="k">An operator button is red</td><td>The operator can't run right now, for example a pose tool with no armature in Pose Mode.</td><td>Use it in the right mode, or pick another operator.</td></tr>
+        <tr><td class="k">"Run Untrusted Code?"</td><td>The button runs code stored in the .blend and <strong>Auto Run Python Scripts</strong> is off.</td><td>Click <strong>Trust and Run</strong> if you trust the file. It asks once per session.</td></tr>
+        <tr class="ev"><td class="k"><kbd>Shift A</kbd> does nothing</td><td>Widgets are added in Edit Mode.</td><td>Press <kbd>Tab</kbd> first. In a picker, the rig must be in Pose Mode too.</td></tr>
+        <tr><td class="k">The picker shows a card</td><td>A picker works on its own armature, in Pose Mode.</td><td>The card's button fixes it: <strong>Enter Pose Mode</strong>, <strong>Pose "rig"</strong> or <strong>Use it for ...</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/troubleshooting.html">Full guide →</a></div>
+</div>
+
+<!-- 15 -->
+<div class="doc">
+  <span class="num">15 /</span>
+  <h2>Report a bug</h2>
+  <p class="lead">Found something broken? Report it from inside Blender.</p>
+  <ol class="steps">
+    <li class="step"><span class="sn">1</span>Open <strong>Help › Report a Bug...</strong> in the canvas header (or <strong>Report a Bug</strong> in the add-on preferences).</li>
+    <li class="step"><span class="sn">2</span>Write a title, what happened, the steps to make it happen again and what you expected. FlexSpace adds the Blender and FlexSpace versions, your system and GPU, the canvas, the modules and the last errors of this session.</li>
+    <li class="step"><span class="sn">3</span>Click <strong>Open on GitHub</strong>: a new issue opens in your browser, filled in. Review it and submit it there.</li>
+  </ol>
+  <p class="body">No GitHub account? Click <strong>Copy Report</strong> and paste it in a comment on the product page or in an email. Nothing is sent by FlexSpace itself, and your home folder in any file path is replaced by <code>~</code>. You can also <a href="https://github.com/jfranmatheu/flexspace/issues">open an issue by hand</a>.</p>
+  <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/troubleshooting.html">Full guide →</a></div>
+</div>
+
+</div>
+
+<!-- ============================================================ CLOSING BAND -->
+<div class="end">
+  <h2>There's more in <span class="ember">the full docs.</span></h2>
+  <p class="lead">Twelve guides, the recipes for a full studio canvas, and every setting explained.</p>
+  <div class="actions"><a class="btn" href="https://jfranmatheu.github.io/flexspace/docs/">jfranmatheu.github.io/&#8203;flexspace/docs&nbsp;→</a></div>
+  <p class="sign">FlexSpace 1.4.0 · GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
+</div>
+
+</div>
