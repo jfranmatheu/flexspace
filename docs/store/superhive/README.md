@@ -6,7 +6,8 @@ HTML for the FlexSpace product on Superhive, plus a local preview.
 |---|---|
 | `page.src.html` | Source of the store page: classes and one `<style>`. Edit this one |
 | `page.html` | Built from `page.src.html`. Paste it into the product **description** |
-| `docs.html` | The **documentation** tab. Still the old class-based fragment: it will move to `docs.src.html` and be built the same way |
+| `docs.src.html` | Source of the documentation tab, written the same way. Edit this one |
+| `docs.html` | Built from `docs.src.html`. Paste it into the product **documentation** |
 | `page.old.html`, `docs.old.html` | The fragments as they were before Superhive (one `<style>` and classes, "Layer" wording). Kept for reference: they show the intended design |
 | `preview.html` | Nothing to paste (local only): shows a fragment the way Superhive would, and checks the rules below |
 
@@ -27,12 +28,12 @@ Superhive's description editor is Summernote, and the HTML is sanitized on the s
 ## How the page is built
 
 ```
-py -3.10 docs/_design/build_superhive.py            # builds page.html (and docs.html once docs.src.html exists)
+py -3.10 docs/_design/build_superhive.py            # builds page.html and docs.html (or name one: page, docs)
 py -3.10 docs/_design/build_superhive.py --check docs/store/superhive/page.html
 py -3.10 docs/_design/build_superhive.py --sanitize docs/store/superhive/page.html   # what Superhive would keep
 ```
 
-`page.src.html` is plain HTML with class names and one `<style>` of simple selectors (`.class`, `tag`, `.a .b`, `.a > b`, comma lists). The build inlines the rules into each element's `style=""` in browser cascade order (specificity, then source order, `!important` respected, the element's own `style=""` last), drops the classes, the `<style>` and comments, and validates the result. **The build fails** on any tag, attribute, CSS property or value Superhive would strip, a leftover `class`/`id`, a relative link or media URL, a media file missing from `docs/assets/`, an `<img>` without `width`, `height` and `alt`, or a `<video>` without autoplay, muted, loop, playsinline, a poster and an MP4 source. Its output passes `--sanitize` unchanged.
+`page.src.html` and `docs.src.html` are plain HTML with class names and one `<style>` of simple selectors (`.class`, `tag`, `.a .b`, `.a > b`, comma lists). The build inlines the rules into each element's `style=""` in browser cascade order (specificity, then source order, `!important` respected, the element's own `style=""` last), drops the classes, the `<style>` and comments, and validates the result. **The build fails** on any tag, attribute, CSS property or value Superhive would strip, a leftover `class`/`id`, a relative link or media URL, a media file missing from `docs/assets/`, an `<img>` without `width`, `height` and `alt`, or a `<video>` without autoplay, muted, loop, playsinline, a poster and an MP4 source. Its output passes `--sanitize` unchanged.
 
 `data-fit="16/10"` on an `<img>` or `<video>` letterboxes it inside a frame of that aspect (what `object-fit: contain` did): the build sizes it from its `width`/`height`.
 
@@ -44,12 +45,13 @@ How the design survives without the stripped CSS:
 - **Baked into images** (only where CSS can't do it): the blueprint grid behind some sections (`grid-bg.png`, needs `background-size`), the tilted, shadowed Color Picker and Brush Picker in the hero (`hero-*-tilt.png`, need `transform` and `filter`). All copy, headings, lists, the FAQ and tables are real text.
 - **GIFs became `<video>`** with the MP4 from `assets/media/` and the existing `-still.png` as poster; the two drawn GIFs got their own MP4s (`assets/media/store/gif-*.mp4`). `docs/_design/make_superhive_media.py` makes the new media.
 - **Dropped:** hover and every animation, the `<details>` FAQ (now static question/answer blocks), the eyebrows' and chips' `text-transform` (the capitals are typed), Bricolage Grotesque and JetBrains Mono (the host serves Inter; display text uses heavy weights and tight letter-spacing, keycaps a system monospace). The store page has no in-page links, so nothing was lost to the missing `id`s.
+- **The docs tab** keeps its 15 sections, tables and widget reference as real text. Its contents list can't jump (no `id`s), so it is a plain overview of the sections, and each section ends with its link to the full guide online instead of "↑ Contents". The diamond bullets are a gold square with its corners painted over by four `linear-gradient()`s (no `transform`); the step numbers and the section numbers (`01 /`) are typed; the widget thumbnails are cropped to the old 136 x 84 tile by a clipping box (no `object-fit`); the table stripes are a class on every other row (no `:nth-child`). Long URLs carry a zero-width space after `github.io/` so they break there on phones.
 
 ## How to paste
 
 1. Push `docs/` to `main` first: the page loads its images and videos from `https://jfranmatheu.github.io/flexspace/assets/`.
 2. Build (`py -3.10 docs/_design/build_superhive.py`) and open `page.html` in a text editor.
-3. In Superhive's description editor, switch to **source mode** (the `</>` button), select all, delete, paste the whole file, switch back and save.
+3. In Superhive's description editor (and for `docs.html`, the documentation editor), switch to **source mode** (the `</>` button), select all, delete, paste the whole file, switch back and save.
 4. Open the product page at desktop and phone width. If something looks off, compare with `preview.html`.
 
 ## Preview locally
