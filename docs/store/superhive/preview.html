@@ -64,7 +64,7 @@
 //   py -3.10 -m http.server 8000 -d docs   then open http://localhost:8000/store/superhive/preview.html
 const SITE = "https://jfranmatheu.github.io/flexspace/";
 const ASSETS = SITE + "assets/";
-const KEPT_TAGS = new Set(`div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dl dt dd
+const KEPT_TAGS = new Set(`div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dt dd
   blockquote strong b em i u s del ins cite small code kbd sup sub pre abbr hr br font`.split(/\s+/));
 const GLOBAL_ATTRS = ["style", "title"];
 const TAG_ATTRS = { a: ["href", "target"], img: ["src", "width", "height", "alt", "align"],

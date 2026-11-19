@@ -42,7 +42,7 @@ ASSETS = SITE + "assets/"
 # ----------------------------------------------------------------------------------------------- the whitelist
 # Measured on Superhive (save a probe, read it back). Keep in sync with docs/store/superhive/README.md.
 # Only what was measured: no overflow-x/-y, no per-side border-*-width/-color/-style, no per-corner radius.
-KEPT_TAGS = set("""div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dl dt dd
+KEPT_TAGS = set("""div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dt dd
     blockquote strong b em i u s del ins cite small code kbd sup sub pre abbr hr br font""".split())
 VOID = {"img", "br", "hr", "source", "input", "meta", "link", "col", "area", "base", "embed", "param", "track", "wbr"}
 GLOBAL_ATTRS = {"style", "title"}
