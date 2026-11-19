@@ -351,6 +351,48 @@ th, td { margin: 0; border: 0; }
     <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-lineal-2d-slider.png" width="720" height="324" alt="Lineal 2D slider"></div><div class="wtext"><strong class="wname">Lineal 2D slider</strong><span class="wdesc">A pad that drives two properties at once</span><span class="cat cat-picker">PICKER</span></div></div></li>
     <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-bone-pickers.png" width="720" height="324" alt="Bone pickers"></div><div class="wtext"><strong class="wname">Button, Button Image, Geometry Shape</strong><span class="wdesc">Bone pickers: select their bone</span><span class="cat cat-picker">PICKER</span></div></div></li>
   </ul>
+  <p class="sub">3D VIEWS: ONE WIDGET, FOUR WAYS</p>
+  <ul class="wgrid">
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-view-preview.png" width="720" height="324" alt="View Preview"></div><div class="wtext"><strong class="wname">View Preview</strong><span class="wdesc">Frames the active object</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-camera-view.png" width="720" height="324" alt="Camera View"></div><div class="wtext"><strong class="wname">Camera View</strong><span class="wdesc">What the scene camera sees, inside its frame</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-viewport-mirror.png" width="720" height="324" alt="Viewport Mirror"></div><div class="wtext"><strong class="wname">Viewport Mirror</strong><span class="wdesc">Follows your 3D Viewport</span></div></div></li>
+    <li class="wcell"><div class="wcard"><div class="thumb"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-silhouette.png" width="720" height="324" alt="Silhouette"></div><div class="wtext"><strong class="wname">Silhouette</strong><span class="wdesc">The flat shape of the active object, seen from the front</span></div></div></li>
+  </ul>
+  <h3>3D views</h3>
+  <p class="body">A live 3D view on the canvas: a close-up of the object you are working on, what the camera sees, or a second look at your viewport. It updates as you work. <strong>Add › Graphics › 3D Views</strong> has the four entries above: they are all the same widget, set up differently, and you can change any of them later. Pick the <strong>Source</strong> in the sidebar, <strong>Widget</strong> tab.</p>
+  <ul class="list">
+    <li><span class="dia"></span><strong>Target</strong> frames the <strong>Active Object</strong>, <strong>Selected Objects</strong>, an <strong>Object</strong> or a <strong>Collection</strong>, and with <strong>Auto Frame</strong> keeps them framed when they move or change. <strong>View</strong> is Front, Back, Left, Right, Top, Bottom or Custom (<strong>Yaw</strong> and <strong>Pitch</strong>), with <strong>Projection</strong>, <strong>Focal Length</strong>, <strong>Padding</strong> and <strong>Zoom</strong>. It is a real view of the scene: objects near the target show too.</li>
+    <li><span class="dia"></span><strong>Camera</strong> shows what the <strong>Scene Camera</strong> or a <strong>Camera Object</strong> sees, in the render's aspect. <strong>Passepartout</strong> darkens what is outside the frame; off, the widget shows bars.</li>
+    <li><span class="dia"></span><strong>Navigate</strong>: <strong>Follow Viewport</strong> mirrors a 3D Viewport as you navigate; <strong>Free Orbit</strong> is a view of its own, with <strong>From Viewport</strong> and <strong>Frame Selected</strong>.</li>
+    <li><span class="dia"></span><strong>Interactive</strong> (Target and Free Orbit, in Live Mode): drag to orbit, <kbd>Shift</kbd> drag to pan (Free Orbit), <kbd>Ctrl</kbd> drag or the wheel to zoom; double-click goes back to zoom 1 (Target) or frames the selection (Free Orbit). Each drag is one undo step; <kbd>Esc</kbd> while dragging puts the view back.</li>
+    <li><span class="dia"></span><strong>Shading</strong>: Solid, Wireframe, Material Preview or the viewport's own. <strong>Overlays</strong> draws the grid, outlines and the rest; <strong>Transparent</strong> lets the canvas show through.</li>
+    <li><span class="dia"></span><strong>Silhouette</strong>: the flat shape in one colour, as an artist checks a pose. <strong>Scope</strong> is All Visible or Target Only, with a <strong>Color</strong>, a <strong>Background</strong> and an <strong>Outer</strong> or <strong>Inner</strong> outline.</li>
+  </ul>
+  <div class="note tip">A view draws again only when something it shows changes, and off-screen views draw nothing. For a heavy scene, lower <b>Max FPS</b> or turn off <b>Live Update</b> and click <b>Refresh</b>.</div>
+  <div class="note">A view needs an open 3D Viewport to draw with (a Target Only silhouette doesn't). Without one it says <b>Open a 3D Viewport</b>.</div>
+  <div class="fig">
+    <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-3d-views.png" width="1312" height="999" alt="A canvas with the four 3D views: View Preview framing Suzanne, Camera View with bars around the camera's wide frame, Viewport Mirror with the grid and the selection outline, and Suzanne's Silhouette in white with an orange outline.">
+    <p class="figcap">The four 3D views on one canvas, next to the viewport they draw from.</p>
+  </div>
+  <div class="inb">
+    <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+    <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/view-preview-target-still.png" width="1278" height="648"><source src="https://jfranmatheu.github.io/flexspace/assets/media/store/view-preview-target.mp4" type="video/mp4">Click the ball, the cylinder, the pyramid, then Suzanne in the viewport: View Preview frames each new active object.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Target: Active Object.</strong> Click the ball, the cylinder, the pyramid, then Suzanne in the viewport: View Preview frames each new active object.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit">
+          <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/view-preview-mirror-still.png" width="1278" height="648"><source src="https://jfranmatheu.github.io/flexspace/assets/media/store/view-preview-mirror.mp4" type="video/mp4">Orbit the 3D Viewport and Viewport Mirror follows, with the grid and the selection outline drawn too.</video>
+          <span class="tag"><span class="dot"></span>RECORDING</span>
+        </div>
+        <p class="fcap"><strong>Navigate: Follow Viewport.</strong> Orbit the 3D Viewport and Viewport Mirror follows, with the grid and the selection outline drawn too.</p>
+      </div>
+    </div>
+  </div>
   <div class="foot"><a href="https://jfranmatheu.github.io/flexspace/docs/widgets.html">Full guide →</a></div>
 </div>
 
