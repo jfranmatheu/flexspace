@@ -75,6 +75,5 @@ Both register their outputs in `docs/assets/img/graphics.json`. To change a pict
 
 ## Open points for the author
 
-- **Updates.** The trust row and "What's inside" say "Updates via Superhive" (new versions arrive in the buyer's Superhive library). If every new version is free for buyers, you can say so there (and in the site's trust row, `index.html`).
 - **No buy button.** The store page has its own; the fragments link to the docs and the issue tracker only.
 - **Superhive editor.** Check after the first paste that it keeps `<style>`, `<picture>`, `<details>` and `id` attributes (see the table above for what happens if not).

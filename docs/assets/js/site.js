@@ -4,10 +4,15 @@
   "use strict";
 
   /* ---- Links set in one place (docs/_design/build_docs.py reads SUPERHIVE_URL from here too, so the docs
-     follow). Fill SUPERHIVE_URL in when the product page is live, then rerun build_docs.py. ---- */
-  // TODO(author): the FlexSpace product URL on Superhive. Until then, links go to the Superhive home page.
-  var SUPERHIVE_URL = "https://superhivemarket.com/";
-  var CHANGELOG_URL = "https://github.com/franb3d/flexspace/releases";
+     follow; rerun build_docs.py after changing it). The changelog is a page of this site (changelog.html, built
+     from CHANGELOG.md by docs/_design/build_changelog.py), found from this script's own URL so it works from any
+     page, 404.html included. ---- */
+  var SUPERHIVE_URL = "https://superhivemarket.com/products/flexspace-armature-picker";
+  var SITE_ROOT = (function () {
+    var s = document.currentScript && document.currentScript.src;
+    return s ? s.replace(/assets\/js\/site\.js(?:[?#].*)?$/, "") : "";
+  })();
+  var CHANGELOG_URL = SITE_ROOT ? SITE_ROOT + "changelog.html" : "";
   var ISSUES_URL = "https://github.com/franb3d/flexspace/issues";
   var BUG_FORM_URL = "https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml";
 

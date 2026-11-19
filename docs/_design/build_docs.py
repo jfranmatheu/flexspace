@@ -44,8 +44,8 @@ WORKSPACE = DOCS.parent.parent                  # the folder that holds both rep
 SITE_URL = "https://franb3d.github.io/flexspace/"
 ISSUES_URL = "https://github.com/franb3d/flexspace/issues"
 BUG_URL = "https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml"
-CHANGELOG_URL = "https://github.com/franb3d/flexspace/releases"   # DESIGN §4: one constant
-# DESIGN §7.1: one place for the store link, assets/js/site.js (var SUPERHIVE_URL = "..."): the site and the docs
+CHANGELOG_URL = "../changelog.html"   # DESIGN §4: the site's changelog page (build_changelog.py)
+# DESIGN: one place for the store link, assets/js/site.js (var SUPERHIVE_URL = "..."): the site and the docs
 # always agree. Empty there = no "Get it on Superhive" button here.
 _SITE_JS = (DOCS / "assets" / "js" / "site.js").read_text(encoding="utf-8")
 SUPERHIVE_URL = (re.search(r'var SUPERHIVE_URL = "([^"]*)"', _SITE_JS) or [None, ""])[1]
@@ -370,7 +370,7 @@ def side_nav(current: str, titles: dict) -> str:
 
 def site_links(active: str = "docs") -> list:
     return [("Features", "../features.html", ""), ("Widgets", "../widgets.html", ""), ("Picker", "../picker.html", ""),
-            ("Docs", "index.html", "docs"), ("Changelog", CHANGELOG_URL, "ext"), ("Support", "../support.html", "")]
+            ("Docs", "index.html", "docs"), ("Changelog", CHANGELOG_URL, ""), ("Support", "../support.html", "")]
 
 
 def topbar(facts) -> str:
@@ -408,7 +408,7 @@ def footer(facts) -> str:
       <p>{esc(facts['tagline'])}. v{esc(facts['version'])} &middot; Blender {esc(facts['blender'].rsplit('.0', 1)[0] or facts['blender'])}+</p></div>
     <nav class="fs-foot__links" aria-label="Footer">
       <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
-      <a href="index.html">Docs</a><a href="{CHANGELOG_URL}" target="_blank" rel="noopener">Changelog</a>
+      <a href="index.html">Docs</a><a href="{CHANGELOG_URL}">Changelog</a>
       <a href="../support.html">Support</a>{f'<a href="{esc(SUPERHIVE_URL)}" target="_blank" rel="noopener">Superhive</a>' if SUPERHIVE_URL else ''}
       <a href="{ISSUES_URL}" target="_blank" rel="noopener">GitHub issues</a>
     </nav>

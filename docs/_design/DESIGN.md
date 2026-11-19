@@ -17,7 +17,8 @@ Product facts used everywhere (one place, keep in sync on release):
 | Icons bundled | Phosphor Icons, Gravity UI Icons (both MIT) |
 | Issues | `https://github.com/franb3d/flexspace/issues` (form: `issues/new?template=flexspace.yml`) |
 | Site | `https://franb3d.github.io/flexspace/` |
-| Superhive URL | `SUPERHIVE_URL`: unknown yet. One constant, filled in by the author. Never guessed. |
+| Superhive URL | `https://superhivemarket.com/products/flexspace-armature-picker` (`SUPERHIVE_URL` in `assets/js/site.js`, one constant; `build_docs.py` reads it) |
+| Changelog | `CHANGELOG.md` at the repo root, shown as `changelog.html` (built by `_design/build_changelog.py`) |
 
 ---
 
@@ -298,9 +299,10 @@ with literal values (see §6).
    1 px `--border-1`. A second variant "Flex Space vs Armature Picker" table: what each canvas is for, where it is
    saved (.blend vs armature data), its modes, its extra widgets.
 7. **Trust row** (no testimonials). Glass strip, 4–5 items with icon + two-line label:
-   **Blender 5.3+** / built as an extension · **Free updates** / every new version (*author to confirm*) ·
+   **Blender 5.3+** / built as an extension · **Demo files included** / each opens in its own window ·
    **Full docs** / online and inside Blender · **Public issue tracker** / Report a Bug from Blender · **GPL-3.0** /
-   open licence.
+   open licence. Updates are not a selling point: buyers download each new version from Superhive, as with any
+   product there, so the pages don't mention them.
 8. **FAQ.** `<details>`/`<summary>` accordion; summary is an h4-styled question with a `+` that rotates 45°. One
    open at a time is not enforced (no JS). Answers ≤ 3 sentences + a docs link.
 9. **CTA band.** Full-bleed, `--grad-hero-glow` + grid, big h2, one sentence, primary button to Superhive, ghost to
@@ -325,6 +327,7 @@ docs/
   widgets.html          Widget gallery
   picker.html           Armature Picker + Rigify
   support.html          Report a bug, troubleshooting, contact
+  changelog.html        What changed in each version (generated from CHANGELOG.md)
   docs/index.html       Docs home (cards for each guide)
   docs/<slug>.html      One per help/*.md
   assets/css/tokens.css, site.css     assets/js/site.js (theme toggle, reveal, gallery filter enhancement)
@@ -335,11 +338,14 @@ docs/
   404.html, robots.txt, sitemap.xml, .nojekyll
 ```
 
-Nav order: Features · Widgets · Picker · Docs · Changelog (external) · Support. Footer: the same + Superhive,
+Nav order: Features · Widgets · Picker · Docs · Changelog · Support. Footer: the same + Superhive,
 GitHub issues, licence line ("FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.").
 
-**Changelog** is a link, not a page: `https://github.com/franb3d/flexspace/releases` (one constant; if the author
-prefers a CHANGELOG file, change the constant only).
+**Changelog** is a page of the site, `changelog.html`, generated from `CHANGELOG.md` (repo root, Keep a Changelog
+style) by `py -3.10 docs/_design/build_changelog.py`. The script takes the nav, footer and `<head>` from
+`support.html`, so the shell stays in step with the hand-written pages. Every Changelog link points at it: the static
+hrefs, `CHANGELOG_URL` in `site.js` (resolved from the script's own URL, so 404.html works too) and `CHANGELOG_URL`
+in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the docs' words; no invented dates.
 
 ### index.html (landing)
 
@@ -580,8 +586,5 @@ Each section: h2, one-sentence summary in lead style, 3–8 bullets or a short t
 
 ## 7. Open questions for the author
 
-1. `SUPERHIVE_URL` (product link) for every "Get it on Superhive" button.
-2. "Free updates" in the trust row: confirm that buyers get every new version free.
-3. Changelog target: GitHub Releases (default) or a CHANGELOG file.
-4. Does the Superhive editor keep `<picture>`, `<details>` and inline SVG? If not, fall back to `<img>` + GIF first
+1. Does the Superhive editor keep `<picture>`, `<details>` and inline SVG? If not, fall back to `<img>` + GIF first
    frames, plain sections, and PNG icons (the fragments are written so each degrades cleanly).
