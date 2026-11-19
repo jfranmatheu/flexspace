@@ -292,6 +292,23 @@ def esc(s) -> str:
     return html.escape(str(s), quote=True)
 
 
+# Old heading anchors kept working after a heading was renamed (canvas layers became pages): (page slug) -> {new: old}.
+ANCHOR_ALIASES = {
+    "canvas": {"pages-and-modes": "layers-and-modes"},
+    "recipes": {"object-page-geometry-nodes-controls": "object-layer-geometry-nodes-controls",
+                "look-dev-page": "look-dev-layer", "sculpt-page": "sculpt-layer",
+                "texture-paint-page": "texture-paint-layer", "weight-paint-page": "weight-paint-layer",
+                "draw-page-grease-pencil": "draw-layer-grease-pencil"},
+}
+
+
+def add_anchor_aliases(slug: str, body: str) -> str:
+    for new, old in ANCHOR_ALIASES.get(slug, {}).items():
+        tag = f'<h2 id="{new}">' if f'<h2 id="{new}">' in body else f'<h3 id="{new}">'
+        body = body.replace(tag, f'{tag}<span id="{old}" aria-hidden="true"></span>', 1)
+    return body
+
+
 def post_process(body: str) -> str:
     def callout(m):
         label = m.group(1)
@@ -613,7 +630,7 @@ def build(src: Path) -> dict:
 
         body, heads = gen.markdown(p["text"], linker, figure, lambda: demo_cards(demos))
         body = re.sub(r"^<h1 [^>]*>.*?</h1>\n?", "", body, count=1)
-        body = post_process(body)
+        body = add_anchor_aliases(p["slug"], post_process(body))
         toc = toc_html(heads, "fs-toc")
         mtoc = (f'<details class="fs-doc__mtoc"><summary>On this page{ICON["chev"]}</summary>{toc_html(heads, "fs-toc")}'
                 f'</details>') if toc else ""
