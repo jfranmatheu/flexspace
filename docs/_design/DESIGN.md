@@ -54,6 +54,15 @@ drawings for the picker**, not about the product screenshots. The site and the s
       `focus-picker` / `frame-picker` = Adult Male; the hero picker (`hero-picker`, store page and site home),
       `card-picker`, the presets thumbnail and the `w-bone-pickers` tile = Adult Female; picker sections show both.
 
+  - **3D views** (View Preview, Camera View, Viewport Mirror, Silhouette: one widget, four Add menu entries) are not in
+    the manifest: `make_media.py --only views` takes them from the Superhive captures
+    (`marketing/flexspace/superhive/src/captures/view_preview/`, 2x stills; `superhive/reel/footage/*_cursor.mp4`,
+    30 fps with the pointer, halved to 1278 x 648) with titles and captions written from the help (`VIEWS_*`). Their
+    gallery cards have no redrawn art: the card shows the widget cut from a still of it alone (9:5, the canvas dot grid
+    extended where the editor is too narrow) with a permanent "In Blender" badge. Where: a "3D Views" filter and
+    section on widgets.html, group 07 on features.html, a feature row and a strip card on the landing, figures in the
+    docs' View Preview section (`REAL_EXTRA`).
+
 The rest of this section is about the redrawn art.
 
 How we generate, in order of preference:
@@ -381,7 +390,7 @@ in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the do
 1. Hero: *Build the Blender panel you always wanted.* (see store copy §5 for the shared hero text).
 2. Trust row.
 3. "Two modes. One canvas." Edit Mode / Live Mode split card with the `Tab` keycap in the middle.
-4. Feature rows (4): Control panels · Bind anything · Pages per mode · Ring Menu.
+4. Feature rows (6): Control panels · Bind anything · Pages per mode · Ring Menu · Edit Mode · 3D Views.
 5. Picker teaser: full-bleed dark band, `picker-hero`, "Pose without hunting for bones", link to picker.html.
 6. Bento: the small things (8 tiles).
 7. Widget strip: 8 widget cards scrolling horizontally (scroll-snap), "See all widgets" → widgets.html.
@@ -391,14 +400,16 @@ in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the do
 
 ### features.html
 
-Sticky sub-nav (anchors): Canvas · Widgets · Binding · Pages · Editing · Color & Brush · Presets · Picker · Details.
+Sticky sub-nav (anchors): Canvas · Widgets · Binding · Pages · Editing · Color & Brush · 3D Views · Presets · Picker ·
+Details.
 Each anchor is a feature row group, deeper than the landing (2–4 rows each), every claim lifted from the matching
 help page. Ends with the Flex Space vs Armature Picker table and the CTA band.
 
 ### widgets.html
 
-Hero ("Every control you need, drawn on the canvas"), filter chips, the gallery (all Flex Space widgets + the picker's
-own), then "Add one in a second" (`add-widget`, `from-property`) and the From Property mapping table
+Hero ("Every control you need, drawn on the canvas"), filter chips (All · Buttons · Data · Color & Brush · Layout &
+Graphics · 3D Views · Armature Picker), the gallery (all Flex Space widgets, the four 3D views, the picker's own), the
+3D views section ("A live 3D view, right on the canvas", real captures), then "Add one in a second" (`add-widget`, `from-property`) and the From Property mapping table
 (On/off → Toggle, Enum → Enum, Number → Number Field, factor → Lineal, Colour → Color Swatch, Vector → Flex Box of
 Number Fields, anything else → Label).
 

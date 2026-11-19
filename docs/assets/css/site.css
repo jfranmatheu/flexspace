@@ -514,12 +514,14 @@ a.fs-wcard:hover, .fs-wcard:hover { transform: translateY(var(--fs-lift)); borde
 #f-data:checked ~ .fs-filters label[for="f-data"],
 #f-color:checked ~ .fs-filters label[for="f-color"],
 #f-layout:checked ~ .fs-filters label[for="f-layout"],
+#f-views:checked ~ .fs-filters label[for="f-views"],
 #f-picker:checked ~ .fs-filters label[for="f-picker"] { background: var(--text-1); color: var(--bg); border-color: var(--text-1); }
 #f-all:checked ~ .fs-filters label[for="f-all"] span,
 #f-buttons:checked ~ .fs-filters label[for="f-buttons"] span,
 #f-data:checked ~ .fs-filters label[for="f-data"] span,
 #f-color:checked ~ .fs-filters label[for="f-color"] span,
 #f-layout:checked ~ .fs-filters label[for="f-layout"] span,
+#f-views:checked ~ .fs-filters label[for="f-views"] span,
 #f-picker:checked ~ .fs-filters label[for="f-picker"] span { color: inherit; opacity: 0.7; }
 .fs-filter:focus-visible ~ .fs-filters label { outline: none; }
 #f-all:focus-visible ~ .fs-filters label[for="f-all"],
@@ -527,12 +529,14 @@ a.fs-wcard:hover, .fs-wcard:hover { transform: translateY(var(--fs-lift)); borde
 #f-data:focus-visible ~ .fs-filters label[for="f-data"],
 #f-color:focus-visible ~ .fs-filters label[for="f-color"],
 #f-layout:focus-visible ~ .fs-filters label[for="f-layout"],
+#f-views:focus-visible ~ .fs-filters label[for="f-views"],
 #f-picker:focus-visible ~ .fs-filters label[for="f-picker"] { box-shadow: var(--fs-focus-ring); }
 .fs-gallery { display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); list-style: none; padding: 0; margin: 0; }
 #f-buttons:checked ~ .fs-gallery > li:not([data-cat~="buttons"]),
 #f-data:checked ~ .fs-gallery > li:not([data-cat~="data"]),
 #f-color:checked ~ .fs-gallery > li:not([data-cat~="color"]),
 #f-layout:checked ~ .fs-gallery > li:not([data-cat~="layout"]),
+#f-views:checked ~ .fs-gallery > li:not([data-cat~="views"]),
 #f-picker:checked ~ .fs-gallery > li:not([data-cat~="picker"]) { display: none; }
 .fs-gallery > li { display: flex; }
 @media (min-width: 840px) { .fs-gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }

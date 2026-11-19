@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Features · FlexSpace for Blender</title>
-<meta name="description" content="Everything FlexSpace does: canvases with Edit and Live Mode, 21 widgets, binding with From Property and the eyedropper, pages per mode or object, smart snapping, the Ring Menu, global presets and the Armature Picker.">
+<meta name="description" content="Everything FlexSpace does: canvases with Edit and Live Mode, 22 widgets, live 3D views, binding with From Property and the eyedropper, pages per mode or object, smart snapping, the Ring Menu, global presets and the Armature Picker.">
 <link rel="canonical" href="https://jfranmatheu.github.io/flexspace/features.html">
 <meta name="theme-color" content="#0a0a0c">
 <meta name="color-scheme" content="dark light">
@@ -95,6 +95,7 @@
         <li><a href="#layers">Pages</a></li>
         <li><a href="#editing">Editing</a></li>
         <li><a href="#color-brush">Color &amp; Brush</a></li>
+        <li><a href="#views">3D Views</a></li>
         <li><a href="#presets">Presets</a></li>
         <li><a href="#picker">Picker</a></li>
         <li><a href="#details">Details</a></li>
@@ -177,9 +178,9 @@
       <div class="fs-rows">
         <article class="fs-row fs-reveal">
           <div class="fs-row__copy">
-            <span class="fs-eyebrow">21 widgets</span>
+            <span class="fs-eyebrow">22 widgets</span>
             <h3 class="fs-h3">Buttons, data, tools, graphics and layout.</h3>
-            <p>Operator and Custom Script buttons. Toggles, Enums, Lineal sliders, Number Fields, Labels and Lists for any property. Color Swatch, Color Picker, Color Palette, Brush Picker and Ring Menu. Images, Frames, Flex Boxes and Groups. The picker adds knobs, 2D pads, bone collection toggles and bone pickers.</p>
+            <p>Operator and Custom Script buttons. Toggles, Enums, Lineal sliders, Number Fields, Labels and Lists for any property. Color Swatch, Color Picker, Color Palette, Brush Picker and Ring Menu. Images, live 3D views, Frames, Flex Boxes and Groups. The picker adds knobs, 2D pads, bone collection toggles and bone pickers.</p>
             <ul class="fs-ticks">
               <li>A Label, a Style and Conditions on most widgets</li>
               <li>Your own tooltip text on any widget</li>
@@ -525,10 +526,89 @@
     </div>
   </section>
 
-  <!-- ============================================================ PRESETS -->
-  <section class="fs-section fs-anchor" id="presets" aria-labelledby="presets-title">
+  <!-- ============================================================ 3D VIEWS (real media: _design/make_media.py VIEWS_*) -->
+  <section class="fs-section fs-anchor" id="views" aria-labelledby="views-title">
     <div class="fs-wrap">
-      <div class="fs-group-title fs-reveal"><span class="fs-num">07</span><h2 class="fs-h2" id="presets-title">Presets, sharing and demos</h2></div>
+      <div class="fs-group-title fs-reveal"><span class="fs-num">07</span><h2 class="fs-h2" id="views-title">3D Views</h2></div>
+      <div class="fs-rows">
+        <article class="fs-row fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">View Preview</span>
+            <h3 class="fs-h3">A live 3D view on your canvas.</h3>
+            <p>A close-up of the object you are working on, what the camera sees, or a second look at your viewport, next to the controls that change it. It updates as you work. <strong>Add &gt; Graphics &gt; 3D Views</strong> has four ready-made entries: one widget, set up four ways, and you can change any of them later.</p>
+            <ul class="fs-ticks">
+              <li><strong>Target</strong> frames objects and keeps them framed when they move or change</li>
+              <li><strong>Camera</strong> shows a camera's frame at the render's aspect ratio</li>
+              <li><strong>Navigate</strong> follows a 3D Viewport, or orbits on its own</li>
+              <li>Solid, Wireframe, Material Preview or the viewport's own shading, overlays if you like</li>
+            </ul>
+            <p class="fs-keyline">It draws again only when something it shows changes; off screen, it draws nothing.</p>
+          </div>
+          <figure class="fs-real fs-media">
+            <a class="fs-real__frame" href="assets/media/view-preview-canvas.webp" data-zoom><img src="assets/media/view-preview-canvas.webp" width="1782" height="1261" loading="lazy" decoding="async" alt="View Preview, Camera View, Viewport Mirror and Silhouette on one canvas, each a ready-made entry of the Add menu."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>The four 3D views.</b> View Preview, Camera View, Viewport Mirror and Silhouette on one canvas, each a ready-made entry of the Add menu.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--lead">
+              <a class="fs-real__frame" href="assets/media/view-preview-overview.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/view-preview-overview.webp" data-src="assets/media/view-preview-overview.mp4" width="1278" height="648" aria-label="Four live 3D views on one canvas: View Preview, Camera View, Viewport Mirror and Silhouette next to the 3D Viewport. Orbit the viewport and the mirror follows; click the ball and the preview and the silhouette frame it."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>Four live 3D views on one canvas.</b> View Preview, Camera View, Viewport Mirror and Silhouette next to the 3D Viewport. Orbit the viewport and the mirror follows; click the ball and the preview and the silhouette frame it.</figcaption>
+            </figure>
+            <figure class="fs-real">
+              <a class="fs-real__frame" href="assets/media/view-preview-target.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/view-preview-target.webp" data-src="assets/media/view-preview-target.mp4" width="1278" height="648" aria-label="A close-up of the active object: View Preview frames the active object: click another object in the viewport and it frames that one."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>A close-up of the active object.</b> View Preview frames the active object: click another object in the viewport and it frames that one.</figcaption>
+            </figure>
+            <figure class="fs-real">
+              <a class="fs-real__frame" href="assets/media/view-preview-camera.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/view-preview-camera.webp" data-src="assets/media/view-preview-camera.mp4" width="1278" height="648" aria-label="What the camera sees: Camera View shows the scene camera&#x27;s frame, with bars around it, while the camera swings round the props."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+              <figcaption><b>What the camera sees.</b> Camera View shows the scene camera&#x27;s frame, with bars around it, while the camera swings round the props.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="fs-cols fs-cols--4" style="margin-top:clamp(48px,6vw,80px)">
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/media/widgets/view-preview.webp" width="720" height="400" loading="lazy" decoding="async" alt="View Preview framing the active object, Suzanne."></div>
+          <div class="fs-wcard__body"><h3>View Preview</h3><p>Frames the active object, the selected objects, an object or a collection, from any side or at an angle you set. Perspective or Orthographic, with Padding and Zoom.</p></div>
+        </article>
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/media/widgets/camera-view.webp" width="720" height="400" loading="lazy" decoding="async" alt="Camera View: the scene camera&#x27;s 2.39 : 1 frame with bars above and below."></div>
+          <div class="fs-wcard__body"><h3>Camera View</h3><p>What the scene camera sees (it follows camera markers), or a camera you pick. Passepartout darkens what is outside the frame; off, bars frame it.</p></div>
+        </article>
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/media/widgets/viewport-mirror.webp" width="720" height="400" loading="lazy" decoding="async" alt="Viewport Mirror: the 3D Viewport&#x27;s view, grid and outline included."></div>
+          <div class="fs-wcard__body"><h3>Viewport Mirror</h3><p>Follows a 3D Viewport as you navigate, local view and clipping included. Or Free Orbit: a view of its own you orbit, pan and zoom in Live Mode.</p></div>
+        </article>
+        <article class="fs-wcard fs-reveal">
+          <div class="fs-wcard__art"><img src="assets/media/widgets/silhouette.webp" width="720" height="400" loading="lazy" decoding="async" alt="Silhouette: the active object as a flat white shape with an orange outline."></div>
+          <div class="fs-wcard__body"><h3>Silhouette</h3><p>The flat shape, in one colour, as an artist checks a pose or a design. All Visible or Target Only, an outer or inner outline. Changing its colours is instant.</p></div>
+        </article>
+      </div>
+      <div class="fs-inblender fs-reveal">
+        <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+        <div class="fs-inblender__grid">
+          <figure class="fs-real fs-real--lead">
+            <a class="fs-real__frame" href="assets/media/view-preview-mirror.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/view-preview-mirror.webp" data-src="assets/media/view-preview-mirror.mp4" width="1278" height="648" aria-label="A second look at your viewport: Viewport Mirror follows the 3D Viewport: orbit it one way, then the other, and the mirror moves with it."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>A second look at your viewport.</b> Viewport Mirror follows the 3D Viewport: orbit it one way, then the other, and the mirror moves with it.</figcaption>
+          </figure>
+          <figure class="fs-real">
+            <a class="fs-real__frame" href="assets/media/view-preview-silhouette.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="assets/media/view-preview-silhouette.webp" data-src="assets/media/view-preview-silhouette.mp4" width="1278" height="648" aria-label="Check the shape, not the shading: Silhouette draws the target as one flat shape with an outline. A Toggle bound to its Silhouette switch shows the shaded view and back; then Suzanne turns and the shape follows."></video><span class="fs-real__tag">Recording</span><span class="fs-real__play" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 5l12 7-12 7z"/></svg></span></a>
+            <figcaption><b>Check the shape, not the shading.</b> Silhouette draws the target as one flat shape with an outline. A Toggle bound to its Silhouette switch shows the shaded view and back; then Suzanne turns and the shape follows.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/view-preview-sidebar.webp" data-zoom><img src="assets/media/view-preview-sidebar.webp" width="1782" height="1261" loading="lazy" decoding="async" alt="Edit Mode, the sidebar&#x27;s Widget tab: the Source (Target, Camera, Navigate), the View and the Shading."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>View Preview settings.</b> Edit Mode, the sidebar&#x27;s Widget tab: the Source (Target, Camera, Navigate), the View and the Shading.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================ PRESETS -->
+  <section class="fs-section fs-section--alt fs-anchor" id="presets" aria-labelledby="presets-title">
+    <div class="fs-wrap">
+      <div class="fs-group-title fs-reveal"><span class="fs-num">08</span><h2 class="fs-h2" id="presets-title">Presets, sharing and demos</h2></div>
       <div class="fs-rows">
         <article class="fs-row fs-reveal">
           <div class="fs-row__copy">
@@ -626,7 +706,7 @@
     <div class="fs-wrap">
       <div class="fs-band__grid">
         <div class="fs-reveal">
-          <div class="fs-group-title" style="margin-bottom:20px"><span class="fs-num">08</span><h2 class="fs-h2" id="picker-title">Armature Picker</h2></div>
+          <div class="fs-group-title" style="margin-bottom:20px"><span class="fs-num">09</span><h2 class="fs-h2" id="picker-title">Armature Picker</h2></div>
           <p class="fs-lead">A canvas of buttons that select the bones of your rig, saved with the armature data. Click to select, <kbd class="fs-kbd">Shift</kbd> click to add, drag to box select, right-click for the Insert Keyframe pie. Your Pose Mode keys work as in the 3D Viewport.</p>
           <ul class="fs-ticks" style="margin-top:24px">
             <li>Humanoid Body (Rigify) in one step: body, hands, feet and face</li>
@@ -663,7 +743,7 @@
   <!-- ============================================================ DETAILS -->
   <section class="fs-section fs-anchor" id="details" aria-labelledby="details-title">
     <div class="fs-wrap">
-      <div class="fs-group-title fs-reveal"><span class="fs-num">09</span><h2 class="fs-h2" id="details-title">Details</h2></div>
+      <div class="fs-group-title fs-reveal"><span class="fs-num">10</span><h2 class="fs-h2" id="details-title">Details</h2></div>
       <div class="fs-rows">
         <article class="fs-row fs-reveal">
           <div class="fs-row__copy">
