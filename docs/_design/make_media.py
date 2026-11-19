@@ -10,8 +10,8 @@ Only the files listed below are copied (manifest quality >= 3). Armature Picker 
 PICKER_OK to be used, so an old capture of the block-style picker can't slip in.
 
 The 3D views (View Preview, Camera View, Viewport Mirror, Silhouette) are not in the manifest: their captures are the
-Superhive marketing ones (<src>/superhive/src/captures/view_preview/, 2x stills; <src>/superhive/reel/footage/,
-30 fps clips with the pointer drawn in; capture_view_preview.sh makes both). VIEWS_LOOPS, VIEWS_SHOTS and
+Superhive marketing ones (<src>/superhive/src/captures/view_preview/, 2x stills, from capture_view_preview.sh;
+<src>/superhive/reel/footage/web/, 30 fps web cuts from make_store_3d_views.py cuts). VIEWS_LOOPS, VIEWS_SHOTS and
 VIEWS_WIDGETS below list them with their own titles and captions, written from the help (widgets.md, View Preview).
 
 Writes:
@@ -140,19 +140,20 @@ WIDGET_SHOTS = {
     "bone_collection_toggle": "bone-collection-toggle", "slider_radial": "radial-slider",
     "slider_lineal_2d": "lineal-2d-slider", "bone_pickers": "bone-pickers",
 }
-# The 3D views (Add > Graphics > 3D Views). Paths are relative to <src>/superhive. Loops use the clips with the
-# pointer drawn in (<clip>_cursor.mp4), so the clicks read; halved to 1278 x 648 (exactly 0.5x, no distortion).
+# The 3D views (Add > Graphics > 3D Views). Paths are relative to <src>/superhive. Loops use the web cuts: the widget
+# next to the part of the viewport where things change, the pointer and keys drawn in, 1280 wide, ending in a dissolve
+# into the first frame (a seamless loop). Encoded at their own size.
 VIEWS_LOOPS = [
-    ("reel/footage/view_preview_overview_cursor.mp4", "view-preview-overview", "Four live 3D views on one canvas",
+    ("reel/footage/web/view_preview_overview.mp4", "view-preview-overview", "Four live 3D views on one canvas",
      "View Preview, Camera View, Viewport Mirror and Silhouette next to the 3D Viewport. Orbit the viewport and the "
      "mirror follows; click the ball and the preview and the silhouette frame it."),
-    ("reel/footage/view_preview_target_cursor.mp4", "view-preview-target", "A close-up of the active object",
+    ("reel/footage/web/view_preview_target.mp4", "view-preview-target", "A close-up of the active object",
      "View Preview frames the active object: click another object in the viewport and it frames that one."),
-    ("reel/footage/view_preview_camera_cursor.mp4", "view-preview-camera", "What the camera sees",
+    ("reel/footage/web/view_preview_camera.mp4", "view-preview-camera", "What the camera sees",
      "Camera View shows the scene camera's frame, with bars around it, while the camera swings round the props."),
-    ("reel/footage/view_preview_mirror_cursor.mp4", "view-preview-mirror", "A second look at your viewport",
+    ("reel/footage/web/view_preview_mirror.mp4", "view-preview-mirror", "A second look at your viewport",
      "Viewport Mirror follows the 3D Viewport: orbit it one way, then the other, and the mirror moves with it."),
-    ("reel/footage/view_preview_silhouette_cursor.mp4", "view-preview-silhouette", "Check the shape, not the shading",
+    ("reel/footage/web/view_preview_silhouette.mp4", "view-preview-silhouette", "Check the shape, not the shading",
      "Silhouette draws the target as one flat shape with an outline. A Toggle bound to its Silhouette switch shows "
      "the shaded view and back; then Suzanne turns and the shape follows."),
 ]
@@ -295,10 +296,10 @@ def make_views(src: Path, reg: dict, tmp: Path):
     for f, name, title, caption in VIEWS_LOOPS:
         clip = sh / f
         if not clip.is_file():
-            raise SystemExit(f"missing: {clip} (run superhive/src/capture_view_preview.sh)")
+            raise SystemExit(f"missing: {clip} (run superhive/src/make_store_3d_views.py cuts)")
         mp4 = OUT / f"{name}.mp4"
-        run("ffmpeg", "-y", "-v", "error", "-i", str(clip), "-an", "-vf",
-            "scale=iw/2:ih/2:flags=lanczos", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-profile:v", "high",
+        run("ffmpeg", "-y", "-v", "error", "-i", str(clip), "-an",
+            "-c:v", "libx264", "-pix_fmt", "yuv420p", "-profile:v", "high",
             "-crf", "24", "-preset", "slow", "-tune", "animation", "-movflags", "+faststart", str(mp4))
         frame = tmp / f"{name}.png"
         run("ffmpeg", "-y", "-v", "error", "-i", str(mp4), "-frames:v", "1", str(frame))
