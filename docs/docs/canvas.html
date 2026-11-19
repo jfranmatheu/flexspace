@@ -88,15 +88,22 @@
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The pill at the bottom of the canvas reminds you of <span class="fs-keys"><kbd>Tab</kbd></span>. Turn it off with <strong>Key Hints</strong> in the add-on preferences.</p></aside>
 <h2 id="navigate">Navigate<a class="fs-anchor" href="#navigate" aria-label="Link to this section">#</a></h2>
 <ul>
-<li><span class="fs-keys"><kbd>Middle mouse</kbd></span> drag pans.
+<li><span class="fs-keys"><kbd>Middle mouse</kbd></span> drag pans. <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Middle mouse</kbd></span> drag zooms.
 </li>
 <li>The <span class="fs-keys"><kbd>Wheel</kbd></span> zooms. It follows Blender's <strong>Invert Zoom Wheel</strong> preference.
+</li>
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Wheel</kbd></span> scrolls sideways, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Wheel</kbd></span> up and down.
+</li>
+<li>A trackpad pans and pinches to zoom. <code>Numpad +</code> and <code>Numpad -</code> zoom too.
 </li>
 <li><span class="fs-keys"><kbd>Home</kbd></span> frames every widget.
 </li>
 <li>The <strong>minimap</strong> (header, picture icon) shows the whole canvas: click to centre, drag to pan.
 </li>
 </ul>
+<p>Navigation is Blender's own, as in the Node Editor: it follows your <strong>View2D</strong> keymap, whatever button you bound. Industry Compatible (<span class="fs-keys"><kbd>Alt</kbd></span> with the middle or left mouse pans, <span class="fs-keys"><kbd>Alt</kbd></span> right mouse zooms), <strong>Emulate 3 Button Mouse</strong> and your own bindings work. A binding on a plain left or right click navigates instead of selecting, as it does in the Node Editor; an edit handle, a widget in Live Mode or a page tab under the mouse still takes the left click, but not an <span class="fs-keys"><kbd>Alt</kbd></span> click, so Industry Compatible pans over picker buttons too. Bind it to <strong>Click Drag</strong> to keep the click for selecting. A right mouse binding takes over the picker's keyframe pie, and a right mouse <strong>Click Drag</strong> binding works on a canvas even though the Node Editor's context menu would open first there. A 3D mouse (NDOF) doesn't navigate a canvas.</p>
+<p>In Live Mode, a widget that uses the wheel keeps it: a List scrolls its rows, with the wheel or a two-finger trackpad scroll.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> With natural scrolling on, <span class="fs-keys"><kbd>Ctrl</kbd></span> with a two-finger trackpad scroll may zoom the other way from Blender's own editors. A pinch zooms the same way.</p></aside>
 <h2 id="pages-and-modes"><span id="layers-and-modes" aria-hidden="true"></span>Pages and modes<a class="fs-anchor" href="#pages-and-modes" aria-label="Link to this section">#</a></h2>
 <p>A canvas can have several pages, each with its own widgets. Each page can also be made for one Blender mode, for example Sculpt Mode or Weight Paint, or for one object of the scene. So one canvas can hold a sculpting page full of brushes, a weight paint page, the controls of one object and an everyday page, and show the right one for what you are doing.</p>
 <ul>

@@ -59,7 +59,7 @@
     </header>
     <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#everywhere-on-a-canvas">Everywhere on a canvas</a></li><li class="lv2"><a href="#edit-mode">Edit Mode</a></li><li class="lv2"><a href="#while-moving-resizing-or-rotating">While moving, resizing or rotating</a></li><li class="lv2"><a href="#live-mode">Live Mode</a></li><li class="lv2"><a href="#picker-pose-mode">Picker, Pose Mode</a></li><li class="lv2"><a href="#minimap">Minimap</a></li></ul></details>
     <article class="fs-prose">
-<p>Keys work with the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap (yours, if you changed it).</p>
+<p>Keys work with the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap (yours, if you changed it). Navigation is Blender's too, as in the Node Editor: it follows your View2D keymap, whatever button you bound, so with Industry Compatible or your own bindings you pan and zoom as you set them.</p>
 <h2 id="everywhere-on-a-canvas">Everywhere on a canvas<a class="fs-anchor" href="#everywhere-on-a-canvas" aria-label="Link to this section">#</a></h2>
 <div class="fs-table"><table>
 <thead><tr>
@@ -68,7 +68,11 @@
 </tr></thead><tbody>
 <tr><td><span class="fs-keys"><kbd>Tab</kbd></span></td><td>Switch between Edit Mode and Live Mode (Pose Mode on a picker). It also works on a canvas dimmed by its page's mode.</td></tr>
 <tr><td><span class="fs-keys"><kbd>Middle mouse</kbd></span> drag</td><td>Pan</td></tr>
+<tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Middle mouse</kbd></span> drag</td><td>Zoom</td></tr>
 <tr><td><span class="fs-keys"><kbd>Wheel</kbd></span></td><td>Zoom</td></tr>
+<tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Wheel</kbd></span>, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Wheel</kbd></span></td><td>Scroll sideways, up and down</td></tr>
+<tr><td>Trackpad</td><td>Pan, pinch to zoom</td></tr>
+<tr><td><code>Numpad +</code>, <code>Numpad -</code></td><td>Zoom</td></tr>
 <tr><td><span class="fs-keys"><kbd>Home</kbd></span></td><td>Frame every widget</td></tr>
 <tr><td><span class="fs-keys"><kbd>N</kbd></span></td><td>Sidebar</td></tr>
 <tr><td><span class="fs-keys"><kbd>T</kbd></span></td><td>Toolbar</td></tr>
@@ -116,6 +120,7 @@
 <tr><td><span class="fs-keys"><kbd>Enter</kbd></span> or <span class="fs-keys"><kbd>Click</kbd></span></td><td>Confirm</td></tr>
 <tr><td><span class="fs-keys"><kbd>Esc</kbd></span> or <span class="fs-keys"><kbd>Right-click</kbd></span></td><td>Cancel</td></tr>
 </tbody></table></div>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> With the Industry Compatible keymap, <span class="fs-keys"><kbd>Alt</kbd></span> left drag pans the view. To move without dropping into a Flex Box, start the drag, then hold <span class="fs-keys"><kbd>Alt</kbd></span>.</p></aside>
 <h2 id="live-mode">Live Mode<a class="fs-anchor" href="#live-mode" aria-label="Link to this section">#</a></h2>
 <div class="fs-table"><table>
 <thead><tr>
