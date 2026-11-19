@@ -66,6 +66,8 @@
 
 Both require **Blender 5.3 or newer**, and both can be installed at the same time.
 
+Built and refined by an independent developer, [J. Fran Matheu](https://x.com/jfranmatheu), since 2023: the [first public preview](https://x.com/jfranmatheu/status/1717207033701617889) of the picker's interactive editing went up on X in October 2023.
+
 ## Reporting a bug
 
 The fastest way is from Blender itself:

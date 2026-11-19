@@ -4,7 +4,7 @@ Two HTML fragments for the FlexSpace product on Superhive, plus a local preview.
 
 | File | Paste into | What it is |
 |---|---|---|
-| `page.html` | The product **description** (store page) | Hero, trust row, Edit/Live modes, 7 feature rows, themes, bento, 21-widget gallery, Rigify spotlight, what's inside + specs, FAQ, closing band |
+| `page.html` | The product **description** (store page) | Hero, trust row, Edit/Live modes, 7 feature rows, themes, bento, 21-widget gallery, Rigify spotlight, what's inside + specs, the "3+ years in the making" timeline, FAQ, closing band |
 | `docs.html` | The product **documentation** tab | A one-page guide: contents index, 15 sections (install to report a bug), widget reference with thumbnails, shortcut tables, troubleshooting; each section links to the full docs at https://jfranmatheu.github.io/flexspace/docs/ |
 | `preview.html` | Nothing (local only) | Shows either fragment inside a fake store column at 360 / 720 / 900 / 1100 px and checks the fragment rules |
 

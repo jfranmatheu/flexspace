@@ -356,8 +356,9 @@ in `build_docs.py`. Entries are user-facing (Added / Changed / Fixed), in the do
 5. Picker teaser: full-bleed dark band, `picker-hero`, "Pose without hunting for bones", link to picker.html.
 6. Bento: the small things (8 tiles).
 7. Widget strip: 8 widget cards scrolling horizontally (scroll-snap), "See all widgets" → widgets.html.
-8. FAQ (6 questions).
-9. CTA band.
+8. Story: "3+ years in the making" timeline (see §5, Story).
+9. FAQ (6 questions).
+10. CTA band.
 
 ### features.html
 
@@ -450,7 +451,9 @@ d. `RING MENU` — **A sculpt wheel that stays put.**
    Brushes in the outer ring, toggles and operators in the inner ring, the active brush named in the core. It lives on
    the canvas: no pie to summon, no menu to close. Fill it with every Essentials brush in one click and page through
    the rest.
-   Ticks: Brushes, toggles and operators · Pages for more brushes · Disabled When per item. Art: `ring-menu`.
+   Ticks: Brushes, toggles and operators · Pages for more brushes · Disabled When per item. Art (store page): only
+   the real Sculpt Wheel recording (`media/store/sculpt-wheel.gif`, still for reduced motion); no redrawn wheel or
+   static ring shots in this row.
    (Second line under the row: also on the canvas: Color Picker, Color Palette and Brush Picker.)
 
 e. `EDIT MODE` — **Lay out like a design tool.**
@@ -505,6 +508,16 @@ read at a glance: left blue, right red, centre yellow. Art: `picker-hands`, `pic
 | Docs | Online at jfranmatheu.github.io/flexspace and in the Help menu |
 | Support | Report a Bug inside Blender, GitHub issues, Superhive |
 | Licence | GPL-3.0-or-later |
+
+**7b. Story — "3+ years in the making."** (also on the landing, before the FAQ)
+Lead: Built and refined by an independent developer since 2023. A timeline (vertical on phones, horizontal rows from
+720 px, nodes drawn as Edit Mode handles, the last one "Now"). Verified milestones only, nothing else, no numbers:
+Sep 2023 Armature Picker development starts · 25 Oct 2023 first public preview of interactive picker editing on X
+(`https://x.com/jfranmatheu/status/1717207033701617889`) · Dec 2023 the shared base (MySpace, later FlexSpace) begins,
+the picker becomes one of its modules · Jan–Mar 2024 MySpace 1.0 / 1.1 betas and FlexSpace 1.3 beta for Blender 4.0 ·
+Oct 2026 FlexSpace becomes a Blender extension (5.2) · Nov 2026 FlexSpace 1.4.0 for Blender 5.3 (current). Then the
+post's own line as a quote, "made by one independent developer, J. Fran Matheu", and two links: "See the first
+preview on X" (the post) and "Follow the development" (`https://x.com/jfranmatheu`).
 
 **8. FAQ — "Questions, answered."**
 - *Which Blender versions does it support?* Blender 5.3 or newer. FlexSpace is a Blender extension: install the zip

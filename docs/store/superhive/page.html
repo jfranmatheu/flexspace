@@ -200,8 +200,7 @@
 }
 .fsx .fs-media-in { border-radius: 25px; overflow: hidden; background: radial-gradient(80% 80% at 30% 20%, #17171b, #0c0c0e); }
 .fsx .fs-media-in img { width: 100%; }
-.fsx .fs-media-gif .fs-media-in { padding: 18px; background: #1c1c1d; }
-.fsx .fs-media-gif .fs-media-in img { border-radius: 12px; margin: 0 auto; max-width: 440px; width: 100%; }
+.fsx .fs-media-rec .fs-media-in { position: relative; background: #1a1a1a; }
 .fsx .fs-cap { margin-top: 12px; font-size: 13.5px; line-height: 1.5; color: #85827c; }
 .fsx .fs-row-text .fs-keys { margin-top: 18px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: #85827c; font-size: 14px; }
 .fsx .fs-also { margin-top: 22px; padding: 14px; border-radius: 18px; background: #141417; border: 1px solid rgba(255,255,255,.08); }
@@ -344,6 +343,57 @@
 .fsx .fs-cta .fs-actions { justify-content: center; }
 .fsx .fs-sign { margin-top: 44px; font-size: 13px; color: #6f6c67; }
 
+/* ---------- story: 3+ years in the making (vertical timeline; horizontal from 720 px, see the container queries) ---------- */
+.fsx .fs-story { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+.fsx .fs-gridbg-still { animation: none; opacity: .8; }
+.fsx .fs-tl { position: relative; display: grid; gap: 14px; margin-top: 44px; padding-left: 34px; }
+.fsx .fs-tl::before { content: ""; position: absolute; left: 10px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, rgba(240,181,87,.22) 0%, rgba(220,206,184,.5) 55%, #f0b557 100%); }
+.fsx .fs-tl li { position: relative; min-width: 0; padding: 18px 20px 20px; border-radius: 18px; background: #141417; border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 1px 0 rgba(255,255,255,.04) inset, 0 1px 2px rgba(0,0,0,.5), 0 4px 12px -4px rgba(0,0,0,.5); }
+.fsx .fs-tl li::before { content: ""; position: absolute; left: -29px; top: 21px; width: 12px; height: 12px; border-radius: 3px;
+  background: #0f0f12; border: 2px solid #f0b557; }
+.fsx .fs-tl-date { display: block; font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", "SF Mono", Consolas, Menlo, monospace;
+  font-size: 12.5px; font-weight: 500; line-height: 1.2; letter-spacing: .04em; color: #f0b557; }
+.fsx .fs-tl h4 { margin-top: 10px; font-size: 18px; line-height: 1.25; }
+.fsx .fs-tl p { margin-top: 6px; font-size: 14.5px; line-height: 1.5; color: #b6b3ad; text-wrap: pretty; }
+.fsx .fs-tl p a { font-weight: 600; }
+.fsx .fs-tl .fs-tl-now { border: 1px solid transparent;
+  background: linear-gradient(#17161a, #141417) padding-box, linear-gradient(120deg, #f0b557 0%, #e6c187 40%, rgba(216,210,200,.5) 100%) border-box;
+  box-shadow: 0 0 0 1px rgba(240,181,87,.25), 0 8px 40px -8px rgba(240,181,87,.35); }
+.fsx .fs-tl .fs-tl-now::before { background: #f0b557; border-color: #f6cb82; }
+.fsx .fs-tl-ping { position: absolute; left: -33px; top: 17px; width: 20px; height: 20px; border-radius: 6px; border: 2px solid rgba(240,181,87,.6);
+  pointer-events: none; animation: fsx-ping 2.6s cubic-bezier(.2,.8,.2,1) infinite; }
+.fsx .fs-tl-tag { position: absolute; right: 14px; top: 14px; padding: 4px 9px; border-radius: 999px; font-size: 10.5px; font-weight: 650; line-height: 1;
+  letter-spacing: .12em; text-transform: uppercase; color: #1a1206; background: linear-gradient(100deg, #f0b557, #e6c187 60%, #d8d2c8); }
+.fsx .fs-story-foot { display: grid; gap: 22px; justify-items: center; margin-top: 48px; text-align: center; }
+.fsx .fs-quote { position: relative; max-width: 640px; margin: 0; padding: 22px 24px 20px; border-radius: 18px; background: #0a0a0c; border: 1px solid rgba(255,255,255,.08); }
+.fsx .fs-quote blockquote { font-family: "Bricolage Grotesque", "Segoe UI Variable Display", system-ui, sans-serif; font-size: 20px; font-size: clamp(18px, 2.1cqi, 23px);
+  line-height: 1.35; font-weight: 600; letter-spacing: -.01em; color: #f4f2ee; text-wrap: balance; }
+.fsx .fs-quote figcaption { margin-top: 12px; font-size: 13.5px; line-height: 1.5; color: #85827c; }
+.fsx .fs-quote figcaption strong { color: #b6b3ad; }
+.fsx .fs-story-by { max-width: 56ch; font-size: 15px; line-height: 1.55; color: #b6b3ad; text-wrap: pretty; }
+.fsx .fs-story-foot .fs-actions { justify-content: center; margin-top: 0; }
+@keyframes fsx-ping { 0% { opacity: .9; transform: scale(.7); } 70%, 100% { opacity: 0; transform: scale(1.6); } }
+
+@container fsx (min-width: 720px) {
+  .fsx .fs-tl { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 46px 14px; margin-top: 64px; padding-left: 0; }
+  .fsx .fs-tl::before { display: none; }
+  .fsx .fs-tl li::before { left: 20px; top: -36px; }
+  .fsx .fs-tl li::after { content: ""; position: absolute; left: -1px; right: -16px; top: -31px; height: 2px;
+    background: #8b6a38; }
+  .fsx .fs-tl li:nth-child(3n)::after { right: 0; background: linear-gradient(90deg, #8b6a38, rgba(139,106,56,0)); }
+  .fsx .fs-tl li:first-child::after { left: 20px; }
+  .fsx .fs-tl li:nth-child(4)::after { left: 20px; }
+  .fsx .fs-tl-ping { left: 16px; top: -40px; }
+}
+@container fsx (min-width: 1100px) {
+  .fsx .fs-tl { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .fsx .fs-tl li:nth-child(3n)::after { right: -16px; background: #8b6a38; }
+  .fsx .fs-tl li:nth-child(4)::after { left: -1px; }
+  .fsx .fs-tl li:last-child::after { right: 0; background: linear-gradient(90deg, #f0b557, rgba(240,181,87,0)); }
+}
+
 /* ---------- container widths ---------- */
 /* ---------- real media: recordings (GIF) and screenshots taken in Blender (assets/media/store/) ---------- */
 .fsx .fs-rf { margin: 0; min-width: 0; }
@@ -430,6 +480,7 @@
 @media (prefers-reduced-motion: reduce) {
   .fsx *, .fsx *::before, .fsx *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
   .fsx .fs-gridbg, .fsx .fs-glow, .fsx .fs-float { animation: none !important; }
+  .fsx .fs-tl-ping { display: none; }
 }
 </style>
 <div class="fs-in">
@@ -678,26 +729,14 @@
           </div>
         </div>
         <div class="fs-row-media">
-          <div class="fs-media fs-media-gif"><div class="fs-media-in">
+          <div class="fs-media fs-media-rec"><div class="fs-media-in">
             <picture>
-              <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
-              <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu in Live Mode: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
+              <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/media/store/sculpt-wheel-still.png">
+              <img src="https://jfranmatheu.github.io/flexspace/assets/media/store/sculpt-wheel.gif" width="960" height="582" alt="The Sculpt Wheel in Blender: hover the ring to see each brush, click one to use it, sculpt, flip pages and switch symmetry from the inner ring." loading="lazy">
             </picture>
+            <span class="fs-rf-tag">Recording</span>
           </div></div>
-          <p class="fs-cap">The Sculpt Wheel demo has every Essentials sculpt brush, ready to try.</p>
-        </div>
-        <div class="fs-inb">
-          <p class="fs-inb-label"><span class="fs-chip">In Blender</span></p>
-          <div class="fs-inb-grid">
-            <figure class="fs-rf fs-rf-fit">
-              <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/ring-menu-inner.png" width="738" height="811" alt="The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
-              <figcaption><strong>Ring Menu toggles.</strong> The inner ring holds toggles and operators: symmetry, automasking, Dyntopo, masks.</figcaption>
-            </figure>
-            <figure class="fs-rf fs-rf-fit">
-              <div class="fs-rf-frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/ring-menu-page.png" width="738" height="811" alt="More brushes than fit? Pages: the tab under the ring flips them." loading="lazy"><span class="fs-rf-tag fs-rf-tag-still">Screenshot</span></div>
-              <figcaption><strong>Ring Menu pages.</strong> More brushes than fit? Pages: the tab under the ring flips them.</figcaption>
-            </figure>
-          </div>
+          <p class="fs-cap">Recorded with the Sculpt Wheel demo, which has every Essentials sculpt brush ready to try: hover the ring to see each brush, click one to use it, flip pages and switch symmetry from the inner ring.</p>
         </div>
       </article>
 
@@ -1009,8 +1048,39 @@
   </div>
 </section>
 
+<!-- ============================================================ 7b. STORY (verified milestones only; nothing else goes in) -->
+<section class="fs-sec fs-sec-alt fs-story">
+  <div class="fs-gridbg fs-gridbg-still" aria-hidden="true"></div>
+  <div class="fs-wrap">
+    <div class="fs-center">
+      <p class="fs-eyebrow">The story</p>
+      <h2><span class="fs-ember">3+ years</span> in the making.</h2>
+      <p class="fs-lead">Built and refined by an independent developer since 2023.</p>
+    </div>
+    <ol class="fs-tl">
+      <li><span class="fs-tl-date">Sep 2023</span><h4>It starts with a picker</h4><p>Development of the Armature Picker begins.</p></li>
+      <li><span class="fs-tl-date">25 Oct 2023</span><h4>First public preview</h4><p>Interactive picker editing is shown for the first time, <a href="https://x.com/jfranmatheu/status/1717207033701617889">on X</a>.</p></li>
+      <li><span class="fs-tl-date">Dec 2023</span><h4>A shared base</h4><p>MySpace, later FlexSpace, begins. The picker becomes one of its modules.</p></li>
+      <li><span class="fs-tl-date">Jan–Mar 2024</span><h4>First betas</h4><p>MySpace 1.0 and 1.1 betas, then the FlexSpace 1.3 beta, for Blender 4.0.</p></li>
+      <li><span class="fs-tl-date">Oct 2026</span><h4>A Blender extension</h4><p>FlexSpace becomes an extension, for Blender 5.2.</p></li>
+      <li class="fs-tl-now"><i class="fs-tl-ping" aria-hidden="true"></i><span class="fs-tl-tag">Now</span><span class="fs-tl-date">Nov 2026</span><h4>FlexSpace 1.4.0</h4><p>For Blender 5.3. The current version.</p></li>
+    </ol>
+    <div class="fs-story-foot">
+      <figure class="fs-quote">
+        <blockquote>“Are you ready for some interactive editing in my upcoming picker addon for Blender?”</blockquote>
+        <figcaption><strong>J. Fran Matheu</strong> · <a href="https://x.com/jfranmatheu">@jfranmatheu</a>&nbsp;on&nbsp;X · 25&nbsp;Oct&nbsp;2023</figcaption>
+      </figure>
+      <p class="fs-story-by">FlexSpace and the Armature Picker are made by one independent developer, J. Fran Matheu.</p>
+      <p class="fs-actions">
+        <a class="fs-btn fs-btn-gold" href="https://x.com/jfranmatheu/status/1717207033701617889">See the first preview on X →</a>
+        <a class="fs-btn fs-btn-ghost" href="https://x.com/jfranmatheu">Follow the development →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
 <!-- ============================================================ 8. FAQ -->
-<section class="fs-sec fs-sec-alt">
+<section class="fs-sec">
   <div class="fs-wrap fs-wrap-text">
     <p class="fs-eyebrow">FAQ</p>
     <h2>Questions, <span class="fs-ember">answered.</span></h2>
