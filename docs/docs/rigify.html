@@ -144,7 +144,7 @@
 </ol>
 <p>You can also delete the shapes you don't need, or move them to make your own layout.</p>
 <h3 id="demo-files">Demo files<a class="fs-anchor" href="#demo-files" aria-label="Link to this section">#</a></h3>
-<p>Two demos show the result: <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>. Each has a generated rig with toes and a Rigify face, the four pages over their drawings (the Face page over the male or the female face), IK/FK and stretch sliders, head and neck follow knobs, and bone collection toggles. Open them from the demo list.</p>
+<p>Two demos show the result: <strong>Rigify Male Body Picker</strong> and <strong>Rigify Female Body Picker</strong>. Each has a generated rig with toes and a Rigify face, the four pages over their drawings (the Face page over the male or the female face), the IK/FK puck beside each IK hand and foot, a <strong>Rig Settings</strong> frame with the head and neck follow knobs and the IK stretch sliders, and bone collection toggles. Open them from the demo list.</p>
 <h2 id="1-use-the-generated-rig">1. Use the generated rig<a class="fs-anchor" href="#1-use-the-generated-rig" aria-label="Link to this section">#</a></h2>
 <p>Make the picker for the <strong>generated rig</strong> (the <code>RIG-...</code> object you animate), not for the metarig.</p>
 <ol>
@@ -190,7 +190,7 @@
 </ul>
 <p><strong>Toggle Size</strong> sets its size.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Not Rigify? Choose <strong>Bone</strong> (a custom property of a bone, with a list of its bool, int and float properties) or <strong>Data Path</strong>, and set <strong>IK Value</strong> to the end that means IK.</p></aside>
-<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-ikfk.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-ikfk.webp" data-src="../assets/media/picker-ikfk.mp4" width="1280" height="776" aria-label="The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them."></video><span class="fs-figure__tag">Recording</span></a><figcaption>The puck beside the hand flips the arm between IK and FK, and the Rig Settings slider blends between them.</figcaption></figure>
+<figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-ikfk.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-ikfk.webp" data-src="../assets/media/picker-ikfk.mp4" width="1280" height="776" aria-label="The puck beside the hand flips the arm between IK and FK, one click each way."></video><span class="fs-figure__tag">Recording</span></a><figcaption>The puck beside the hand flips the arm between IK and FK, one click each way.</figcaption></figure>
 <h2 id="5-bone-collections">5. Bone collections<a class="fs-anchor" href="#5-bone-collections" aria-label="Link to this section">#</a></h2>
 <p>Rigify sorts its controls into bone collections (Torso, Arm.L (IK), Arm.L (FK), Fingers...). Add a toggle for each one you show and hide often:</p>
 <ol>
@@ -227,6 +227,8 @@
 <li>Right-click the property in the 3D Viewport sidebar (<strong>Item</strong> tab, <strong>Rig Main Properties</strong>, or the bone's <strong>Custom Properties</strong>).
 </li>
 </ol>
+<p>The rig follows while you drag: the drivers that read the property update as it changes. Knobs, Number Fields and Enums bound to custom properties work the same way.</p>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> For IK / FK, use the puck beside the IK hand or foot (see <strong>4. The IK/FK puck</strong>) instead of a slider: one click switches the limb, and the puck shows which way it is.</p></aside>
 <h2 id="repair-bindings">Repair bindings<a class="fs-anchor" href="#repair-bindings" aria-label="Link to this section">#</a></h2>
 <p>Buttons remember their bone by name and by a hidden bone id, so they follow renamed bones. If you <strong>regenerate</strong> the rig, change bone names in the metarig, or paste buttons from another picker:</p>
 <ul>
