@@ -41,9 +41,9 @@ IMG = DOCS / "assets" / "img"
 WORKSPACE = DOCS.parent.parent                  # the folder that holds both repos
 
 # ---------------------------------------------------------------------------------------------- site constants
-SITE_URL = "https://franb3d.github.io/flexspace/"
-ISSUES_URL = "https://github.com/franb3d/flexspace/issues"
-BUG_URL = "https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml"
+SITE_URL = "https://jfranmatheu.github.io/flexspace/"
+ISSUES_URL = "https://github.com/jfranmatheu/flexspace/issues"
+BUG_URL = "https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml"
 CHANGELOG_URL = "../changelog.html"   # DESIGN §4: the site's changelog page (build_changelog.py)
 # DESIGN: one place for the store link, assets/js/site.js (var SUPERHIVE_URL = "..."): the site and the docs
 # always agree. Empty there = no "Get it on Superhive" button here.

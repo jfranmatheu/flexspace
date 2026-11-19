@@ -40,7 +40,7 @@ OUT = DOCS / "assets" / "img"
 STORE = OUT / "store"
 ICONS = OUT / "icons"
 BRAND_SVG = HERE / "brand" / "FlexSpace.svg"
-SITE = "https://franb3d.github.io/flexspace/"
+SITE = "https://jfranmatheu.github.io/flexspace/"
 REGISTRY: list[dict] = []
 
 

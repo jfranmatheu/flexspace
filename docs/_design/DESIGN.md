@@ -1,6 +1,6 @@
 # FlexSpace web: art direction and information architecture
 
-Source of truth for the GitHub Pages site (`https://franb3d.github.io/flexspace/`, served from `/docs` on `main`)
+Source of truth for the GitHub Pages site (`https://jfranmatheu.github.io/flexspace/`, served from `/docs` on `main`)
 and for the two Superhive fragments (store page and store docs). Tokens live in `docs/assets/css/tokens.css`.
 Everything here is checked against the user docs (`flexspace/help/*.md`), `blender_manifest.toml` and
 `tools/products/flexspace.toml` of the dev checkout. If a sentence on the site can't be traced to those, it doesn't ship.
@@ -15,8 +15,8 @@ Product facts used everywhere (one place, keep in sync on release):
 | Taglines | Store: "Control panels and rig pickers, built your way". Manifest: "Build your own control panels for any Blender workflow". |
 | Licence | GPL-3.0-or-later |
 | Icons bundled | Phosphor Icons, Gravity UI Icons (both MIT) |
-| Issues | `https://github.com/franb3d/flexspace/issues` (form: `issues/new?template=flexspace.yml`) |
-| Site | `https://franb3d.github.io/flexspace/` |
+| Issues | `https://github.com/jfranmatheu/flexspace/issues` (form: `issues/new?template=flexspace.yml`) |
+| Site | `https://jfranmatheu.github.io/flexspace/` |
 | Superhive URL | `https://superhivemarket.com/products/flexspace-armature-picker` (`SUPERHIVE_URL` in `assets/js/site.js`, one constant; `build_docs.py` reads it) |
 | Changelog | `CHANGELOG.md` at the repo root, shown as `changelog.html` (built by `_design/build_changelog.py`) |
 
@@ -502,7 +502,7 @@ read at a glance: left blue, right red, centre yellow. Art: `picker-hands`, `pic
 | Saved in | Your .blend (canvases), the armature data (pickers), your user folder (global presets) |
 | Sharing | `.flexspace` preset files, shared presets folder |
 | Demo files | Studio Control Panel, FlexSpace Studio, Sculpt Wheel, Rigify Male and Female Body Pickers |
-| Docs | Online at franb3d.github.io/flexspace and in the Help menu |
+| Docs | Online at jfranmatheu.github.io/flexspace and in the Help menu |
 | Support | Report a Bug inside Blender, GitHub issues, Superhive |
 | Licence | GPL-3.0-or-later |
 
@@ -530,7 +530,7 @@ Same fragment rules. A one-page guide with a top index (anchor links; CSS `:targ
 and a link to the full online docs on every section.
 
 Index title: **FlexSpace Guide** — sub: "Everything you need to get going. The full docs live at
-franb3d.github.io/flexspace/docs."
+jfranmatheu.github.io/flexspace/docs."
 
 1. **Install** — Download the zip from your Superhive library, then in Blender: **Edit > Preferences > Get Extensions**,
    the menu at the top right, **Install from Disk...**, pick the zip. Requires Blender 5.3 or newer.
@@ -575,7 +575,7 @@ Each section: h2, one-sentence summary in lead style, 3–8 bullets or a short t
 - `.fsx` paints its own dark background (`#0A0A0C`), radius 26 px, `overflow: hidden`, `color` and `font-family`
   set, `line-height` set; it never relies on the store's styles. Links are styled inside `.fsx` only.
 - `@import` of the Google Fonts URL is the first rule; everything degrades to the system stacks.
-- Images: absolute URLs `https://franb3d.github.io/flexspace/assets/img/store/<slot>.png|.jpg|.gif` (redrawn) or
+- Images: absolute URLs `https://jfranmatheu.github.io/flexspace/assets/img/store/<slot>.png|.jpg|.gif` (redrawn) or
   `.../assets/media/store/<name>.png|.jpg|.gif` (real), with `width`,
   `height`, `alt` and `loading="lazy"` (except the hero). No WebP, no MP4.
 - Interactions: CSS only (`:hover`, `:focus-visible`, `:target`, `<details>`, scroll-snap, `@keyframes`), all wrapped

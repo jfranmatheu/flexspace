@@ -5,14 +5,14 @@ Two HTML fragments for the FlexSpace product on Superhive, plus a local preview.
 | File | Paste into | What it is |
 |---|---|---|
 | `page.html` | The product **description** (store page) | Hero, trust row, Edit/Live modes, 7 feature rows, themes, bento, 21-widget gallery, Rigify spotlight, what's inside + specs, FAQ, closing band |
-| `docs.html` | The product **documentation** tab | A one-page guide: contents index, 15 sections (install to report a bug), widget reference with thumbnails, shortcut tables, troubleshooting; each section links to the full docs at https://franb3d.github.io/flexspace/docs/ |
+| `docs.html` | The product **documentation** tab | A one-page guide: contents index, 15 sections (install to report a bug), widget reference with thumbnails, shortcut tables, troubleshooting; each section links to the full docs at https://jfranmatheu.github.io/flexspace/docs/ |
 | `preview.html` | Nothing (local only) | Shows either fragment inside a fake store column at 360 / 720 / 900 / 1100 px and checks the fragment rules |
 
-Neither fragment is linked from the site (only `preview.html`, which is `noindex`, loads them), and `sitemap.xml` leaves `/store/` out. A `robots.txt` can't help here: crawlers only read the one at the domain root (`franb3d.github.io/robots.txt`, another repository), never `/flexspace/robots.txt`, and a fragment can't carry a `noindex` meta tag. If they ever show up in search results, rename them `page.fragment.txt` / `docs.fragment.txt` (and the two paths in `preview.html`'s fetch).
+Neither fragment is linked from the site (only `preview.html`, which is `noindex`, loads them), and `sitemap.xml` leaves `/store/` out. A `robots.txt` can't help here: crawlers only read the one at the domain root (`jfranmatheu.github.io/robots.txt`, another repository), never `/flexspace/robots.txt`, and a fragment can't carry a `noindex` meta tag. If they ever show up in search results, rename them `page.fragment.txt` / `docs.fragment.txt` (and the two paths in `preview.html`'s fetch).
 
 ## How to paste
 
-1. Make sure the images are online first: the fragments load them from `https://franb3d.github.io/flexspace/assets/img/store/` (redrawn art) and `.../assets/media/store/` (real screenshots and GIFs from Blender), so push `docs/` to `main` (GitHub Pages) before pasting.
+1. Make sure the images are online first: the fragments load them from `https://jfranmatheu.github.io/flexspace/assets/img/store/` (redrawn art) and `.../assets/media/store/` (real screenshots and GIFs from Blender), so push `docs/` to `main` (GitHub Pages) before pasting.
 2. Open the file in a text editor and copy **everything**, from `<div class="fsx">` to the last `</div>`.
 3. In Superhive's editor, switch the description (or documentation) field to its **HTML / source** mode, select all, paste, save.
 4. Open the live product page and check it at desktop and phone width. If something looks off, compare with `preview.html` (below).
@@ -44,7 +44,7 @@ Superhive pastes the HTML into its own page, so a fragment has to be self-contai
 - **Literal values.** No `var()` or custom properties (a sanitizer may drop them). Colours, sizes and fonts are copied from `docs/assets/css/tokens.css`; keep them in sync by hand.
 - **Names that can't clash.** Classes are `fs-*` under `.fsx`; keyframes are `fsx-*`; anchors are `#fsx-*`.
 - **Fonts.** The first rule is an `@import` of Google Fonts (Bricolage Grotesque, Inter, JetBrains Mono). If it is stripped, the system font stacks take over.
-- **Images.** Absolute URLs under `https://franb3d.github.io/flexspace/assets/img/store/` or `.../assets/media/store/` (real media, GIFs under 4 MB), PNG, JPG or GIF only (no WebP, no MP4), each with `width`, `height`, `alt` and `loading="lazy"` (except the hero).
+- **Images.** Absolute URLs under `https://jfranmatheu.github.io/flexspace/assets/img/store/` or `.../assets/media/store/` (real media, GIFs under 4 MB), PNG, JPG or GIF only (no WebP, no MP4), each with `width`, `height`, `alt` and `loading="lazy"` (except the hero).
 - **CSS-only interaction.** Hover, `:focus-visible`, `:target` (the docs index highlights the section you jump to), `<details>` for the FAQ, `@keyframes`. Everything animated stops under `prefers-reduced-motion: reduce`, and each GIF sits in a `<picture>` whose reduced-motion source is a still PNG.
 - **No fixed positioning**, and nothing wider than the store column: layouts respond to the fragment's own width (container queries on `.fsx`), not the window, and fall back to the single-column phone layout where container queries aren't supported.
 

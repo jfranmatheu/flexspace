@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Binding Properties · FlexSpace Docs</title>
 <meta name="description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
-<link rel="canonical" href="https://franb3d.github.io/flexspace/docs/binding.html">
+<link rel="canonical" href="https://jfranmatheu.github.io/flexspace/docs/binding.html">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0c">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlexSpace">
 <meta property="og:title" content="Binding Properties · FlexSpace Docs">
 <meta property="og:description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
-<meta property="og:url" content="https://franb3d.github.io/flexspace/docs/binding.html">
-<meta property="og:image" content="https://franb3d.github.io/flexspace/assets/img/store/og-card.jpg">
+<meta property="og:url" content="https://jfranmatheu.github.io/flexspace/docs/binding.html">
+<meta property="og:image" content="https://jfranmatheu.github.io/flexspace/assets/img/store/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script>(function(){try{var t=localStorage.getItem('fs-theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}})();</script>
 <link rel="icon" href="../assets/img/icons/favicon.ico" sizes="32x32">
@@ -48,7 +48,7 @@
     <nav class="fs-side"><p class="fs-side__group">Basics</p><ul class="fs-side__list"><li><a href="getting-started.html">Getting Started</a></li><li><a href="canvas.html">The Canvas</a></li><li><a href="widgets.html">Widgets</a></li><li><a href="color-brush.html">Color &amp; Brush</a></li><li><a href="editing.html">Editing Tools</a></li><li><a href="binding.html" aria-current="page">Binding</a></li></ul><p class="fs-side__group">Armature Picker</p><ul class="fs-side__list"><li><a href="picker.html">Armature Picker</a></li><li><a href="rigify.html">Picker with Rigify</a></li></ul><p class="fs-side__group">Going further</p><ul class="fs-side__list"><li><a href="recipes.html">Recipes</a></li><li><a href="demo-files.html">Demo Files</a></li><li><a href="shortcuts.html">Shortcuts</a></li><li><a href="troubleshooting.html">Troubleshooting</a></li></ul></nav>
     <div class="fs-side__foot">
       <p>Also in Blender: the <strong>Help</strong> menu of the canvas header.</p>
-      <a href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
+      <a href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="7" y="7" width="10" height="13" rx="5"/><path d="M9 7a3 3 0 0 1 6 0M3 13h4M17 13h4M4 19l3-2M20 19l-3-2M4 7l3 2M20 7l-3 2"/></svg>Report a bug</a>
     </div>
   </aside>
   <main id="main" class="fs-doc__main">
@@ -190,7 +190,7 @@
     </article>
     <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="editing.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Editing Tools</strong></a><a class="fs-pager__link fs-pager__link--next" href="picker.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>The Armature Picker</strong></a></nav>
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
-      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
+      <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
   <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
@@ -202,7 +202,7 @@
       <a href="../features.html">Features</a><a href="../widgets.html">Widgets</a><a href="../picker.html">Picker</a>
       <a href="index.html">Docs</a><a href="../changelog.html">Changelog</a>
       <a href="../support.html">Support</a><a href="https://superhivemarket.com/products/flexspace-armature-picker" target="_blank" rel="noopener">Superhive</a>
-      <a href="https://github.com/franb3d/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
+      <a href="https://github.com/jfranmatheu/flexspace/issues" target="_blank" rel="noopener">GitHub issues</a>
     </nav>
     <p class="fs-foot__legal">FlexSpace is GPL-3.0-or-later. Blender is a trademark of the Blender Foundation.</p>
   </div>

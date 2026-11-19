@@ -61,7 +61,7 @@
 // Local preview only: renders a fragment the way Superhive would (inside someone else's page), at a chosen column width,
 // and checks the fragment rules of docs/_design/DESIGN.md section 6. Serve docs/ over HTTP to use it:
 //   py -3.10 -m http.server 8000 -d docs   then open http://localhost:8000/store/superhive/preview.html
-const SITE = "https://franb3d.github.io/flexspace/assets/";
+const SITE = "https://jfranmatheu.github.io/flexspace/assets/";
 const state = { file: "page.html", w: 900, local: true, light: false, hostile: false };
 try { Object.assign(state, JSON.parse(localStorage.getItem("fsx-preview") || "{}")); } catch (e) {}
 const $ = (s) => document.querySelector(s);

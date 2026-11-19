@@ -7,7 +7,7 @@ This repository is the bug tracker of two Blender add-ons made from the same bas
 
 Both require Blender 5.3 or newer, and both can be installed at the same time.
 
-Website and docs: https://franb3d.github.io/flexspace/
+Website and docs: https://jfranmatheu.github.io/flexspace/
 
 ## Reporting a bug
 

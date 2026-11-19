@@ -24,7 +24,7 @@ REPO = DOCS.parent
 SRC = REPO / "CHANGELOG.md"
 SHELL = DOCS / "support.html"
 OUT = DOCS / "changelog.html"
-SITE_URL = "https://franb3d.github.io/flexspace/"
+SITE_URL = "https://jfranmatheu.github.io/flexspace/"
 
 TITLE = "Changelog: FlexSpace"
 OG_TITLE = "FlexSpace changelog"

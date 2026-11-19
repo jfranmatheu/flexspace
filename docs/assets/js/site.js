@@ -13,8 +13,8 @@
     return s ? s.replace(/assets\/js\/site\.js(?:[?#].*)?$/, "") : "";
   })();
   var CHANGELOG_URL = SITE_ROOT ? SITE_ROOT + "changelog.html" : "";
-  var ISSUES_URL = "https://github.com/franb3d/flexspace/issues";
-  var BUG_FORM_URL = "https://github.com/franb3d/flexspace/issues/new?template=flexspace.yml";
+  var ISSUES_URL = "https://github.com/jfranmatheu/flexspace/issues";
+  var BUG_FORM_URL = "https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml";
 
   var links = { superhive: SUPERHIVE_URL, changelog: CHANGELOG_URL, issues: ISSUES_URL, bug: BUG_FORM_URL };
   document.querySelectorAll("a[data-link]").forEach(function (a) {
