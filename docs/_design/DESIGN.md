@@ -51,7 +51,7 @@ drawings for the picker**, not about the product screenshots. The site and the s
       as they are). Shown as two strips (Adult Female, Adult Male) in the order Body, Face, Hands, Feet; Body + Face
       frames share one aspect and Hands + Feet another, so each row lines up (`.fs-pages` / `.fs-lgrid`).
     - Alternate the bodies across visuals: key visual (hero banner, og card, Superhive cover and thumbnail) and
-      `focus-picker` / `frame-picker` = Adult Male; the store page hero's floating picker (`float-picker`),
+      `focus-picker` / `frame-picker` = Adult Male; the hero picker (`hero-picker`, store page and site home),
       `card-picker`, the presets thumbnail and the `w-bone-pickers` tile = Adult Female; picker sections show both.
 
 The rest of this section is about the redrawn art.
@@ -98,7 +98,7 @@ overwriting the file at the same path; no HTML edit. `docs/assets/img/images.jso
   "size": [1600, 1000], "status": "generated|placeholder" }
 ```
 
-**Picker art** (`focus-picker`, `frame-picker`, `card-picker`, `float-picker`, `w-bone-pickers`, the picker panel of
+**Picker art** (`focus-picker`, `frame-picker`, `card-picker`, `hero-picker`, `w-bone-pickers`, the picker panel of
 the key visual, the presets and demo-browser thumbnails) is composed from real captures of the redesigned picker
 (marketing `shots/picker_layer_*.png`, `shots/picker_hero.png`; `FLEXSPACE_MEDIA_SRC` points at that folder).
 
@@ -121,7 +121,9 @@ Slot list (reference = manifest file(s), quality ≥ 3; hero references marked �
 | `presets` | scene | 1200×750 | presets_menu.png, top_bar_preset.png, library_panel.png |
 | `demos` | scene | 1200×750 | demo_browser_full.png, empty_state_card.png |
 | `focus-picker`, `frame-picker` | scene (real crop) | 832×1093, 1473×1219 | ★ shots/picker_layer_male_body.png |
-| `float-picker`, `card-picker` | scene (real crop) | 580×945, 1600×1000 | ★ shots/picker_layer_female_body.png |
+| `hero-picker` | scene (real crops) | 1098×860 | ★ shots/picker_layer_female_body.png, ★ picker_layer_female_face.png |
+| `hero-color`, `hero-brushes` | real crops (hero accents) | 524×489, 506×452 | shots/color_picker_ring.png, shots/brush_picker.png |
+| `card-picker` | scene (real crop) | 1600×1000 | ★ shots/picker_layer_female_body.png |
 | real picker media | shots + loops | as captured | picker_layer_*, picker_hero, picker_face_closeup, gifs/picker_* (see §1) |
 | `w-<widget>` (one per widget) | widget | 640×400 | shots/widgets/<widget>.png (21 files) |
 | `og-card` | scene | 1200×630 | composed from `hero-canvas` + wordmark |
@@ -297,9 +299,20 @@ with literal values (see §6).
 1. **Nav (Pages).** Sticky glass bar, 64 px: wordmark · Features · Widgets · Picker · Docs · Support · theme toggle ·
    gold "Get it on Superhive" button. Under 960 px: wordmark + button + a `<details>` menu (no JS needed).
 2. **Hero.** Eyebrow chip (`v1.4.0 · Blender 5.3+`), display headline with one gradient word, lead, two buttons
-   (primary gold → Superhive; ghost → Docs / "See it move" anchor), then the hero art in a 2xl frame with the
-   selection frame device, sitting on the grid with `--grad-hero-glow`. Under the art: a 4-item caption strip
-   (`Tab` Edit ↔ Live · `Shift A` Add · Right-click bind · `I` key it).
+   (primary gold → Superhive; ghost → Docs / "See it move" anchor), then the hero art on the grid with
+   `--grad-hero-glow`. Under the art: a 4-item caption strip (`Tab` Edit ↔ Live · `Shift A` Add · Right-click bind ·
+   `I` key it).
+   **Hero art (site home and store page): two equals and three accents.** The two protagonists carry the same
+   weight: the Studio Control Panel (FlexSpace; `focus-control` on the site, `frame-control-panel` on the store) in
+   the selection frame device, top left, and the Armature Picker (`hero-picker`: the Adult Female Body page with the
+   Face page beside it as a card and the Expressions › Gaze pad, the two eyes, floating over the corner between them;
+   the face and the gaze are the picker's calling card), in front, right, overlapping the panel's edge, about the
+   same size. The accents are clearly smaller: the Ring Menu peeks from behind the picker's top corner, a Color
+   Picker (`hero-color`, Ring + Square) and the brushes (`hero-brushes`, Sculpt Brushes with Clay Strips active) sit
+   tilted on the panel's lower edge, clear of the picker's body and gaze pad. Positions are % of the art box, so it
+   scales; on phones the site mirrors it in a taller box (panel right, picker left, accents bottom right) and the
+   store stacks the two windows with the accents in a row under them. Nothing covers the headline or the buttons.
+   `hero-*` are made by `make_graphics.py heroart` from real captures (cropped, never scaled up or squashed).
 3. **Feature row.** 12-col: text 5 cols, media 7 cols, alternating sides; eyebrow (feature name), h3, 2–3 sentence
    body, a 3-item check list with sage ticks, an optional keycap line. Media in an xl frame with a 1 px gradient
    border; caption below in `--text-3`. Stacks under 960 px (media first).
@@ -432,8 +445,11 @@ Fragment: one `<div class="fsx">`, one scoped `<style>`, no scripts. Sections in
   And when it's time to animate, the Armature Picker puts every bone of your rig one click away.
 - Chips: `Control panels` · `Ring Menu` · `Layers per mode` · `Armature Picker` · `Rigify body picker`
 - Links: "Read the docs →" (Pages docs) · "Report a bug →" (issues)
-- Art: `frame-control-panel` (PNG) in the selection frame, with two floats: the Armature Picker (`float-picker`,
-  Adult Female, left) and the Ring Menu GIF (right). Under 860 px the floats sit side by side under the panel.
+- Art (see the hero art in §3.2): `frame-control-panel` (PNG) in the selection frame, top left, and `hero-picker`
+  (Body + Face with the gaze pad, Adult Female) as its equal, right; accents `hero-color`, `hero-brushes` and the Ring
+  Menu GIF (`gif-ring-menu`, still PNG for reduced motion). From 860 px the wide composition, 560–859 px a taller one
+  (the picker lower, overlapping more), under 560 px the panel and the picker stacked full width with the three
+  accents in a row under them (the frame's name tag hides there, it would hit the rotate knob).
 
 **1. Trust row** (as §3.7).
 

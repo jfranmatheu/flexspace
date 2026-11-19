@@ -254,24 +254,40 @@ code, kbd, samp { font-family: var(--font-mono); font-size: 0.92em; }
 .fs-hero--page { padding-bottom: clamp(40px, 6vw, 80px); }
 .fs-hero--page .fs-hero__copy { max-width: 820px; }
 
-/* the stack of three windows */
-.fs-stack { position: relative; aspect-ratio: 1600 / 1150; width: 100%; max-width: 980px; margin-inline: auto; }
+/* The home hero art: two equals, the Studio Control Panel (FlexSpace, focus-control, 1288 x 1020) top left and the
+   Armature Picker (hero-picker, Body + Face with the gaze pad, 1098 x 860) in front of it, right; three small accents:
+   the Ring Menu peeking from behind the picker (top right), a Color Picker and the brushes along the panel's lower
+   edge. Positions in % of the stack, so it scales; phones get a taller stack with bigger windows. */
+.fs-stack { position: relative; aspect-ratio: 1600 / 1120; width: 100%; max-width: 980px; margin-inline: auto; }
 .fs-stack__item { position: absolute; margin: 0; }
 .fs-stack__item img { width: 100%; height: auto; }
-/* The main window (focus-control, 1288 x 1020) bottom left; the ring behind it, top right; the picker in front,
-   bottom right, over empty space beside the main window rather than over its content. */
-.fs-stack__main { left: 0; top: 16%; width: 74%; z-index: 2; }
-.fs-stack__ring { right: 0; top: -4%; width: 42%; z-index: 1; transform: rotate(3deg); }
-.fs-stack__picker { right: -4%; bottom: -8%; width: 30%; z-index: 3; transform: rotate(-2.5deg); }
+.fs-stack__main { left: -1%; top: 6%; width: 60%; z-index: 2; }
+.fs-stack__picker { right: -1%; top: 23%; width: 52%; z-index: 3; filter: drop-shadow(0 22px 32px rgba(0, 0, 0, .55)); }
+.fs-stack__picker a { display: block; }
+.fs-stack__ring { right: -2%; top: -1%; width: 21%; z-index: 1; transform: rotate(5deg); }
+.fs-stack__acc { z-index: 4; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .55)); }
+.fs-stack__color { left: 3%; top: 70%; width: 13.5%; transform: rotate(-4deg); }
+.fs-stack__brushes { left: 17.5%; top: 77%; width: 16%; transform: rotate(3deg); }
+/* phones: the same idea mirrored and taller (the panel right, the picker left, the accents bottom right, clear of
+   the body and the gaze pad) so both windows stay big */
+@media (max-width: 699px) {
+  .fs-stack { aspect-ratio: 1000 / 1500; }
+  .fs-stack__main { left: auto; right: -3%; top: 4%; width: 92%; }
+  .fs-stack__picker { left: -2%; right: auto; top: 42%; width: 90%; }
+  .fs-stack__ring { left: -2%; right: auto; top: 0; width: 26%; transform: rotate(-5deg); }
+  .fs-stack__color { left: auto; right: 1%; top: 74%; width: 21%; }
+  .fs-stack__brushes { left: auto; right: 3%; top: 85%; width: 25%; }
+}
 .fs-on-light { display: none; }
 :root[data-theme="light"] .fs-on-dark { display: none; }
 :root[data-theme="light"] .fs-on-light { display: block; }
 @media (prefers-reduced-motion: no-preference) {
   .fs-stack__ring { animation: fs-float 9s var(--fs-ease-in-out) infinite alternate; }
-  .fs-stack__picker { animation: fs-float2 11s var(--fs-ease-in-out) infinite alternate; }
+  .fs-stack__acc { animation: fs-float2 11s var(--fs-ease-in-out) infinite alternate; }
+  .fs-stack__brushes { animation-delay: -5s; }
 }
-@keyframes fs-float { from { transform: rotate(3deg) translateY(0); } to { transform: rotate(2deg) translateY(-10px); } }
-@keyframes fs-float2 { from { transform: rotate(-2.5deg) translateY(0); } to { transform: rotate(-1.5deg) translateY(8px); } }
+@keyframes fs-float { from { translate: 0 0; } to { translate: 0 -10px; } }
+@keyframes fs-float2 { from { translate: 0 0; } to { translate: 0 8px; } }
 .fs-stack__main .fs-select { position: absolute; inset: 4.1% 4.35% 6.9% 4.35%; }
 
 /* Edit Mode selection frame: 1 px frame, square handles, round rotate knob */

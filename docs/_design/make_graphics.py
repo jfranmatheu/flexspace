@@ -2465,10 +2465,83 @@ def make_focus():
         canvas = Image.new("RGBA", (win.width + 2 * pad, win.height + 2 * pad), (0, 0, 0, 0))
         place_with_shadow(canvas, win, pad, pad - 14, [(22, 14, .55), (6, 3, .4)])
         save(canvas, f"focus-{slug}", alt, "focus-crop", store="png", swap=swap)
-    # the Superhive hero's floating picker (beside the control panel and the Ring Menu): the Adult Female figure
-    save(picker_figure("female"), "float-picker",
-         "The Armature Picker's Body page over the Adult Female art: the hips and the left foot picked, the IK hand "
-         "hand_ik.L active and named, left blue, right red, centre yellow.", "focus-crop", store="png")
+
+
+# ---- 4c: the hero art around the Studio Control Panel (store page and site home): the Armature Picker as its equal
+# (Body + Face with the gaze pad, Adult Female) and three small accents: a colour picker, the brushes, the Ring Menu
+# (gif-ring-menu / frame-ring-menu, made elsewhere). All real captures, cropped and placed whole, never squashed.
+HERO_BODY = (345, 30, 965, 990)        # Body page: the whole figure, both IK hands and pucks, hand_ik.L named
+HERO_FACE = (352, 40, 1002, 972)       # Face page: the head, ear to ear, down to the neck
+HERO_GAZE = (38, 163, 314, 364)        # Face page: the Expressions panel's title and the Gaze pad (two eyes)
+PICKER_TABS = (7, 8, 198, 36)          # the Body | Hands | Feet | Face tab strip (pasted with its round ends)
+BRUSH_TITLE = (772, 90, 1278, 150)     # brush_picker.png: "Sculpt Brushes"
+BRUSH_ROWS = (772, 214, 1278, 576)     # brush_picker.png: Draw, Clay Strips (active), Inflate/Deflate
+COLOR_RING = (10, 62, 534, 525)        # color_picker_ring.png (a 2x capture): Paint Color, ring + square, colour bar
+COLOR_FOOT = (10, 836, 534, 862)       # color_picker_ring.png: the same panel's bottom edge (the sliders left out)
+PICKER_BG = (26, 26, 26)               # the picker canvas behind the art
+
+
+def ui_card(im, r, line=(255, 255, 255, 36)):
+    """A capture as a floating card: rounded corners, a hairline border and the top highlight."""
+    return add_border(round_corners(im.convert("RGBA"), r), r, line, max(1.0, im.width / 500))
+
+
+def hero_picker(gender="female", k=.8):
+    """The Armature Picker window: the Body page's figure with the Face page beside it as a card, and the gaze pad
+    (Expressions > Gaze) floating over the corner between them at full size, so the eyes read first."""
+    body, face = picker_page(gender, "body"), picker_page(gender, "face")
+
+    def scaled(im, what):
+        return cover(im, round(im.width * k), round(im.height * k), what=what)
+
+    fig = scaled(body.crop(HERO_BODY), f"hero picker body ({gender})")
+    head = scaled(face.crop(HERO_FACE), f"hero picker face ({gender})")
+    P, G = 26, 30
+    W, Hh = P + fig.width + G + head.width + P, P + max(fig.height, head.height) + P
+    inner = Image.new("RGBA", (W, Hh), PICKER_BG + (255,))
+    inner.paste(fig, (P, P + (Hh - 2 * P - fig.height) // 2))
+    inner.alpha_composite(round_corners(body.crop(PICKER_TABS), 8), (14, 12))
+    fc = ui_card(head, 16, (255, 255, 255, 40))
+    fx, fy = P + fig.width + G, P + (Hh - 2 * P - head.height) // 2
+    place_with_shadow(inner, fc, fx, fy, [(18, 10, .55), (4, 2, .4)])
+    inner.alpha_composite(round_corners(face.crop(PICKER_TABS), 8), (fx + 12, fy + 12))
+    gaze = ui_card(face.crop(HERO_GAZE), 12, (255, 255, 255, 46))
+    place_with_shadow(inner, gaze, fx - 100, Hh - P - gaze.height - 4, [(22, 14, .7), (5, 3, .5)])
+    return window(inner, 22, f"Armature Picker  ·  Adult {gender.title()}", header_h=40)
+
+
+def hero_brushes():
+    """The Brush Picker as the Sculpt Brushes demo shows it: its title, then Draw, Clay Strips (active), Inflate."""
+    src = real("shots/brush_picker.png")
+    title, rows = src.crop(BRUSH_TITLE), src.crop(BRUSH_ROWS)
+    im = Image.new("RGB", (rows.width, 8 + title.height + 6 + rows.height + 16), src.getpixel((BRUSH_ROWS[0] + 4, 180)))
+    im.paste(title, (0, 8))
+    im.paste(rows, (0, 8 + title.height + 6))
+    return ui_card(im, 18)
+
+
+def hero_color():
+    """The Color Picker, Ring + Square: Paint Color, the hue ring, the square and the colour bar (2x capture)."""
+    src = real("shots/color_picker_ring.png")
+    top, foot = src.crop(COLOR_RING), src.crop(COLOR_FOOT)
+    im = Image.new("RGB", (top.width, top.height + foot.height))
+    im.paste(top, (0, 0))
+    im.paste(foot, (0, top.height))
+    return ui_card(im, 22)
+
+
+def make_hero_art():
+    print("hero art (store page and site home)")
+    save(hero_picker("female"), "hero-picker",
+         "The Armature Picker over the Adult Female art: the Body page, the hips and the left foot picked and the IK "
+         "hand hand_ik.L named, beside the Face page with its Gaze pad, two eyes you drag to aim the gaze.",
+         "focus-crop", store="png")
+    save(hero_brushes(), "hero-brushes",
+         "A Brush Picker list: Sculpt Brushes with Draw, Clay Strips (active) and Inflate/Deflate.", "focus-crop",
+         store="png")
+    save(hero_color(), "hero-color",
+         "A Color Picker, Ring + Square: Paint Color with the hue ring, the saturation square and the colour bar.",
+         "focus-crop", store="png")
 
 
 # ---- 5: icons
@@ -2608,10 +2681,11 @@ def write_registry():
 
 
 def main(argv):
-    groups = argv or ["brand", "icons", "hero", "cards", "gallery", "widgets", "frames", "focus"]
+    groups = argv or ["brand", "icons", "hero", "cards", "gallery", "widgets", "frames", "focus", "heroart"]
     for g in groups:
         {"hero": make_hero, "cards": make_cards, "gallery": make_gallery, "widgets": make_widget_tiles,
-         "frames": make_frames, "focus": make_focus, "icons": make_icons, "brand": make_brand}[g]()
+         "frames": make_frames, "focus": make_focus, "heroart": make_hero_art, "icons": make_icons,
+         "brand": make_brand}[g]()
     write_registry()
     check_aspect()
 

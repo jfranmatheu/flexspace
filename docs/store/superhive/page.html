@@ -142,9 +142,19 @@
 /* ---------- hero ---------- */
 .fsx .fs-hero { padding-top: 56px; padding-bottom: 48px; }
 .fsx .fs-hero .fs-lead { max-width: 60ch; }
-.fsx .fs-stage { position: relative; margin: 44px auto 0; max-width: 1200px; }
-.fsx .fs-shot { position: relative; margin: 0; }
-.fsx .fs-shot img { width: 100%; }
+/* the art: two equals, the Studio Control Panel (FlexSpace) and the Armature Picker (Body + Face, gaze pad), with three
+   small accents: a Color Picker, the brushes and the Ring Menu. Phones: the two stacked, the accents in a row under them;
+   from 560 px one overlapping composition (positions in % of the stage, so it scales with the column). */
+.fsx .fs-stage { position: relative; margin: 52px auto 0; max-width: 1200px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0 12px; align-items: end; }
+.fsx .fs-stage figure { position: relative; margin: 0; min-width: 0; }
+.fsx .fs-stage img { width: 100%; }
+.fsx .fs-shot { grid-column: 1 / -1; order: 1; z-index: 2; margin-left: -4%; margin-right: -4%; }
+.fsx .fs-co { grid-column: 1 / -1; order: 2; z-index: 3; margin: 28px 0 0; filter: drop-shadow(0 18px 26px rgba(0,0,0,.6)); }
+.fsx .fs-acc { order: 3; z-index: 4; margin-top: 22px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.6)); }
+.fsx .fs-acc-ring { order: 5; z-index: 1; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: #1c1c1d; }
+.fsx .fs-acc-ring picture { display: block; }
+.fsx .fs-acc-color { order: 4; }
 .fsx .fs-select { position: absolute; left: 5.06%; right: 5.06%; top: 5.84%; bottom: 9.18%; pointer-events: none;
   border: 1px solid rgba(240,181,87,.85); border-radius: 2px; }
 .fsx .fs-h { position: absolute; width: 10px; height: 10px; background: #0a0a0c; border: 1.5px solid #f0b557; border-radius: 2px;
@@ -156,15 +166,8 @@
 .fsx .fs-knob { position: absolute; left: 50%; top: -34px; width: 12px; height: 12px; margin-left: -6px; border-radius: 999px; background: #f0b557;
   box-shadow: 0 0 0 4px rgba(240,181,87,.18); animation: fsx-pop 600ms 240ms cubic-bezier(.34,1.56,.64,1) both; }
 .fsx .fs-knob::after { content: ""; position: absolute; left: 5px; top: 12px; width: 1px; height: 22px; background: rgba(240,181,87,.85); }
-.fsx .fs-tag { position: absolute; left: 0; bottom: -34px; padding: 5px 9px; border-radius: 6px; background: #1a1a1e; border: 1px solid #2e2e35;
+.fsx .fs-tag { display: none; position: absolute; left: 0; top: -32px; padding: 5px 9px; border-radius: 6px; background: #1a1a1e; border: 1px solid #2e2e35;
   font-family: "JetBrains Mono", ui-monospace, Consolas, Menlo, monospace; font-size: 11.5px; line-height: 1; color: #dcceb8; white-space: nowrap; }
-/* the floats (picker, Ring Menu): side by side under the panel on phones, around it from 860 px */
-.fsx .fs-floats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 60px; }
-.fsx .fs-float { margin: 0; border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; border: 1px solid rgba(255,255,255,.14);
-  background: #1c1c1d; box-shadow: 0 0 0 1px rgba(91,140,255,.35), 0 18px 40px -12px rgba(0,0,0,.75); }
-.fsx .fs-float picture { display: block; height: 100%; }
-.fsx .fs-float img { width: 100%; height: 100%; object-fit: contain; }
-.fsx .fs-float-picker { background: #1a1a1a; }
 .fsx .fs-hints { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px 22px; margin: 52px auto 0; max-width: 1000px; color: #b6b3ad; font-size: 14.5px; }
 .fsx .fs-hints li { display: inline-flex; align-items: center; gap: 9px; }
 
@@ -463,6 +466,28 @@
   .fsx .fs-bento { grid-template-columns: 1fr 1fr; }
   .fsx .fs-tile-wide { grid-column: span 2; }
 }
+/* the hero art from 560 px: one composition, the control panel top left, the picker overlapping it bottom right, the Ring
+   Menu peeking from behind the picker, the colour picker and the brushes in front of the panel's lower edge */
+@container fsx (min-width: 560px) {
+  .fsx .fs-stage { display: block; aspect-ratio: 1000 / 880; margin-top: 64px; }
+  .fsx .fs-stage figure { position: absolute; margin: 0; }
+  .fsx .fs-tag { display: block; }
+  .fsx .fs-shot { left: -3.5%; top: 2%; width: 82%; }
+  .fsx .fs-co { right: -1%; top: 41%; width: 64%; }
+  .fsx .fs-acc { animation: fsx-float 8s cubic-bezier(.65,0,.35,1) infinite alternate; }
+  .fsx .fs-acc-ring { right: 0; top: 4%; width: 21%; transform: rotate(5deg); animation-delay: -2s; }
+  .fsx .fs-acc-color { left: 2%; top: 66%; width: 17%; transform: rotate(-4deg); animation-delay: -5s; }
+  .fsx .fs-acc-brushes { left: 17%; top: 80%; width: 19%; transform: rotate(3deg); }
+}
+@container fsx (min-width: 860px) {
+  .fsx .fs-stage { aspect-ratio: 1000 / 575; margin-top: 76px; }
+  .fsx .fs-shot { left: -2.6%; top: 4%; width: 61%; }
+  .fsx .fs-co { right: 0; left: auto; top: 16%; width: 51%; }
+  .fsx .fs-acc-ring { right: -1%; top: -3%; width: 16.5%; }
+  .fsx .fs-acc-color { left: 3%; top: 64%; width: 12%; }
+  .fsx .fs-acc-brushes { left: 16.5%; top: 71%; width: 14.5%; }
+}
+
 @container fsx (min-width: 860px) {
   .fsx .fs-sec { padding: 112px 40px; }
   .fsx .fs-hero { padding-top: 88px; padding-bottom: 64px; }
@@ -470,14 +495,7 @@
   .fsx .fs-trust ul { grid-template-columns: repeat(5, 1fr); }
   .fsx .fs-trust li, .fsx .fs-trust li:nth-child(4), .fsx .fs-trust li:last-child { grid-column: auto; }
   .fsx .fs-modes { grid-template-columns: 1fr auto 1fr; gap: 26px; }
-  .fsx .fs-floats { display: block; margin: 0; }
-  .fsx .fs-float { position: absolute; right: -1%; bottom: -7%; width: 31%; aspect-ratio: auto; border-radius: 18px;
-    box-shadow: 0 0 0 1px rgba(91,140,255,.4), 0 24px 48px -12px rgba(0,0,0,.75), 0 18px 60px -10px rgba(47,111,255,.35);
-    animation: fsx-float 8s cubic-bezier(.65,0,.35,1) infinite alternate; }
-  .fsx .fs-float img, .fsx .fs-float picture { height: auto; }
-  .fsx .fs-float-picker { right: auto; bottom: auto; left: -1%; top: 14%; width: 19%; animation-delay: -4s; }
-  .fsx .fs-stage { padding-right: 8%; padding-left: 9%; }
-  .fsx .fs-hints { margin-top: 110px; }
+  .fsx .fs-hints { margin-top: 64px; }
   .fsx .fs-gallery { grid-template-columns: repeat(4, 1fr); gap: 14px; }
   .fsx .fs-fp { grid-column: span 3; display: flex; flex-direction: column; justify-content: center; }
   .fsx .fs-bento { grid-template-columns: repeat(4, 1fr); }
@@ -502,10 +520,10 @@
 @keyframes fsx-pop { 0% { opacity: 0; transform: scale(.2); } 100% { opacity: 1; transform: scale(1); } }
 @keyframes fsx-breathe { 0% { opacity: .75; } 100% { opacity: 1; } }
 @keyframes fsx-drift { 0% { background-position: 0 0, 0 0, 0 0, 0 0; } 100% { background-position: 120px 120px, 120px 120px, 24px 24px, 24px 24px; } }
-@keyframes fsx-float { 0% { transform: translateY(0); } 100% { transform: translateY(-10px); } }
+@keyframes fsx-float { 0% { translate: 0 0; } 100% { translate: 0 -10px; } }
 @media (prefers-reduced-motion: reduce) {
   .fsx *, .fsx *::before, .fsx *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
-  .fsx .fs-gridbg, .fsx .fs-glow, .fsx .fs-float { animation: none !important; }
+  .fsx .fs-gridbg, .fsx .fs-glow, .fsx .fs-acc { animation: none !important; }
   .fsx .fs-tl-ping { display: none; }
 }
 </style>
@@ -536,17 +554,21 @@
       <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/frame-control-panel.png" width="1780" height="1198" alt="A studio control panel in Live Mode: lights, render, playback, objects and a camera preview, built from FlexSpace widgets.">
       <span class="fs-select" aria-hidden="true"><i class="fs-h fs-h1"></i><i class="fs-h fs-h2"></i><i class="fs-h fs-h3"></i><i class="fs-h fs-h4"></i><i class="fs-knob"></i><span class="fs-tag">Studio Control Panel</span></span>
     </figure>
-    <div class="fs-floats">
-      <figure class="fs-float fs-float-picker">
-        <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/float-picker.png" width="580" height="945" alt="The Armature Picker's Body page over the Adult Female art: the hips and the left foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow." loading="lazy">
-      </figure>
-      <figure class="fs-float">
-        <picture>
-          <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
-          <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
-        </picture>
-      </figure>
-    </div>
+    <figure class="fs-co">
+      <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/hero-picker.png" width="1098" height="860" alt="The Armature Picker over the Adult Female art: the Body page with the hips and the left foot picked and the IK hand hand_ik.L named, beside the Face page and its Gaze pad, two eyes you drag to aim the gaze." loading="lazy">
+    </figure>
+    <figure class="fs-acc fs-acc-color">
+      <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/hero-color.png" width="524" height="489" alt="A Color Picker, Ring + Square: Paint Color with the hue ring, the saturation square and the colour bar." loading="lazy">
+    </figure>
+    <figure class="fs-acc fs-acc-brushes">
+      <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/hero-brushes.png" width="506" height="452" alt="A Brush Picker: Sculpt Brushes with Draw, Clay Strips (active) and Inflate/Deflate." loading="lazy">
+    </figure>
+    <figure class="fs-acc fs-acc-ring">
+      <picture>
+        <source media="(prefers-reduced-motion: reduce)" srcset="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu-still.png">
+        <img src="https://jfranmatheu.github.io/flexspace/assets/img/store/gif-ring-menu.gif" width="666" height="729" alt="A Ring Menu: clicking brushes in the outer ring makes each one the active brush, named in the core." loading="lazy">
+      </picture>
+    </figure>
   </div>
   <ul class="fs-hints">
     <li><span class="fs-kbd">Tab</span> Edit ↔ Live</li>

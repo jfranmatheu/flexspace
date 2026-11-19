@@ -62,14 +62,14 @@ If Superhive's editor strips something, the fragments degrade instead of breakin
 
 The redrawn art is generated; the Armature Picker in it is real captures of the redesigned picker, cropped and composed (never squashed: the scripts fail if any embedded image changes its aspect). Real screenshots and GIFs (`docs/assets/media/store/`) are copied by `docs/_design/make_media.py`.
 
-- `docs/_design/make_graphics.py`: hero, cards, framed scenes (`frame-*.png`: a whole canvas), focus crops (`focus-*.png`: the part that tells the story, drawn so its UI text reads at the width the fragments show it), widget tiles for the site (`w-*.webp`, 720 x 400), widget gallery, icons.
+- `docs/_design/make_graphics.py`: hero, the hero art around the control panel (`hero-picker.png`, `hero-color.png`, `hero-brushes.png`, group `heroart`), cards, framed scenes (`frame-*.png`: a whole canvas), focus crops (`focus-*.png`: the part that tells the story, drawn so its UI text reads at the width the fragments show it), widget tiles for the site (`w-*.webp`, 720 x 400), widget gallery, icons.
 - `docs/_design/make_store_extras.py` (run it after `make_graphics.py widgets`): the store's widget thumbnails (`w-*.png`, 720 x 324, plus `w-gaze-eyes.png`) and the two GIFs drawn frame by frame from the same vector widgets: `gif-live-mode.gif` and `gif-ring-menu.gif`, each with a `-still.png`.
 
 Both register their outputs in `docs/assets/img/graphics.json`. To change a picture, overwrite the file at the same path and push; the fragments don't need editing (re-paste only if Superhive caches the old HTML).
 
 **Picker media** (the redesigned picker, both body charts):
 
-- Store page: the hero's floating picker (`float-picker.png`, Adult Female), `picker-select-transform.gif` big at the end of "See it in action", the Armature Picker row (`focus-picker.png`, Adult Male, plus `picker-face-gaze.gif`, `picker-hands-curl.gif`, `picker-ikfk.gif`), and in "Rigify? One step." every page of both bodies (`picker-layer-{female,male}-{body,face,hands,feet}.png`).
+- Store page: the hero's picker (`hero-picker.png`: the Adult Female Body page with the Face page and its Gaze pad, as big as the control panel beside it), `picker-select-transform.gif` big at the end of "See it in action", the Armature Picker row (`focus-picker.png`, Adult Male, plus `picker-face-gaze.gif`, `picker-hands-curl.gif`, `picker-ikfk.gif`), and in "Rigify? One step." every page of both bodies (`picker-layer-{female,male}-{body,face,hands,feet}.png`).
 - Store docs: section 10 (`focus-picker.png`, `picker-select-transform.gif`, `picker-hero.jpg`) and 11 (`picker-layer-female-face.png`, `picker-pages.gif`).
 - Each GIF has a `-still.png` first frame for reduced motion; every GIF is under 4 MB.
 

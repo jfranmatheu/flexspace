@@ -871,20 +871,6 @@
       "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/frame-widgets-board.png"
     },
     {
-      "name": "float-picker",
-      "kind": "focus-crop",
-      "size": [
-        580,
-        945
-      ],
-      "alt": "The Armature Picker's Body page over the Adult Female art: the hips and the left foot picked, the IK hand hand_ik.L active and named, left blue, right red, centre yellow.",
-      "files": {
-        "webp": "assets/img/float-picker.webp",
-        "store": "assets/img/store/float-picker.png"
-      },
-      "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/float-picker.png"
-    },
-    {
       "name": "focus-binding",
       "kind": "focus-crop",
       "size": [
@@ -995,6 +981,48 @@
         "store": "assets/img/store/focus-presets.png"
       },
       "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/focus-presets.png"
+    },
+    {
+      "name": "hero-brushes",
+      "kind": "focus-crop",
+      "size": [
+        506,
+        452
+      ],
+      "alt": "A Brush Picker list: Sculpt Brushes with Draw, Clay Strips (active) and Inflate/Deflate.",
+      "files": {
+        "webp": "assets/img/hero-brushes.webp",
+        "store": "assets/img/store/hero-brushes.png"
+      },
+      "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/hero-brushes.png"
+    },
+    {
+      "name": "hero-color",
+      "kind": "focus-crop",
+      "size": [
+        524,
+        489
+      ],
+      "alt": "A Color Picker, Ring + Square: Paint Color with the hue ring, the saturation square and the colour bar.",
+      "files": {
+        "webp": "assets/img/hero-color.webp",
+        "store": "assets/img/store/hero-color.png"
+      },
+      "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/hero-color.png"
+    },
+    {
+      "name": "hero-picker",
+      "kind": "focus-crop",
+      "size": [
+        1098,
+        860
+      ],
+      "alt": "The Armature Picker over the Adult Female art: the Body page, the hips and the left foot picked and the IK hand hand_ik.L named, beside the Face page with its Gaze pad, two eyes you drag to aim the gaze.",
+      "files": {
+        "webp": "assets/img/hero-picker.webp",
+        "store": "assets/img/store/hero-picker.png"
+      },
+      "store_url": "https://jfranmatheu.github.io/flexspace/assets/img/store/hero-picker.png"
     },
     {
       "name": "apple-touch-icon.png",
