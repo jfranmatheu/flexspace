@@ -3,7 +3,7 @@
   Superhive keeps only inline style="" with whitelisted CSS (see README.md), so this file is authored with classes and
   ONE <style> of simple selectors, and the build inlines them. No media queries: layouts switch at a container width
   with flex-basis: calc((500px - 100%) * 999) (one column below, several above) and the hero swaps two compositions
-  with max-width: calc((100% - 500px) * 999) / calc((500px - 100%) * 999) (the other one collapses to 0 x 0).
+  at a 700 px column with max-width: calc((100% - 700px) * 999) / calc((700px - 100%) * 999) (the other one collapses to 0 x 0).
 -->
 <style>
 /* ---------- the tags we use: the host page styles them, so every one is set here ---------- */
@@ -13,8 +13,8 @@
 p { margin: 0; padding: 0; }
 h1, h2, h3, h4 { margin: 0; margin-bottom: 0 !important; padding: 0; color: #f4f2ee; font-family: Inter, 'Segoe UI', system-ui, -apple-system, Roboto, Arial, sans-serif;
   font-weight: 700 !important; font-style: normal; letter-spacing: -0.02em; text-align: inherit; }
-h1 { font-size: 54px; line-height: 1.02; font-weight: 800 !important; letter-spacing: -0.045em; }
-h2 { font-size: 40px; line-height: 1.08; font-weight: 800 !important; letter-spacing: -0.04em; }
+h1 { font-size: 54px; line-height: 1.02; font-weight: 700 !important; letter-spacing: -0.045em; }
+h2 { font-size: 40px; line-height: 1.08; font-weight: 700 !important; letter-spacing: -0.04em; }
 h3 { font-size: 25px; line-height: 1.15; letter-spacing: -0.03em; }
 h4 { font-size: 18px; line-height: 1.3; letter-spacing: -0.02em; }
 ul, ol { margin: 0; padding: 0; list-style: none; }
@@ -23,11 +23,11 @@ img { display: block; max-width: 100%; height: auto; margin: 0; padding: 0; bord
 video { display: block; width: 100%; max-width: 100%; height: auto; margin: 0; padding: 0; border: 0; background-color: #1a1a1a; }
 a { color: #f6cb82; font-weight: 600; text-decoration: none; }
 strong, b { font-weight: 600; color: #f4f2ee; }
-code { font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 0.86em; font-weight: 500; color: #dcceb8;
+code { font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 0.86em; font-weight: 500; color: #dcceb8;
   background-color: #1a1a1e; border: 1px solid rgba(255,255,255,.08); border-radius: 6px; padding: 1px 6px; white-space: nowrap; }
-kbd { display: inline-block; min-width: 26px; margin: 0; padding: 4px 8px 3px; border-radius: 5px; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace;
+kbd { display: inline-block; min-width: 26px; margin: 0; padding: 4px 8px 3px; border-radius: 5px; font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace;
   font-size: 13px; font-weight: 500; line-height: 1.3; text-align: center; white-space: nowrap; color: #f4f2ee; background-color: #24242a;
-  border: 1px solid #3a3a42; border-bottom-width: 3px; vertical-align: baseline; }
+  border: 1px solid #3a3a42; border-bottom: 3px solid #3a3a42; vertical-align: baseline; }
 blockquote { margin: 0; padding: 0; border: 0; color: #f4f2ee; }
 dl, dt, dd { margin: 0; padding: 0; }
 dt { font-weight: 400; }
@@ -70,7 +70,7 @@ table { border-collapse: separate; border-spacing: 0; }
 .p-mute { color: #9c9ca2; background-color: #1c1c1d; border: 1px solid #353538; }
 .p-warn { color: #ffd27a; background-color: rgba(229,134,46,.14); border: 1px solid rgba(229,134,46,.45); }
 .p-blue { color: #ffffff; background-color: #2f6fff; border: 1px solid #2f6fff; }
-.kbd-xl { font-size: 26px; padding: 12px 22px 9px; border-radius: 10px; border-bottom-width: 5px; }
+.kbd-xl { font-size: 26px; padding: 12px 22px 9px; border-radius: 10px; border-bottom: 5px solid #3a3a42; }
 
 /* ---------- ticks ---------- */
 .ticks { margin: 20px 0 0; }
@@ -110,8 +110,8 @@ table { border-collapse: separate; border-spacing: 0; }
 .inb-label .chip { margin: 0; }
 
 /* ---------- hero ---------- */
-.stage-w { position: relative; overflow: hidden; width: 100%; max-width: calc((100% - 500px) * 999); aspect-ratio: 1000/880; margin: 0 auto; }
-.stage-n { position: relative; overflow: hidden; width: 100%; max-width: calc((500px - 100%) * 999); aspect-ratio: 1000/1940; margin: 0 auto; }
+.stage-w { position: relative; overflow: hidden; width: 100%; max-width: calc((100% - 700px) * 999); aspect-ratio: 1000/880; margin: 0 auto; }
+.stage-n { position: relative; overflow: hidden; width: 100%; max-width: calc((700px - 100%) * 999); aspect-ratio: 1000/1940; margin: 0 auto; }
 .abs { position: absolute; }
 .ring { position: absolute; overflow: hidden; border-radius: 14px; border: 1px solid rgba(255,255,255,.12); background-color: #1c1c1d; }
 .select { position: absolute; left: 5.06%; right: 5.06%; top: 5.84%; bottom: 9.18%; border: 1px solid rgba(240,181,87,.85); border-radius: 2px; }
@@ -120,7 +120,7 @@ table { border-collapse: separate; border-spacing: 0; }
   border: 4px solid #33281a; }
 .stem { position: absolute; left: 50%; top: -18px; display: block; width: 1px; height: 18px; background-color: rgba(240,181,87,.85); }
 .stag { position: absolute; left: 0; top: -32px; display: block; padding: 5px 9px; border-radius: 6px; background-color: #1a1a1e; border: 1px solid #2e2e35;
-  font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 11.5px; line-height: 1; color: #dcceb8; white-space: nowrap; }
+  font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 11.5px; line-height: 1; color: #dcceb8; white-space: nowrap; }
 .hints { position: relative; display: flex; flex-wrap: wrap; justify-content: center; margin: 44px -11px 0; color: #b6b3ad; font-size: 14.5px; line-height: 1.4; }
 .hints li { display: inline-block; margin: 5px 11px; white-space: nowrap; }
 .hints kbd { margin: 0 9px 0 0; }
@@ -182,7 +182,7 @@ table { border-collapse: separate; border-spacing: 0; }
 .mini .pill { margin: 0 8px 4px 0; }
 .tip { display: block; max-width: 280px; padding: 10px 12px; border-radius: 8px; background-color: #1c1c1d; border: 1px solid #353538; font-size: 12.5px; line-height: 1.45; color: #e8e8ea; }
 .tip-sub { display: block; color: #9c9ca2; }
-.tip-code { display: block; margin: 4px 0 0; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 11px; color: #85827c; }
+.tip-code { display: block; margin: 4px 0 0; font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 11px; color: #85827c; }
 .states { display: inline-block; margin: 0 0 4px; white-space: nowrap; }
 .st { display: inline-block; width: 26px; height: 12px; margin: 0 6px 0 0; border-radius: 999px; vertical-align: middle; }
 
@@ -215,7 +215,7 @@ table { border-collapse: separate; border-spacing: 0; }
 .link { display: inline-block; margin: 18px 0 0; font-size: 15px; font-weight: 600; color: #f6cb82; }
 .steps { margin: 30px 0 0; }
 .step { position: relative; margin: 14px 0 0; padding: 18px 18px 18px 64px; border-radius: 18px; background-color: #141417; border: 1px solid rgba(255,255,255,.08); color: #b6b3ad; line-height: 1.6; }
-.num { position: absolute; left: 16px; top: 16px; display: block; width: 32px; height: 32px; border-radius: 10px; font-size: 17px; font-weight: 800; line-height: 32px;
+.num { position: absolute; left: 16px; top: 16px; display: block; width: 32px; height: 32px; border-radius: 10px; font-size: 17px; font-weight: 900; line-height: 32px;
   text-align: center; color: #1a1206; background-color: #ecbd72; background-image: linear-gradient(100deg, #f0b557, #e6c187 60%, #d8d2c8); }
 .layers { margin: 56px 0 0; padding: 40px 0 0; border-top: 1px solid rgba(255,255,255,.08); }
 .layers h3 { font-size: 28px; }
@@ -228,7 +228,7 @@ table { border-collapse: separate; border-spacing: 0; }
 
 /* ---------- what's inside + specs ---------- */
 .inc { flex: 1 1 auto; padding: 24px; border-radius: 18px; background-color: #141417; border: 1px solid rgba(255,255,255,.08); }
-.big { display: block; font-size: 40px; font-weight: 800; line-height: 1; letter-spacing: -0.03em; color: #efbf72; }
+.big { display: block; font-size: 40px; font-weight: 900; line-height: 1; letter-spacing: -0.03em; color: #efbf72; }
 .inc h4 { margin-top: 14px; }
 .inc-p { margin: 6px 0 0; color: #b6b3ad; font-size: 15px; }
 .specs { margin: 40px 0 0; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,.08); background-color: #111114; }
@@ -237,7 +237,7 @@ table { border-collapse: separate; border-spacing: 0; }
 .spec dt { flex: 0 1 calc((480px - 100%) * 999); min-width: 180px; margin: 0 20px 0 0; font-size: 12px; font-weight: 600; letter-spacing: 0.14em; line-height: 1.6;
   color: #f0b557; padding: 2px 0 0; }
 .spec dd { flex: 1 1 calc((480px - 100%) * 999); min-width: 0; color: #e4e1db; font-size: 15.5px; line-height: 1.55; }
-.vs-wrap { margin: 28px 0 0; overflow-x: auto; border-radius: 18px; border: 1px solid rgba(255,255,255,.08); background-color: #111114; }
+.vs-wrap { margin: 28px 0 0; overflow: hidden; border-radius: 18px; border: 1px solid rgba(255,255,255,.08); background-color: #111114; }
 .vs { width: 100%; font-size: 14.5px; line-height: 1.45; }
 .vs th, .vs td { padding: 13px 12px; vertical-align: top; text-align: left; border-top: 1px solid rgba(255,255,255,.07); }
 .vs td { color: #d9d6d0; background-color: #111114; }
@@ -248,7 +248,10 @@ table { border-collapse: separate; border-spacing: 0; }
 .story { border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
 .tlg { margin-top: 36px; }
 .rail { position: relative; height: 28px; }
-.rail-line { position: absolute; left: -8px; right: -8px; top: 12px; height: 2px; background-color: #8b6a38; }
+.rail-line { position: absolute; left: 0; right: 0; top: 12px; height: 2px; background-color: #8b6a38; }
+.stub { position: absolute; top: 12px; display: block; width: 8px; max-width: calc((270px - 100%) * 999); height: 2px; background-color: #8b6a38; }
+.stub-l { left: -8px; }
+.stub-r { right: -8px; }
 .rail-start { left: 20px; }
 .rail-fade { right: 0; background-color: #2a2115; background-image: linear-gradient(90deg, #8b6a38, rgba(139,106,56,0)); }
 .rail-end { right: 0; background-color: #2a2115; background-image: linear-gradient(90deg, #f0b557, rgba(240,181,87,0)); }
@@ -256,7 +259,7 @@ table { border-collapse: separate; border-spacing: 0; }
 .mark-now { background-color: #f0b557; border-color: #f6cb82; }
 .ping { position: absolute; left: 16px; top: 3px; display: block; width: 20px; height: 20px; border-radius: 6px; border: 2px solid rgba(240,181,87,.6); }
 .tl { flex: 1 1 auto; position: relative; padding: 18px 20px 20px; border-radius: 18px; background-color: #141417; border: 1px solid rgba(255,255,255,.08); }
-.tl-date { display: block; font-family: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 12.5px; font-weight: 500; line-height: 1.2;
+.tl-date { display: block; font-family: 'IBM Plex Mono', ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, Menlo, monospace; font-size: 12.5px; font-weight: 500; line-height: 1.2;
   letter-spacing: 0.04em; color: #f0b557; }
 .tl h4 { margin-top: 10px; font-size: 18px; }
 .tl-p { margin: 6px 0 0; font-size: 14.5px; color: #b6b3ad; }
@@ -529,7 +532,7 @@ table { border-collapse: separate; border-spacing: 0; }
         <li><span class="tick">✓</span>Switch Pages Automatically</li>
         <li><span class="tick">✓</span>A clear notice, and one click to enter the right mode</li>
       </ul>
-      <div class="media"><div class="media-in"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-layers.png" width="1312" height="912" alt="A canvas with a page per mode: the page tabs, Sculpt active, and the Sculpt page's brushes and stroke settings."></div></div>
+      <div class="media"><div class="media-in"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/focus-pages.png" width="1312" height="912" alt="A canvas with a page per mode: the page tabs, Sculpt active, and the Sculpt page's brushes and stroke settings."></div></div>
       <div class="inb">
         <div class="inb-label"><span class="chip">IN BLENDER</span></div>
         <div class="grid">
@@ -624,7 +627,7 @@ table { border-collapse: separate; border-spacing: 0; }
         <div class="grid">
           <div class="cell c2">
             <div class="frame fit">
-              <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-face-gaze-still.png" width="1280" height="776"><source src="https://jfranmatheu.github.io/flexspace/assets/media/picker-face-gaze.mp4" type="video/mp4">Drag the gaze pad and the character's eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile.</video>
+              <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/picker-face-gaze-still.png" width="1280" height="776"><source src="https://jfranmatheu.github.io/flexspace/assets/media/picker-face-gaze.mp4" type="video/mp4">Drag the gaze pad and the character's eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.</video>
               <span class="tag"><span class="dot"></span>RECORDING</span>
             </div>
             <p class="fcap"><strong>Aim the eyes, then shape the face.</strong> Drag the gaze pad and the character's eyeballs follow; then pick the brows and the mouth corners on the face chart and move them for a smile, no controls cluttering the face.</p>
@@ -757,7 +760,7 @@ table { border-collapse: separate; border-spacing: 0; }
         <p class="tile-p">A slider drag, a toggle click, a paste: one step each. Bound widgets show Blender's animation colours.</p>
       </div></div>
       <div class="cell c1"><div class="tile">
-        <div class="tile-art"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/frame-demo-browser.png" width="1780" height="1219" alt="The demo browser: categories, demo cards and Open in New Window."></div>
+        <div class="tile-art"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/frame-demo-browser-pages.png" width="1780" height="1219" alt="The demo browser: categories, demo cards and Open in New Window."></div>
         <h4>Demo files.</h4>
         <p class="tile-p">Finished canvases open in their own window; your file stays untouched.</p>
       </div></div>
@@ -946,12 +949,12 @@ table { border-collapse: separate; border-spacing: 0; }
       <p class="lead">Built and refined by an independent developer since 2023.</p>
     </div>
     <ol class="grid tlg">
-      <li class="cell c3"><div class="rail"><span class="rail-line rail-start"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Sep 2023</span><h4>It starts with a picker</h4><p class="tl-p">Development of the Armature Picker begins.</p></div></li>
-      <li class="cell c3"><div class="rail"><span class="rail-line"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">25 Oct 2023</span><h4>First public preview</h4><p class="tl-p">Interactive picker editing is shown for the first time, <a href="https://x.com/jfranmatheu/status/1717207033701617889">on X</a>.</p></div></li>
-      <li class="cell c3"><div class="rail"><span class="rail-line rail-fade"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Dec 2023</span><h4>A shared base</h4><p class="tl-p">MySpace, later FlexSpace, begins. The picker becomes one of its modules.</p></div></li>
-      <li class="cell c3"><div class="rail"><span class="rail-line rail-start"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Jan–Mar 2024</span><h4>First betas</h4><p class="tl-p">MySpace 1.0 and 1.1 betas, then the FlexSpace 1.3 beta, for Blender 4.0.</p></div></li>
-      <li class="cell c3"><div class="rail"><span class="rail-line"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Oct 2026</span><h4>A Blender extension</h4><p class="tl-p">FlexSpace becomes an extension, for Blender 5.2.</p></div></li>
-      <li class="cell c3"><div class="rail"><span class="rail-line rail-end"></span><span class="ping"></span><span class="mark mark-now"></span></div><div class="now"><div class="now-in"><span class="tl-tag">NOW</span><span class="tl-date">Nov 2026</span><h4>FlexSpace 1.4.0</h4><p class="tl-p">For Blender 5.3. The current version.</p></div></div></li>
+      <li class="cell c3"><div class="rail"><span class="rail-line rail-start"></span><span class="stub stub-r"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Sep 2023</span><h4>It starts with a picker</h4><p class="tl-p">Development of the Armature Picker begins.</p></div></li>
+      <li class="cell c3"><div class="rail"><span class="stub stub-l"></span><span class="rail-line"></span><span class="stub stub-r"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">25 Oct 2023</span><h4>First public preview</h4><p class="tl-p">Interactive picker editing is shown for the first time, <a href="https://x.com/jfranmatheu/status/1717207033701617889">on X</a>.</p></div></li>
+      <li class="cell c3"><div class="rail"><span class="stub stub-l"></span><span class="rail-line rail-fade"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Dec 2023</span><h4>A shared base</h4><p class="tl-p">MySpace, later FlexSpace, begins. The picker becomes one of its modules.</p></div></li>
+      <li class="cell c3"><div class="rail"><span class="rail-line rail-start"></span><span class="stub stub-r"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Jan–Mar 2024</span><h4>First betas</h4><p class="tl-p">MySpace 1.0 and 1.1 betas, then the FlexSpace 1.3 beta, for Blender 4.0.</p></div></li>
+      <li class="cell c3"><div class="rail"><span class="stub stub-l"></span><span class="rail-line"></span><span class="stub stub-r"></span><span class="mark"></span></div><div class="tl"><span class="tl-date">Oct 2026</span><h4>A Blender extension</h4><p class="tl-p">FlexSpace becomes an extension, for Blender 5.2.</p></div></li>
+      <li class="cell c3"><div class="rail"><span class="stub stub-l"></span><span class="rail-line rail-end"></span><span class="ping"></span><span class="mark mark-now"></span></div><div class="now"><div class="now-in"><span class="tl-tag">NOW</span><span class="tl-date">Nov 2026</span><h4>FlexSpace 1.4.0</h4><p class="tl-p">For Blender 5.3. The current version.</p></div></div></li>
     </ol>
     <div class="foot center">
       <div class="quote">

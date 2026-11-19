@@ -74,10 +74,9 @@ const KEPT_PROPS = new Set(`display flex flex-wrap flex-direction flex-flow flex
   justify-content order position top right bottom left width min-width max-width height min-height max-height
   margin margin-top margin-right margin-bottom margin-left margin-inline margin-block padding padding-top padding-right padding-bottom
   padding-left padding-inline padding-block border border-top border-right border-bottom border-left border-color border-style
-  border-width border-radius border-top-color border-right-color border-bottom-color border-left-color border-top-width border-right-width
-  border-bottom-width border-left-width border-collapse border-spacing background background-color background-image background-position
+  border-width border-radius border-collapse border-spacing background background-color background-image background-position
   color font-family font-size font-weight font-style line-height letter-spacing text-align text-decoration vertical-align white-space
-  overflow overflow-x overflow-y list-style float clear cursor aspect-ratio`.split(/\s+/));
+  overflow list-style float clear cursor aspect-ratio`.split(/\s+/));
 
 // What the host page does to our tags (measured, see README): not Superhive's stylesheet, just its effect.
 const HOST = `body{margin:0;font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:16px;line-height:24px;color:#2a1f42}

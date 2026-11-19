@@ -16,6 +16,8 @@ source is authored with class names and ONE <style> block, and this tool inlines
     element's own style="" comes last, so it wins. `!important` is honoured.
   - `data-fit="16/10"` on an <img> or <video> letterboxes it in a frame of that aspect (object-fit is stripped):
     the tool sizes it from its width/height attributes. <video> also gets aspect-ratio from its attributes.
+  - Every <p> gets its line-height with !important (the host forces 1.6 on <p>), and a <video> without a title
+    gets its fallback text as title (its accessible name: aria-label is stripped).
   - class attributes, the <style> block and comments are dropped; the result is validated (see validate()) and
     the build FAILS on anything Superhive would strip, on a leftover class/id, on a relative media URL, on a
     media file missing from docs/assets/, and on an <img> without width, height or alt.
@@ -39,6 +41,7 @@ ASSETS = SITE + "assets/"
 
 # ----------------------------------------------------------------------------------------------- the whitelist
 # Measured on Superhive (save a probe, read it back). Keep in sync with docs/store/superhive/README.md.
+# Only what was measured: no overflow-x/-y, no per-side border-*-width/-color/-style, no per-corner radius.
 KEPT_TAGS = set("""div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dl dt dd
     blockquote strong b em i u s del ins cite small code kbd sup sub pre abbr hr br font""".split())
 VOID = {"img", "br", "hr", "source", "input", "meta", "link", "col", "area", "base", "embed", "param", "track", "wbr"}
@@ -62,14 +65,10 @@ KEPT_PROPS = set("""display flex flex-wrap flex-direction flex-flow flex-basis f
     padding padding-top padding-right padding-bottom padding-left padding-inline padding-block
     padding-inline-start padding-inline-end padding-block-start padding-block-end
     border border-top border-right border-bottom border-left border-color border-style border-width border-radius
-    border-top-left-radius border-top-right-radius border-bottom-left-radius border-bottom-right-radius
-    border-top-color border-right-color border-bottom-color border-left-color
-    border-top-width border-right-width border-bottom-width border-left-width
-    border-top-style border-right-style border-bottom-style border-left-style
     border-collapse border-spacing
     background background-color background-image background-position
     color font-family font-size font-weight font-style line-height letter-spacing text-align text-decoration
-    vertical-align white-space overflow overflow-x overflow-y list-style float clear cursor aspect-ratio""".split())
+    vertical-align white-space overflow list-style float clear cursor aspect-ratio""".split())
 DISPLAY_OK = {"block", "inline-block", "flex", "inline-flex", "none"}
 POSITION_OK = {"relative", "absolute"}
 BAD_FUNC = re.compile(r"\b(min|max|clamp|var|url|env|attr)\(", re.I)
@@ -374,6 +373,24 @@ def inline(src: str) -> str:
         if el.get("style"):
             _apply(acc, parse_decls(el.get("style")))
         computed.append((el, acc))
+    # The host's `.quarantine p { line-height: 1.6 !important }` beats any plain line-height on a <p>, the inherited
+    # one too, so every <p> whose line-height (own or inherited) isn't 1.6 states it with !important.
+    accs = {id(el): acc for el, acc in computed}
+    for el, acc in computed:
+        if el.tag != "p":
+            continue
+        n, lh = el, None
+        while n is not None and n.kind == "el" and lh is None:
+            lh = next((v for p_, v, _ in accs.get(id(n), []) if p_ == "line-height"), None)
+            n = n.parent
+        if lh is not None and lh != "1.6":
+            _apply(acc, [("line-height", lh, True)])
+    # <video> has no alt and aria-label is stripped: its fallback text becomes its title (kept), its accessible name.
+    for el, _ in computed:
+        if el.tag == "video" and not el.get("title"):
+            text = " ".join("".join(c.text for c in el.children if c.kind == "text").split())
+            if text:
+                el.set("title", text)
     for el, acc in computed:
         el.drop("class")
         el.drop("data-fit")
@@ -437,7 +454,7 @@ def validate(fragment: str) -> list[str]:
                 if el.get(a) is None:
                     errors.append(f"<img src={el.get('src')}>: missing {a}")
         if el.tag == "video":
-            for a in ("autoplay", "muted", "loop", "playsinline", "poster", "width", "height"):
+            for a in ("autoplay", "muted", "loop", "playsinline", "poster", "width", "height", "title"):
                 if not any(k == a for k, _ in el.attrs):
                     errors.append(f"<video>: missing {a}")
             if not any(c.kind == "el" and c.tag == "source" and (c.get("type") == "video/mp4") for c in el.children):
