@@ -147,11 +147,12 @@
    from 560 px one overlapping composition (positions in % of the stage, so it scales with the column). */
 .fsx .fs-stage { position: relative; margin: 52px auto 0; max-width: 1200px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0 12px; align-items: end; }
-.fsx .fs-stage figure { position: relative; margin: 0; min-width: 0; }
+.fsx .fs-stage figure { position: relative; min-width: 0; }
 .fsx .fs-stage img { width: 100%; }
-.fsx .fs-shot { grid-column: 1 / -1; order: 1; z-index: 2; margin-left: -4%; margin-right: -4%; }
-.fsx .fs-co { grid-column: 1 / -1; order: 2; z-index: 3; margin: 28px 0 0; filter: drop-shadow(0 18px 26px rgba(0,0,0,.6)); }
-.fsx .fs-acc { order: 3; z-index: 4; margin-top: 22px; filter: drop-shadow(0 12px 18px rgba(0,0,0,.6)); }
+/* the panel bleeds by its transparent margin (5.06% of the image a side) so its window lines up with the picker's */
+.fsx .fs-shot { grid-column: 1 / -1; order: 1; z-index: 2; margin: 0 -5.63%; }
+.fsx .fs-co { grid-column: 1 / -1; order: 2; z-index: 3; margin: 6px 0 0; filter: drop-shadow(0 18px 26px rgba(0,0,0,.6)); }
+.fsx .fs-acc { order: 3; z-index: 4; margin: 16px 0 0; filter: drop-shadow(0 12px 18px rgba(0,0,0,.6)); }
 .fsx .fs-acc-ring { order: 5; z-index: 1; border-radius: 14px; overflow: hidden; border: 1px solid rgba(255,255,255,.12); background: #1c1c1d; }
 .fsx .fs-acc-ring picture { display: block; }
 .fsx .fs-acc-color { order: 4; }
@@ -475,7 +476,7 @@
   .fsx .fs-shot { left: -3.5%; top: 2%; width: 82%; }
   .fsx .fs-co { right: -1%; top: 41%; width: 64%; }
   .fsx .fs-acc { animation: fsx-float 8s cubic-bezier(.65,0,.35,1) infinite alternate; }
-  .fsx .fs-acc-ring { right: 0; top: 4%; width: 21%; transform: rotate(5deg); animation-delay: -2s; }
+  .fsx .fs-acc-ring { right: 1.5%; top: 4%; width: 21%; transform: rotate(5deg); animation-delay: -2s; }
   .fsx .fs-acc-color { left: 2%; top: 66%; width: 17%; transform: rotate(-4deg); animation-delay: -5s; }
   .fsx .fs-acc-brushes { left: 17%; top: 80%; width: 19%; transform: rotate(3deg); }
 }
@@ -483,7 +484,7 @@
   .fsx .fs-stage { aspect-ratio: 1000 / 575; margin-top: 76px; }
   .fsx .fs-shot { left: -2.6%; top: 4%; width: 61%; }
   .fsx .fs-co { right: 0; left: auto; top: 16%; width: 51%; }
-  .fsx .fs-acc-ring { right: -1%; top: -3%; width: 16.5%; }
+  .fsx .fs-acc-ring { right: 1%; top: -3%; width: 16.5%; }
   .fsx .fs-acc-color { left: 3%; top: 64%; width: 12%; }
   .fsx .fs-acc-brushes { left: 16.5%; top: 71%; width: 14.5%; }
 }

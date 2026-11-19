@@ -262,21 +262,21 @@ code, kbd, samp { font-family: var(--font-mono); font-size: 0.92em; }
 .fs-stack__item { position: absolute; margin: 0; }
 .fs-stack__item img { width: 100%; height: auto; }
 .fs-stack__main { left: -1%; top: 6%; width: 60%; z-index: 2; }
-.fs-stack__picker { right: -1%; top: 23%; width: 52%; z-index: 3; filter: drop-shadow(0 22px 32px rgba(0, 0, 0, .55)); }
+.fs-stack__picker { right: 0; top: 23%; width: 52%; z-index: 3; filter: drop-shadow(0 22px 32px rgba(0, 0, 0, .55)); }
 .fs-stack__picker a { display: block; }
-.fs-stack__ring { right: -2%; top: -1%; width: 21%; z-index: 1; transform: rotate(5deg); }
+.fs-stack__ring { right: 0.5%; top: -1%; width: 21%; z-index: 1; transform: rotate(5deg); }
 .fs-stack__acc { z-index: 4; filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .55)); }
 .fs-stack__color { left: 3%; top: 70%; width: 13.5%; transform: rotate(-4deg); }
 .fs-stack__brushes { left: 17.5%; top: 77%; width: 16%; transform: rotate(3deg); }
-/* phones: the same idea mirrored and taller (the panel right, the picker left, the accents bottom right, clear of
-   the body and the gaze pad) so both windows stay big */
+/* phones: the same idea mirrored and taller (the panel right, the picker left) so both windows stay big; the accents
+   hang from the picker's lower edge, bottom right, clear of the face page and the gaze pad */
 @media (max-width: 699px) {
-  .fs-stack { aspect-ratio: 1000 / 1500; }
-  .fs-stack__main { left: auto; right: -3%; top: 4%; width: 92%; }
-  .fs-stack__picker { left: -2%; right: auto; top: 42%; width: 90%; }
-  .fs-stack__ring { left: -2%; right: auto; top: 0; width: 26%; transform: rotate(-5deg); }
-  .fs-stack__color { left: auto; right: 1%; top: 74%; width: 21%; }
-  .fs-stack__brushes { left: auto; right: 3%; top: 85%; width: 25%; }
+  .fs-stack { aspect-ratio: 1000 / 1580; }
+  .fs-stack__main { left: auto; right: -3%; top: 3.8%; width: 92%; }
+  .fs-stack__picker { left: -2%; right: auto; top: 39.9%; width: 90%; }
+  .fs-stack__ring { left: 0; right: auto; top: 0; width: 26%; transform: rotate(-5deg); }
+  .fs-stack__color { left: auto; right: 27%; top: 84.2%; width: 21%; }
+  .fs-stack__brushes { left: auto; right: 1%; top: 80.4%; width: 25%; }
 }
 .fs-on-light { display: none; }
 :root[data-theme="light"] .fs-on-dark { display: none; }
@@ -324,7 +324,10 @@ code, kbd, samp { font-family: var(--font-mono); font-size: 0.92em; }
 .fs-hero__grid--home .fs-lead { margin-inline: auto; }
 .fs-hero__grid--home .fs-actions { justify-content: center; }
 @media (max-width: 1099px) { .fs-hero__grid--home .fs-stack { margin-bottom: 4%; } }
-@media (min-width: 1100px) and (max-width: 1199px) { .fs-hero__grid--home { grid-template-columns: minmax(0, 1fr); } }
+@media (min-width: 1100px) and (max-width: 1199px) {
+  .fs-hero__grid--home { grid-template-columns: minmax(0, 1fr); }
+  .fs-hero__grid--home .fs-stack { max-width: 980px; }
+}
 @media (min-width: 1200px) {
   .fs-hero__grid--home { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); }
   .fs-hero__grid--home .fs-hero__copy { margin-inline: 0; text-align: left; }

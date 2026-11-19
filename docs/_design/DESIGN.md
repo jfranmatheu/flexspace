@@ -310,8 +310,10 @@ with literal values (see §6).
    same size. The accents are clearly smaller: the Ring Menu peeks from behind the picker's top corner, a Color
    Picker (`hero-color`, Ring + Square) and the brushes (`hero-brushes`, Sculpt Brushes with Clay Strips active) sit
    tilted on the panel's lower edge, clear of the picker's body and gaze pad. Positions are % of the art box, so it
-   scales; on phones the site mirrors it in a taller box (panel right, picker left, accents bottom right) and the
-   store stacks the two windows with the accents in a row under them. Nothing covers the headline or the buttons.
+   scales; on phones the site mirrors it in a taller box (panel right, picker left, the accents hanging from the
+   picker's lower edge, bottom right, clear of the face page) and the store stacks the two windows, their window edges
+   lined up, with the accents in a row under them. Nothing covers the headline or the buttons, and every piece stays
+   inside the content column (the transparent margins of the window PNGs may bleed past it, the windows may not).
    `hero-*` are made by `make_graphics.py heroart` from real captures (cropped, never scaled up or squashed).
 3. **Feature row.** 12-col: text 5 cols, media 7 cols, alternating sides; eyebrow (feature name), h3, 2–3 sentence
    body, a 3-item check list with sage ticks, an optional keycap line. Media in an xl frame with a 1 px gradient
