@@ -103,9 +103,11 @@
 </li>
 <li><strong>Drag</strong> on empty space: box select bones. <strong>Click</strong> empty space: deselect all.
 </li>
-<li><strong>Right-click</strong> (with an active bone): the <strong>Insert Keyframe</strong> pie (Location, Rotation, Scaling, Available).
+<li><strong>Right-click</strong> (with an active bone): the <strong>Insert Keyframe</strong> pie (Location, Rotation, Scaling, Available, Location, Rotation &amp; Scale, Whole Character) and <strong>Delete Keyframes</strong> (the selected bones' keys on the current frame). It opens on your Pose Mode context menu key (<span class="fs-keys"><kbd>W</kbd></span> with Right Click Select).
 </li>
-<li>Your <strong>Pose Mode keys work here</strong>, as if the mouse were in the 3D Viewport: <span class="fs-keys"><kbd>G</kbd></span> <span class="fs-keys"><kbd>R</kbd></span> <span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>I</kbd></span>, <span class="fs-keys"><kbd>A</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span>, <span class="fs-keys"><kbd>H</kbd></span>, copy and paste pose...
+<li><strong>Right Click Select</strong>: the picker selects with the mouse button you select with (Preferences &gt; Keymap &gt; <strong>Select with</strong>). With <strong>Right</strong>, use the right button to click, <span class="fs-keys"><kbd>Shift</kbd></span> click and drag on buttons (box select, the transform tools and the IK/FK puck too); the left button does nothing on them. Sliders, toggles and other widgets keep the left button, like Blender's own buttons. Industry Compatible selects with the left button.
+</li>
+<li>Your <strong>Pose Mode keys work here</strong>, as if the mouse were in the 3D Viewport: <span class="fs-keys"><kbd>G</kbd></span> <span class="fs-keys"><kbd>R</kbd></span> <span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>I</kbd></span>, <span class="fs-keys"><kbd>A</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span>, <span class="fs-keys"><kbd>H</kbd></span>, copy and paste pose... <span class="fs-keys"><kbd>G</kbd></span> <span class="fs-keys"><kbd>R</kbd></span> <span class="fs-keys"><kbd>S</kbd></span> need a 3D Viewport in the same window: in a window with only the picker they say so instead.
 </li>
 </ul>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-pose.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-pose.webp" data-src="../assets/media/picker-pose.mp4" width="1280" height="776" aria-label="Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Click a control on the body chart to select it, then move or rotate it in the viewport: the hands, the chest and the head pose the character.</figcaption></figure>
@@ -115,7 +117,7 @@
 <ul>
 <li><strong>Select &amp; Control</strong> (default): select bones and use sliders.
 </li>
-<li><strong>Move</strong>, <strong>Rotate</strong>, <strong>Scale</strong>, <strong>Gimball</strong>: press a button and drag to transform its bone right away. Release to confirm.
+<li><strong>Move</strong>, <strong>Rotate</strong>, <strong>Scale</strong>, <strong>Trackball</strong> (free rotation): drag a button to transform its bone right away. Release to confirm. A click without dragging only selects the bone (no transform, no key with Auto Keying).
 </li>
 </ul>
 <h2 id="bone-names">Bone names<a class="fs-anchor" href="#bone-names" aria-label="Link to this section">#</a></h2>
@@ -123,12 +125,17 @@
 <h2 id="bone-collections">Bone collections<a class="fs-anchor" href="#bone-collections" aria-label="Link to this section">#</a></h2>
 <p>In the same panel:</p>
 <ul>
-<li><strong>Sync Bone Collections Visibility</strong> hides the buttons of bones whose collections are hidden in the viewport.
+<li><strong>Sync Bone Collections Visibility</strong> hides the buttons of bones whose bone collections are hidden in the viewport. A button with an <strong>IK/FK puck</strong> keeps the puck while its collection is hidden, so you can switch the limb back (hide the IK collection after switching to FK, click the puck to go back to IK).
+</li>
+<li><strong>Hidden Bones</strong> sets how the buttons of bones hidden with <span class="fs-keys"><kbd>H</kbd></span> look while you pose: <strong>Dim</strong> (the default: drawn faded), <strong>Hide</strong> or <strong>Show</strong> (as usual). It is also in the picker's header (the ghost icon) and is saved with each picker. In Edit Mode every button shows, so you can still arrange them.
+</li>
+<li>A bone hidden with <span class="fs-keys"><kbd>H</kbd></span> or set to <strong>Disallow Selection</strong> is never selected from the picker, whatever its look, as in the viewport: a click, <span class="fs-keys"><kbd>Shift</kbd></span> click, box select or a tool drag skips it. Its IK/FK puck still switches.
 </li>
 <li>The armature's bone collections are listed, so you can show and hide them from here.
 </li>
 </ul>
-<p>To get a button that shows or hides a collection, add <strong>Bone Picker &gt; Bone Collection</strong> with <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> in Edit Mode.</p>
+<p>To get a button that shows or hides a collection, add <strong>Bone Picker &gt; Bone Collection</strong> with <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> in Edit Mode. In its <strong>Bone Collection</strong> panel, <strong>Select</strong> makes it pick a whole chain instead: a click selects the collection's bones (<span class="fs-keys"><kbd>Shift</kbd></span> click adds them to the selection), and it shows on while they are all selected.</p>
+<p>A <strong>Bone Collection</strong> toggle keeps working when you rename its collection or move it in the list. When you bind the toggle, the collection gets an id: a custom property named <code>picker_id</code> (in the collection's <strong>Custom Properties</strong>). The toggle looks for its collection by that id first, then by name. Toggles from older files get their id the first time they find their collection. A rig linked from another file, or a library override of one, is never written to: its toggles find their collections by the ids saved in the library, else by name. If you delete a collection and make a new one with the same name, the toggle uses the new one.</p>
 <h2 id="gaze-control">Gaze control<a class="fs-anchor" href="#gaze-control" aria-label="Link to this section">#</a></h2>
 <p>A <strong>Lineal 2D</strong> pad can be drawn as a pair of eyes: drag anywhere on it and the eyes look that way. The irises follow the value, also when it changes elsewhere (keys, undo, the viewport).</p>
 <ul>
@@ -146,9 +153,9 @@
 <h2 id="build-and-edit-the-layout">Build and edit the layout<a class="fs-anchor" href="#build-and-edit-the-layout" aria-label="Link to this section">#</a></h2>
 <p>Press <span class="fs-keys"><kbd>Tab</kbd></span> to edit the picker. The <strong>Utils</strong> menu in the header has:</p>
 <ul>
-<li><strong>Import Selected Bones</strong>: a button for each bone selected in the viewport that has none yet.
+<li><strong>Import Selected Bones</strong>: a button for each bone selected in the viewport that has none yet. Click to place each one; <span class="fs-keys"><kbd>Esc</kbd></span> cancels and adds none.
 </li>
-<li><strong>Import Geo Collection</strong>: turns the flat meshes of a collection into <strong>Geometry Shape</strong> buttons. A mesh named like a bone is bound to that bone.
+<li><strong>Import Geo Collection</strong>: turns the flat meshes of a collection into <strong>Geometry Shape</strong> buttons. A mesh named like a bone is bound to that bone. <span class="fs-keys"><kbd>Esc</kbd></span> while placing them adds none.
 </li>
 <li><strong>Repair Bone Bindings</strong>: see <a class="fs-xref" href="rigify.html#repair-bindings"><strong>Picker with Rigify &gt; Repair bindings</strong></a>.
 </li>
@@ -183,10 +190,13 @@
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The <strong>Face</strong> page of <strong>Humanoid Body (Rigify)</strong> is built this way: a face picture as a locked backdrop, with every face control drawn on its feature and a gaze pad drawn as eyes. See <strong>Rigify &gt; Bone collections</strong> for what is on it.</p></aside>
 <h2 id="mirror">Mirror<a class="fs-anchor" href="#mirror" aria-label="Link to this section">#</a></h2>
 <p>Buttons of bones named with a side (<code>hand.L</code>, <code>hand_R</code>, <code>Left</code>/<code>Right</code>...) know their other side. In Edit Mode, moving, resizing or rotating one of a pair mirrors the other across the red centre line.</p>
+<p>The other side gets the same change, mirrored: move the left one 10 units out and the right one moves 10 units out too, from where it is. A pair that is a mirror image stays one. A pair that is not (shapes traced from a drawing, like the hands of <strong>Humanoid Body (Rigify)</strong>) keeps its offset: the other side never jumps.</p>
 <ul>
-<li>Buttons of centre bones stay on the line.
+<li>Buttons of centre bones stay on the line. One you place off the line on purpose (the teeth and tongue of the <strong>Face</strong> page) moves freely.
 </li>
 <li>A side button can't cross it.
+</li>
+<li>A copy of a side button (duplicated or pasted) moves on its own: only the first button of each bone mirrors its pair.
 </li>
 </ul>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-mirror.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-mirror.webp" data-src="../assets/media/picker-mirror.mp4" width="1150" height="886" aria-label="In Edit Mode, move a left control and its right twin moves with it, mirrored across the body."></video><span class="fs-figure__tag">Recording</span></a><figcaption>In Edit Mode, move a left control and its right twin moves with it, mirrored across the body.</figcaption></figure>

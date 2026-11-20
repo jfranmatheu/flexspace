@@ -188,12 +188,25 @@
 <tr><td>Number with a 0–1 style range (Factor or Percentage, with a soft minimum and maximum)</td><td><strong>Lineal</strong> slider with that range</td></tr>
 <tr><td>Colour</td><td><strong>Color Swatch</strong></td></tr>
 <tr><td>Vector (Location, Rotation, Scale... 2 to 4 values)</td><td>Vertical <strong>Flex Box</strong> with one Number Field per value</td></tr>
-<tr><td>Anything else (a name, a data-block, a flag enum, a matrix)</td><td><strong>Label</strong> that reads the value out</td></tr>
+<tr><td>Anything else (a name, a matrix)</td><td><strong>Label</strong> that reads the value out</td></tr>
 </tbody></table></div>
 <ul>
 <li>Custom properties work too: their subtype and soft range decide, as above.
 </li>
+<li>Two kinds of property can't be bound yet, and no widget is added. Blender's status bar says why, and you can pick another property:
+<ul>
+<li>a property with several choices on at once, like <strong>Snap To</strong> in the snapping popover: <strong>Multi-choice properties can't be bound yet</strong>;
+</li>
+<li>a data-block, like a Geometry Nodes <strong>Material</strong>, <strong>Object</strong>, <strong>Collection</strong> or <strong>Image</strong> input, the scene's <strong>Camera</strong> or <strong>World</strong>, or an object's <strong>Data</strong>: <strong>Data-block properties (Material, Object, Collection, Image...) can't be bound yet</strong>.
+</li>
+</ul>
+</li>
+</ul>
+<p>Both are planned for 1.4.1.</p>
+<ul>
 <li>Right-clicking one item of a vector adds the whole vector.
+</li>
+<li>A Number Field or Enum is made wider when its label or item names need it.
 </li>
 <li>A property the canvas can't reach is reported, and you can pick another one.
 </li>
@@ -211,7 +224,7 @@
 </li>
 <li>Or type it: <strong>Context</strong> and <strong>Action</strong> are the two parts of the operator name (<code>pose</code> and <code>select_all</code> for <code>pose.select_all</code>).
 </li>
-<li><strong>Operator Properties</strong>: the settings it runs with.
+<li><strong>Operator Properties</strong>: the settings it runs with. A setting you set (or picked) is passed even when it matches the operator's default; the others are greyed out and not passed, so the operator uses its own value or asks for it (Add Modifier opens its menu). The <strong>X</strong> next to a setting stops passing it.
 </li>
 </ul>
 <p>The button runs as if you clicked in the 3D Viewport. Like Blender's own buttons, a click adds one undo step named after the operator, when the operator can be undone.</p>
@@ -252,7 +265,7 @@
 </ul>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Put a few Set Value toggles side by side to get radio buttons: one per IK / FK value, or one per parent of a space switch.</p></aside>
 <h3 id="bone-collection">Bone Collection<a class="fs-anchor" href="#bone-collection" aria-label="Link to this section">#</a></h3>
-<p>A toggle bound to a bone collection of the rig. The Add menu asks for the collection. In the sidebar <strong>Bone Collection</strong> panel choose <strong>Visible</strong> (show / hide it) or <strong>Solo</strong>.</p>
+<p>A toggle bound to a bone collection of the rig. The Add menu asks for the collection. In the sidebar <strong>Bone Collection</strong> panel choose <strong>Visible</strong> (show / hide it), <strong>Solo</strong> or <strong>Select</strong> (a click selects the collection's bones, <span class="fs-keys"><kbd>Shift</kbd></span> click adds them).</p>
 <hr class="fs-rule">
 <h2 id="enum">Enum<a class="fs-anchor" href="#enum" aria-label="Link to this section">#</a></h2>
 <p>An <strong>Enum</strong> picks one value of a property: a mode, IK / FK, a space or parent switch.</p>
@@ -301,9 +314,7 @@
 </li>
 <li>Click it in Live Mode to open the colour picker.
 </li>
-<li>Changes made there are Blender's own, so <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> undoes them as usual.
-</li>
-<li>If Auto Keying is on, the colour is keyed when the picker closes.
+<li>When the picker closes, the change is one undo step, and the colour is keyed if Auto Keying is on.
 </li>
 </ul>
 <hr class="fs-rule">
@@ -379,7 +390,9 @@
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-pose-face.webp" data-zoom><img src="../assets/media/picker-pose-face.webp" alt="Brows, lids, cheeks, nose, lips and jaw drawn on a face, with teeth and tongue, an eyes gaze control and mouth pads for expressions." width="1103" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Brows, lids, cheeks, nose, lips and jaw drawn on a face, with teeth and tongue, an eyes gaze control and mouth pads for expressions.</figcaption></figure>
 <p>In the <strong>Slider</strong> panel:</p>
 <ul>
-<li><strong>Unit Type</strong>: <strong>Value</strong> or <strong>Angle</strong> (the range in degrees), with its <strong>Min</strong> and <strong>Max</strong>.
+<li><strong>Unit Type</strong>: <strong>Value</strong> or <strong>Angle</strong> (the range in degrees), with its <strong>Min</strong> and <strong>Max</strong>. A Data Path typed or pasted while they are still 0 and 1 sets them from the property's range, as the eyedropper does.
+</li>
+<li>The property's own limits always apply too: a slider never sets a custom property past its <strong>Min</strong> or <strong>Max</strong>, and an integer stays an integer.
 </li>
 <li><strong>Show Value</strong>: draws the current value while you drag.
 </li>
@@ -553,6 +566,8 @@
 <li>Drop a widget onto a frame to put it in. Drag it out to take it out.
 </li>
 <li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> frames the selected widgets, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span> takes them out.
+</li>
+<li>Make the frame smaller and the widgets left outside it leave it.
 </li>
 <li>Settings: <strong>Title</strong>, <strong>Title Size</strong>, a custom colour, and <strong>Shrink</strong> (the frame fits its contents; resizing the frame turns it off).
 </li>

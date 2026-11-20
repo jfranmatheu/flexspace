@@ -75,7 +75,7 @@
 <ul>
 <li><strong>Body</strong>: Adult Male or Adult Female. Each has its own drawing, and the shapes follow it.
 </li>
-<li><strong>Pages</strong>: Body, Hands, Feet and Face. Each one goes on its own page, with its own tab, or all four sit side by side on one page with <strong>Each on Its Own Page</strong> off.
+<li><strong>Pages</strong>: Body, Hands, Feet and Face. Each one goes on its own page, with its own tab, or all four go on one page, one under the other, with <strong>Each on Its Own Page</strong> off. Either way every page is centred on the red centre line, so the left and right controls mirror each other and keep to their side.
 </li>
 <li><strong>Body page</strong>: the body split into head, neck, chest, torso, hips, shoulders, arms, hands, legs and feet (the FK and torso controls), plus the IK hands and feet, the elbow and knee poles, the spine and the tweaks. The IK hand (diamond) and its IK/FK switch are past the fingertips, the IK feet beside the feet, the poles and the IK arm and thigh bars just outside the limbs. These markers are exact left/right mirror images, so editing them with mirror on moves both sides together.
 </li>
@@ -107,7 +107,7 @@
 <ul>
 <li><strong>Front</strong> (the default): the same front view as the Body page. The right hand and foot are on the left, fingers and toes point down, wrists and heels are at the top.
 </li>
-<li><strong>Own</strong>: as you see your own hands and feet. Left is on the left, fingers and toes point up.
+<li><strong>Own</strong>: as you see your own hands and feet. Left is on the left, fingers and toes point up. The left controls sit left of the centre line here, so on these two pages they move freely, with no mirror.
 </li>
 </ul>
 </li>
@@ -168,7 +168,7 @@
 </ol>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Repeat with more bones whenever you like. Bones that already have a button are skipped.</p></aside>
 <h2 id="3-mirror">3. Mirror<a class="fs-anchor" href="#3-mirror" aria-label="Link to this section">#</a></h2>
-<p>Rigify names its controls with <code>.L</code> and <code>.R</code>, so the picker pairs them. In Edit Mode, move, resize or rotate the left button and the right one follows, mirrored across the red centre line. Centre controls (torso, chest, head) stay on the line.</p>
+<p>Rigify names its controls with <code>.L</code> and <code>.R</code>, so the picker pairs them. In Edit Mode, move, resize or rotate the left button and the right one follows, mirrored across the red centre line. Centre controls (torso, chest, head) stay on the line. The right button gets the same change as the left one, mirrored, from where it is, so a pair that is not an exact mirror image (the fingers and palms of the Hands page) keeps its shape and never jumps.</p>
 <h2 id="4-the-ik-fk-puck">4. The IK/FK puck<a class="fs-anchor" href="#4-the-ik-fk-puck" aria-label="Link to this section">#</a></h2>
 <p>Rigify limbs switch between IK and FK with an <code>IK_FK</code> property (0 is IK, 1 is FK) on the limb's <code>..._parent</code> control. A bone picker can show a small puck that flips it:</p>
 <ol>
@@ -190,6 +190,17 @@
 <li>makes every click one undo step.
 </li>
 </ul>
+<p><strong>Snap</strong> (on by default) keeps the limb's pose when you switch, as Rigify's own IK-&gt;FK and FK-&gt;IK buttons do:</p>
+<ul>
+<li><strong>To FK</strong>: the FK controls move to where the IK arm or leg is.
+</li>
+<li><strong>To IK</strong>: the IK hand or foot goes where the FK hand or foot is, and the arm turns (the IK arm's own twist, or the elbow or knee pole with <strong>Pole Vector</strong> on) to keep the elbow or knee in place. The toe follows too.
+</li>
+<li>With Auto Keying on, the controls it moves are keyed together with the switch, in the same undo step.
+</li>
+</ul>
+<p>Going to FK is exact. Going to IK, Rigify's IK chain stretches a little and changes the lengths of the upper and lower bone by different amounts, so the elbow or knee can't always land exactly where it was. The snap gets as close as Rigify's IK controls allow, and the gap grows with the bend. On a human-sized rig, with the bend measured as the angle between the upper and lower bone, the elbow lands within half a millimetre up to about 80 degrees, about 1 mm at 110 degrees, 2 mm at 135 and about 3 mm at 150 to 160. The knee is about 1 mm off at 50 degrees, 2.5 mm at a right angle and 4 to 6 mm at 125 to 150 degrees. Rigify's own snap leaves the same or more on the same pose. Folded almost flat (the hand on the shoulder), the limb is past what Rigify's IK chain can bend, so no snap can reach it. A twist of the FK forearm or shin along its length can't be kept in IK.</p>
+<p>Snap works on Rigify arms and legs (human-like limbs). The paw limbs of Rigify's quadruped rigs (Wolf, Cat, Horse, Basic Quadruped) switch without snapping, and the Snap option is greyed out for them. Turn Snap off in the <strong>IK/FK</strong> settings to switch without moving any control.</p>
 <p><strong>Toggle Size</strong> sets its size.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Not Rigify? Choose <strong>Bone</strong> (a custom property of a bone, with a list of its bool, int and float properties) or <strong>Data Path</strong>, and set <strong>IK Value</strong> to the end that means IK.</p></aside>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/picker-ikfk.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/picker-ikfk.webp" data-src="../assets/media/picker-ikfk.mp4" width="1280" height="776" aria-label="The puck beside the hand flips the arm between IK and FK, one click each way."></video><span class="fs-figure__tag">Recording</span></a><figcaption>The puck beside the hand flips the arm between IK and FK, one click each way.</figcaption></figure>
@@ -200,7 +211,7 @@
 </li>
 <li>Pick the collection and place it.
 </li>
-<li>Choose <strong>Visible</strong> or <strong>Solo</strong> in its <strong>Bone Collection</strong> panel.
+<li>Choose <strong>Visible</strong>, <strong>Solo</strong> or <strong>Select</strong> (a click selects all its bones, <span class="fs-keys"><kbd>Shift</kbd></span> adds them) in its <strong>Bone Collection</strong> panel.
 </li>
 </ol>
 <p>With <strong>Sync Bone Collections Visibility</strong> on (sidebar, <strong>Armature</strong> tab), the buttons of hidden collections hide too, so the picker matches the viewport.</p>
@@ -235,6 +246,10 @@
 <p>Buttons remember their bone by name and by a hidden bone id, so they follow renamed bones. If you <strong>regenerate</strong> the rig, change bone names in the metarig, or paste buttons from another picker:</p>
 <ul>
 <li>Open the picker in Edit Mode and run <strong>Utils &gt; Repair Bone Bindings</strong>. It follows renamed bones, binds buttons by bone name, and reports the bones still missing.
+</li>
+<li><strong>Bone Collection</strong> toggles follow renamed collections by themselves (see <strong>Armature Picker &gt; Bone collections</strong>). Regenerating makes Rigify's collections again without their ids: a toggle finds the new collection by its name and gives it the id again. If the name changed too (you renamed it in the metarig), <strong>Repair Bone Bindings</strong> binds the toggle to the collection that holds most of the bones it had (or the one with a close name, or the only collection without a toggle). The others are listed, to pick in their <strong>Bone Collection</strong> panel.
+</li>
+<li>Buttons pasted into the picker of another rig are bound there by bone name right away.
 </li>
 <li>Buttons with a <strong>Missing bone</strong> badge need a new bone: pick it in the <strong>Bone</strong> field.
 </li>

@@ -57,7 +57,7 @@
       <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
       <h1>The Canvas</h1>
     </header>
-    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></details>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv3"><a href="#resolution-scale-and-small-windows">Resolution Scale and small windows</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></details>
     <article class="fs-prose">
 <p>FlexSpace has two kinds of canvas, each with its own editor:</p>
 <ul>
@@ -104,13 +104,26 @@
 </li>
 <li>A trackpad pans and pinches to zoom. <code>Numpad +</code> and <code>Numpad -</code> zoom too.
 </li>
-<li><span class="fs-keys"><kbd>Home</kbd></span> frames every widget.
+<li><span class="fs-keys"><kbd>Home</kbd></span> frames every widget. In Edit Mode, <code>Numpad .</code> frames the selected ones.
 </li>
 <li>The <strong>minimap</strong> (header, picture icon) shows the whole canvas: click to centre, drag to pan.
 </li>
 </ul>
 <p>Navigation is Blender's own, as in the Node Editor: it follows your <strong>View2D</strong> keymap, whatever button you bound. Industry Compatible (<span class="fs-keys"><kbd>Alt</kbd></span> with the middle or left mouse pans, <span class="fs-keys"><kbd>Alt</kbd></span> right mouse zooms), <strong>Emulate 3 Button Mouse</strong> and your own bindings work. A binding on a plain left or right click navigates instead of selecting, as it does in the Node Editor; an edit handle, a widget in Live Mode or a page tab under the mouse still takes the left click, but not an <span class="fs-keys"><kbd>Alt</kbd></span> click, so Industry Compatible pans over picker buttons too. Bind it to <strong>Click Drag</strong> to keep the click for selecting. A right mouse binding takes over the picker's keyframe pie, and a right mouse <strong>Click Drag</strong> binding works on a canvas even though the Node Editor's context menu would open first there. A 3D mouse (NDOF) doesn't navigate a canvas.</p>
 <p>In Live Mode, a widget that uses the wheel keeps it: a List scrolls its rows, with the wheel or a two-finger trackpad scroll.</p>
+<h3 id="resolution-scale-and-small-windows">Resolution Scale and small windows<a class="fs-anchor" href="#resolution-scale-and-small-windows" aria-label="Link to this section">#</a></h3>
+<p>The widgets follow Blender's <strong>Resolution Scale</strong> (<strong>Preferences &gt; Interface</strong>, which also follows your screen's scaling in the system settings), so on a high-DPI screen they keep their size next to the rest of the interface:</p>
+<ul>
+<li>The first time a canvas shows in an editor, the editor zooms by your Resolution Scale, compared to the one the file was saved with. A file saved at 1.0 opens zoomed 2x at 2.0. Change the Resolution Scale while Blender runs and the canvas editors zoom with it. Maximizing the editor (<span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Space</kbd></span>), splitting it or duplicating it into a new window keeps the zoom it has: it doesn't zoom again.
+</li>
+<li>Each page's saved view follows it too, when you switch pages.
+</li>
+<li>Saving the file keeps the views as they are now, so opening it again at the same scale doesn't zoom twice.
+</li>
+<li>If a page's widgets were in view but don't fit the editor any more (a smaller window, a larger scale), the editor frames them when the canvas first shows, as <span class="fs-keys"><kbd>Home</kbd></span> does. It never zooms in for that.
+</li>
+</ul>
+<p>Only the view changes: clicks, handles and hovers land where the widgets are drawn.</p>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> With natural scrolling on, <span class="fs-keys"><kbd>Ctrl</kbd></span> with a two-finger trackpad scroll may zoom the other way from Blender's own editors. A pinch zooms the same way.</p></aside>
 <h2 id="pages-and-modes"><span id="layers-and-modes" aria-hidden="true"></span>Pages and modes<a class="fs-anchor" href="#pages-and-modes" aria-label="Link to this section">#</a></h2>
 <p>A canvas can have several pages, each with its own widgets. Each page can also be made for one Blender mode, for example Sculpt Mode or Weight Paint, or for one object of the scene. So one canvas can hold a sculpting page full of brushes, a weight paint page, the controls of one object and an everyday page, and show the right one for what you are doing.</p>
@@ -119,7 +132,7 @@
 </li>
 <li>In a narrow editor the tabs squeeze to fit: object names go first, then long page names are shortened with an ellipsis. When even that doesn't fit, the tabs hide, and the page menu in the header still switches pages.
 </li>
-<li>Add a page with the <strong>+</strong> button next to it.
+<li>Add a page with the <strong>+</strong> button next to it. A name another page already has gets a number (<strong>New Page 2</strong>).
 </li>
 <li>In Edit Mode, <span class="fs-keys"><kbd>M</kbd></span> moves the selected widgets to another page. The dialog starts on the first other page. A widget leaves its frame, unless the frame moves too: a moved frame takes its widgets along.
 </li>
@@ -173,7 +186,7 @@
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/picker-pose-hands.webp" data-zoom><img src="../assets/media/picker-pose-hands.webp" alt="Every finger segment of both hands over the hand art, with the finger masters under each hand and the IK, FK and switch controls at the wrist." width="1103" height="1031" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Every finger segment of both hands over the hand art, with the finger masters under each hand and the IK, FK and switch controls at the wrist.</figcaption></figure>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/studio-modes.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/studio-modes.webp" data-src="../assets/media/studio-modes.mp4" width="1280" height="776" aria-label="Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.</figcaption></figure>
 <h2 id="show-or-hide-widget-types">Show or hide widget types<a class="fs-anchor" href="#show-or-hide-widget-types" aria-label="Link to this section">#</a></h2>
-<p>The last menu of the header (<strong>View Object Types</strong>) hides or shows each widget type in this editor.</p>
+<p>The last menu of the header (<strong>Widget Types</strong>, the eye icon) hides or shows each kind of widget in this editor, by the names of the Add menu.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Hide the buttons to work on sliders without them in the way.</p></aside>
 <h2 id="keys-you-already-know">Keys you already know<a class="fs-anchor" href="#keys-you-already-know" aria-label="Link to this section">#</a></h2>
 <p>Canvas keys come first. Any key the canvas does not use goes on to Blender, as set in your keymap:</p>
@@ -205,7 +218,8 @@
 <p>In Live Mode there is no bar. A pill shows in the top-right corner only when the preset needs you: a newer version is available, or the preset is missing. Click it for the preset menu. With nothing to report, nothing shows.</p>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/top-bar-status.webp" data-zoom><img src="../assets/media/top-bar-status.webp" alt="The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you." width="911" height="62" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The top bar in Edit Mode: the preset and its state (Modified, Overwrite, Sync, Unlink), and the bindings that need you.</figcaption></figure>
 <h2 id="global-presets">Global presets<a class="fs-anchor" href="#global-presets" aria-label="Link to this section">#</a></h2>
-<p>A global preset is a canvas saved outside the .blend file, so every project can use it. Presets are kept in the add-on's user folder and survive add-on updates.</p>
+<p>A global preset is a canvas saved outside the .blend file, so every project can use it. Presets are kept next to your themes, in the <strong>Library Folder</strong> of the add-on preferences (<strong>Addon Settings</strong>), in its <code>canvases</code> folder. By default that is <code>presets/flexspace/canvases</code> in Blender's user scripts folder. They survive updates, and uninstalling FlexSpace doesn't delete them.</p>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Earlier versions kept the presets in the extension's own user folder, which Blender deletes on uninstall. The first time this version starts, it moves them to the new folder and prints what it moved in the system console. When a preset is in both folders, the newer copy is kept and the other one goes to the <code>.trash</code> folder next to them: nothing is deleted. Changing the <strong>Library Folder</strong> later doesn't move the presets: the ones in the old folder stay there.</p></aside>
 <p>The <strong>preset</strong> button next to the canvas selector opens the presets menu.</p>
 <p>To save a canvas as a global preset:</p>
 <ol>
@@ -213,7 +227,7 @@
 </li>
 <li>Click <strong>Save as Global...</strong> on the top bar (or <strong>Save as Global Preset...</strong> in the presets menu).
 </li>
-<li>Name it and click <strong>Save</strong>.
+<li>Name it and click <strong>Save</strong>. A name another preset already has gets a number (<strong>My Panel 2</strong>), as an import does.
 </li>
 </ol>
 <p>To use a preset in another project, open the presets menu and click its name. The menu shows each preset as a thumbnail. Presets with a page for Blender's current mode come first. A thumbnail is made each time you save or overwrite the preset.</p>
@@ -243,7 +257,7 @@
 <p>Click the preset's name for the preset menu. It has the same actions, plus <strong>Restore Previous Version</strong>: the last 5 versions that Overwrite replaced. The one you pick becomes the preset's new version. Blender asks first. The presets menu also opens it, as <strong>This Canvas' Preset</strong>.</p>
 <p>When a file opens, linked canvases you have not changed get the preset's newer version. Canvases you changed are never updated by themselves. To turn this off, clear <strong>Update Unmodified Presets</strong> in the add-on preferences.</p>
 <p>A linked canvas whose preset is not on this computer keeps working from its own copy. The top bar shows <strong>⚠ Missing</strong>, with <strong>Restore...</strong> (save it back as the preset) and <strong>Unlink</strong>.</p>
-<p>To rename or delete a preset, use <strong>Manage</strong> in the presets menu. Both ask you to confirm. Projects that use a deleted preset keep their canvas.</p>
+<p>To rename or delete a preset, use <strong>Manage</strong> in the presets menu. Both ask you to confirm. A new name another preset already has gets a number. Projects that use a deleted preset keep their canvas.</p>
 <figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-presets.webp" data-zoom><img src="../assets/img/frame-presets.webp" alt="The global presets menu with thumbnails, a .flexspace export and a shared presets folder." width="1780" height="1175" decoding="async" loading="lazy"></a><figcaption>The global presets menu with thumbnails, a .flexspace export and a shared presets folder.</figcaption></figure>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/presets-menu.webp" data-zoom><img src="../assets/media/presets-menu.webp" alt="Save any canvas as a global preset and add it to any project from a menu of thumbnails." width="528" height="167" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Save any canvas as a global preset and add it to any project from a menu of thumbnails.</figcaption></figure>
 <h3 id="export-and-import-presets">Export and import presets<a class="fs-anchor" href="#export-and-import-presets" aria-label="Link to this section">#</a></h3>
@@ -304,7 +318,7 @@
 </li>
 <li><a class="fs-xref" href="demo-files.html"><strong>Demo Files</strong></a>: example files to open in a new window (see <a class="fs-xref" href="demo-files.html"><strong>Demo Files</strong></a>).
 </li>
-<li><strong>Addon Settings</strong>: Appearance (Auto, Dark, Light), widget animations, Key Hints, where the Selection Bar shows, Update Unmodified Presets, the Shared Presets Folder, and the theme library folder.
+<li><strong>Addon Settings</strong>: Appearance (Auto, Dark, Light), widget animations, Key Hints, where the Selection Bar shows, Update Unmodified Presets, the Shared Presets Folder, and the Library Folder (your themes and global presets).
 </li>
 </ul>
     </article>
@@ -312,7 +326,7 @@
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
       <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
-  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#create-one">Create one</a></li><li class="lv2"><a href="#edit-mode-and-live-mode">Edit Mode and Live Mode</a></li><li class="lv2"><a href="#navigate">Navigate</a></li><li class="lv3"><a href="#resolution-scale-and-small-windows">Resolution Scale and small windows</a></li><li class="lv2"><a href="#pages-and-modes">Pages and modes</a></li><li class="lv2"><a href="#show-or-hide-widget-types">Show or hide widget types</a></li><li class="lv2"><a href="#keys-you-already-know">Keys you already know</a></li><li class="lv2"><a href="#the-canvas-top-bar">The canvas top bar</a></li><li class="lv2"><a href="#global-presets">Global presets</a></li><li class="lv3"><a href="#export-and-import-presets">Export and import presets</a></li><li class="lv3"><a href="#shared-presets-folder">Shared presets folder</a></li><li class="lv2"><a href="#the-library">The Library</a></li><li class="lv2"><a href="#copy-a-canvas">Copy a canvas</a></li><li class="lv2"><a href="#undo">Undo</a></li><li class="lv2"><a href="#the-add-on-preferences">The add-on preferences</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
 <footer class="fs-foot">
   <div class="fs-foot__in">

@@ -68,7 +68,11 @@
 </li>
 <li><strong>Drag</strong> on empty space to box select. <strong>Click</strong> empty space to deselect all.
 </li>
-<li><span class="fs-keys"><kbd>A</kbd></span> selects all.
+<li><span class="fs-keys"><kbd>A</kbd></span> selects all, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>A</kbd></span> deselects all (it also leaves the open group), <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>I</kbd></span> inverts the selection. These keys come from your Node Editor keymap (<strong>Select All</strong>), so your own bindings and <strong>Select All Toggles</strong> work.
+</li>
+<li><code>Numpad .</code> frames the selected widgets in the view (your Node Editor's <strong>Frame Selected</strong> key). <span class="fs-keys"><kbd>Home</kbd></span> frames them all. Both are in the <strong>View</strong> menu too.
+</li>
+<li>The <strong>Selection</strong> menu has <strong>All</strong>, <strong>None</strong> and <strong>Invert</strong>, <strong>Duplicate</strong> and <strong>Delete</strong>.
 </li>
 </ul>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A locked widget (the lock in its <strong>Transform</strong> panel) can be selected but not moved.</p></aside>
@@ -119,7 +123,7 @@
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/snapping-guides.webp" data-zoom><img src="../assets/media/snapping-guides.webp" alt="Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why." width="907" height="644" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Drag a frame and it snaps to the edges, centres and equal gaps of its neighbours, with guides that show why.</figcaption></figure>
 <h2 id="duplicate-copy-delete">Duplicate, copy, delete<a class="fs-anchor" href="#duplicate-copy-delete" aria-label="Link to this section">#</a></h2>
 <ul>
-<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>D</kbd></span> duplicates and moves the copy. A group or Flex Box is duplicated with what is inside it, a frame with its widgets.
+<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>D</kbd></span> duplicates and moves the copy. A group or Flex Box is duplicated with what is inside it, a frame with its widgets. <strong>Duplicate</strong> in the <strong>Selection</strong> menu puts the copy a little below right of the original instead.
 </li>
 <li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>C</kbd></span> copies the selected widgets, with the same rule.
 </li>
@@ -155,19 +159,23 @@
 </li>
 <li><span class="fs-keys"><kbd>Ctrl</kbd></span> click picks one widget inside a group without entering it first.
 </li>
-<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span> inside an open group adds the new widget to that group.
+<li><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>A</kbd></span>, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>D</kbd></span> and <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>V</kbd></span> inside an open group add the new widgets to that group. A pasted frame stays out of it, with its widgets.
+</li>
+<li>Grouping widgets from different frames puts the group in the frame under its centre, or in none. The other frames let go of them.
 </li>
 </ul>
 <h2 id="frames">Frames<a class="fs-anchor" href="#frames" aria-label="Link to this section">#</a></h2>
 <p>A frame is a titled area that owns the widgets in it: moving it moves them.</p>
 <ul>
-<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> frames the selection.
+<li><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> frames the selection. A widget inside a group or Flex Box is framed with its outermost group or Flex Box, which carries the rest.
 </li>
-<li><span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span> removes widgets from their frame.
+<li><span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span> removes widgets from their frame (a widget inside a group or Flex Box: its outermost group or Flex Box).
 </li>
 <li>Drop a widget inside a frame to add it.
 </li>
 <li>With <strong>Shrink</strong> on, the frame fits its contents.
+</li>
+<li>Make a frame smaller and the widgets left outside it (their centre outside the frame) leave it, as when you drag them out. One <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> gives back both the size and the widgets.
 </li>
 </ul>
 <h2 id="selection-bar">Selection Bar<a class="fs-anchor" href="#selection-bar" aria-label="Link to this section">#</a></h2>
