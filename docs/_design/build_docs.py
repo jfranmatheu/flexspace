@@ -144,16 +144,22 @@ REAL = {
 # Extra real media at the end of a section: (page slug) -> [(heading text, media name)], manifest captions.
 REAL_EXTRA = {
     "getting-started": [("Step 2: Add a widget", "add-panel")],
-    "canvas": [("Layers and modes", "studio-modes"), ("The canvas top bar", "top-bar-status"),
+    "canvas": [("Pages and modes", "studio-modes"), ("The canvas top bar", "top-bar-status"),
                ("Global presets", "presets-menu"), ("The Library", "library")],
     "widgets": [("The Add menu", "add-browser-search"), ("Add from Property", "from-property"),
-                ("Sliders", "lineal-slider"), ("Frame", "frames"), ("Flex Box", "flex-box"), ("Group", "group")],
-    "binding": [("When a binding is broken", "broken-bindings")],
+                ("Sliders", "lineal-slider"), ("View Preview", "view-preview-overview"),
+                ("Sources", "view-preview-target"), ("Sources", "view-preview-camera"),
+                ("Sources", "view-preview-sidebar"), ("Silhouette", "view-preview-silhouette"),
+                ("Silhouette", "view-preview-sidebar-silhouette"),
+                ("Frame", "frames"), ("Flex Box", "flex-box"), ("Group", "group")],
+    "binding": [("Add to FlexSpace Canvas", "add-to-canvas-property"), ("Add to FlexSpace Canvas", "add-to-canvas-button"),
+                ("Add to FlexSpace Canvas", "add-to-canvas-result"), ("When a binding is broken", "broken-bindings")],
     "editing": [("Move, resize, rotate", "selection-handles"), ("Smart snapping", "edit-layout"),
                 ("Smart snapping", "snapping-guides"), ("Selection Bar", "selection-bar"), ("Minimap", "minimap"),
                 ("Themes", "theme-menu")],
     "color-brush": [("Ring Menu", "sculpt-wheel")],
-    "demo-files": [("FlexSpace Studio", "studio-modes"), ("Sculpt Wheel", "ring-menu-canvas")],
+    "demo-files": [("FlexSpace Studio", "studio-modes"), ("Sculpt Wheel", "ring-menu-canvas"),
+                   ("City Builder", "city-builder"), ("City Builder", "city-builder-night")],
     "picker": [("Posing with the picker", "picker-select-transform"), ("Gaze control", "picker-gaze"),
                ("Mirror", "picker-mirror")],
     "rigify": [("Quick start: Humanoid Body", "picker-layer-male-face"), ("4. The IK/FK puck", "picker-ikfk")],
@@ -290,6 +296,23 @@ def title_of(text: str, gen) -> str:
 # ---------------------------------------------------------------------------------------------- HTML pieces
 def esc(s) -> str:
     return html.escape(str(s), quote=True)
+
+
+# Old heading anchors kept working after a heading was renamed (canvas layers became pages): (page slug) -> {new: old}.
+ANCHOR_ALIASES = {
+    "canvas": {"pages-and-modes": "layers-and-modes"},
+    "recipes": {"object-page-geometry-nodes-controls": "object-layer-geometry-nodes-controls",
+                "look-dev-page": "look-dev-layer", "sculpt-page": "sculpt-layer",
+                "texture-paint-page": "texture-paint-layer", "weight-paint-page": "weight-paint-layer",
+                "draw-page-grease-pencil": "draw-layer-grease-pencil"},
+}
+
+
+def add_anchor_aliases(slug: str, body: str) -> str:
+    for new, old in ANCHOR_ALIASES.get(slug, {}).items():
+        tag = f'<h2 id="{new}">' if f'<h2 id="{new}">' in body else f'<h3 id="{new}">'
+        body = body.replace(tag, f'{tag}<span id="{old}" aria-hidden="true"></span>', 1)
+    return body
 
 
 def post_process(body: str) -> str:
@@ -613,7 +636,7 @@ def build(src: Path) -> dict:
 
         body, heads = gen.markdown(p["text"], linker, figure, lambda: demo_cards(demos))
         body = re.sub(r"^<h1 [^>]*>.*?</h1>\n?", "", body, count=1)
-        body = post_process(body)
+        body = add_anchor_aliases(p["slug"], post_process(body))
         toc = toc_html(heads, "fs-toc")
         mtoc = (f'<details class="fs-doc__mtoc"><summary>On this page{ICON["chev"]}</summary>{toc_html(heads, "fs-toc")}'
                 f'</details>') if toc else ""
@@ -676,7 +699,7 @@ def build(src: Path) -> dict:
         <p class="fs-chip">Documentation &middot; v{esc(facts['version'])} &middot; Blender {esc(facts['blender'].rsplit('.0', 1)[0])}+</p>
         <h1>Learn <span class="fs-grad">{esc(facts['name'])}</span></h1>
         <p class="fs-lead">Build your own control panels and rig pickers in Blender. Start with three steps, then
-          go as deep as you like: widgets, binding, layers, the Armature Picker and every key.</p>
+          go as deep as you like: widgets, binding, pages, the Armature Picker and every key.</p>
         <div class="fs-home__actions">
           <a class="fs-btn fs-btn--primary" href="{first}.html">Get started{ICON['arrow']}</a>
           <button class="fs-btn fs-btn--secondary" type="button" data-search-open>{ICON['search']}Search the docs<kbd>/</kbd></button>
@@ -690,7 +713,7 @@ def build(src: Path) -> dict:
       Armature Picker editor. <strong>Help &gt; Demo Files</strong> opens finished canvases to take apart.</p></aside>"""
     out = page_html(facts, slug="index", title="Docs",
                     description=f"{facts['name']} documentation: {facts['tagline'].lower()}. Guides for the canvas, "
-                                "widgets, binding, layers, the Armature Picker, Rigify, shortcuts and troubleshooting.",
+                                "widgets, binding, pages, the Armature Picker, Rigify, shortcuts and troubleshooting.",
                     main=home_main, side=side_nav("", titles), page_class="fs-docs--home")
     (OUT / "index.html").write_text(out, encoding="utf-8")
     search += [{"p": p["title"], "h": "", "u": f'{p["slug"]}.html', "t": p["summary"]} for p in pages if p["summary"]]

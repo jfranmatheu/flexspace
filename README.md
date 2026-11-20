@@ -50,17 +50,17 @@
   </tr>
   <tr>
     <td><img src="docs/assets/media/store/sculpt-wheel.gif" alt="The Ring Menu over a sculpt: hover brushes, pick one, flip pages"></td>
-    <td><img src="docs/assets/media/store/studio-modes.gif" alt="FlexSpace Studio: entering a mode switches the canvas to that mode's layer"></td>
+    <td><img src="docs/assets/media/store/studio-modes.gif" alt="FlexSpace Studio: entering a mode switches the canvas to that mode's page"></td>
   </tr>
   <tr>
     <td><b>A Ring Menu for sculpting.</b> Brushes on the outer ring, toggles and operators on the inner one.</td>
-    <td><b>One canvas, a layer per mode.</b> Enter Sculpt, Texture Paint or Draw and the canvas follows.</td>
+    <td><b>One canvas, a page per mode.</b> Enter Sculpt, Texture Paint or Draw and the canvas follows.</td>
   </tr>
 </table>
 
 ## Two add-ons, one base
 
-**FlexSpace** turns a Node Editor into your own control canvas. Place buttons, toggles, sliders, number fields, colour swatches and pickers, lists, labels, images, frames and Flex Boxes; bind them to any property, operator or script; lay them out with snapping, alignment and groups; give each Blender mode its own layer; share canvases as global presets or `.flexspace` files.
+**FlexSpace** turns a Node Editor into your own control canvas. Place buttons, toggles, sliders, number fields, colour swatches and pickers, lists, labels, images, frames and Flex Boxes; bind them to any property, operator or script; lay them out with snapping, alignment and groups; give each Blender mode its own page; share canvases as global presets or `.flexspace` files.
 
 **Armature Picker** gives animators one-click pickers for any rig: bone buttons and custom shapes, IK/FK switches, knobs and 2D pads (with a gaze control for the eyes), bone collection toggles and left/right mirroring. With Rigify, a full Humanoid Body picker (body, hands, feet and face over character art) is one step.
 

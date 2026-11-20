@@ -59,16 +59,20 @@
     </header>
     <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#everywhere-on-a-canvas">Everywhere on a canvas</a></li><li class="lv2"><a href="#edit-mode">Edit Mode</a></li><li class="lv2"><a href="#while-moving-resizing-or-rotating">While moving, resizing or rotating</a></li><li class="lv2"><a href="#live-mode">Live Mode</a></li><li class="lv2"><a href="#picker-pose-mode">Picker, Pose Mode</a></li><li class="lv2"><a href="#minimap">Minimap</a></li></ul></details>
     <article class="fs-prose">
-<p>Keys work with the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap (yours, if you changed it).</p>
+<p>Keys work with the mouse over the canvas. A key the canvas doesn't use goes on to Blender's own keymap (yours, if you changed it). Navigation is Blender's too, as in the Node Editor: it follows your View2D keymap, whatever button you bound, so with Industry Compatible or your own bindings you pan and zoom as you set them.</p>
 <h2 id="everywhere-on-a-canvas">Everywhere on a canvas<a class="fs-anchor" href="#everywhere-on-a-canvas" aria-label="Link to this section">#</a></h2>
 <div class="fs-table"><table>
 <thead><tr>
 <th>Key</th>
 <th>Action</th>
 </tr></thead><tbody>
-<tr><td><span class="fs-keys"><kbd>Tab</kbd></span></td><td>Switch between Edit Mode and Live Mode (Pose Mode on a picker). It also works on a canvas dimmed by its layer's mode.</td></tr>
+<tr><td><span class="fs-keys"><kbd>Tab</kbd></span></td><td>Switch between Edit Mode and Live Mode (Pose Mode on a picker). It also works on a canvas dimmed by its page's mode.</td></tr>
 <tr><td><span class="fs-keys"><kbd>Middle mouse</kbd></span> drag</td><td>Pan</td></tr>
+<tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Middle mouse</kbd></span> drag</td><td>Zoom</td></tr>
 <tr><td><span class="fs-keys"><kbd>Wheel</kbd></span></td><td>Zoom</td></tr>
+<tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Wheel</kbd></span>, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Wheel</kbd></span></td><td>Scroll sideways, up and down</td></tr>
+<tr><td>Trackpad</td><td>Pan, pinch to zoom</td></tr>
+<tr><td><code>Numpad +</code>, <code>Numpad -</code></td><td>Zoom</td></tr>
 <tr><td><span class="fs-keys"><kbd>Home</kbd></span></td><td>Frame every widget</td></tr>
 <tr><td><span class="fs-keys"><kbd>N</kbd></span></td><td>Sidebar</td></tr>
 <tr><td><span class="fs-keys"><kbd>T</kbd></span></td><td>Toolbar</td></tr>
@@ -98,7 +102,7 @@
 <tr><td><span class="fs-keys"><kbd>Double-click</kbd></span> a group</td><td>Enter it</td></tr>
 <tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Click</kbd></span></td><td>Pick a widget inside a group</td></tr>
 <tr><td><span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>J</kbd></span> / <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>P</kbd></span></td><td>Frame the selection / remove from frame</td></tr>
-<tr><td><span class="fs-keys"><kbd>M</kbd></span></td><td>Move the selection to another layer (with two or more layers)</td></tr>
+<tr><td><span class="fs-keys"><kbd>M</kbd></span></td><td>Move the selection to another page (with two or more pages)</td></tr>
 <tr><td><span class="fs-keys"><kbd>Right-click</kbd></span></td><td>Context menu</td></tr>
 <tr><td><span class="fs-keys"><kbd>Alt</kbd></span></td><td>Show the pivot handle to drag it</td></tr>
 </tbody></table></div>
@@ -116,6 +120,7 @@
 <tr><td><span class="fs-keys"><kbd>Enter</kbd></span> or <span class="fs-keys"><kbd>Click</kbd></span></td><td>Confirm</td></tr>
 <tr><td><span class="fs-keys"><kbd>Esc</kbd></span> or <span class="fs-keys"><kbd>Right-click</kbd></span></td><td>Cancel</td></tr>
 </tbody></table></div>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> With the Industry Compatible keymap, <span class="fs-keys"><kbd>Alt</kbd></span> left drag pans the view. To move without dropping into a Flex Box, start the drag, then hold <span class="fs-keys"><kbd>Alt</kbd></span>.</p></aside>
 <h2 id="live-mode">Live Mode<a class="fs-anchor" href="#live-mode" aria-label="Link to this section">#</a></h2>
 <div class="fs-table"><table>
 <thead><tr>
@@ -141,6 +146,7 @@
 <tr><td><span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>I</kbd></span></td><td>Clear all its keyframes</td></tr>
 <tr><td><span class="fs-keys"><kbd>Backspace</kbd></span></td><td>Reset it to its default value</td></tr>
 </tbody></table></div>
+<p>These are Blender's default keys. They come from the Insert, Delete and Clear Keyframe and Reset to Default Value items of the <strong>User Interface</strong> keymap, as over a Blender button: with <strong>Industry Compatible</strong> they are <span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>S</kbd></span> and <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>S</kbd></span> (it has no reset key), and a key you change in the Preferences changes here too.</p>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> Anywhere else (over a bone button or empty space) these keys stay Blender's Pose Mode keys: <span class="fs-keys"><kbd>I</kbd></span> keys the selected bones.</p></aside>
 <h2 id="picker-pose-mode">Picker, Pose Mode<a class="fs-anchor" href="#picker-pose-mode" aria-label="Link to this section">#</a></h2>
 <div class="fs-table"><table>

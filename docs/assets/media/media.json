@@ -46,7 +46,7 @@
   "studio-modes": {
    "kind": "loop",
    "file": "gifs/studio_modes.gif",
-   "title": "One canvas, a layer per mode",
+   "title": "One canvas, a page per mode",
    "caption": "Switch to Sculpt, Texture Paint, Weight Paint or Draw and the canvas shows the controls made for that mode.",
    "w": 1280,
    "h": 776,
@@ -264,8 +264,8 @@
   "studio-sculpt": {
    "kind": "shot",
    "file": "shots/flexspace_studio_sculpt.png",
-   "title": "FlexSpace Studio: Sculpt layer",
-   "caption": "Enter Sculpt Mode and the canvas jumps to its Sculpt layer: brushes, stroke, remesh, masks and face sets.",
+   "title": "FlexSpace Studio: Sculpt page",
+   "caption": "Enter Sculpt Mode and the canvas jumps to its Sculpt page: brushes, stroke, remesh, masks and face sets.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-sculpt.webp",
@@ -276,7 +276,7 @@
   "studio-texture-paint": {
    "kind": "shot",
    "file": "shots/flexspace_studio_texture_paint.png",
-   "title": "FlexSpace Studio: Texture Paint layer",
+   "title": "FlexSpace Studio: Texture Paint page",
    "caption": "In Texture Paint the canvas shows a colour picker, swatches, paint brushes, masks and projection settings.",
    "w": 1574,
    "h": 954,
@@ -288,8 +288,8 @@
   "studio-object": {
    "kind": "shot",
    "file": "shots/flexspace_studio_object.png",
-   "title": "FlexSpace Studio: Object layer",
-   "caption": "Select the Geometry Nodes tower and the canvas shows its layer: shape, details, materials and colour controls.",
+   "title": "FlexSpace Studio: Object page",
+   "caption": "Select the Geometry Nodes tower and the canvas shows its page: shape, details, materials and colour controls.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-object.webp"
@@ -297,8 +297,8 @@
   "studio-look-dev": {
    "kind": "shot",
    "file": "shots/flexspace_studio_look_dev.png",
-   "title": "FlexSpace Studio: Look Dev layer",
-   "caption": "Click the shader ball and its Look Dev layer goes live: colour pickers for the material, the world and the key light.",
+   "title": "FlexSpace Studio: Look Dev page",
+   "caption": "Click the shader ball and its Look Dev page goes live: colour pickers for the material, the world and the key light.",
    "w": 1574,
    "h": 954,
    "webp": "assets/media/studio-look-dev.webp"
@@ -306,7 +306,7 @@
   "studio-weight-paint": {
    "kind": "shot",
    "file": "shots/flexspace_studio_weight_paint.png",
-   "title": "FlexSpace Studio: Weight Paint layer",
+   "title": "FlexSpace Studio: Weight Paint page",
    "caption": "In Weight Paint the canvas shows weight brushes, quick weight values, options, symmetry and vertex groups.",
    "w": 1574,
    "h": 954,
@@ -318,7 +318,7 @@
   "studio-draw": {
    "kind": "shot",
    "file": "shots/flexspace_studio_draw.png",
-   "title": "FlexSpace Studio: Draw layer",
+   "title": "FlexSpace Studio: Draw page",
    "caption": "In Grease Pencil Draw Mode the canvas shows pencils and inks, colour, layers, stroke, animation and canvas tools.",
    "w": 1574,
    "h": 954,
@@ -327,8 +327,8 @@
   "layer-tabs": {
    "kind": "shot",
    "file": "shots/features/layer_tabs_full.png",
-   "title": "Layers and modes",
-   "caption": "One canvas, a layer per mode: the tabs show each layer's mode, the active one is outlined.",
+   "title": "Pages and modes",
+   "caption": "One canvas, a page per mode: the tabs show each page's mode, the active one is outlined.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/layer-tabs.webp",
@@ -339,8 +339,8 @@
   "layers-panel": {
    "kind": "shot",
    "file": "shots/features/layers_panel_full.png",
-   "title": "Layers panel",
-   "caption": "The Layers panel: a layer per mode, Show When and Switch Layers Automatically.",
+   "title": "Pages panel",
+   "caption": "The Pages panel: a page per mode, Show When and Switch Pages Automatically.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/layers-panel.webp"
@@ -616,7 +616,7 @@
    "kind": "shot",
    "file": "shots/features/library_full.png",
    "title": "Library",
-   "caption": "The Canvas tab of the sidebar: the layers and the Library of global presets and local canvases.",
+   "caption": "The Canvas tab of the sidebar: the pages and the Library of global presets and local canvases.",
    "w": 911,
    "h": 954,
    "webp": "assets/media/library.webp",
@@ -1043,6 +1043,182 @@
    "w": 480,
    "h": 267,
    "webp": "assets/media/widgets/bone-pickers.webp"
+  },
+  "view-preview-overview": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/web/view_preview_overview.mp4",
+   "title": "Four live 3D views on one canvas",
+   "caption": "View Preview, Camera View, Viewport Mirror and Silhouette next to the 3D Viewport. Orbit the viewport and the mirror follows; click the ball and the preview and the silhouette frame it.",
+   "w": 1280,
+   "h": 568,
+   "mp4": "assets/media/view-preview-overview.mp4",
+   "poster": "assets/media/view-preview-overview.webp"
+  },
+  "view-preview-target": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/web/view_preview_target.mp4",
+   "title": "A close-up of the active object",
+   "caption": "View Preview frames the active object: click another object in the viewport and it frames that one.",
+   "w": 1280,
+   "h": 526,
+   "mp4": "assets/media/view-preview-target.mp4",
+   "poster": "assets/media/view-preview-target.webp"
+  },
+  "view-preview-camera": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/web/view_preview_camera.mp4",
+   "title": "What the camera sees",
+   "caption": "Camera View shows the scene camera's frame, with bars around it, while the camera swings round the props.",
+   "w": 1280,
+   "h": 532,
+   "mp4": "assets/media/view-preview-camera.mp4",
+   "poster": "assets/media/view-preview-camera.webp"
+  },
+  "view-preview-mirror": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/web/view_preview_mirror.mp4",
+   "title": "A second look at your viewport",
+   "caption": "Viewport Mirror follows the 3D Viewport: orbit it one way, then the other, and the mirror moves with it.",
+   "w": 1280,
+   "h": 612,
+   "mp4": "assets/media/view-preview-mirror.mp4",
+   "poster": "assets/media/view-preview-mirror.webp"
+  },
+  "view-preview-silhouette": {
+   "kind": "loop",
+   "file": "superhive/reel/footage/web/view_preview_silhouette.mp4",
+   "title": "Check the shape, not the shading",
+   "caption": "Silhouette draws the target as one flat shape with an outline. A Toggle bound to its Silhouette switch shows the shaded view and back; then Suzanne turns and the shape follows.",
+   "w": 1280,
+   "h": 572,
+   "mp4": "assets/media/view-preview-silhouette.mp4",
+   "poster": "assets/media/view-preview-silhouette.webp"
+  },
+  "view-preview-collection": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_target_collection_canvas.png",
+   "title": "Frame a collection",
+   "caption": "Target set to the Props collection: the preview frames the pillar, the ball and the pyramid. It is a real view of the scene, so Suzanne, close by, shows too.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-collection.webp"
+  },
+  "view-preview-sidebar": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_sidebar_canvas.png",
+   "title": "View Preview settings",
+   "caption": "Edit Mode, the sidebar's Widget tab: the Source (Target, Camera, Navigate), the View and the Shading.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-sidebar.webp"
+  },
+  "view-preview-sidebar-silhouette": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_sidebar_silhouette_canvas.png",
+   "title": "Silhouette settings",
+   "caption": "Scope, Color, Background and the Outline, with its Width and Outline Color.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-sidebar-silhouette.webp"
+  },
+  "w-view-preview": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_target_suzanne_canvas.png",
+   "title": "View Preview",
+   "caption": "View Preview framing the active object, Suzanne.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/view-preview.webp"
+  },
+  "w-camera-view": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_camera_letterbox_canvas.png",
+   "title": "Camera View",
+   "caption": "Camera View: the scene camera's 2.39 : 1 frame with bars above and below.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/camera-view.webp"
+  },
+  "w-viewport-mirror": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_mirror_canvas.png",
+   "title": "Viewport Mirror",
+   "caption": "Viewport Mirror: the 3D Viewport's view, grid and outline included.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/viewport-mirror.webp"
+  },
+  "w-silhouette": {
+   "kind": "widget",
+   "file": "superhive/src/captures/view_preview/vp_silhouette_canvas.png",
+   "title": "Silhouette",
+   "caption": "Silhouette: the active object as a flat white shape with an orange outline.",
+   "w": 720,
+   "h": 400,
+   "webp": "assets/media/widgets/silhouette.webp"
+  },
+  "view-preview-canvas": {
+   "kind": "shot",
+   "file": "superhive/src/captures/view_preview/vp_overview_canvas.png",
+   "title": "The four 3D views",
+   "caption": "View Preview, Camera View, Viewport Mirror and Silhouette on one canvas, each a ready-made entry of the Add menu.",
+   "w": 1782,
+   "h": 1261,
+   "webp": "assets/media/view-preview-canvas.webp"
+  },
+  "add-to-canvas-property": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_prop_submenu.png",
+   "title": "Add to FlexSpace Canvas on a property",
+   "caption": "Right-click the Sea modifier's Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used last, comes first with its current page, then the other canvases' pages and New Canvas...",
+   "w": 1095,
+   "h": 928,
+   "webp": "assets/media/add-to-canvas-property.webp"
+  },
+  "add-to-canvas-button": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_op_menus.png",
+   "title": "Add to FlexSpace Canvas on a button",
+   "caption": "Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it.",
+   "w": 942,
+   "h": 588,
+   "webp": "assets/media/add-to-canvas-button.webp"
+  },
+  "add-to-canvas-result": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_result_zoom_live.png",
+   "title": "On the page, bound",
+   "caption": "Both widgets went to a free spot in the part of the City Builder page in view: a Water Level slider bound to the Sea modifier and a Render button.",
+   "w": 1170,
+   "h": 452,
+   "webp": "assets/media/add-to-canvas-result.webp"
+  },
+  "city-builder": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_golden.png",
+   "title": "City Builder",
+   "caption": "The City Builder demo as it opens: the canvas in Live Mode next to the 3D Viewport in Material Preview with the scene's lights and world, at golden hour.",
+   "w": 1920,
+   "h": 716,
+   "webp": "assets/media/city-builder.webp"
+  },
+  "city-builder-night": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_night.png",
+   "title": "Nightfall",
+   "caption": "Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night.",
+   "w": 1920,
+   "h": 716,
+   "webp": "assets/media/city-builder-night.webp"
+  },
+  "city-builder-day-night": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_day.png + src/captures/city_builder/city_night.png",
+   "title": "Six Geometry Nodes systems, one canvas",
+   "caption": "The island city of the City Builder demo with Nightfall at 0 (left) and at 1 (right).",
+   "w": 1600,
+   "h": 994,
+   "webp": "assets/media/city-builder-day-night.webp"
   }
  }
 }
