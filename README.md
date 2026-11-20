@@ -18,7 +18,7 @@
 
 <p align="center">
   <img alt="Blender 5.3+" src="https://img.shields.io/badge/Blender-5.3%2B-E87D0D?logo=blender&logoColor=white&labelColor=1d1d1d">
-  <a href="CHANGELOG.md"><img alt="Changelog" src="https://img.shields.io/badge/Changelog-1.4.0-82B3A0?labelColor=1d1d1d"></a>
+  <a href="CHANGELOG.md"><img alt="Changelog" src="https://img.shields.io/badge/Changelog-1.4.1-82B3A0?labelColor=1d1d1d"></a>
   <img alt="Licence GPL-3.0" src="https://img.shields.io/badge/Licence-GPL--3.0-DCCEB8?labelColor=1d1d1d">
 </p>
 

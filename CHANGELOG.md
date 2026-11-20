@@ -4,16 +4,38 @@ What changed in each version of FlexSpace, newest first: new features, changes a
 
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
-## Unreleased
+## 1.4.1 - 2026-11-20
+
+The first public release. Requires Blender 5.3 or newer.
 
 ### Added
 
 - **Add to FlexSpace Canvas** in Blender's right-click menu: right-click any property or button (the Properties editor, a sidebar, a menu item, a node), then pick a canvas and page. The canvas you used last comes first, with its current page; **New Canvas...** makes one. A property gets the same widget as **From Property**, bound and labelled; a button gets an **Operator** button with the same settings. On one item of a vector, **Add All** adds the whole vector and **Add Single** only that value. The widget goes to a free spot in the part of the page you can see and flashes once; one `Ctrl Z` removes it.
 - **City Builder** demo (Geometry Nodes): a procedural island city made by six Geometry Nodes systems (the island, the sea, the streets with their traffic, the buildings, the forest and the street lights). One canvas page shapes the island and its coastline, the streets, the buildings, the forest and the night lights, and the sea follows the coast. Drag **Grow** to raise the city, **Nightfall** to light the windows and the street lamps.
+- **Live 3D views** (Add > Graphics > 3D Views): **View Preview** frames the active object, the selection, an object or a collection; **Camera View** shows what the scene camera sees; **Viewport Mirror** follows your 3D Viewport; **Silhouette** draws the flat shape of the active object. They update as you work, and a Target or Free Orbit view can be orbited and zoomed with the mouse in Live Mode.
+- **IK/FK snapping** on the picker's IK/FK puck: with **Snap** on (the default), switching a Rigify arm or leg keeps its pose, as Rigify's own IK->FK and FK->IK buttons do. The switch and the controls it moves are one undo step, and they are keyed together with Auto Keying on. Quadruped paw limbs switch without snapping.
+- **Hidden Bones** for pickers: the buttons of bones hidden with `H` are drawn faded (**Dim**, the default), left out (**Hide**) or drawn as usual (**Show**). It is in the picker's header and saved with each picker.
+- **Right Click Select** on pickers: with **Select with: Right** in Blender's keymap preferences, the right button clicks, `Shift` clicks and drags on bone buttons, and the key pie opens on `W`.
+- **Frame Selected** on the canvas, and **Select All**, **Duplicate** and **Delete** in the Selection menu.
+- A Live Mode right-click menu on bound widgets, and the picker's key pie adds **Location, Rotation & Scale**, **Whole Character** and **Delete Keyframes**.
 
 ### Changed
 
 - Canvas layers are now called pages; nothing changes in your files. The **Layers** panel is the **Pages** panel, **Switch Layers Automatically** is **Switch Pages Automatically**, `M` moves widgets to another page, and a new canvas starts with a page named **Page**.
+- Global presets are kept outside the add-on folder, next to your themes (`presets/flexspace/canvases` in Blender's user scripts folder by default), so updating or uninstalling FlexSpace no longer deletes them. Presets from earlier versions are moved there once, and nothing is deleted.
+- **HiDPI**: canvases follow Blender's **Resolution Scale**, so widgets keep their size next to the rest of the interface on high-DPI screens. Maximizing or splitting a canvas editor keeps its zoom, and the demos frame their widgets in small windows.
+- Picker mirroring copies the change you made to the other side, not the position.
+- The interface says **Color** and **customize** everywhere.
+
+### Fixed
+
+- A picker click deselects the bones of the other posed armatures, so `I`, `G` and `R` no longer key or move bones of another rig. An area switched to the Armature Picker shows the posed rig's picker instead of staying blank.
+- Undo: a Color Swatch edit, the picker imports, **Assign Active Bone** and the custom shape operators are each one undo step, and `Esc` on an import leaves no trace.
+- Operator buttons keep arguments set to their default value, so **Add Modifier: Subdivision** adds the modifier instead of opening the menu.
+- Sliders and enums no longer write to read-only or linked data and stay inside the property's limits.
+- Edit Mode: **Select All**, **Deselect** (`Alt A`) and **Invert** follow your Node Editor keymap, **Frame Selected** frames the selection, and grouped widgets can leave the frames they came from.
+- Performance: canvases redraw less during playback, brush pickers no longer look up brush files on every draw, and live 3D views no longer touch the 3D Viewport's settings, which halved its frame rate in Material Preview.
+- Bone collection toggles stay bound when a collection is renamed, and **Repair Bone Bindings** rebinds them.
 
 ## 1.4.0
 
