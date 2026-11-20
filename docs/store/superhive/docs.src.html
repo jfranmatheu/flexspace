@@ -282,7 +282,7 @@ th, td { margin: 0; border: 0; }
     <p class="figcap">The Add Widget panel, with From Property next to the search.</p>
   </div>
   <h3>From Property: the quickest way</h3>
-  <p class="body"><kbd>Shift A</kbd> › <strong>From Property</strong>, then right-click any property in Blender's interface. The widget that controls it appears, already bound and labelled. Undo removes it in one step.</p>
+  <p class="body"><kbd>Shift A</kbd> › <strong>From Property</strong>, then right-click any property in Blender's interface. The widget that controls it appears, already bound and labelled. Undo removes it in one step. Without opening the canvas: right-click the property and choose <strong>Add to FlexSpace Canvas</strong> (see Bind properties).</p>
   <div class="tw">
     <table class="tb pt">
       <thead><tr><th>PROPERTY</th><th>WIDGET</th></tr></thead>
@@ -403,6 +403,7 @@ th, td { margin: 0; border: 0; }
   <h2>Bind properties</h2>
   <p class="lead">Sliders, toggles and property labels control a Blender property through a <strong>Data Path</strong>, starting from the context, as <code>bpy.context</code> does.</p>
   <ul class="list">
+    <li><span class="dia"></span><strong>Add to FlexSpace Canvas:</strong> right-click any property or button in Blender (the Properties editor, a sidebar, a menu item, a node), choose <strong>Add to FlexSpace Canvas</strong>, then a canvas and page. The canvas you used last comes first; <strong>New Canvas...</strong> makes one. You get the same widget as From Property, or an <strong>Operator</strong> button for a button. It goes to a free spot in the part of the page you can see and flashes once; one <kbd>Ctrl Z</kbd> removes it. On one item of a vector, <strong>Add All</strong> adds the whole vector and <strong>Add Single</strong> only that value.</li>
     <li><span class="dia"></span><strong>Eyedropper:</strong> click the button next to <strong>Data Path</strong>, then right-click the property anywhere in Blender. A slider also gets its Min and Max.</li>
     <li><span class="dia"></span><strong>Follow or pin:</strong> a path starting with <code>active_object</code> drives whatever is active, or always one pinned object. Click the pin control under the field to switch.</li>
     <li><span class="dia"></span><strong>Copy Full Data Path</strong> (<kbd>Ctrl Shift Alt C</kbd>) and paste it with <kbd>Ctrl V</kbd>.</li>
@@ -424,6 +425,14 @@ th, td { margin: 0; border: 0; }
   <div class="inb">
     <div class="inb-label"><span class="chip">IN BLENDER</span></div>
     <div class="grid">
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/add-to-canvas-property.png" width="1095" height="928" alt="Right-click the Sea modifier's Water Level, Add to FlexSpace Canvas: the submenu lists City Builder, the canvas used last, then the pages of Studio Controls and New Canvas."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>Add to FlexSpace Canvas on a property.</strong> The submenu lists your canvases and pages, the one you used last first, and New Canvas... at the end.</p>
+      </div>
+      <div class="cell c2">
+        <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/add-to-canvas-button.png" width="720" height="449" alt="Right-click Render Image in the Render menu: Add to FlexSpace Canvas is in its right-click menu too."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+        <p class="fcap"><strong>On a button.</strong> Right-click Render Image (or any button) and you get an Operator button that runs it with the same settings.</p>
+      </div>
       <div class="cell c2">
         <div class="frame fit">
           <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/from-property-still.png" width="1254" height="956"><source src="https://jfranmatheu.github.io/flexspace/assets/media/from-property.mp4" type="video/mp4">Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</video>

@@ -355,7 +355,7 @@ table { border-collapse: separate; border-spacing: 0; }
     <ul class="hints">
       <li><kbd>Tab</kbd>Edit ↔ Live</li>
       <li><kbd>Shift A</kbd>Add a widget</li>
-      <li><kbd>Right-click</kbd>Bind with From Property</li>
+      <li><kbd>Right-click</kbd>Add to FlexSpace Canvas</li>
       <li><kbd>I</kbd>Key what's under the mouse</li>
     </ul>
   </div>
@@ -493,8 +493,9 @@ table { border-collapse: separate; border-spacing: 0; }
     <div class="frow">
       <div class="eyebrow"><span class="dash"></span>BINDING</div>
       <h3>Bind anything with a right-click.</h3>
-      <p class="body">Press <kbd>Shift A</kbd> › <strong>From Property</strong>, right-click any property in Blender, and the right widget appears, already bound and labelled. Widgets show Blender's animation colours, <kbd>I</kbd> keys them, and Auto Keying just works.</p>
+      <p class="body">Right-click any property or button in Blender and choose <strong>Add to FlexSpace Canvas</strong>, then a page: the right widget lands there, already bound and labelled. The canvas you used last comes first. From the canvas itself, <kbd>Shift A</kbd> › <strong>From Property</strong> does the same. Widgets show Blender's animation colours, <kbd>I</kbd> keys them, and Auto Keying just works.</p>
       <ul class="ticks">
+        <li><span class="tick">✓</span>Properties and buttons, from any right-click menu</li>
         <li><span class="tick">✓</span>Data paths, eyedropper or From Property</li>
         <li><span class="tick">✓</span>Follow the active object or pin one</li>
         <li><span class="tick">✓</span>Visible When and Disabled When conditions</li>
@@ -504,6 +505,18 @@ table { border-collapse: separate; border-spacing: 0; }
       <div class="inb">
         <div class="inb-label"><span class="chip">IN BLENDER</span></div>
         <div class="grid">
+          <div class="cell c2">
+            <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/add-to-canvas-property.png" width="1095" height="928" alt="Right-click the Sea modifier's Water Level, Add to FlexSpace Canvas: the submenu lists City Builder, the canvas used last, then the pages of Studio Controls and New Canvas."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+            <p class="fcap"><strong>Right-click a property.</strong> Add to FlexSpace Canvas lists your canvases and pages, the one you used last first, and New Canvas... at the end.</p>
+          </div>
+          <div class="cell c2">
+            <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/add-to-canvas-button.png" width="720" height="449" alt="Right-click Render Image in the Render menu: Add to FlexSpace Canvas is in its right-click menu too."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+            <p class="fcap"><strong>Right-click a button.</strong> Render Image, Shade Smooth or any other: you get an Operator button that runs it with the same settings.</p>
+          </div>
+          <div class="cell c2">
+            <div class="frame fit"><img data-fit="16/10" src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/add-to-canvas-result.png" width="1170" height="452" alt="The City Builder page with the two new widgets in its free corner: a Water Level slider and a Render button."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+            <p class="fcap"><strong>On the page, bound.</strong> Each widget goes to a free spot in the part of the page you can see: here a Water Level slider and a Render button.</p>
+          </div>
           <div class="cell c2">
             <div class="frame fit">
               <video data-fit="16/10" autoplay muted loop playsinline poster="https://jfranmatheu.github.io/flexspace/assets/media/store/from-property-still.png" width="1254" height="956"><source src="https://jfranmatheu.github.io/flexspace/assets/media/from-property.mp4" type="video/mp4">Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</video>
@@ -619,6 +632,33 @@ table { border-collapse: separate; border-spacing: 0; }
               <span class="tag" style="left:auto;top:auto;right:10px;bottom:10px"><span class="dot"></span>RECORDING</span>
             </div>
             <p class="fcap"><strong>Silhouette.</strong> A Toggle on the canvas turns Silhouette off and on; then the head turns and its shape follows.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- City Builder -->
+    <div class="frow">
+      <div class="eyebrow"><span class="dash"></span>GEOMETRY NODES</div>
+      <h3>Six Geometry Nodes systems. One canvas.</h3>
+      <p class="body">The <strong>City Builder</strong> demo is a procedural island city: the island, the sea, the streets with their traffic, the buildings, the forest and the street lights, each its own Geometry Nodes system, all driven from one canvas page. Drag <strong>Grow</strong> and the city rises from its empty plots; drag <strong>Nightfall</strong> and the sun sets, the windows and the street lamps light up and the night falls.</p>
+      <ul class="ticks">
+        <li><span class="tick">✓</span>Widgets bound to the modifiers' inputs</li>
+        <li><span class="tick">✓</span>Buildings, night, island, roads and forest on one page</li>
+        <li><span class="tick">✓</span>No Python scripts in the file</li>
+      </ul>
+      <div class="media"><div class="media-in"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/sh/city-builder-day-night.jpg" width="1600" height="994" alt="The island city from the City Builder demo, by day on the left and by night on the right, its windows and street lamps lit."></div></div>
+      <p class="cap">The same view with Nightfall at 0 and at 1, in the 3D Viewport (EEVEE, Material Preview with the scene's lights and world).</p>
+      <div class="inb">
+        <div class="inb-label"><span class="chip">IN BLENDER</span></div>
+        <div class="grid">
+          <div class="cell c1">
+            <div class="frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/city-builder.jpg" width="1600" height="596" alt="The City Builder demo as it opens: the canvas with its Buildings, Night, Island, Roads and Forest frames beside the island city at golden hour."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+            <p class="fcap"><strong>City Builder, as it opens.</strong> The canvas in Live Mode beside the 3D Viewport, at golden hour.</p>
+          </div>
+          <div class="cell c1">
+            <div class="frame"><img src="https://jfranmatheu.github.io/flexspace/assets/media/store/sh/city-builder-night.jpg" width="1600" height="596" alt="The same canvas with Nightfall dragged to the end: the city at night, its windows and street lamps lit."><span class="tag"><span class="dot dot-still"></span>SCREENSHOT</span></div>
+            <p class="fcap"><strong>Nightfall at the end.</strong> The sun has set: the windows and the street lamps are lit and the sky is night.</p>
           </div>
         </div>
       </div>
@@ -862,7 +902,7 @@ table { border-collapse: separate; border-spacing: 0; }
       <li class="cell c2"><div class="w"><img src="https://jfranmatheu.github.io/flexspace/assets/img/store/w-silhouette.png" width="720" height="324" alt="A Silhouette: Suzanne's flat shape in white with an orange outline."><div class="w-body"><h4>Silhouette</h4><div class="w-desc">The same 3D view as a flat shape in one colour</div><span class="cat">GRAPHICS</span></div></div></li>
       <li class="cell c1"><div class="fp"><div class="fp-in">
         <h4><kbd>Shift A</kbd> › From Property</h4>
-        <p class="fp-p">Right-click any property in Blender and get the right widget, bound and labelled:</p>
+        <p class="fp-p">Right-click any property in Blender and get the right widget, bound and labelled (from its own right-click menu too: Add to FlexSpace Canvas):</p>
         <div class="fp-dl">
           <div class="fp-pair"><dt>On / off</dt><dd>Toggle</dd></div>
           <div class="fp-pair"><dt>Enum</dt><dd>Enum</dd></div>
@@ -960,7 +1000,7 @@ table { border-collapse: separate; border-spacing: 0; }
     </div>
     <ul class="grid" style="margin-top:30px">
       <li class="cell c2"><div class="inc"><span class="big">2</span><h4>Canvases in one add-on</h4><p class="inc-p">Flex Space for control panels and Armature Picker for rig pickers. Install once, both are there.</p></div></li>
-      <li class="cell c2"><div class="inc"><span class="big">10</span><h4>Demo files</h4><p class="inc-p">Control panels, a canvas that follows Blender's mode, a Sculpt Wheel and five armature pickers, each opened in its own window.</p></div></li>
+      <li class="cell c2"><div class="inc"><span class="big">11</span><h4>Demo files</h4><p class="inc-p">Control panels, a canvas that follows Blender's mode, a Sculpt Wheel, a Geometry Nodes city and five armature pickers, each opened in its own window.</p></div></li>
       <li class="cell c2"><div class="inc"><span class="big">12</span><h4>Guides</h4><p class="inc-p">The full docs online and in the Help menu: getting started to troubleshooting, with every shortcut.</p></div></li>
       <li class="cell c2"><div class="inc"><span class="big">22</span><h4>Widgets</h4><p class="inc-p">Buttons, data controls, colour and brush tools, live 3D views, layout, and the Armature Picker's own, one <kbd>Shift A</kbd> away.</p></div></li>
     </ul>
@@ -971,7 +1011,7 @@ table { border-collapse: separate; border-spacing: 0; }
       <div class="spec"><dt>EDITORS</dt><dd>Flex Space (control panels) and Armature Picker (rig pickers)</dd></div>
       <div class="spec"><dt>SAVED IN</dt><dd>Your .blend (canvases), the armature data (pickers), your user folder (global presets)</dd></div>
       <div class="spec"><dt>SHARING</dt><dd><code>.flexspace</code> preset files, shared presets folder</dd></div>
-      <div class="spec"><dt>DEMO FILES</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, Rigify Human Picker, Simple Biped Picker, Rigify Male Body Picker, Rigify Female Body Picker, Rigify Character Picker</dd></div>
+      <div class="spec"><dt>DEMO FILES</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, City Builder, Rigify Human Picker, Simple Biped Picker, Rigify Male Body Picker, Rigify Female Body Picker, Rigify Character Picker</dd></div>
       <div class="spec"><dt>DOCS</dt><dd>Online at <a href="https://jfranmatheu.github.io/flexspace/docs/">jfranmatheu.github.io/flexspace</a> and in the Help menu</dd></div>
       <div class="spec"><dt>SUPPORT</dt><dd>Report a Bug inside Blender, <a href="https://github.com/jfranmatheu/flexspace/issues">GitHub issues</a>, Superhive</dd></div>
       <div class="spec"><dt>LICENCE</dt><dd>GPL-3.0-or-later. Bundled icons: Phosphor Icons, Gravity UI Icons (MIT)</dd></div>
