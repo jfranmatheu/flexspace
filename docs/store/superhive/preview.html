@@ -10,7 +10,7 @@
   :root { color-scheme: dark; --bg: #18181b; --panel: #222226; --line: #34343a; --text: #ececee; --dim: #9a9aa2; --gold: #f0b557; --ok: #82b3a0; --bad: #ff6b6b; }
   * { box-sizing: border-box; }
   html, body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
-  header { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; padding: 10px 16px; background: rgba(24,24,27,.94); border-bottom: 1px solid var(--line); backdrop-filter: blur(8px); }
+  header { position: sticky; top: 0; z-index: 2; display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; padding: 10px 16px; background: rgba(24,24,27,.94); border-bottom: 1px solid var(--line); }
   header b { font-weight: 650; }
   .group { display: inline-flex; gap: 4px; padding: 3px; border-radius: 9px; background: var(--panel); border: 1px solid var(--line); }
   .group button { all: unset; cursor: pointer; padding: 5px 10px; border-radius: 6px; color: var(--dim); }
@@ -18,14 +18,15 @@
   .group button:focus-visible { outline: 2px solid #2f6fff; }
   label { display: inline-flex; gap: 6px; align-items: center; color: var(--dim); cursor: pointer; }
   main { padding: 24px 16px 64px; }
-  .store { margin: 0 auto; transition: max-width .2s; }
-  .store-chrome { padding: 14px 0 12px; color: var(--dim); font-size: 12px; display: flex; justify-content: space-between; }
-  iframe { display: block; width: 100%; height: 800px; border: 0; border-radius: 4px; background: #fff; }
-  .store.light iframe { background: #fff; }
+  .store { margin: 0 auto; padding: 16px; background: #f4f4f4; border-radius: 6px; }
+  .store-chrome { padding: 0 0 10px; color: #6b6478; font-size: 12px; display: flex; justify-content: space-between; }
+  .col { margin: 0 auto; background: #fff; border-radius: 12px; }
+  iframe { display: block; width: 100%; height: 800px; border: 0; background: #fff; }
   #lint { margin: 18px auto 0; max-width: 1100px; padding: 14px 16px; border-radius: 10px; background: var(--panel); border: 1px solid var(--line); font-size: 13px; }
   #lint h2 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--dim); }
   #lint li { list-style: none; margin: 2px 0; }
   #lint ul { margin: 0; padding: 0; }
+  #lint details { margin: 4px 0 0 52px; color: var(--dim); font-family: ui-monospace, Consolas, monospace; font-size: 12px; }
   .ok::before { content: "PASS  "; color: var(--ok); font-weight: 700; font-family: ui-monospace, Consolas, monospace; }
   .bad::before { content: "FAIL  "; color: var(--bad); font-weight: 700; font-family: ui-monospace, Consolas, monospace; }
   .note { color: var(--dim); }
@@ -42,157 +43,171 @@
   <span class="group" id="width">
     <button data-w="360" aria-pressed="false">360</button>
     <button data-w="720" aria-pressed="false">720</button>
-    <button data-w="900" aria-pressed="true">900</button>
-    <button data-w="1100" aria-pressed="false">1100</button>
-    <button data-w="0" aria-pressed="false">Full</button>
+    <button data-w="832" aria-pressed="true">832</button>
   </span>
   <label><input type="checkbox" id="local" checked> Local images</label>
-  <label><input type="checkbox" id="light"> Light store page</label>
-  <label><input type="checkbox" id="hostile"> Hostile store CSS</label>
+  <label><input type="checkbox" id="sanitize" checked> Sanitize like Superhive</label>
+  <label><input type="checkbox" id="host" checked> Host defaults</label>
 </header>
 <main>
   <div class="store" id="store">
-    <div class="store-chrome"><span>Store column</span><span id="size"></span></div>
-    <iframe id="frame" title="Fragment preview"></iframe>
+    <div class="store-chrome"><span>Store column (white card)</span><span id="size"></span></div>
+    <div class="col"><iframe id="frame" title="Fragment preview"></iframe></div>
   </div>
-  <section id="lint" aria-live="polite"><h2>Fragment rules</h2><ul id="lint-list"><li class="note">Checking...</li></ul></section>
+  <section id="lint" aria-live="polite"><h2>Superhive rules</h2><ul id="lint-list"><li class="note">Checking...</li></ul></section>
 </main>
 <script>
-// Local preview only: renders a fragment the way Superhive would (inside someone else's page), at a chosen column width,
-// and checks the fragment rules of docs/_design/DESIGN.md section 6. Serve docs/ over HTTP to use it:
+// Local preview only. Shows a built fragment the way Superhive's product page would: in a white column 360 / 720 / 832 px
+// wide (832 is the desktop column), after the same sanitizing Superhive does on save (stripped tags unwrapped, stripped
+// attributes and CSS declarations removed), and checks the fragment against the measured whitelist (README.md).
+// The whitelist is the one in docs/_design/build_superhive.py; keep both in sync. Serve docs/ over HTTP to use it:
 //   py -3.10 -m http.server 8000 -d docs   then open http://localhost:8000/store/superhive/preview.html
-const SITE = "https://jfranmatheu.github.io/flexspace/assets/";
-const state = { file: "page.html", w: 900, local: true, light: false, hostile: false };
-try { Object.assign(state, JSON.parse(localStorage.getItem("fsx-preview") || "{}")); } catch (e) {}
+const SITE = "https://jfranmatheu.github.io/flexspace/";
+const ASSETS = SITE + "assets/";
+const KEPT_TAGS = new Set(`div p span a img video source iframe table thead tbody tr th td h1 h2 h3 h4 h5 h6 ul ol li dt dd
+  blockquote strong b em i u s del ins cite small code kbd sup sub pre abbr hr br font`.split(/\s+/));
+const GLOBAL_ATTRS = ["style", "title"];
+const TAG_ATTRS = { a: ["href", "target"], img: ["src", "width", "height", "alt", "align"],
+  video: ["poster", "controls", "autoplay", "muted", "loop", "playsinline", "width", "height"], source: ["src", "type"],
+  iframe: ["width", "height", "src", "frameborder", "allowfullscreen"], table: ["align"], td: ["align", "colspan"], th: ["colspan"], font: ["color"] };
+const KEPT_PROPS = new Set(`display flex flex-wrap flex-direction flex-flow flex-basis flex-grow flex-shrink align-items align-content align-self
+  justify-content order position top right bottom left width min-width max-width height min-height max-height
+  margin margin-top margin-right margin-bottom margin-left margin-inline margin-block padding padding-top padding-right padding-bottom
+  padding-left padding-inline padding-block border border-top border-right border-bottom border-left border-color border-style
+  border-width border-radius border-collapse border-spacing background background-color background-image background-position
+  color font-family font-size font-weight font-style line-height letter-spacing text-align text-decoration vertical-align white-space
+  overflow list-style float clear cursor aspect-ratio`.split(/\s+/));
+
+// What the host page does to our tags (measured, see README): not Superhive's stylesheet, just its effect.
+const HOST = `body{margin:0;font-family:Inter,"Segoe UI",system-ui,sans-serif;font-size:16px;line-height:24px;color:#2a1f42}
+*,*::before,*::after{box-sizing:border-box}
+p{margin:0 0 1rem;line-height:1.6!important}h1,h2,h3,h4,h5,h6{font-weight:600!important;letter-spacing:-1px;margin:0 0 1rem!important;line-height:1.2}
+ul,ol{padding-left:2rem;margin:0 0 1rem}li{margin-bottom:1rem}a{font-weight:600;color:#6800f0}b,strong{font-weight:700}img{max-width:100%;vertical-align:middle}
+video{max-width:100%;height:auto}blockquote{border-left:3px solid #6c757d;padding-left:1rem;color:#6c757d}
+kbd{padding:.19rem .38rem;font-size:.875em;color:#fff;background:#212529;border-radius:.25rem}code{font-size:.875em;color:#d63384}`;
+
+const state = { file: "page.html", w: 832, local: true, sanitize: true, host: true };
+try { Object.assign(state, JSON.parse(localStorage.getItem("fsx-preview2") || "{}")); } catch (e) {}
 const $ = (s) => document.querySelector(s);
-const frame = $("#frame"), store = $("#store");
+const frame = $("#frame"), col = document.querySelector(".col");
 
-// What a careless host page might ship; the fragment must look the same with it on.
-const HOSTILE = `body{font:13px/1.2 Georgia,serif;color:#333}h1,h2,h3,h4{margin:1em 0;color:#c00;text-transform:uppercase;font-family:Georgia}
-p{margin:1em 0}ul,ol{padding-left:2em;margin:1em 0}li{list-style:square}img{border:3px solid red;padding:4px}a{color:#00f;text-decoration:underline}
-table{border:2px solid #0a0}td,th{padding:20px;border:1px solid #0a0}details{border:1px dashed #f0f}summary{color:#0a0}figure{margin:40px}code{color:#c0c}div{line-height:1}`;
-
-function host(fragment) {
-  const bg = state.light ? "#ffffff" : "#121214";
-  const fg = state.light ? "#222" : "#ddd";
-  return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<style>html,body{margin:0}body{background:${bg};color:${fg};font-family:system-ui,sans-serif;padding:0}
-.host-desc{padding:0}${state.hostile ? HOSTILE : ""}</style></head><body><div class="host-desc">${fragment}</div></body></html>`;
+function splitTop(v, sep) {
+  const out = []; let depth = 0, cur = "";
+  for (const ch of v) { if (ch === "(") depth++; if (ch === ")") depth--; if (ch === sep && !depth) { out.push(cur.trim()); cur = ""; } else cur += ch; }
+  out.push(cur.trim()); return out.filter(Boolean);
 }
+function cssProblem(prop, value) {
+  const p = prop.trim().toLowerCase(), v = value.replace(/!important/i, "").trim().toLowerCase();
+  if (p.startsWith("--")) return "custom property";
+  if (!KEPT_PROPS.has(p)) return `${p} is stripped`;
+  if (/\b(min|max|clamp|var|url|env|attr)\(/.test(v)) return "min()/max()/clamp()/var()/url() is stripped";
+  if (p === "display" && !["block", "inline-block", "flex", "inline-flex", "none"].includes(v)) return `display:${v}`;
+  if (p === "position" && !["relative", "absolute"].includes(v)) return `position:${v}`;
+  if ((p === "background" || p === "background-image") && splitTop(v, ",").some((l) => !/^(linear|radial)-gradient\(/.test(l) && !(p === "background" && /^(#[0-9a-f]{3,8}|rgba?\(.*\)|[a-z]+)$/.test(l)))) return `${p} that is not a colour or gradient`;
+  if (p === "font-size" && !/^[\d.]+(px|rem|em)$|^inherit$/.test(v)) return "font-size not in px/rem/em";
+  if (p === "color" && v === "transparent") return "color:transparent (invisible text)";
+  return null;
+}
+function decls(style) { return splitTop(style || "", ";").map((d) => { const i = d.indexOf(":"); return [d.slice(0, i).trim(), d.slice(i + 1).trim()]; }); }
 
-function lint(src) {
-  const out = [];
-  const add = (ok, msg) => out.push([ok, msg]);
-  const trimmed = src.replace(/<!--[\s\S]*?-->/g, "").trim();
-  add(/^<div class="fsx">/.test(trimmed) && /<\/div>$/.test(trimmed), 'One root: starts with <div class="fsx"> and ends with </div>');
-  const doc = new DOMParser().parseFromString(`<body>${src}</body>`, "text/html");
-  add(doc.body.children.length === 1 && doc.body.firstElementChild.className === "fsx", "Exactly one top-level element (.fsx)");
-  const styles = doc.querySelectorAll("style");
-  add(styles.length === 1 && doc.querySelector(".fsx").firstElementChild?.tagName === "STYLE", "A single <style>, first child of .fsx");
-  for (const tag of ["script", "link", "meta", "html", "head", "body", "iframe", "video", "source[type='video/mp4']"])
-    if (tag !== "body" && doc.querySelector(".fsx " + tag)) add(false, `No <${tag}>`);
-  add(!/<(script|link|meta|iframe|video)\b/i.test(src) && !/<\/?(html|head|body)\b/i.test(src), "No <html>, <head>, <body>, <meta>, <link>, <script>, <iframe>, <video>");
-  add(!/\son[a-z]+\s*=/i.test(src), "No inline event handlers");
-  add(!/\sstyle\s*=/i.test(src), "No style attributes (all styling in the scoped <style>)");
-  if (styles.length) {
-    const css = styles[0].textContent.replace(/\/\*[\s\S]*?\*\//g, "");
-    add(!/var\(/.test(css) && !/--[a-z]/i.test(css), "Literal values: no var() and no custom properties");
-    add(!/:root|(^|[\s,{}])(html|body)\b/m.test(css), "No :root, html or body selectors");
-    add(!/position\s*:\s*fixed/.test(css), "No position: fixed");
-    const kf = [...css.matchAll(/@keyframes\s+([\w-]+)/g)].map((m) => m[1]);
-    add(kf.every((k) => k.startsWith("fsx-")), `Keyframes prefixed fsx- (${kf.join(", ") || "none"})`);
-    add(/^\s*@import\s+url\("https:\/\/fonts\.googleapis\.com/.test(css), "@import of Google Fonts is the first rule");
-    // Every selector of every style rule (also inside @media / @container) starts with .fsx
-    const sheet = new CSSStyleSheet();
-    let bad = [];
-    try {
-      sheet.replaceSync(css.replace(/@import[^;]+;/g, ""));
-      const walk = (rules) => { for (const r of rules) {
-        if (r.selectorText) for (const s of r.selectorText.split(",")) { if (!s.trim().startsWith(".fsx")) bad.push(s.trim()); }
-        if (r.cssRules && !r.selectorText) walk(r.cssRules);
-      } };
-      walk(sheet.cssRules);
-    } catch (e) { bad.push("parse error: " + e.message); }
-    add(bad.length === 0, bad.length ? `Selectors not scoped under .fsx: ${bad.slice(0, 6).join(" | ")}` : "Every selector scoped under .fsx");
-    add(/@media\s*\(prefers-reduced-motion:\s*reduce\)/.test(css), "Reduced-motion overrides present");
+// Superhive on save: unwrap stripped tags (their text stays, <style> CSS included), drop stripped attributes and declarations.
+function sanitize(doc) {
+  for (const el of [...doc.body.querySelectorAll("*")].reverse()) {
+    const tag = el.tagName.toLowerCase();
+    if (!KEPT_TAGS.has(tag)) { el.replaceWith(...el.childNodes); continue; }
+    const ok = new Set([...GLOBAL_ATTRS, ...(TAG_ATTRS[tag] || [])]);
+    for (const a of [...el.attributes]) if (!ok.has(a.name)) el.removeAttribute(a.name);
+    if (el.hasAttribute("style")) {
+      const kept = decls(el.getAttribute("style")).filter(([p, v]) => !cssProblem(p, v)).map(([p, v]) => `${p}:${v}`).join(";");
+      kept ? el.setAttribute("style", kept) : el.removeAttribute("style");
+    }
   }
-  const imgs = [...doc.querySelectorAll("img")];
-  const badSrc = imgs.filter((i) => !/^(img|media)\/store\//.test(i.getAttribute("src").slice(SITE.length)) || !i.getAttribute("src").startsWith(SITE));
-  add(badSrc.length === 0, `Images use absolute URLs under ${SITE}img/store/ or media/store/ (${imgs.length} images)`);
-  const srcs = [...src.matchAll(/(?:src|srcset)="([^"]+)"/g)].map((m) => m[1]);
-  add(!srcs.some((s) => /\.(webp|mp4|webm)$/i.test(s)), "No WebP or MP4");
-  const noDims = imgs.filter((i) => !i.getAttribute("width") || !i.getAttribute("height") || !i.hasAttribute("alt"));
-  add(noDims.length === 0, "Every <img> has width, height and alt");
-  const firstEager = imgs.slice(1).filter((i) => i.getAttribute("loading") !== "lazy");
-  add(firstEager.length === 0, "Every image after the first is loading=\"lazy\"");
-  return { out, srcs: [...new Set(srcs)] };
+  return doc.body.innerHTML;
 }
 
-async function checkImages(srcs) {
+function lint(doc) {
+  const out = [], add = (ok, msg, list) => out.push([ok, msg, list || []]);
+  const els = [...doc.body.querySelectorAll("*")];
+  add(doc.body.children.length === 1 && doc.body.firstElementChild.tagName === "DIV", "One root <div>");
+  const badTags = [...new Set(els.map((e) => e.tagName.toLowerCase()).filter((t) => !KEPT_TAGS.has(t)))];
+  add(!badTags.length, "Only tags Superhive keeps" + (badTags.length ? `: stripped ${badTags.join(", ")}` : ""));
+  const classId = els.filter((e) => e.hasAttribute("class") || e.hasAttribute("id"));
+  add(!classId.length, `No class or id left (${classId.length} found)`);
+  const badAttrs = [];
+  for (const e of els) { const t = e.tagName.toLowerCase(), ok = new Set([...GLOBAL_ATTRS, ...(TAG_ATTRS[t] || []), "class", "id"]);
+    for (const a of e.attributes) if (!ok.has(a.name)) badAttrs.push(`<${t} ${a.name}>`); }
+  add(!badAttrs.length, `Only attributes Superhive keeps (${badAttrs.length} stripped)`, [...new Set(badAttrs)].slice(0, 20));
+  const badCss = [];
+  for (const e of els) for (const [p, v] of decls(e.getAttribute("style"))) { const w = cssProblem(p, v); if (w) badCss.push(`<${e.tagName.toLowerCase()}> ${p}: ${w}`); }
+  add(!badCss.length, `Every style declaration is on the whitelist (${badCss.length} stripped)`, [...new Set(badCss)].slice(0, 20));
+  const media = els.flatMap((e) => ["src", "poster"].filter((a) => e.hasAttribute(a) && e.tagName !== "IFRAME").map((a) => e.getAttribute(a)));
+  const rel = media.filter((s) => !s.startsWith(ASSETS));
+  add(!rel.length, `Media URLs are absolute under ${ASSETS} (${media.length})`, rel.slice(0, 10));
+  const anchors = els.filter((e) => e.tagName === "A" && !/^https?:\/\//.test(e.getAttribute("href") || ""));
+  add(!anchors.length, "Links are absolute (no #anchors)");
+  const noDims = els.filter((e) => e.tagName === "IMG" && (!e.hasAttribute("width") || !e.hasAttribute("height") || !e.hasAttribute("alt")));
+  add(!noDims.length, "Every <img> has width, height and alt");
+  const vids = els.filter((e) => e.tagName === "VIDEO");
+  add(vids.every((v) => ["autoplay", "muted", "loop", "playsinline", "poster"].every((a) => v.hasAttribute(a)) && v.querySelector('source[type="video/mp4"]')),
+    `Videos autoplay muted loop playsinline with a poster and an MP4 source (${vids.length})`);
+  return { out, media: [...new Set(media.filter((s) => s.startsWith(ASSETS)))] };
+}
+
+async function checkMedia(srcs) {
   const missing = [];
-  await Promise.all(srcs.map(async (s) => {
-    const u = s.replace(SITE, "../../assets/");
-    try { const r = await fetch(u, { method: "HEAD" }); if (!r.ok) missing.push(u); } catch (e) { missing.push(u); }
-  }));
+  await Promise.all(srcs.map(async (s) => { const u = "../../" + s.slice(SITE.length);
+    try { const r = await fetch(u, { method: "HEAD" }); if (!r.ok) missing.push(u); } catch (e) { missing.push(u); } }));
   return missing;
 }
 
 function renderLint(items, extra) {
-  const ul = $("#lint-list");
-  ul.innerHTML = "";
-  for (const [ok, msg] of items) { const li = document.createElement("li"); li.className = ok ? "ok" : "bad"; li.textContent = msg; ul.append(li); }
-  if (extra) { const li = document.createElement("li"); li.className = extra[0] ? "ok" : "bad"; li.textContent = extra[1]; ul.append(li); }
+  const ul = $("#lint-list"); ul.innerHTML = "";
+  for (const [ok, msg, list] of extra ? [...items, extra] : items) {
+    const li = document.createElement("li"); li.className = ok ? "ok" : "bad"; li.textContent = msg; ul.append(li);
+    if (list && list.length) { const d = document.createElement("details"); d.innerHTML = "<summary>details</summary>"; d.append(list.join("\n")); d.style.whiteSpace = "pre-wrap"; ul.append(d); }
+  }
 }
 
 function fit() {
-  try {
-    const d = frame.contentDocument;
-    if (d && d.documentElement) frame.style.height = Math.max(400, d.documentElement.scrollHeight) + "px";
-  } catch (e) {}
+  try { const d = frame.contentDocument; if (d && d.documentElement) frame.style.height = Math.max(400, d.documentElement.scrollHeight) + "px"; } catch (e) {}
 }
 
 async function render() {
   document.querySelectorAll("#file button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.file === state.file)));
   document.querySelectorAll("#width button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.w === state.w)));
-  $("#local").checked = state.local; $("#light").checked = state.light; $("#hostile").checked = state.hostile;
-  store.style.maxWidth = state.w ? state.w + "px" : "none";
-  $("#size").textContent = state.w ? state.w + " px" : "full width";
-  try { localStorage.setItem("fsx-preview", JSON.stringify(state)); } catch (e) {}
+  $("#local").checked = state.local; $("#sanitize").checked = state.sanitize; $("#host").checked = state.host;
+  col.style.width = state.w + "px";
+  $("#size").textContent = state.w + " px";
+  try { localStorage.setItem("fsx-preview2", JSON.stringify(state)); } catch (e) {}
   let src;
   try {
     const r = await fetch(state.file, { cache: "no-store" });
     if (!r.ok) throw new Error(r.status);
     src = await r.text();
   } catch (e) {
-    // file:// can't fetch: show the raw file (quirks mode, remote images) and say how to get the full preview.
-    frame.removeAttribute("srcdoc");
-    frame.src = state.file;
+    frame.removeAttribute("srcdoc"); frame.src = state.file;
     $("#lint-list").innerHTML = '<li class="note">Open this page over HTTP for the real preview and the rule checks: <code>py -3.10 -m http.server 8000 -d docs</code>, then <code>http://localhost:8000/store/superhive/preview.html</code>.</li>';
     return;
   }
-  const { out, srcs } = lint(src);
+  const doc = new DOMParser().parseFromString(`<!doctype html><body>${src}</body>`, "text/html");
+  const { out, media } = lint(doc);
   renderLint(out);
-  checkImages(srcs).then((missing) => renderLint(out, [missing.length === 0,
-    missing.length ? `Missing local images: ${missing.join(", ")}` : `All ${srcs.length} image files exist in docs/assets/img/store/ and media/store/`]));
-  const html = state.local ? src.split(SITE).join(new URL("../../assets/", location.href).href) : src;
+  checkMedia(media).then((missing) => renderLint(out, [!missing.length,
+    missing.length ? `Missing local media: ${missing.length} (push the assets first?)` : `All ${media.length} media files exist in docs/assets/`, missing]));
+  let html = state.sanitize ? sanitize(doc) : src;
+  if (state.local) html = html.split(ASSETS).join(new URL("../../assets/", location.href).href);
   frame.removeAttribute("src");
-  frame.srcdoc = host(html);
+  frame.srcdoc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<style>${state.host ? HOST : "body{margin:0}"}</style></head><body>${html}</body></html>`;
 }
 
 frame.addEventListener("load", () => {
   fit();
-  try {
-    const d = frame.contentDocument;
-    d.querySelectorAll("img").forEach((i) => i.addEventListener("load", fit));
-    d.querySelectorAll("details").forEach((x) => x.addEventListener("toggle", fit));
-    new ResizeObserver(fit).observe(d.body);
-  } catch (e) {}
+  try { const d = frame.contentDocument; d.querySelectorAll("img").forEach((i) => i.addEventListener("load", fit)); new ResizeObserver(fit).observe(d.body); } catch (e) {}
 });
 $("#file").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { state.file = b.dataset.file; render(); } });
 $("#width").addEventListener("click", (e) => { const b = e.target.closest("button"); if (b) { state.w = +b.dataset.w; render(); } });
-$("#local").addEventListener("change", (e) => { state.local = e.target.checked; render(); });
-$("#light").addEventListener("change", (e) => { state.light = e.target.checked; render(); });
-$("#hostile").addEventListener("change", (e) => { state.hostile = e.target.checked; render(); });
+for (const k of ["local", "sanitize", "host"]) $("#" + k).addEventListener("change", (e) => { state[k] = e.target.checked; render(); });
 render();
 </script>
 </body>
