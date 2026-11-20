@@ -20,6 +20,7 @@ Writes:
   docs/assets/media/widgets/<w>.webp      real widget thumbnails (padded to the gallery's 9:5 card)
   docs/assets/media/store/<name>.png|jpg  stills for Superhive (no WebP there)
   docs/assets/media/store/<name>.gif      loops for Superhive (< 4 MB) + <name>-still.png (first frame)
+  docs/assets/media/<name>.webp           also the Add to FlexSpace Canvas and City Builder stills (SH_SHOTS, --only sh)
   docs/assets/media/media.json            registry: title, caption (from the manifest), size and files of each item
 Needs Pillow and ffmpeg on PATH.
 """
@@ -181,6 +182,32 @@ VIEWS_WIDGETS = [
      "Silhouette: the active object as a flat white shape with an orange outline."),
 ]
 
+# Add to FlexSpace Canvas and the City Builder demo: 3440 x 1361 window shots of the shipped demo
+# (<src>/superhive/src/captures/city_builder/, take_city_menu_shots.py through capture_city_menu.sh). The crops leave
+# out the top bar (the Blender logo) and the status bar. (file, crop box, name, title, caption), captions from the help
+# (binding.md, Add to FlexSpace Canvas; demo_files.md, City Builder).
+SH_SHOTS = [
+    ("src/captures/city_builder/menu_prop_submenu.png", (2330, 250, 3425, 1178), "add-to-canvas-property",
+     "Add to FlexSpace Canvas on a property",
+     "Right-click the Sea modifier's Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used "
+     "last, comes first with its current page, then the other canvases' pages and New Canvas..."),
+    ("src/captures/city_builder/menu_op_submenu.png", (30, 36, 750, 485), "add-to-canvas-button",
+     "Add to FlexSpace Canvas on a button",
+     "Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it."),
+    ("src/captures/city_builder/menu_result_zoom_live.png", (20, 360, 1190, 812), "add-to-canvas-result",
+     "On the page, bound",
+     "Both widgets went to a free spot in the part of the City Builder page in view: a Water Level slider bound to "
+     "the Sea modifier and a Render button."),
+    ("src/captures/city_builder/city_golden.png", (0, 40, 3440, 1322), "city-builder", "City Builder",
+     "The City Builder demo as it opens: the canvas in Live Mode next to the 3D Viewport in Material Preview with the "
+     "scene's lights and world, at golden hour."),
+    ("src/captures/city_builder/city_night.png", (0, 40, 3440, 1322), "city-builder-night", "Nightfall",
+     "Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night."),
+]
+SH_DAY_NIGHT = ("src/captures/city_builder/city_day.png", "src/captures/city_builder/city_night.png",
+                (1410, 82, 3405, 1322), "city-builder-day-night", "Six Geometry Nodes systems, one canvas",
+                "The island city of the City Builder demo with Nightfall at 0 (left) and at 1 (right).")
+
 # Captures of the redesigned picker (character art, Face page): the only picker media allowed.
 PICKER_OK = {f for f, _n, _s in LOOPS + SHOTS if "picker" in f} | {
     f"shots/widgets/{w}.png" for w in ("bone_collection_toggle", "slider_radial", "slider_lineal_2d", "bone_pickers")}
@@ -325,12 +352,43 @@ def make_views(src: Path, reg: dict, tmp: Path):
                                     "w": card.width, "h": card.height, "webp": rel(out)}
 
 
+def make_sh_shots(src: Path, reg: dict):
+    """Add to FlexSpace Canvas and the City Builder (SH_SHOTS, SH_DAY_NIGHT). src = marketing/flexspace."""
+    sh = src / "superhive"
+    for f, box, name, title, caption in SH_SHOTS:
+        if not (sh / f).is_file():
+            raise SystemExit(f"missing: {sh / f} (run superhive/src/capture_city_menu.sh)")
+        im = fit(Image.open(sh / f).convert("RGB").crop(box))
+        save_webp(im, OUT / f"{name}.webp", q=84)
+        reg["items"][name] = {"kind": "shot", "file": f"superhive/{f}", "title": title, "caption": caption,
+                              "w": im.width, "h": im.height, "webp": rel(OUT / f"{name}.webp")}
+    fd, fn, box, name, title, caption = SH_DAY_NIGHT
+    import numpy as np
+    d = fit(Image.open(sh / fd).convert("RGB").crop(box), 1600)
+    n = fit(Image.open(sh / fn).convert("RGB").crop(box), 1600)
+    w, h = d.size
+    yy, xx = np.mgrid[0:h, 0:w].astype(np.float32)
+    a = np.clip((xx - w * (.56 - .16 * yy / h)) / 40.0 + .5, 0, 1)[..., None]
+    im = Image.fromarray((np.asarray(d, np.float32) * (1 - a) + np.asarray(n, np.float32) * a).astype(np.uint8))
+    save_webp(im, OUT / f"{name}.webp", q=82)
+    reg["items"][name] = {"kind": "shot", "file": f"superhive/{fd} + {fn}", "title": title, "caption": caption,
+                          "w": w, "h": h, "webp": rel(OUT / f"{name}.webp")}
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--src", type=Path, default=DEFAULT_SRC)
-    ap.add_argument("--only", choices=["views"], help="views: only the 3D views, merged into the current media.json")
+    ap.add_argument("--only", choices=["views", "sh"],
+                    help="views: only the 3D views; sh: only Add to FlexSpace Canvas and the City Builder (SH_SHOTS); "
+                         "merged into the current media.json")
     a = ap.parse_args()
     src = a.src
+    if a.only == "sh":
+        reg = json.loads((OUT / "media.json").read_text(encoding="utf-8"))
+        make_sh_shots(src, reg)
+        (OUT / "media.json").write_text(json.dumps(reg, indent=1, ensure_ascii=False), encoding="utf-8")
+        print(f"{len(SH_SHOTS) + 1} items: " + ", ".join(n for _f, _b, n, _t, _c in SH_SHOTS) + ", " + SH_DAY_NIGHT[3])
+        return
     if a.only == "views":
         for d in (OUT, WIDGETS):
             d.mkdir(parents=True, exist_ok=True)
@@ -425,6 +483,7 @@ def main():
             reg["items"][f"w-{wid}"] = {"kind": "widget", "file": f, "title": e["title"], "caption": e["caption"],
                                         "w": card.width, "h": card.height, "webp": rel(out)}
         make_views(src, reg, tmp)
+        make_sh_shots(src, reg)
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

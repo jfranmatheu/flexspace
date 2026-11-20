@@ -124,7 +124,7 @@
       <p class="fs-keys" aria-label="Main keys">
         <span><kbd class="fs-kbd">Tab</kbd> Edit &harr; Live</span>
         <span><kbd class="fs-kbd">Shift A</kbd> Add a widget</span>
-        <span><kbd class="fs-kbd">Right-click</kbd> Bind with From Property</span>
+        <span><kbd class="fs-kbd">Right-click</kbd> Add to FlexSpace Canvas</span>
         <span><kbd class="fs-kbd">I</kbd> Key it</span>
       </p>
 
@@ -209,7 +209,7 @@
       <div class="fs-seeit__shots fs-reveal">
         <div class="fs-strip-head">
           <h3 class="fs-h3">Screenshots</h3>
-          <p class="fs-small fs-muted">The Studio Control Panel, the FlexSpace Studio pages, the Add Widget browser, the Sunset theme, the Light appearance and the Armature Picker.</p>
+          <p class="fs-small fs-muted">The Studio Control Panel, the FlexSpace Studio pages, the City Builder by day and by night, the Add Widget browser, the Sunset theme, the Light appearance and the Armature Picker.</p>
         </div>
         <div class="fs-strip">
           <figure class="fs-real fs-real--fit">
@@ -235,6 +235,14 @@
           <figure class="fs-real fs-real--fit">
             <a class="fs-real__frame" href="assets/media/studio-object.webp" data-zoom><img src="assets/media/studio-object.webp" width="1574" height="954" loading="lazy" decoding="async" alt="Select the Geometry Nodes tower and the canvas shows its page: shape, details, materials and colour controls."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
             <figcaption><b>FlexSpace Studio: Object page.</b> Select the Geometry Nodes tower and the canvas shows its page: shape, details, materials and colour controls.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/city-builder.webp" data-zoom><img src="assets/media/city-builder.webp" width="1920" height="716" loading="lazy" decoding="async" alt="The City Builder demo as it opens: six Geometry Nodes systems driven from one canvas page, next to the island city at golden hour."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>City Builder.</b> The City Builder demo as it opens: six Geometry Nodes systems driven from one canvas page, next to the island city at golden hour.</figcaption>
+          </figure>
+          <figure class="fs-real fs-real--fit">
+            <a class="fs-real__frame" href="assets/media/city-builder-night.webp" data-zoom><img src="assets/media/city-builder-night.webp" width="1920" height="716" loading="lazy" decoding="async" alt="Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+            <figcaption><b>City Builder at night.</b> Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night.</figcaption>
           </figure>
           <figure class="fs-real fs-real--fit">
             <a class="fs-real__frame" href="assets/media/add-browser.webp" data-zoom><img src="assets/media/add-browser.webp" width="1920" height="1080" loading="lazy" decoding="async" alt="Shift A opens the Add Widget browser over the canvas: search, categories and a card per widget."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
@@ -362,8 +370,9 @@
           <div class="fs-row__copy">
             <span class="fs-eyebrow">Binding</span>
             <h3 class="fs-h2">Bind anything with a right-click.</h3>
-            <p>Press <kbd class="fs-kbd">Shift A</kbd> &gt; <strong>From Property</strong>, right-click any property in Blender, and the right widget appears, already bound and labelled. Widgets show Blender's animation colours, <kbd class="fs-kbd">I</kbd> keys them, and Auto Keying just works.</p>
+            <p>Right-click any property or button in Blender and choose <strong>Add to FlexSpace Canvas</strong>, then a page: the right widget lands there, already bound and labelled. The canvas you used last comes first. From the canvas itself, <kbd class="fs-kbd">Shift A</kbd> &gt; <strong>From Property</strong> does the same. Widgets show Blender's animation colours, <kbd class="fs-kbd">I</kbd> keys them, and Auto Keying just works.</p>
             <ul class="fs-ticks">
+              <li>Properties and buttons, from any right-click menu</li>
               <li>Data paths, the eyedropper or From Property</li>
               <li>Follow the active object, or pin one</li>
               <li>Visible When and Disabled When conditions</li>
@@ -546,7 +555,7 @@
         <article class="fs-tile fs-tile--big fs-reveal">
           <div class="fs-tile__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg></div>
           <h3 class="fs-h4">Demo files.</h3>
-          <p>Nine finished scenes, from a studio control panel to Rigify body pickers. Each opens in its own window, as a copy: your file stays untouched.</p>
+          <p>Eleven finished scenes, from a studio control panel and a Geometry Nodes city to Rigify body pickers. Each opens in its own window, as a copy: your file stays untouched.</p>
           <div class="fs-tile__art"><a href="assets/img/frame-demo-browser.webp" data-zoom><img src="assets/img/frame-demo-browser.webp" width="1780" height="1219" loading="lazy" decoding="async" alt="The demo browser: categories, demo cards and Open in New Window."></a></div>
         </article>
         <article class="fs-tile fs-reveal">
@@ -680,7 +689,7 @@
         <div><dt>Editors</dt><dd>Flex Space (control panels) and Armature Picker (rig pickers)</dd></div>
         <div><dt>Saved in</dt><dd>Your .blend (canvases), the armature data (pickers), your user folder (global presets)</dd></div>
         <div><dt>Sharing</dt><dd><code class="fs-path">.flexspace</code> preset files, shared presets folder</dd></div>
-        <div><dt>Demo files</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, Rigify Human Picker, Simple Biped Picker, Rigify Male and Female Body Pickers</dd></div>
+        <div><dt>Demo files</dt><dd>Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, City Builder, Rigify Human Picker, Simple Biped Picker, Rigify Male and Female Body Pickers, Rigify Character Picker</dd></div>
         <div><dt>Docs</dt><dd>Online here and in the canvas header's Help menu</dd></div>
         <div><dt>Support</dt><dd>Report a Bug inside Blender, <a href="https://github.com/jfranmatheu/flexspace/issues" data-link="issues" rel="noopener">GitHub issues</a>, Superhive</dd></div>
         <div><dt>Licence</dt><dd>GPL-3.0-or-later</dd></div>

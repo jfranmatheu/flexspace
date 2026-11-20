@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Binding Properties · FlexSpace Docs</title>
-<meta name="description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
+<meta name="description" content="Binding Properties: what a data path is, the eyedropper, adding a widget from Blender&#x27;s right-click menu, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
 <link rel="canonical" href="https://jfranmatheu.github.io/flexspace/docs/binding.html">
 <meta name="color-scheme" content="dark light">
 <meta name="theme-color" content="#0a0a0c">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="FlexSpace">
 <meta property="og:title" content="Binding Properties · FlexSpace Docs">
-<meta property="og:description" content="Binding Properties: what a data path is, the eyedropper, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
+<meta property="og:description" content="Binding Properties: what a data path is, the eyedropper, adding a widget from Blender&#x27;s right-click menu, following the active object or pinning one, Copy Full Data Path, broken bindings, showing or disabling a widget with a property, units, and keying bound widgets.">
 <meta property="og:url" content="https://jfranmatheu.github.io/flexspace/docs/binding.html">
 <meta property="og:image" content="https://jfranmatheu.github.io/flexspace/assets/img/store/og-card.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -57,7 +57,7 @@
       <p class="fs-eyebrow"><a href="index.html">Docs</a><span aria-hidden="true">/</span>Basics</p>
       <h1>Binding Properties</h1>
     </header>
-    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></details>
+    <details class="fs-doc__mtoc"><summary>On this page<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg></summary><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#add-to-flexspace-canvas">Add to FlexSpace Canvas</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></details>
     <article class="fs-prose">
 <p>Sliders, toggles and property labels control a Blender property through a <strong>Data Path</strong>. Operator buttons run an operator. This page shows the quick ways to set them up.</p>
 <h2 id="data-paths">Data paths<a class="fs-anchor" href="#data-paths" aria-label="Link to this section">#</a></h2>
@@ -102,6 +102,41 @@
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/binding-data-path.webp" data-zoom><img src="../assets/media/binding-data-path.webp" alt="After the pick: the field holds active_object.data.exposure, the pin control under it shows the slider drives this light, and the slider is labelled and shows its value." width="1008" height="372" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>After the pick: the field holds <code>active_object.<wbr>data.<wbr>exposure</code>, the pin control under it shows the slider drives this light, and the slider is labelled and shows its value.</figcaption></figure>
 <p>Press <span class="fs-keys"><kbd>Esc</kbd></span> to cancel at any time.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> For an <strong>Operator</strong> button, use <strong>Pick Operator from UI</strong> instead and right-click a button: the operator and its settings are copied.</p></aside>
+<h2 id="add-to-flexspace-canvas">Add to FlexSpace Canvas<a class="fs-anchor" href="#add-to-flexspace-canvas" aria-label="Link to this section">#</a></h2>
+<p>You don't have to open a canvas first. Right-click any property or button in Blender (the Properties editor, a sidebar, a menu item, a node) and choose <strong>Add to FlexSpace Canvas</strong>:</p>
+<ol>
+<li>Right-click the property, for example <strong>Location X</strong> in the <strong>Object</strong> properties, or an operator button such as <strong>Shade Smooth</strong>.
+</li>
+<li>Choose <strong>Add to FlexSpace Canvas</strong>. Its submenu lists your Flex Space canvases:
+<ul>
+<li>first, the canvas you used last, with its current page (<strong>Lights › Main</strong>);
+</li>
+<li>then its other pages and your other canvases (with many pages, only each canvas' current page);
+</li>
+<li>last, <strong>New Canvas...</strong>, which asks for a name and makes one.
+</li>
+</ul>
+</li>
+<li>Pick a canvas and page. The widget is added there, already set up.
+</li>
+</ol>
+<p>What you get is the same as <a class="fs-xref" href="widgets.html#add-from-property"><strong>Widgets &gt; Add from Property</strong></a>: a Toggle for an on / off property, an Enum, a slider for a 0–1 range, a Number Field, a Color Swatch, a readout Label for anything else, labelled and bound. A property of an object is pinned to that object. An operator button becomes an <strong>Operator</strong> button that runs the same operator with the same settings (like Blender's <strong>Add to Quick Favorites</strong>).</p>
+<ul>
+<li>On one item of a vector (Location X, a colour's red), the menu has <strong>Add All to FlexSpace Canvas</strong> (the whole vector, one field per value in a Flex Box) and <strong>Add Single to FlexSpace Canvas</strong> (only that value, for example <code>active_object.<wbr>location[0]</code>).
+</li>
+<li>The widget goes to a free spot in the part of the page you can see, clear of the other widgets. If there is no room, it goes under them.
+</li>
+<li>The page you chose becomes the canvas' current page. The new widget is selected and flashes once. If no editor shows that canvas, Blender's status bar says where it went (<strong>Added to Lights › Main</strong>).
+</li>
+<li>One <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> removes it.
+</li>
+<li>Armature Picker canvases are not listed: add picker widgets from the picker itself.
+</li>
+</ul>
+<aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The entry is greyed out when the property can't stay bound: the settings of an operator in its <strong>Adjust Last Operation</strong> panel or a popup (they only exist while the operator runs), or a property with no data path a canvas can follow. Hover it to see why.</p></aside>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/add-to-canvas-property.webp" data-zoom><img src="../assets/media/add-to-canvas-property.webp" alt="Right-click the Sea modifier&#x27;s Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used last, comes first with its current page, then the other canvases&#x27; pages and New Canvas..." width="1095" height="928" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Right-click the Sea modifier&#x27;s Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used last, comes first with its current page, then the other canvases&#x27; pages and New Canvas...</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/add-to-canvas-button.webp" data-zoom><img src="../assets/media/add-to-canvas-button.webp" alt="Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it." width="720" height="449" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it.</figcaption></figure>
+<figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/add-to-canvas-result.webp" data-zoom><img src="../assets/media/add-to-canvas-result.webp" alt="Both widgets went to a free spot in the part of the City Builder page in view: a Water Level slider bound to the Sea modifier and a Render button." width="1170" height="452" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>Both widgets went to a free spot in the part of the City Builder page in view: a Water Level slider bound to the Sea modifier and a Render button.</figcaption></figure>
 <h2 id="follow-the-active-object-or-pin-one">Follow the active object or pin one<a class="fs-anchor" href="#follow-the-active-object-or-pin-one" aria-label="Link to this section">#</a></h2>
 <p>A path that starts with <code>active_object</code> (<code>active_object.<wbr>data.<wbr>energy</code>, the power of a light) can work two ways. The pin control under the <strong>Data Path</strong> field shows which one:</p>
 <ul>
@@ -144,7 +179,7 @@
 </ul>
 <p>Each one takes a data path to a boolean, like a toggle's (for example <code>scene.<wbr>render.<wbr>use_simplify</code>). Type or paste it, or use the eyedropper button and right-click a checkbox anywhere in Blender. The arrows button next to the field (<strong>Invert</strong>) flips it: shown or disabled while the property is off.</p>
 <p>Under the field the panel says what the condition does now (<strong>Shown now</strong>, <strong>Hidden now</strong>, <strong>Disabled now</strong>, <strong>Usable now</strong>). A path that doesn't lead to a boolean has no effect (the widget stays shown and usable) and is marked in red.</p>
-<p>To pick one item of a checkbox row (for example one of an armature's layers), right-click that checkbox: the path gets its index, like <code>data.<wbr>some_flags[2]</code>.</p>
+<p>To pick one item of a checkbox row (for example the Z of an object's <strong>Lock Location</strong>), right-click that checkbox: the path gets its index, like <code>active_object.<wbr>lock_location[2]</code>.</p>
 <p>A path that starts with <code>active_object</code> follows the widget's pin, like its data path: a pinned widget reads the condition from its pinned object.</p>
 <figure class="fs-figure fs-figure--frame"><a class="fs-zoom" href="../assets/img/frame-conditions.webp" data-zoom><img src="../assets/img/frame-conditions.webp" alt="A tooltip with the property&#x27;s name, description and data path; Visible When and Disabled When in the sidebar; a broken binding flagged." width="1780" height="1175" decoding="async" loading="lazy"></a><figcaption>A tooltip with the property&#x27;s name, description and data path; Visible When and Disabled When in the sidebar; a broken binding flagged.</figcaption></figure>
 <h3 id="conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups<a class="fs-anchor" href="#conditions-on-frames-flex-boxes-and-groups" aria-label="Link to this section">#</a></h3>
@@ -183,16 +218,16 @@
 <li><span class="fs-keys"><kbd>Backspace</kbd></span> resets it to its default value (a custom property: the default of its settings).
 </li>
 </ul>
-<p>Each one is a single undo step. On a pinned widget they act on the pinned object. Over a bone button or empty space the same keys are Blender's Pose Mode keys, as before.</p>
+<p>Each one is a single undo step. On a pinned widget they act on the pinned object. These are Blender's default keys: they follow your <strong>User Interface</strong> keymap, as over a Blender button, so <strong>Industry Compatible</strong> (<span class="fs-keys"><kbd>S</kbd></span>, <span class="fs-keys"><kbd>Alt</kbd><span class="plus">+</span><kbd>S</kbd></span>, <span class="fs-keys"><kbd>Shift</kbd><span class="plus">+</span><kbd>Alt</kbd><span class="plus">+</span><kbd>S</kbd></span>) and keys you change in the Preferences work too. Over a bone button or empty space the same keys are Blender's Pose Mode keys, as before.</p>
 <h2 id="auto-keying">Auto-keying<a class="fs-anchor" href="#auto-keying" aria-label="Link to this section">#</a></h2>
-<p>When Blender's <strong>Auto Keying</strong> is on (the record button of the Timeline), the end of a slider or number field drag keys the properties it drives, in the same undo step as the change. A click on an Enum or on a toggle in <strong>Set Value</strong> mode is keyed the same way, and so is a colour changed in a Color Swatch's picker, when the picker closes. A Color Picker drag is keyed on release, and a click on a Color Palette swatch right away. FlexSpace follows your Auto Keying options: <strong>Only Insert Available</strong>, <strong>Only Insert Needed</strong>, Replace mode, visual and cycle-aware keying, the keyframe type and <strong>Only Active Keying Set</strong>.</p>
+<p>When Blender's <strong>Auto Keying</strong> is on (the record button of the Timeline), the end of a slider or number field drag keys the properties it drives, in the same undo step as the change. A click on an Enum or on a toggle (on / off or <strong>Set Value</strong>) is keyed the same way, and so is a colour changed in a Color Swatch's picker, when the picker closes. A Color Picker drag is keyed on release, and a click on a Color Palette swatch right away. FlexSpace follows your Auto Keying options: <strong>Only Insert Available</strong>, <strong>Only Insert Needed</strong>, Replace mode, visual and cycle-aware keying, the keyframe type and <strong>Only Active Keying Set</strong>.</p>
 <p>The IK/FK puck of the picker is keyed the same way when you click it.</p>
     </article>
     <nav class="fs-pager" aria-label="Previous and next guide"><a class="fs-pager__link fs-pager__link--prev" href="editing.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>Previous</span><strong>Editing Tools</strong></a><a class="fs-pager__link fs-pager__link--next" href="picker.html"><span>Next<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span><strong>The Armature Picker</strong></a></nav>
     <aside class="fs-doc__help"><p>Something unclear or broken? In Blender, <strong>Help &gt; Report a Bug...</strong> fills in the details for you.</p>
       <a class="fs-btn fs-btn--ghost fs-btn--sm" href="https://github.com/jfranmatheu/flexspace/issues/new?template=flexspace.yml" target="_blank" rel="noopener">Open an issue<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></aside>
   </main>
-  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
+  <aside class="fs-doc__toc" aria-label="On this page"><p class="fs-doc__toc-title">On this page</p><nav><ul class="fs-toc"><li class="lv2"><a href="#data-paths">Data paths</a></li><li class="lv2"><a href="#the-eyedropper">The eyedropper</a></li><li class="lv2"><a href="#add-to-flexspace-canvas">Add to FlexSpace Canvas</a></li><li class="lv2"><a href="#follow-the-active-object-or-pin-one">Follow the active object or pin one</a></li><li class="lv2"><a href="#copy-full-data-path">Copy Full Data Path</a></li><li class="lv2"><a href="#when-a-binding-is-broken">When a binding is broken</a></li><li class="lv2"><a href="#show-hide-or-disable-a-widget-with-a-property">Show, hide or disable a widget with a property</a></li><li class="lv3"><a href="#conditions-on-frames-flex-boxes-and-groups">Conditions on frames, Flex Boxes and groups</a></li><li class="lv2"><a href="#units">Units</a></li><li class="lv2"><a href="#animation-state-and-keyframes">Animation state and keyframes</a></li><li class="lv2"><a href="#auto-keying">Auto-keying</a></li></ul></nav><a class="fs-doc__top" href="#top">Back to top</a></aside>
 </div>
 <footer class="fs-foot">
   <div class="fs-foot__in">

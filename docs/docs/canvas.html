@@ -75,6 +75,13 @@
 </li>
 </ol>
 <p>Each canvas is saved in the .blend file. The selector in the header switches between canvases, renames them and adds a fake user.</p>
+<p>To use a canvas from another file, bring it in with <strong>File &gt; Link</strong> or <strong>File &gt; Append</strong> (it is under <strong>NodeTree</strong>). The file keeps it, even if no editor shows it:</p>
+<ul>
+<li>A <strong>linked</strong> canvas stays in the other file and updates when that file changes. The scene keeps a reference to it. To remove it, delete it in the Outliner's <strong>Blender File</strong> view.
+</li>
+<li>An <strong>appended</strong> canvas is a copy you can edit. It gets a fake user.
+</li>
+</ul>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/control-panel-dark-area.webp" data-zoom><img src="../assets/media/control-panel-dark-area.webp" alt="A canvas with its widgets in frames: Lighting, Render, Playback, Objects and a camera preview." width="911" height="954" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>A canvas with its widgets in frames: Lighting, Render, Playback, Objects and a camera preview.</figcaption></figure>
 <h2 id="edit-mode-and-live-mode">Edit Mode and Live Mode<a class="fs-anchor" href="#edit-mode-and-live-mode" aria-label="Link to this section">#</a></h2>
 <p>A canvas has two modes. <span class="fs-keys"><kbd>Tab</kbd></span> switches between them.</p>
@@ -85,6 +92,7 @@
 </li>
 </ul>
 <p>On an Armature Picker, Live Mode is Blender's own <strong>Pose Mode</strong>: you use the picker while you pose, so the picker calls it Pose Mode.</p>
+<p>A canvas linked from another file (<strong>File &gt; Link</strong>) is always in Live Mode, even if its file was saved in Edit Mode. Edit its layout in the file it comes from.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The pill at the bottom of the canvas reminds you of <span class="fs-keys"><kbd>Tab</kbd></span>. Turn it off with <strong>Key Hints</strong> in the add-on preferences.</p></aside>
 <h2 id="navigate">Navigate<a class="fs-anchor" href="#navigate" aria-label="Link to this section">#</a></h2>
 <ul>
@@ -109,11 +117,15 @@
 <ul>
 <li>Pick the active page in the header, or click its tab at the top-left of the canvas in Live Mode (the tabs show when two or more pages are pinned).
 </li>
+<li>In a narrow editor the tabs squeeze to fit: object names go first, then long page names are shortened with an ellipsis. When even that doesn't fit, the tabs hide, and the page menu in the header still switches pages.
+</li>
 <li>Add a page with the <strong>+</strong> button next to it.
 </li>
-<li>In Edit Mode, <span class="fs-keys"><kbd>M</kbd></span> moves the selected widgets to another page.
+<li>In Edit Mode, <span class="fs-keys"><kbd>M</kbd></span> moves the selected widgets to another page. The dialog starts on the first other page. A widget leaves its frame, unless the frame moves too: a moved frame takes its widgets along.
 </li>
 <li>The <strong>Pages</strong> panel in the <strong>Canvas</strong> tab of the sidebar (<span class="fs-keys"><kbd>N</kbd></span>) lists the pages. The icon at the right of each one sets its mode. <strong>Show When</strong> below the list sets when the active page fits.
+</li>
+<li>The buttons next to the list add, remove and duplicate the active page. A duplicate copies the page's widgets, with their frames, groups and Flex Boxes, and the page's settings: its mode, Show When and tab. An empty page can be duplicated too.
 </li>
 </ul>
 <p><strong>Show When</strong> has four choices:</p>
@@ -144,7 +156,7 @@
 </li>
 </ul>
 
-<p><strong>Switch Pages Automatically</strong> (in the Pages panel, on by default) shows the right page for you. When Blender's mode or the active object changes, the canvas shows the page that fits best. <strong>Object in Mode</strong> comes first, then <strong>Object</strong>, then <strong>Mode</strong>, then <strong>Always</strong>. When two pages fit just as well, the first tab wins, and a tab you clicked yourself stays while it still fits as well. With no page that fits, nothing changes. It waits while you edit the layout or drag a widget.</p>
+<p><strong>Switch Pages Automatically</strong> (in the Pages panel, on by default) shows the right page for you. When Blender's mode or the active object changes, the canvas shows the page that fits best. <strong>Object in Mode</strong> comes first, then <strong>Object</strong>, then <strong>Mode</strong>, then <strong>Always</strong>. When two pages fit just as well, the first tab wins, and a tab you clicked yourself stays while it still fits as well. With no page that fits, nothing changes. It waits while you edit the layout or drag a widget. Undo and redo count too: when <span class="fs-keys"><kbd>Ctrl</kbd><span class="plus">+</span><kbd>Z</kbd></span> brings back another mode or active object, the canvas shows the page that fits it.</p>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> The canvas's Edit Mode (<span class="fs-keys"><kbd>Tab</kbd></span>) still works in any Blender mode, so you can build a page's layout first.</p></aside>
 <p>A button can change the mode too: an Operator button that runs <strong>Enter Mode</strong> makes an object active and selected (and shows it if you hid it with <span class="fs-keys"><kbd>H</kbd></span>), frames it in the 3D Viewport if you like, and enters a mode with it. The <strong>FlexSpace Studio</strong> demo has one for each mode (see <a class="fs-xref" href="recipes.html"><strong>Recipes</strong></a>).</p>
 <p>Some widgets need a mode of their own:</p>
@@ -280,8 +292,9 @@
 <h2 id="copy-a-canvas">Copy a canvas<a class="fs-anchor" href="#copy-a-canvas" aria-label="Link to this section">#</a></h2>
 <p>A canvas copied whole keeps its pages, frames, groups and Flex Boxes as they are. This covers the number button next to its name (make it single user), <strong>Duplicate</strong> in the Outliner, and <strong>File &gt; Append</strong> from another file. The copy is independent: changing it never changes the original, and the same preset or template can be added several times.</p>
 <h2 id="undo">Undo<a class="fs-anchor" href="#undo" aria-label="Link to this section">#</a></h2>
-<p>Every edit and every use of a widget is one undo step: a move, a slider drag, a toggle click.</p>
+<p>Every edit and every use of a widget is one undo step: a move, a slider drag, a toggle click. Adding, removing or duplicating a page and moving widgets to another page are one step each too.</p>
 <p>Switching between Edit Mode and Live Mode is not a step, and undo never switches it back: undo a slider drag in Live Mode and you stay in Live Mode.</p>
+<p>Clicking a page tab is not a step either. Undo and redo keep the page you are looking at, as they keep the view. The page of the step shows only when the step itself adds or removes pages or moves widgets to another page, and <strong>Switch Pages Automatically</strong> still follows a mode or active object that undo brings back.</p>
 <h2 id="the-add-on-preferences">The add-on preferences<a class="fs-anchor" href="#the-add-on-preferences" aria-label="Link to this section">#</a></h2>
 <p><strong>Edit &gt; Preferences &gt; Add-ons &gt; FlexSpace</strong> has four sections, listed on the left:</p>
 <ul>

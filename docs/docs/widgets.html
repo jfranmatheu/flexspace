@@ -104,7 +104,7 @@
 </li>
 <li>Select it and open the sidebar (<span class="fs-keys"><kbd>N</kbd></span>), <strong>Widget</strong> tab.
 </li>
-<li>Set its <strong>Label</strong>: Auto (the name of the bound property), Custom (your text) or None.
+<li>Set its <strong>Label</strong>: Auto (the name of the bound property; for a node input, the input's name, such as <em>Roughness</em>), Custom (your text) or None.
 </li>
 <li>Change its look in the <strong>Style</strong> panel (see <a class="fs-xref" href="editing.html#themes"><strong>Editing Tools &gt; Themes</strong></a>).
 </li>
@@ -198,6 +198,7 @@
 <li>A property the canvas can't reach is reported, and you can pick another one.
 </li>
 </ul>
+<aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> Already in the Properties editor? Right-click the property and choose <strong>Add to FlexSpace Canvas</strong>: the same widget goes to the canvas and page you pick, without opening the canvas (see <a class="fs-xref" href="binding.html#add-to-flexspace-canvas"><strong>Binding Properties &gt; Add to FlexSpace Canvas</strong></a>).</p></aside>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> In the picker, <strong>From Property</strong> is also in the header's <strong>Utils</strong> menu (the widget goes to the middle of the view). Pose-bone properties work as any other. A vector becomes a <strong>Group</strong> of Number Fields, because the picker has no Flex Box.</p></aside>
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/from-property.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/from-property.webp" data-src="../assets/media/from-property.mp4" width="1254" height="956" aria-label="Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Choose From Property, right-click a property in Blender and get a widget already bound to it, ready to drive the scene.</figcaption></figure>
 <hr class="fs-rule">
@@ -213,7 +214,7 @@
 <li><strong>Operator Properties</strong>: the settings it runs with.
 </li>
 </ul>
-<p>The button runs as if you clicked in the 3D Viewport.</p>
+<p>The button runs as if you clicked in the 3D Viewport. Like Blender's own buttons, a click adds one undo step named after the operator, when the operator can be undone.</p>
 <aside class="fs-callout fs-callout--tip"><p><strong class="fs-callout__label">Tip</strong> The button turns red when its operator can't run right now, for example a pose tool with no armature in Pose Mode.</p></aside>
 <h3 id="custom-script">Custom Script<a class="fs-anchor" href="#custom-script" aria-label="Link to this section">#</a></h3>
 <p>Runs a Python script of your own.</p>
@@ -224,6 +225,8 @@
 </li>
 <li>With an armature active, it can also use <code>armature</code> and <code>pose</code>.
 </li>
+<li>Each run is one undo step, named after the button's label.
+</li>
 </ul>
 <aside class="fs-callout fs-callout--note"><p><strong class="fs-callout__label">Note</strong> A script (and an operator that can run code) is code stored in the .blend file. If Blender's <strong>Auto Run Python Scripts</strong> is off for this file, the first click asks <strong>Run Untrusted Code?</strong> before running it. Changing the script asks again.</p></aside>
 <hr class="fs-rule">
@@ -232,13 +235,13 @@
 <ul>
 <li>Three looks, in the Add menu and in its <strong>Shape</strong> setting: <strong>Radial</strong>, <strong>Switch</strong> and <strong>Checkbox</strong>.
 </li>
-<li>A click is one undo step.
+<li>A click is one undo step, keyed if Auto Keying is on.
 </li>
 </ul>
 <h3 id="set-value">Set Value<a class="fs-anchor" href="#set-value" aria-label="Link to this section">#</a></h3>
 <p>Set the toggle's <strong>Mode</strong> to <strong>Set Value</strong> (or pick <strong>Set Value</strong> in the Add menu) to drive an enum or an integer instead.</p>
 <ul>
-<li>Pick the item (or type the number) in <strong>Value</strong>.
+<li>Pick the item (or type the number) in <strong>Value</strong>. Until you pick one, it is the property's first item.
 </li>
 <li>The toggle is on while the property has that value, and a click sets it.
 </li>
@@ -384,7 +387,7 @@
 <figure class="fs-figure fs-figure--real fs-figure--loop"><a class="fs-zoom" href="../assets/media/lineal-slider.mp4" data-zoom data-video><video class="fs-loop" muted loop playsinline preload="none" poster="../assets/media/lineal-slider.webp" data-src="../assets/media/lineal-slider.mp4" width="860" height="534" aria-label="Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value."></video><span class="fs-figure__tag">Recording</span></a><figcaption>Drag a Lineal slider, hold Shift for ten times finer control, or double-click it and type an exact value.</figcaption></figure>
 <hr class="fs-rule">
 <h2 id="number-field">Number Field<a class="fs-anchor" href="#number-field" aria-label="Link to this section">#</a></h2>
-<p>A <strong>Number Field</strong> shows a number as Blender's own fields do: the value in the middle, with its unit (metres, degrees...) in the scene's unit system, and small arrows on the sides. Its <strong>Data Path</strong> points to an integer or a float (for example <code>active_object.<wbr>location[0]</code> or <code>scene.<wbr>frame_current</code>). It is in the Add menu under <strong>Sliders</strong>.</p>
+<p>A <strong>Number Field</strong> shows a number as Blender's own fields do: the value in the middle, with its unit (metres, degrees...) in the scene's unit system, and small arrows on the sides. Its <strong>Data Path</strong> points to an integer or a float (for example <code>active_object.<wbr>location[0]</code> or <code>scene.<wbr>frame_current</code>). A component like <code>active_object.<wbr>location.<wbr>x</code> works too: it is the same as <code>location[0]</code>. It is in the Add menu under <strong>Sliders</strong>.</p>
 <p>In Live Mode:</p>
 <ul>
 <li><strong>Drag</strong> left or right to change the value. <span class="fs-keys"><kbd>Shift</kbd></span> is 10 times finer, <span class="fs-keys"><kbd>Ctrl</kbd></span> snaps to the step. Large values move faster.

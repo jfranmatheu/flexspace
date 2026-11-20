@@ -1165,6 +1165,60 @@
    "w": 1782,
    "h": 1261,
    "webp": "assets/media/view-preview-canvas.webp"
+  },
+  "add-to-canvas-property": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_prop_submenu.png",
+   "title": "Add to FlexSpace Canvas on a property",
+   "caption": "Right-click the Sea modifier's Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used last, comes first with its current page, then the other canvases' pages and New Canvas...",
+   "w": 1095,
+   "h": 928,
+   "webp": "assets/media/add-to-canvas-property.webp"
+  },
+  "add-to-canvas-button": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_op_submenu.png",
+   "title": "Add to FlexSpace Canvas on a button",
+   "caption": "Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it.",
+   "w": 720,
+   "h": 449,
+   "webp": "assets/media/add-to-canvas-button.webp"
+  },
+  "add-to-canvas-result": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/menu_result_zoom_live.png",
+   "title": "On the page, bound",
+   "caption": "Both widgets went to a free spot in the part of the City Builder page in view: a Water Level slider bound to the Sea modifier and a Render button.",
+   "w": 1170,
+   "h": 452,
+   "webp": "assets/media/add-to-canvas-result.webp"
+  },
+  "city-builder": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_golden.png",
+   "title": "City Builder",
+   "caption": "The City Builder demo as it opens: the canvas in Live Mode next to the 3D Viewport in Material Preview with the scene's lights and world, at golden hour.",
+   "w": 1920,
+   "h": 716,
+   "webp": "assets/media/city-builder.webp"
+  },
+  "city-builder-night": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_night.png",
+   "title": "Nightfall",
+   "caption": "Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night.",
+   "w": 1920,
+   "h": 716,
+   "webp": "assets/media/city-builder-night.webp"
+  },
+  "city-builder-day-night": {
+   "kind": "shot",
+   "file": "superhive/src/captures/city_builder/city_day.png + src/captures/city_builder/city_night.png",
+   "title": "Six Geometry Nodes systems, one canvas",
+   "caption": "The island city of the City Builder demo with Nightfall at 0 (left) and at 1 (right).",
+   "w": 1600,
+   "h": 994,
+   "webp": "assets/media/city-builder-day-night.webp"
   }
  }
 }

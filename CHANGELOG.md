@@ -6,6 +6,11 @@ The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## Unreleased
 
+### Added
+
+- **Add to FlexSpace Canvas** in Blender's right-click menu: right-click any property or button (the Properties editor, a sidebar, a menu item, a node), then pick a canvas and page. The canvas you used last comes first, with its current page; **New Canvas...** makes one. A property gets the same widget as **From Property**, bound and labelled; a button gets an **Operator** button with the same settings. On one item of a vector, **Add All** adds the whole vector and **Add Single** only that value. The widget goes to a free spot in the part of the page you can see and flashes once; one `Ctrl Z` removes it.
+- **City Builder** demo (Geometry Nodes): a procedural island city made by six Geometry Nodes systems (the island, the sea, the streets with their traffic, the buildings, the forest and the street lights), all driven from one canvas page. Drag **Grow** to raise the city, **Nightfall** to light the windows and the street lamps.
+
 ### Changed
 
 - Canvas layers are now called pages; nothing changes in your files. The **Layers** panel is the **Pages** panel, **Switch Layers Automatically** is **Switch Pages Automatically**, `M` moves widgets to another page, and a new canvas starts with a page named **Page**.

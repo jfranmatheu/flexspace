@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Features · FlexSpace for Blender</title>
-<meta name="description" content="Everything FlexSpace does: canvases with Edit and Live Mode, 22 widgets, live 3D views, binding with From Property and the eyedropper, pages per mode or object, smart snapping, the Ring Menu, global presets and the Armature Picker.">
+<meta name="description" content="Everything FlexSpace does: canvases with Edit and Live Mode, 22 widgets, live 3D views, binding from Blender's right-click menu, From Property and the eyedropper, pages per mode or object, smart snapping, the Ring Menu, global presets and the Armature Picker.">
 <link rel="canonical" href="https://jfranmatheu.github.io/flexspace/features.html">
 <meta name="theme-color" content="#0a0a0c">
 <meta name="color-scheme" content="dark light">
@@ -284,6 +284,35 @@
           </div>
         </div>
         <article class="fs-row fs-row--flip fs-reveal">
+          <div class="fs-row__copy">
+            <span class="fs-eyebrow">Add to FlexSpace Canvas</span>
+            <h3 class="fs-h3">Right-click anything. Put it on a canvas.</h3>
+            <p>Right-click any property or button in Blender (the Properties editor, a sidebar, a menu item, a node) and choose <strong>Add to FlexSpace Canvas</strong>, then a canvas and page. The canvas you used last comes first, with its current page; <strong>New Canvas...</strong> makes one. You get the same widget as From Property, or an <strong>Operator</strong> button that runs the button's operator with the same settings.</p>
+            <ul class="fs-ticks">
+              <li>It lands on a free spot in the part of the page you can see, and flashes once</li>
+              <li>On one item of a vector: <strong>Add All</strong> or <strong>Add Single</strong></li>
+              <li>One <kbd class="fs-kbd">Ctrl Z</kbd> removes it</li>
+            </ul>
+          </div>
+          <figure class="fs-media">
+            <a href="assets/media/add-to-canvas-property.webp" data-zoom><img src="assets/media/add-to-canvas-property.webp" width="1095" height="928" loading="lazy" decoding="async" alt="Right-click the Sea modifier&#x27;s Water Level, Add to FlexSpace Canvas: the submenu lists City Builder, the canvas used last, then the pages of Studio Controls and New Canvas..."></a>
+            <figcaption>Right-click a property, here a Geometry Nodes input of the City Builder demo, and pick the page.</figcaption>
+          </figure>
+        </article>
+        <div class="fs-inblender fs-reveal">
+          <p class="fs-inblender__head"><span class="fs-chip">In Blender</span></p>
+          <div class="fs-inblender__grid">
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/add-to-canvas-button.webp" data-zoom><img src="assets/media/add-to-canvas-button.webp" width="720" height="449" loading="lazy" decoding="async" alt="Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it with the same settings."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>On a button too.</b> Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it with the same settings.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/add-to-canvas-result.webp" data-zoom><img src="assets/media/add-to-canvas-result.webp" width="1170" height="452" loading="lazy" decoding="async" alt="Both widgets went to a free spot in the part of the page in view: a Water Level slider bound to the Sea modifier and a Render button."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>On the page, bound.</b> Both widgets went to a free spot in the part of the page in view: a Water Level slider bound to the Sea modifier and a Render button.</figcaption>
+            </figure>
+          </div>
+        </div>
+        <article class="fs-row fs-reveal">
           <div class="fs-row__copy">
             <span class="fs-eyebrow">Conditions, tooltips, broken bindings</span>
             <h3 class="fs-h3">Panels that explain and adapt.</h3>
@@ -676,7 +705,7 @@
           <div class="fs-row__copy">
             <span class="fs-eyebrow">Demo files</span>
             <h3 class="fs-h3">Open a demo, take it apart.</h3>
-            <p>Ten finished scenes: Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, and five armature pickers. A demo opens in another Blender window, as a copy: your file is never touched.</p>
+            <p>Eleven finished scenes: Studio Control Panel, Viewport Shading Panel, Animation Controls, FlexSpace Studio, Sculpt Wheel, City Builder (six Geometry Nodes systems driven from one canvas page), and five armature pickers. A demo opens in another Blender window, as a copy: your file is never touched.</p>
             <ul class="fs-ticks">
               <li><strong>Help &gt; Demo Files</strong>, or <strong>Open a Demo</strong> on an empty editor</li>
               <li>Type to search, double-click or <kbd class="fs-kbd">Enter</kbd> to open</li>
@@ -693,6 +722,14 @@
             <figure class="fs-real fs-real--fit">
               <a class="fs-real__frame" href="assets/media/empty-state.webp" data-zoom><img src="assets/media/empty-state.webp" width="600" height="380" loading="lazy" decoding="async" alt="No canvas yet? One click makes one, or open a finished demo to see how it is built."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
               <figcaption><b>Get started.</b> No canvas yet? One click makes one, or open a finished demo to see how it is built.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/city-builder.webp" data-zoom><img src="assets/media/city-builder.webp" width="1920" height="716" loading="lazy" decoding="async" alt="The City Builder demo as it opens: six Geometry Nodes systems driven from one canvas page, next to the island city at golden hour."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>City Builder.</b> The City Builder demo as it opens: six Geometry Nodes systems driven from one canvas page, next to the island city at golden hour.</figcaption>
+            </figure>
+            <figure class="fs-real fs-real--fit">
+              <a class="fs-real__frame" href="assets/media/city-builder-night.webp" data-zoom><img src="assets/media/city-builder-night.webp" width="1920" height="716" loading="lazy" decoding="async" alt="Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night."><span class="fs-real__tag fs-real__tag--still">Screenshot</span></a>
+              <figcaption><b>City Builder at night.</b> Nightfall dragged to the end: the sun has set, the windows and the street lamps are lit and the sky is night.</figcaption>
             </figure>
           </div>
         </div>
