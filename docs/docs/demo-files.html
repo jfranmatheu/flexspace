@@ -120,13 +120,15 @@
 </ul>
 <figure class="fs-figure fs-figure--real"><a class="fs-zoom" href="../assets/media/ring-menu-canvas.webp" data-zoom><img src="../assets/media/ring-menu-canvas.webp" alt="The Sculpt Wheel demo: a Ring Menu, a round Favorites frame, quick brushes, radius and strength." width="1006" height="526" decoding="async" loading="lazy"><span class="fs-figure__tag fs-figure__tag--still">Screenshot</span></a><figcaption>The Sculpt Wheel demo: a Ring Menu, a round Favorites frame, quick brushes, radius and strength.</figcaption></figure>
 <h2 id="city-builder">City Builder<a class="fs-anchor" href="#city-builder" aria-label="Link to this section">#</a></h2>
-<p><strong>City Builder</strong> is a procedural island city made by six Geometry Nodes systems: the island, the sea, the streets with their traffic, the buildings, the forest and the street lights. One canvas page drives all of them. It opens in Live Mode next to the 3D Viewport in Material Preview with the scene's lights and world (EEVEE, the same picture as Rendered), at golden hour.</p>
+<p><strong>City Builder</strong> is a procedural island city made by six Geometry Nodes systems: the island, the sea, the streets with their traffic, the buildings, the forest and the street lights. One canvas page drives the island and its coastline, the streets, the buildings, the forest and the night lights, and the sea follows the coast. It opens in Live Mode next to the 3D Viewport in Material Preview with the scene's lights and world (EEVEE, the same picture as Rendered), at golden hour.</p>
 <ul>
 <li><strong>Buildings</strong>: drag <strong>Grow</strong> to raise the city from its empty plots, then try <strong>Floors</strong>, <strong>Density</strong>, <strong>Style</strong>, <strong>Rooftops</strong> (zoom in on the roofs to see it) and <strong>Seed</strong>.
 </li>
 <li><strong>Night</strong>: drag <strong>Nightfall</strong>. The sun sets, the sky turns to sunset and blue hour, the windows and the street lamps light up, and the night falls. <strong>Window Light</strong> picks the colour of the lit windows.
 </li>
 <li><strong>Island</strong>, <strong>Roads</strong> and <strong>Forest</strong> reshape the land, the street grid and the trees.
+</li>
+<li>The sea's <strong>Water Level</strong> is not on the page: right-click it in the <strong>Sea</strong> modifier and choose <strong>Add to FlexSpace Canvas</strong> to add a slider for it (see <a class="fs-xref" href="binding.html"><strong>Binding Properties</strong></a>).
 </li>
 </ul>
 <p>The widgets are bound to the inputs of the Geometry Nodes modifiers (<strong>Window Light</strong> to the buildings' material): rest the mouse on one to read what it does. The modifier panel of each object in the Properties editor (the Geometry Nodes workspace has one) shows the same values. The file has no Python scripts: it works with <strong>Auto Run Python Scripts</strong> off.</p>
