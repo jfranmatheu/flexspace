@@ -1177,11 +1177,11 @@
   },
   "add-to-canvas-button": {
    "kind": "shot",
-   "file": "superhive/src/captures/city_builder/menu_op_submenu.png",
+   "file": "superhive/src/captures/city_builder/menu_op_menus.png",
    "title": "Add to FlexSpace Canvas on a button",
    "caption": "Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it.",
-   "w": 720,
-   "h": 449,
+   "w": 942,
+   "h": 588,
    "webp": "assets/media/add-to-canvas-button.webp"
   },
   "add-to-canvas-result": {

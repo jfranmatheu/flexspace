@@ -191,7 +191,8 @@ SH_SHOTS = [
      "Add to FlexSpace Canvas on a property",
      "Right-click the Sea modifier's Water Level and choose Add to FlexSpace Canvas: City Builder, the canvas used "
      "last, comes first with its current page, then the other canvases' pages and New Canvas..."),
-    ("src/captures/city_builder/menu_op_submenu.png", (30, 36, 750, 485), "add-to-canvas-button",
+    # (The two menus cut out of menu_op_submenu.png, 16:10: make_store_city_menu.py --menus.)
+    ("src/captures/city_builder/menu_op_menus.png", None, "add-to-canvas-button",
      "Add to FlexSpace Canvas on a button",
      "Right-click Render Image in the Render menu: the same entry adds an Operator button that runs it."),
     ("src/captures/city_builder/menu_result_zoom_live.png", (20, 360, 1190, 812), "add-to-canvas-result",
@@ -358,7 +359,8 @@ def make_sh_shots(src: Path, reg: dict):
     for f, box, name, title, caption in SH_SHOTS:
         if not (sh / f).is_file():
             raise SystemExit(f"missing: {sh / f} (run superhive/src/capture_city_menu.sh)")
-        im = fit(Image.open(sh / f).convert("RGB").crop(box))
+        im = Image.open(sh / f).convert("RGB")
+        im = fit(im.crop(box) if box else im)
         save_webp(im, OUT / f"{name}.webp", q=84)
         reg["items"][name] = {"kind": "shot", "file": f"superhive/{f}", "title": title, "caption": caption,
                               "w": im.width, "h": im.height, "webp": rel(OUT / f"{name}.webp")}
